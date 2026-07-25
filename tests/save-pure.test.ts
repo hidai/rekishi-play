@@ -5,10 +5,11 @@ import {
   serializeDB,
   makeAccount,
   emptyWorkSave,
-  accountSummary,
+  accountStandings,
   doneChapters,
   type AccountDB,
 } from '../src/engine/save.svelte';
+import type { WorkCard } from '../src/engine/types';
 
 describe('parseDB', () => {
   it('壊れた JSON / 形なしは初期 DB にフォールバック', () => {
@@ -60,11 +61,22 @@ describe('emptyWorkSave', () => {
   });
 });
 
-describe('doneChapters / accountSummary（作品をまたいだ足し算はここだけ）', () => {
+describe('doneChapters / accountStandings（作品をまたいだ足し算はここだけ）', () => {
   const a = makeAccount({ accounts: [], activeId: null }, 'けん');
   a.works.hidenaga = { ...emptyWorkSave(), progress: { 1: 'done', 2: 'done' }, cards: ['c1'] };
   a.works.masako = { ...emptyWorkSave(), progress: { 1: 'done' }, cards: ['c2', 'c3'] };
   a.works.katsu = emptyWorkSave(); // 開いただけ＝まだ遊んでいない
+
+  const card = (id: string, totalChapters = 7): WorkCard => ({
+    id,
+    protagonistId: id,
+    faces: {},
+    titleMain: id,
+    titleSub: '',
+    years: '1000〜1050',
+    totalChapters,
+  });
+  const CARDS = [card('hidenaga'), card('masako'), card('katsu'), card('ieyasu')];
 
   it('doneChapters は作品指定なら その作品だけ、無指定なら合計', () => {
     expect(doneChapters(a, 'hidenaga')).toBe(2);
@@ -73,7 +85,58 @@ describe('doneChapters / accountSummary（作品をまたいだ足し算はこ�
     expect(doneChapters(a)).toBe(3);
   });
 
-  it('サマリは「遊んだ作品」だけ数える（開いただけの枠は数に入れない）', () => {
-    expect(accountSummary(a)).toEqual({ works: 2, chapters: 3, cards: 3 });
+  it('達成表は登録された全作品ぶん並び、遊んでいない作品も行として残る', () => {
+    const s = accountStandings(a, CARDS);
+    expect(s.rows.map((r) => r.id)).toEqual(['hidenaga', 'masako', 'katsu', 'ieyasu']);
+    expect(s.rows.map((r) => r.played)).toEqual([true, true, false, false]);
+    expect(s.rows.map((r) => r.done)).toEqual([2, 1, 0, 0]);
+    expect(s.rows.map((r) => r.cards)).toEqual([1, 2, 0, 0]);
+  });
+
+  it('合計は「遊んだ作品」だけ数える（開いただけの枠は数に入れない）', () => {
+    const s = accountStandings(a, CARDS);
+    expect(s.works).toBe(2);
+    expect(s.chapters).toBe(3);
+    expect(s.cards).toBe(3);
+    expect(s.complete).toBe(0);
+  });
+
+  it('全章クリアで コンプリート印。章数は総章数を超えない', () => {
+    const b = makeAccount({ accounts: [], activeId: null }, 'ゆい');
+    b.works.hidenaga = {
+      ...emptyWorkSave(),
+      progress: { 1: 'done', 2: 'done', 3: 'done', 4: 'done', 5: 'done', 6: 'done', 7: 'done' },
+      cards: ['c1'],
+    };
+    const s = accountStandings(b, CARDS);
+    expect(s.rows[0]).toMatchObject({ done: 7, total: 7, complete: true });
+    expect(s.complete).toBe(1);
+    expect(s.chapters).toBe(7);
+  });
+
+  it('章が減った作品の古いセーブでも 章数は総章数を超えない', () => {
+    const b = makeAccount({ accounts: [], activeId: null }, 'りく');
+    // 7章時代のセーブ。作品が5章に減っても「7/5章」にはしない。
+    b.works.hidenaga = {
+      ...emptyWorkSave(),
+      progress: { 1: 'done', 2: 'done', 3: 'done', 4: 'done', 5: 'done', 6: 'done', 7: 'done' },
+    };
+    const s = accountStandings(b, [card('hidenaga', 5)]);
+    expect(s.rows[0]).toMatchObject({ done: 5, total: 5, complete: true });
+    expect(s.chapters).toBe(5);
+  });
+
+  it('章がまだ 0 の作品（骨組み）に コンプリート印は付かない', () => {
+    const b = makeAccount({ accounts: [], activeId: null }, 'あき');
+    b.works.shibusawa = { ...emptyWorkSave(), cards: ['c1'] };
+    const s = accountStandings(b, [card('shibusawa', 0)]);
+    expect(s.rows[0]).toMatchObject({ done: 0, total: 0, played: true, complete: false });
+    expect(s.complete).toBe(0);
+  });
+
+  it('登録から外れた作品のセーブ枠は合計に混ざらない（分母と食い違わせない）', () => {
+    const c = makeAccount({ accounts: [], activeId: null }, 'そう');
+    c.works.gone = { ...emptyWorkSave(), progress: { 1: 'done' }, cards: ['x'] };
+    expect(accountStandings(c, CARDS)).toMatchObject({ works: 0, chapters: 0, cards: 0 });
   });
 });

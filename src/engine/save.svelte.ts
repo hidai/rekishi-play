@@ -4,7 +4,7 @@
 // 保存の単位は「その子」＝ Account 1つで、作品はその中の枠（Account.works）。
 // 読者は名前を1回だけ選び、以後どの作品へ入っても同じ名前・同じ設定で続く
 // （進みぐあい・カードは作品ごとに分かれたまま）。localStorage キーも1つ。
-import type { Work } from './types';
+import type { Work, WorkCard } from './types';
 
 /** アプリ全体で1つ。作品別キーは持たない（作品は Account.works の中の枠）。 */
 export const ACCOUNT_KEY = 'rekishi_play_account_v1';
@@ -117,13 +117,54 @@ export function hasPlayed(w: WorkSave): boolean {
   return Object.keys(w.progress).length > 0 || w.cards.length > 0;
 }
 
-/** 「だれで あそぶ？」の1行サマリ用。作品をまたいだ足し算はここだけ。 */
-export function accountSummary(a: Account): { works: number; chapters: number; cards: number } {
-  const played = Object.values(a.works).filter(hasPlayed);
+/** 「だれで あそぶ？」の達成表の1行＝その子のその作品での立ち位置。 */
+export interface WorkStanding {
+  id: string;
+  /** ruby HTML allowed */
+  label: string;
+  done: number;
+  total: number;
+  cards: number;
+  played: boolean;
+  complete: boolean;
+}
+
+export interface AccountStandings {
+  rows: WorkStanding[];
+  works: number;
+  chapters: number;
+  /** 登録されている作品の章の総数＝「10/42章」の分母。 */
+  totalChapters: number;
+  cards: number;
+  complete: number;
+}
+
+/**
+ * その子の達成を作品ごとに並べ、合計まで出す。作品をまたいだ足し算はここだけ。
+ * 数えるのは登録されている作品（`cards`）だけ——外した作品のセーブ枠が残っていても
+ * 「◯作の うち」の分母と食い違わないように。
+ */
+export function accountStandings(a: Account, cards: WorkCard[]): AccountStandings {
+  const rows: WorkStanding[] = cards.map((c) => {
+    const w = a.works[c.id];
+    const done = Math.min(doneChapters(a, c.id), c.totalChapters);
+    return {
+      id: c.id,
+      label: c.titleMain,
+      done,
+      total: c.totalChapters,
+      cards: w?.cards.length ?? 0,
+      played: !!w && hasPlayed(w),
+      complete: c.totalChapters > 0 && done >= c.totalChapters,
+    };
+  });
   return {
-    works: played.length,
-    chapters: doneChapters(a),
-    cards: played.reduce((n, w) => n + w.cards.length, 0),
+    rows,
+    works: rows.filter((r) => r.played).length,
+    chapters: rows.reduce((n, r) => n + r.done, 0),
+    totalChapters: rows.reduce((n, r) => n + r.total, 0),
+    cards: rows.reduce((n, r) => n + r.cards, 0),
+    complete: rows.filter((r) => r.complete).length,
   };
 }
 

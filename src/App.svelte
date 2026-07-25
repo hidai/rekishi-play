@@ -65,6 +65,7 @@
 {#if !accounts.active || switching}
   <AccountsScreen
     {accounts}
+    workCards={WORK_ENTRIES.map((e) => e.card)}
     onPicked={afterPick}
     onCancel={accounts.active && multiWork ? () => (switching = false) : undefined} />
 {:else if selected}
