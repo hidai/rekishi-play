@@ -1,0 +1,1182 @@
+/* ============================================================
+   ひでなが — デザインシステム
+   テーマ: 金の兄（秀吉）の陰で支える、藍の弟（秀長）
+   ============================================================ */
+:root{
+  /* --- 和紙・墨（ニュートラルは無彩色ではなく藍寄りに選ぶ）--- */
+  --washi:      #F5F1E6;   /* 和紙の地 */
+  --washi-2:    #EDE7D6;   /* 一段沈んだ和紙（パネル）*/
+  --washi-3:    #E3DAC3;   /* 罫・境界 */
+  --sumi:       #23201C;   /* 墨（本文）*/
+  --sumi-soft:  #4A453C;   /* 薄墨（副次テキスト）*/
+  --sumi-faint: #7A7364;   /* さらに薄い */
+  /* --- アクセント --- */
+  --ai:         #2A4A6B;   /* 藍：主アクセント（秀長）*/
+  --ai-deep:    #1E3550;
+  --ai-soft:    #5A7FA6;
+  --kin:        #C6972F;   /* 金：天下・実績・兄 */
+  --kin-deep:   #8A6413;
+  --shu:        #B23A2E;   /* 朱：史実の印 */
+  --shu-soft:   #D2624F;
+  --midori:     #4E7A5B;   /* もしもルート */
+  /* --- 役割トークン --- */
+  --bg:         var(--washi);
+  --panel:      #FBF8F0;
+  --panel-2:    var(--washi-2);
+  --ink:        var(--sumi);
+  --ink-soft:   var(--sumi-soft);
+  --ink-faint:  var(--sumi-faint);
+  --line:       var(--washi-3);
+  --accent:     var(--ai);
+  --accent-2:   var(--ai-deep);
+  --accent-soft:var(--ai-soft);
+  --gold:       var(--kin);
+  --gold-deep:  var(--kin-deep);
+  --seal:       var(--shu);
+  /* --- 地図：領土の色（勢力フェーズの共有パレット。作品が factionPhases で選ぶ） --- */
+  --map-land: color-mix(in srgb, var(--midori) 15%, var(--panel-2));
+  --map-ctx:  color-mix(in srgb, var(--ink-faint) 15%, var(--panel-2));
+  --map-faction-a: color-mix(in srgb, var(--gold) 62%, var(--panel));
+  --map-faction-b: color-mix(in srgb, var(--accent) 56%, var(--panel));
+  --map-contested: color-mix(in srgb, var(--seal) 32%, var(--panel-2)); /* enemy-held / mid-invasion (SceneMapDef.contested) */
+  /* --- 形・影・間 --- */
+  --r-s: 6px; --r-m: 12px; --r-l: 20px;
+  --shadow-s: 0 1px 2px rgba(35,32,28,.08), 0 2px 8px rgba(35,32,28,.06);
+  --shadow-m: 0 4px 14px rgba(35,32,28,.12), 0 12px 40px rgba(35,32,28,.10);
+  --shadow-gold: 0 4px 22px rgba(198,151,47,.28);
+  --maxw: 720px;
+  /* --- 書体 --- */
+  --serif: "UD デジタル 教科書体 NK-R","UD Digi Kyokasho NK-R","Yu Mincho","YuMincho",
+           "Hiragino Mincho ProN","Hiragino Mincho Pro","Noto Serif JP","Noto Serif CJK JP",
+           "HGS明朝E",serif;
+  --gothic: "UD デジタル 教科書体 NK-R","UD Digi Kyokasho NK-R","Hiragino Kaku Gothic ProN",
+            "Hiragino Sans","Yu Gothic","YuGothic","Noto Sans JP","Noto Sans CJK JP","Meiryo",sans-serif;
+  --mono: "SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#161821; --panel:#1E212C; --panel-2:#242836;
+    --ink:#ECE7DA; --ink-soft:#BDB8AC; --ink-faint:#8A8578; --line:#33384A;
+    --accent:#7BA3CE; --accent-2:#A6C4E6; --accent-soft:#4E6E93;
+    --gold:#E4B84A; --gold-deep:#C6972F; --seal:#E06B58;
+    --shadow-s:0 1px 2px rgba(0,0,0,.4),0 2px 10px rgba(0,0,0,.35);
+    --shadow-m:0 6px 20px rgba(0,0,0,.45),0 18px 50px rgba(0,0,0,.4);
+    --shadow-gold:0 4px 24px rgba(228,184,74,.24);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F5F1E6; --panel:#FBF8F0; --panel-2:#EDE7D6;
+  --ink:#23201C; --ink-soft:#4A453C; --ink-faint:#7A7364; --line:#E3DAC3;
+  --accent:#2A4A6B; --accent-2:#1E3550; --accent-soft:#5A7FA6;
+  --gold:#C6972F; --gold-deep:#8A6413; --seal:#B23A2E;
+  --shadow-s:0 1px 2px rgba(35,32,28,.08),0 2px 8px rgba(35,32,28,.06);
+  --shadow-m:0 4px 14px rgba(35,32,28,.12),0 12px 40px rgba(35,32,28,.10);
+  --shadow-gold:0 4px 22px rgba(198,151,47,.28);
+}
+:root[data-theme="dark"]{
+  --bg:#161821; --panel:#1E212C; --panel-2:#242836;
+  --ink:#ECE7DA; --ink-soft:#BDB8AC; --ink-faint:#8A8578; --line:#33384A;
+  --accent:#7BA3CE; --accent-2:#A6C4E6; --accent-soft:#4E6E93;
+  --gold:#E4B84A; --gold-deep:#C6972F; --seal:#E06B58;
+  --shadow-s:0 1px 2px rgba(0,0,0,.4),0 2px 10px rgba(0,0,0,.35);
+  --shadow-m:0 6px 20px rgba(0,0,0,.45),0 18px 50px rgba(0,0,0,.4);
+  --shadow-gold:0 4px 24px rgba(228,184,74,.24);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--gothic);
+  line-height:1.75; font-size:17px;
+  -webkit-text-size-adjust:100%; text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  /* 和紙のかすかな地紋 */
+  background-image:
+    radial-gradient(rgba(35,32,28,.020) 1px, transparent 1px),
+    radial-gradient(rgba(35,32,28,.014) 1px, transparent 1px);
+  background-size:22px 22px, 22px 22px;
+  background-position:0 0, 11px 11px;
+}
+/* （legacy にあった未完成の空ルール「:root[data-theme="dark"] body, @media(...){}」は
+   セレクタリストが不正で全ブラウザが破棄する no-op のため移植時に除去） */
+body.no-furigana rt{ display:none; }
+
+/* ふりがな（ルビ）*/
+ruby{ ruby-align:center; }
+rt{ font-size:.52em; color:var(--ink-faint); font-weight:400; letter-spacing:0;
+    font-family:var(--gothic); }
+
+/* リンク的テキスト */
+.wa{ font-family:var(--serif); }
+
+/* ============ 画面共通 ============ */
+#app{ min-height:100dvh; display:flex; flex-direction:column; }
+.screen{ display:none; flex:1; flex-direction:column; }
+.screen.active{ display:flex; animation:fadeUp .5s cubic-bezier(.2,.7,.2,1); }
+@keyframes fadeUp{ from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none} }
+
+.wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 20px; }
+
+/* ============ トップバー ============ */
+#topbar{
+  position:sticky; top:0; z-index:40;
+  display:flex; align-items:center; gap:10px;
+  padding:10px 16px; padding-top:max(10px,env(safe-area-inset-top));
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+#topbar.hidden{ display:none; }
+/* Breadcrumb: shallow → deep, so "one level up" is always the item on the left. */
+.tb-trail{ display:flex; align-items:center; gap:1px; flex:1; min-width:0; overflow:hidden; }
+.crumb{ appearance:none; border:none; background:none; cursor:pointer; border-radius:var(--r-s);
+  padding:4px 7px; display:inline-flex; align-items:center; gap:6px; white-space:nowrap; flex:0 0 auto;
+  font-family:var(--gothic); font-weight:600; font-size:13px; color:var(--ink-soft); transition:.16s; }
+button.crumb:hover{ color:var(--accent); background:var(--panel); }
+.crumb .mon{ width:22px; height:22px; flex:0 0 auto; }
+.crumb-icon{ font-size:12.5px; }
+.crumb-up{ display:none; font-weight:700; }
+/* Current location: not a button, and the only crumb in the reading serif. */
+.crumb-now{ cursor:default; color:var(--ink); font-family:var(--serif); font-weight:700;
+  font-size:15.5px; letter-spacing:.04em; min-width:0; }
+.crumb-now .crumb-label{ overflow:hidden; text-overflow:ellipsis; }
+.crumb-sep{ color:var(--ink-soft); opacity:.5; font-size:13px; flex:0 0 auto; }
+.iconbtn{
+  appearance:none; border:1px solid var(--line); background:var(--panel);
+  color:var(--ink-soft); border-radius:var(--r-s); cursor:pointer;
+  width:38px; height:34px; display:inline-flex; align-items:center; justify-content:center;
+  font-size:13px; font-family:var(--gothic); font-weight:600; transition:.16s;
+  line-height:1;
+}
+.iconbtn:hover{ color:var(--accent); border-color:var(--accent-soft); }
+.iconbtn:active{ transform:translateY(1px); }
+.iconbtn.on{ background:var(--accent); color:#fff; border-color:var(--accent); }
+:root[data-theme="dark"] .iconbtn.on{ color:#161821; }
+/* ナビ用テキストピル（年代記・手帳）*/
+.navpill{ appearance:none; border:1px solid var(--line); background:var(--panel); color:var(--ink-soft);
+  border-radius:999px; cursor:pointer; height:34px; padding:0 13px; display:inline-flex; align-items:center;
+  gap:5px; font-family:var(--gothic); font-weight:700; font-size:13px; transition:.16s; white-space:nowrap; }
+.navpill:hover{ color:var(--accent); border-color:var(--accent-soft); }
+.navpill:active{ transform:translateY(1px); }
+.navpill.on{ background:var(--accent); color:#fff; border-color:var(--accent); }
+:root[data-theme="dark"] .navpill.on{ color:#161821; }
+/* Tools: the 手帳 (a place you can enter) and, past the divider, settings (not places). */
+.tb-tools{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+.tb-div{ width:1px; height:20px; background:var(--line); flex:0 0 auto; }
+.tb-settings{ position:relative; }
+/* width:max-content — the anchor (.tb-settings) is one button wide, so shrink-to-fit
+   would squeeze the menu to min-width and wrap every row. */
+.tb-menu{ position:absolute; top:calc(100% + 9px); right:0; z-index:60;
+  width:max-content; min-width:196px; max-width:calc(100vw - 24px);
+  display:flex; flex-direction:column; gap:2px; padding:6px;
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--r-m);
+  box-shadow:0 12px 30px rgba(0,0,0,.18); }
+.tb-mi{ appearance:none; border:none; background:none; cursor:pointer; text-align:left;
+  display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:var(--r-s);
+  font-family:var(--gothic); font-weight:700; font-size:14px; color:var(--ink); transition:.16s; }
+.tb-mi:hover{ background:var(--bg); color:var(--accent); }
+.mi-icon{ width:24px; flex:0 0 auto; text-align:center; font-size:13px; line-height:1; }
+.mi-label{ flex:1; white-space:nowrap; }
+.mi-state{ font-size:12px; font-weight:700; color:var(--ink-soft); }
+.mi-state.on{ color:var(--accent); }
+.iconbtn:focus-visible, .navpill:focus-visible, .crumb:focus-visible, button:focus-visible, .choice:focus-visible, a:focus-visible{
+  outline:3px solid var(--accent-soft); outline-offset:2px;
+}
+/* Narrow: keep only "one level up" and "you are here" — the two the reader acts on. */
+@media (max-width:430px){
+  .crumb.far, .crumb-sep.far{ display:none; }
+  .crumb-up{ display:inline; }
+  .navpill .np-label{ display:none; }
+  .navpill{ padding:0 11px; }
+}
+
+/* ============ ボタン ============ */
+.btn{
+  appearance:none; cursor:pointer; font-family:var(--gothic); font-weight:700;
+  font-size:16px; letter-spacing:.03em; border-radius:var(--r-m);
+  padding:14px 24px; border:1px solid transparent; transition:.18s;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+}
+.btn-primary{ background:var(--accent); color:#fff; box-shadow:var(--shadow-s); }
+:root[data-theme="dark"] .btn-primary{ color:#12141c; }
+.btn-primary:hover{ background:var(--accent-2); transform:translateY(-1px); box-shadow:var(--shadow-m); }
+.btn-primary:active{ transform:translateY(0); }
+.btn-gold{ background:linear-gradient(135deg,var(--gold),var(--gold-deep)); color:#3a2c07;
+  box-shadow:var(--shadow-gold); }
+.btn-gold:hover{ transform:translateY(-1px); }
+.btn-ghost{ background:transparent; color:var(--ink-soft); border-color:var(--line); }
+.btn-ghost:hover{ color:var(--accent); border-color:var(--accent-soft); }
+.btn:disabled{ opacity:.4; cursor:default; transform:none; }
+
+/* ============ タイトル画面 ============ */
+#title{ justify-content:center; align-items:center; text-align:center; position:relative; overflow:hidden;}
+.title-inner{ padding:48px 22px 60px; max-width:640px; }
+.title-mon{ width:96px; height:96px; margin:0 auto 6px; filter:drop-shadow(0 6px 18px rgba(35,32,28,.18)); }
+.title-eyebrow{ font-family:var(--gothic); letter-spacing:.34em; text-transform:none;
+  color:var(--seal); font-weight:700; font-size:12.5px; margin:8px 0 0; }
+.title-main{ font-family:var(--serif); font-weight:700; font-size:clamp(52px,17vw,96px);
+  letter-spacing:.14em; margin:.28em 0 0; line-height:1; color:var(--ink);
+  text-wrap:balance;
+  background:linear-gradient(180deg,var(--ink) 40%, var(--accent) 160%);
+  -webkit-background-clip:text; background-clip:text;
+}
+/* Furigana on the big display title: shrink from the UA 50% default to a
+   proportionate size, tighten kana spacing, and paint solid ink so the parent's
+   background-clip:text can't blank it. margin above gives the annotation headroom. */
+.title-main rt{ font-size:.3em; font-weight:600; letter-spacing:.02em;
+  -webkit-text-fill-color:var(--ink); color:var(--ink); background:none; }
+.title-sub{ font-family:var(--serif); font-size:clamp(15px,4.4vw,20px); letter-spacing:.14em;
+  color:var(--ink-soft); margin:14px 0 0; text-wrap:balance; }
+.title-years{ font-family:var(--gothic); font-size:12.5px; letter-spacing:.14em;
+  color:var(--ink-faint); margin:6px 0 0; }
+/* ★6 「見せてから問う」顔の列（読む前にタップできる要素） */
+.title-faces{ margin:24px auto 0; max-width:520px; }
+.title-faces .tf-lead{ font-family:var(--gothic); font-weight:700; font-size:13px; letter-spacing:.06em;
+  color:var(--seal); margin-bottom:12px; }
+.title-faces .tf-row{ display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
+.tf-item{ appearance:none; border:0; background:transparent; cursor:pointer; padding:4px;
+  display:flex; flex-direction:column; align-items:center; gap:5px; transition:transform .14s; }
+.tf-item:hover{ transform:translateY(-2px); }
+.tf-item:active{ transform:scale(.94); }
+.tf-face{ width:60px; height:60px; border-radius:50%; overflow:hidden; background:var(--panel-2);
+  border:2px solid var(--line); box-shadow:var(--shadow-s); display:block; }
+.tf-face svg,.tf-face .face{ width:100%; height:100%; display:block; }
+.tf-name{ font-family:var(--gothic); font-size:11.5px; font-weight:700; color:var(--ink-soft); }
+.tf-item.hero .tf-face{ border-color:var(--seal); border-style:dashed;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--seal) 18%,transparent), var(--shadow-s); }
+.tf-item.hero .tf-name{ color:var(--seal); }
+.tf-vs{ font-family:var(--serif); font-size:13px; color:var(--ink-faint); font-weight:700; padding:0 2px; }
+
+.title-riddle{
+  margin:30px auto 0; max-width:520px; padding:20px 22px; border-radius:var(--r-m);
+  background:var(--panel); border:1px solid var(--line);
+  box-shadow:var(--shadow-s); position:relative;
+}
+.title-riddle::before{ content:"?"; position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+  width:30px; height:30px; border-radius:50%; background:var(--seal); color:#fff;
+  font-family:var(--serif); font-weight:700; display:flex; align-items:center; justify-content:center;
+  box-shadow:var(--shadow-s); }
+.title-riddle p{ margin:6px 0 0; font-family:var(--serif); font-size:16px; line-height:1.8; color:var(--ink); }
+.title-riddle .lead{ color:var(--seal); font-weight:700; font-size:13px; letter-spacing:.1em; font-family:var(--gothic);}
+/* ★F 小5向けの情緒的な縦糸。抽象的な謎の下に、やわらかい感情の一言を添える。 */
+.title-riddle .riddle-heart{ margin-top:12px; padding-top:11px; border-top:1px dashed var(--line);
+  font-size:14.5px; line-height:1.75; color:var(--ink-soft); }
+.title-actions{ margin-top:30px; display:flex; flex-direction:column; gap:12px; align-items:center; }
+.title-actions .btn{ min-width:240px; }
+.title-note{ margin-top:22px; font-size:12px; color:var(--ink-faint); line-height:1.7; }
+/* ぼかしの浮遊家紋（背景装飾）*/
+.title-bg-mon{ position:absolute; opacity:.05; pointer-events:none; }
+
+/* ============ プロフィール選択 ============ */
+.plate{ background:var(--panel); border:1px solid var(--line); border-radius:var(--r-l);
+  box-shadow:var(--shadow-s); padding:22px; }
+.section-title{ font-family:var(--serif); font-weight:700; font-size:22px; letter-spacing:.06em;
+  margin:0 0 4px; color:var(--ink); text-wrap:balance; }
+.section-lead{ color:var(--ink-soft); font-size:14px; margin:0 0 20px; }
+.screen-head{ padding:26px 0 8px; }
+.profile-list{ display:flex; flex-direction:column; gap:12px; margin:18px 0; }
+.profile-card{ display:flex; align-items:center; gap:14px; padding:14px 16px; cursor:pointer;
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--r-m); transition:.16s;
+  text-align:left; width:100%; font-family:var(--gothic); color:var(--ink); }
+.profile-card:hover{ border-color:var(--accent-soft); transform:translateX(3px); box-shadow:var(--shadow-s); }
+.profile-avatar{ width:46px; height:46px; border-radius:50%; flex:0 0 auto;
+  display:flex; align-items:center; justify-content:center; font-size:24px;
+  background:color-mix(in srgb,var(--accent) 16%, var(--panel)); border:1px solid var(--accent-soft); }
+.profile-meta{ flex:1; min-width:0; }
+.profile-name{ font-weight:700; font-size:17px; }
+.profile-sub{ font-size:12.5px; color:var(--ink-faint); }
+.profile-del{ color:var(--ink-faint); border:none; background:none; cursor:pointer; padding:8px; font-size:13px; }
+.profile-del:hover{ color:var(--seal); }
+
+/* ============ 章選択（すごろく／地図）============ */
+.chapter-track{ display:flex; flex-direction:column; gap:0; margin:12px 0 40px; position:relative; }
+.chapter-node{ position:relative; display:flex; gap:16px; padding:4px 0; }
+.chapter-node .rail{ position:relative; flex:0 0 44px; display:flex; flex-direction:column; align-items:center; }
+.chapter-node .rail .line{ position:absolute; top:0; bottom:0; width:3px;
+  background:repeating-linear-gradient(var(--line),var(--line) 6px,transparent 6px,transparent 12px); }
+.chapter-node:first-child .rail .line{ top:26px; }
+.chapter-node:last-child .rail .line{ bottom:auto; height:26px; }
+.chapter-dot{ position:relative; z-index:2; width:44px; height:44px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700;
+  font-size:18px; background:var(--panel); border:2px solid var(--line); color:var(--ink-faint); flex:0 0 auto; }
+.chapter-node.done .chapter-dot{ background:var(--accent); border-color:var(--accent); color:#fff; }
+:root[data-theme="dark"] .chapter-node.done .chapter-dot{ color:#161821; }
+.chapter-node.current .chapter-dot{ border-color:var(--gold); color:var(--gold-deep);
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 28%, transparent); animation:pulse 2.4s infinite; }
+@keyframes pulse{ 0%,100%{box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 26%,transparent)}
+  50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--gold) 8%,transparent)} }
+.chapter-body{ flex:1; padding:6px 0 22px; }
+.chapter-btn{ width:100%; text-align:left; background:var(--panel); border:1px solid var(--line);
+  border-radius:var(--r-m); padding:14px 16px; cursor:pointer; transition:.16s; color:var(--ink);
+  font-family:var(--gothic); display:flex; align-items:center; gap:12px; }
+.chapter-btn:hover:not(:disabled){ border-color:var(--accent-soft); box-shadow:var(--shadow-s); transform:translateY(-1px); }
+.chapter-btn:disabled{ cursor:default; opacity:.55; }
+.chapter-btn .ct{ flex:1; min-width:0; }
+.chapter-num{ font-family:var(--serif); font-size:12px; letter-spacing:.14em; color:var(--seal); font-weight:700; }
+.chapter-title-t{ font-family:var(--serif); font-weight:700; font-size:17.5px; letter-spacing:.03em; margin-top:1px; }
+.chapter-years{ font-size:12px; color:var(--ink-faint); margin-top:2px; }
+/* ★E 見せ場の予告（各章 lead）。ロック中でも「あそこまで行きたい」を作る一言。 */
+.chapter-lead{ display:block; font-family:var(--serif); font-size:13px; color:var(--ink-soft);
+  margin-top:7px; padding-left:9px; line-height:1.5; border-left:2.5px solid var(--gold); }
+.chapter-node.done .chapter-lead{ border-left-color:var(--accent-soft); color:var(--ink-faint); }
+/* ★N 再訪の引き：いま あそべる章に、前章クリア時の teaser を再掲する。 */
+.chapter-tease{ display:block; font-family:var(--serif); font-size:13px; color:var(--seal);
+  margin-top:6px; padding-left:9px; line-height:1.6; border-left:2.5px solid color-mix(in srgb,var(--seal) 55%,var(--line)); }
+.chapter-state{ flex:0 0 auto; font-size:12px; font-weight:700; letter-spacing:.05em; }
+.chapter-state.s-done{ color:var(--accent); }
+.chapter-state.s-lock{ color:var(--ink-faint); }
+.chapter-state.s-open{ color:var(--gold-deep); }
+
+/* ============ 物語シーン ============ */
+#scene{ padding-bottom:40px; }
+.scene-stage{ margin:6px 0 0; }
+/* シーンのメインビジュアル＝地図 */
+.scene-artwrap{ position:relative; }
+.scene-visual{ position:relative; animation:faceIn .5s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes faceIn{ from{opacity:0; transform:translateY(8px) scale(.99)} to{opacity:1; transform:none} }
+/* 地図上の 地名・人物名・できごと ラベル（背景色で ふちどりして 読みやすく）*/
+.scene-map text{ font-family:var(--serif); }
+.scene-map .smk-lb{ fill:var(--ink); font-weight:700; paint-order:stroke; stroke:var(--panel); stroke-linejoin:round; }
+.scene-map .smk-note{ fill:var(--seal); font-weight:700; paint-order:stroke; stroke:var(--panel); stroke-linejoin:round; }
+.scene-map .smk-name{ fill:var(--ink); font-weight:700; paint-order:stroke; stroke:var(--panel); stroke-linejoin:round; }
+.scene-map .smk-name.you{ fill:var(--gold-deep); }
+/* シーンの現在地マップ */
+.scene-map{ width:100%; height:auto; display:block; border-radius:var(--r-l); overflow:hidden;
+  border:1px solid var(--line); box-shadow:var(--shadow-s); background:var(--panel-2); }
+/* The 人の図 (seat/lineage figure) now uses a landscape ~1000-wide viewBox like the scene
+   map, so it fills the full column width at map scale (1 unit ≈ 0.68px): inner fonts land
+   at/near the body size and the box reads as a sibling of the map. An earlier fix capped the
+   display width to shrink a portrait box, but that made the fonts too small to read — the
+   real fix was to redesign the figure landscape (family playtest note, 2026-07-14). */
+.scene-map .msea{ fill:color-mix(in srgb,var(--accent-soft) 24%,var(--panel-2)); }
+.scene-map .mland path{ stroke:color-mix(in srgb,var(--sumi) 28%,transparent); stroke-width:1; stroke-linejoin:round; }
+/* Inked coastline for a silhouette-only geo (an overseas stage has no 令制国 overlay to supply the
+   edge above). Same ink as a province border, so a coast reads the same wherever it is drawn. */
+.scene-map .mcoast{ fill:none; stroke:color-mix(in srgb,var(--sumi) 28%,transparent); stroke-linejoin:round; }
+.scene-map .scur-ring{ fill:none; stroke:var(--seal); stroke-width:3; transform-box:fill-box; transform-origin:center;
+  animation:mapPulse 1.9s ease-out infinite; }
+.scene-map .mapface{ cursor:pointer; -webkit-tap-highlight-color:transparent; transition:transform .12s ease; transform-box:fill-box; transform-origin:center; }
+.scene-map .mapface:hover, .scene-map .mapface:focus-visible{ transform:translateY(-1.5px) scale(1.05); outline:none; }
+.scene-map .scur-lb{ fill:var(--ink); font-family:var(--serif); font-weight:700; font-size:16px;
+  paint-order:stroke; stroke:var(--panel); stroke-width:4px; stroke-linejoin:round; }
+.scene-map .sroute{ fill:none; stroke:var(--gold); stroke-width:5.5; stroke-linecap:round; stroke-linejoin:round;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.35)); }
+.scene-map .sroute.anim{ stroke-dasharray:640; stroke-dashoffset:640; animation:drawRoute 1.5s ease .35s forwards; }
+@keyframes drawRoute{ to{ stroke-dashoffset:0; } }
+/* 終章：人生の道のりを 時系列で つなぐ 旅路の線（pathLengthで長さに依らず引く）*/
+.scene-map .sjourney{ fill:none; stroke:var(--gold-deep); stroke-linecap:round; stroke-linejoin:round; opacity:.9;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));
+  stroke-dasharray:1; stroke-dashoffset:1; animation:drawJourney 2.4s ease .3s forwards; }
+@keyframes drawJourney{ to{ stroke-dashoffset:0; } }
+@keyframes mapPulse{ 0%{ transform:scale(.5); opacity:.7 } 100%{ transform:scale(1.7); opacity:0 } }
+/* ★O 対面の場（クローズアップ）。人が主役のシーンで、地図に代えて人物を大きく見せる */
+.scene-closeup .cu-glow{ animation:cuGlow 3.6s ease-in-out infinite alternate; }
+@keyframes cuGlow{ from{ opacity:.72 } to{ opacity:1 } }
+.scene-closeup .cu-snow{ animation:cuSnow 11s linear infinite; }
+@keyframes cuSnow{ to{ transform:translateY(500px) } }
+/* 無限ループ系は reduced-motion では止める（全体ルールの .001s 短縮だと空回りし続けるため） */
+@media (prefers-reduced-motion:reduce){
+  .scene-closeup .cu-glow, .scene-closeup .cu-snow{ animation:none; }
+}
+/* ★Q 観察ビュー（engine/art/observe.ts）。主ビジュアルを置き換えず、上にもう1枚重ねる層。
+   同じ viewBox の2枚が重なるので、内容ボックスも一致させる: .scene-map と同じ 1px ボーダー
+   （border-box）を透明で持たせると、印が絵の上の狙った位置にそのまま乗る。
+   ルートは pointer-events:none ＝ 紗は素通しで、下の .mapface のタップは今までどおり届く。
+   拾える印だけが auto で受ける。 */
+.scene-observe{ position:absolute; left:0; top:0; width:100%; height:100%;
+  border:1px solid transparent; border-radius:var(--r-l); overflow:hidden; pointer-events:none; }
+.scene-observe .obspot{ pointer-events:auto; cursor:pointer; -webkit-tap-highlight-color:transparent;
+  transform-box:fill-box; transform-origin:center; }
+.scene-observe .obspot:focus-visible{ outline:none; }
+.scene-observe .obspot:focus-visible .ob-spark,
+.scene-observe .obspot:hover .ob-spark{ transform:scale(1.18); }
+.scene-observe .ob-spark{ transform-box:fill-box; transform-origin:center;
+  animation:obSpark 1.5s ease-in-out infinite alternate; }
+@keyframes obSpark{ from{ opacity:.62; transform:scale(.86) } to{ opacity:1; transform:scale(1.08) } }
+/* 指で掃くジェスチャは、観察のあるシーンの絵の上でだけスクロールより優先する
+   （observe の無いシーンの絵は今までどおり普通にスクロールできる）。 */
+.scene-visual.ob-active{ touch-action:none; }
+@media (prefers-reduced-motion:reduce){
+  .scene-observe .ob-spark{ animation:none; }
+}
+
+.scene-place{ display:flex; flex-wrap:wrap; align-items:center; gap:7px; margin:16px 0 2px;
+  font-family:var(--gothic); font-size:12px; letter-spacing:.12em; color:var(--seal); font-weight:700; }
+.scene-place::before{ content:""; width:14px; height:2px; background:var(--seal); border-radius:2px; }
+/* 「いつ」は「どこ」と同じ行に、色と枠で別物と分かる形で置く（朱＝場所／淡＝年）。 */
+.scene-when{ color:var(--ink-soft); border:1px solid var(--line); border-radius:999px;
+  padding:1px 8px; letter-spacing:.08em; white-space:nowrap; }
+.scene-text{ font-family:var(--serif); font-size:18.5px; line-height:2.05; color:var(--ink);
+  margin:8px 0 0; max-width:38ch; }
+.scene-text p{ margin:0 0 1em; text-wrap:pretty; }
+.scene-text p:last-child{ margin-bottom:0; }
+.scene-text .speak{ color:var(--accent-2); font-weight:700; }
+.scene-text em{ color:var(--seal); font-style:normal; font-weight:700; }
+
+/* Inline face chip: a small face at the name's position in the body (engine/inlineFaces).
+   Kept on one line (nowrap) so the face and its name never split across a line break. */
+.scene-text .mface{ appearance:none; border:0; background:transparent; padding:0; margin:0;
+  font:inherit; color:inherit; cursor:pointer; white-space:nowrap; }
+.scene-text .mface-ic{ display:inline-block; width:1.16em; height:1.16em; vertical-align:-0.24em;
+  margin-inline-end:0.14em; border-radius:50%; overflow:hidden; background:var(--panel);
+  border:1px solid var(--line); box-shadow:var(--shadow-s); }
+.scene-text .mface-ic svg,.scene-text .mface-ic .face{ width:100%; height:100%; display:block; }
+.scene-text .mface-nm{ border-bottom:1.5px dotted color-mix(in srgb,var(--accent) 50%,var(--line)); }
+.scene-text .mface:hover .mface-nm,.scene-text .mface:focus-visible .mface-nm{ border-bottom-color:var(--accent); }
+.scene-text .mface:focus-visible{ outline:none; }
+
+/* ★Q 観察ビューの本文側（問い・進捗・気づきトレイ）。レンズと印は絵の上、ふりがなの要る
+   文字列はここ（SVG の <text> は <ruby> を運べない）。金＝オーバーレイの ✦ と同じ色の家。 */
+.observe{ margin:12px 0 0; padding:13px 15px; border-radius:var(--r-m);
+  background:color-mix(in srgb,var(--gold) 9%,var(--panel));
+  border:1px solid color-mix(in srgb,var(--gold) 40%,var(--line)); }
+.ob-head{ display:flex; gap:9px; align-items:flex-start; }
+.ob-ic{ flex:0 0 auto; font-size:15px; margin-top:3px; }
+.ob-prompt{ font-family:var(--serif); font-weight:700; font-size:16px; line-height:1.85;
+  color:var(--ink); text-wrap:pretty; }
+.ob-how{ margin:7px 0 0 24px; font-family:var(--gothic); font-size:12px; color:var(--ink-faint); }
+.ob-dots{ display:flex; align-items:center; gap:6px; margin:10px 0 0 24px; }
+.ob-dot{ width:9px; height:9px; border-radius:50%; background:transparent; transition:.2s;
+  border:1.5px solid color-mix(in srgb,var(--gold-deep) 55%,var(--line)); }
+.ob-dot.on{ background:var(--gold-deep); border-color:var(--gold-deep); }
+.ob-count{ margin-inline-start:4px; font-family:var(--gothic); font-size:11px; letter-spacing:.08em;
+  color:var(--ink-faint); }
+.ob-tray{ list-style:none; margin:11px 0 0; padding:0; display:flex; flex-direction:column; gap:7px; }
+.ob-item{ display:flex; gap:8px; align-items:flex-start; padding:8px 10px; border-radius:var(--r-m);
+  background:var(--panel); border:1px solid var(--line); }
+.ob-item-no{ flex:0 0 auto; margin-top:1px; width:20px; height:20px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center; font-family:var(--gothic);
+  font-size:12px; font-weight:700; color:var(--ink); background:var(--paper);
+  border:1.5px solid var(--gold-deep); }
+.ob-item.is-latest{ border-color:var(--gold-deep);
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--gold-deep) 22%,transparent); }
+.ob-now{ margin-inline-start:8px; padding:1px 7px; border-radius:999px; font-family:var(--gothic);
+  font-size:10.5px; letter-spacing:.06em; color:var(--paper); background:var(--gold-deep);
+  white-space:nowrap; vertical-align:2px; }
+.ob-item-text{ font-family:var(--serif); font-size:14.5px; line-height:1.85; color:var(--ink-soft);
+  text-wrap:pretty; }
+.ob-item.is-new{ animation:obFound .5s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes obFound{ from{ opacity:0; transform:translateY(-6px) } to{ opacity:1; transform:none } }
+
+/* ★3 秀長の内心のひとこと（内語。周囲の「」台詞＝.speak とは別スタイル） */
+.monologue{ display:flex; gap:9px; align-items:flex-start; margin:16px 0 0; padding:12px 15px;
+  border-radius:var(--r-m); background:color-mix(in srgb,var(--accent-soft) 12%,var(--panel));
+  border:1px dashed color-mix(in srgb,var(--accent-soft) 45%,var(--line)); }
+.mono-mark{ flex:0 0 auto; margin-top:2px; font-size:16px; opacity:.85; }
+.mono-text{ font-family:var(--serif); font-style:italic; font-size:15.5px; line-height:1.9;
+  color:var(--ink-soft); text-wrap:pretty; }
+
+/* ★4「えっ！？」露出（本文横のサプライズ・カード） */
+.spark{ display:flex; gap:11px; align-items:flex-start; margin:18px 0 0; padding:13px 15px;
+  border-radius:var(--r-m); background:color-mix(in srgb,var(--seal) 9%,var(--panel));
+  border:1px solid color-mix(in srgb,var(--seal) 34%,var(--line)); border-left:4px solid var(--seal); }
+.spark-badge{ flex:0 0 auto; margin-top:1px; padding:4px 10px; border-radius:999px;
+  font-family:var(--gothic); font-weight:800; font-size:12.5px; letter-spacing:.04em;
+  color:#fff; background:var(--seal); box-shadow:var(--shadow-s); }
+:root[data-theme="dark"] .spark-badge{ color:#161821; }
+.spark-body{ min-width:0; }
+.spark-text{ margin:0; font-family:var(--gothic); font-weight:700; font-size:14.5px; line-height:1.7;
+  color:var(--ink); text-wrap:pretty; }
+.spark-hint{ margin:6px 0 0; font-family:var(--gothic); font-size:12px; font-weight:700; color:var(--seal); }
+.spark-conf{ margin:8px 0 0; }
+
+/* ★Sureness-mark (たしかさマーク ◎○△☆) badge. Puts source criticism in the child's hands.
+   Colors grade sureness: ◎ (solid) → ☆ (unverifiable). Theme-independent literals. */
+.conf-badge{ display:inline-flex; align-items:center; gap:4px; padding:2px 9px; border-radius:999px;
+  font-family:var(--gothic); font-weight:800; font-size:11.5px; line-height:1.5; white-space:nowrap;
+  border:1px solid transparent; }
+.conf-badge .conf-mark{ font-weight:900; }
+.conf-badge .conf-label{ font-weight:700; }
+.conf-badge[data-mark="◎"]{ color:#8a5a10; background:color-mix(in srgb,#e0a92a 22%,var(--panel)); border-color:color-mix(in srgb,#e0a92a 46%,var(--line)); }
+.conf-badge[data-mark="○"]{ color:#3f6b52; background:color-mix(in srgb,#5aa27a 20%,var(--panel)); border-color:color-mix(in srgb,#5aa27a 44%,var(--line)); }
+.conf-badge[data-mark="△"]{ color:#5a6270; background:color-mix(in srgb,#8792a3 22%,var(--panel)); border-color:color-mix(in srgb,#8792a3 46%,var(--line)); }
+.conf-badge[data-mark="☆"]{ color:#6b5a86; background:color-mix(in srgb,#9483b8 22%,var(--panel)); border-color:color-mix(in srgb,#9483b8 46%,var(--line)); }
+:root[data-theme="dark"] .conf-badge[data-mark="◎"]{ color:#e7be5c; }
+:root[data-theme="dark"] .conf-badge[data-mark="○"]{ color:#8fcea9; }
+:root[data-theme="dark"] .conf-badge[data-mark="△"]{ color:#b3bccb; }
+:root[data-theme="dark"] .conf-badge[data-mark="☆"]{ color:#c1b2e0; }
+.deep summary .conf-badge{ margin-left:8px; }
+
+/* Sureness-mark legend in the えっ！？ notebook pane. */
+.conf-legend{ margin:0 0 14px; padding:12px 14px; border-radius:var(--r-m);
+  background:var(--panel); border:1px solid var(--line); }
+.conf-legend-lead{ font-family:var(--gothic); font-weight:800; font-size:12.5px; color:var(--ink); }
+.conf-legend ul{ list-style:none; margin:9px 0 0; padding:0; display:flex; flex-direction:column; gap:7px; }
+.conf-legend li{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
+.conf-legend .conf-blurb{ font-family:var(--gothic); font-size:12px; color:var(--ink-faint); line-height:1.6; }
+.clue-n .conf-badge{ margin-left:8px; vertical-align:middle; }
+
+/* Face chips for characters mentioned by name in the text with no other visual anchor this scene. */
+.scene-mentions{ display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 0; }
+.scene-mention{ appearance:none; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:4px;
+  padding:8px 10px 7px; border-radius:var(--r-m); background:var(--panel-2); border:1px solid var(--line);
+  font-family:var(--gothic); transition:transform .12s, border-color .12s; }
+.scene-mention:hover{ border-color:var(--accent); transform:translateY(-1px); }
+.scene-mention-face{ width:44px; height:44px; border-radius:50%; overflow:hidden; background:var(--panel); border:1px solid var(--line); display:block; }
+.scene-mention-face svg,.scene-mention-face .face{ width:100%; height:100%; display:block; }
+.scene-mention-name{ font-size:11px; font-weight:700; color:var(--ink-soft); }
+
+/* ★N 集めた手がかりのその場表示（終章の答え合わせ等）。選択肢の直前に推論の材料を並べる。 */
+.scene-clues{ display:flex; flex-direction:column; gap:8px; margin:18px 0 0; }
+.scene-clue{ display:flex; gap:9px; align-items:flex-start; padding:10px 13px;
+  border-radius:var(--r-m); background:color-mix(in srgb,var(--seal) 6%,var(--panel));
+  border:1px solid color-mix(in srgb,var(--seal) 26%,var(--line));
+  font-family:var(--serif); font-size:13.5px; line-height:1.75; color:var(--ink-soft); text-wrap:pretty; }
+.scene-clue-ic{ flex:0 0 auto; margin-top:1px; font-size:14px; }
+
+/* ★K 秀長の「信条」＝決め台詞＋象徴アクション（記録に残らない"負の定義"に対する"正の定義"）。
+   内語(.monologue=破線)・史料(.spark=朱)と別に、金＝人物の"値打ち"の色で立てる。 */
+.creed{ margin:22px 0 0; padding:16px 18px; border-radius:var(--r-m);
+  background:color-mix(in srgb,var(--gold) 11%,var(--panel));
+  border:1px solid color-mix(in srgb,var(--gold) 42%,var(--line));
+  border-left:4px solid var(--gold); box-shadow:var(--shadow-s); }
+.creed-head{ display:flex; align-items:center; gap:8px; font-family:var(--gothic);
+  font-weight:800; font-size:12px; letter-spacing:.09em; color:var(--gold-deep); margin-bottom:10px; }
+.creed-brush{ font-size:15px; }
+.creed-line{ margin:0; font-family:var(--serif); font-weight:700; font-size:17px; line-height:1.85;
+  color:var(--ink); text-wrap:pretty; }
+.creed-act{ margin:9px 0 0; font-family:var(--serif); font-style:italic; font-size:13.5px;
+  line-height:1.85; color:var(--ink-soft); text-wrap:pretty; }
+.creed-clear{ text-align:left; }
+
+/* 手帳「秀長のことば」ペイン */
+.creed-intro{ margin:2px 0 16px; padding:14px 16px; border-radius:var(--r-m);
+  background:color-mix(in srgb,var(--gold) 8%,var(--panel)); border:1px solid var(--line); }
+.creed-intro-lead{ font-family:var(--gothic); font-weight:800; font-size:13px; letter-spacing:.06em;
+  color:var(--gold-deep); }
+.creed-intro p{ margin:8px 0 0; font-family:var(--serif); font-size:14.5px; line-height:1.9; color:var(--ink-soft);
+  text-wrap:pretty; }
+.creed-list{ display:flex; flex-direction:column; gap:12px; }
+.creed-item{ margin:0; }
+.creed-item.locked{ background:color-mix(in srgb,var(--ink-faint) 6%,var(--panel));
+  border-color:var(--line); border-left-color:color-mix(in srgb,var(--ink-faint) 40%,var(--line)); }
+.creed-item.locked .creed-head{ color:var(--ink-faint); }
+.creed-item.locked .creed-line{ font-weight:400; font-size:14.5px; }
+.creed-ch{ margin-left:6px; font-family:var(--gothic); font-weight:600; font-size:11.5px; color:var(--ink-faint);
+  letter-spacing:0; }
+
+/* もっと深く */
+.deep{ margin:20px 0 0; border:1px solid var(--line); border-radius:var(--r-m); overflow:hidden;
+  background:color-mix(in srgb,var(--accent) 6%, var(--panel)); }
+.deep summary{ list-style:none; cursor:pointer; padding:13px 16px; font-family:var(--gothic);
+  font-weight:700; font-size:14px; color:var(--accent-2); display:flex; align-items:center; gap:9px; }
+.deep summary::-webkit-details-marker{ display:none; }
+.deep summary .chev{ transition:.2s; margin-left:auto; color:var(--accent-soft); }
+.deep[open] summary .chev{ transform:rotate(90deg); }
+.deep .deep-body{ padding:2px 16px 16px; font-family:var(--serif); font-size:15.5px; line-height:1.95;
+  color:var(--ink-soft); }
+.deep .deep-body .q{ color:var(--seal); font-weight:700; font-family:var(--gothic); font-size:13.5px;
+  display:block; margin-bottom:4px; }
+.deep .deep-body cite{ display:block; margin-top:8px; font-size:12.5px; color:var(--ink-faint);
+  font-style:normal; }
+
+/* 選択肢（高札）*/
+.choices{ margin:26px 0 0; display:flex; flex-direction:column; gap:12px; }
+.choices-q{ font-family:var(--gothic); font-weight:700; font-size:13px; letter-spacing:.08em;
+  color:var(--ink-faint); margin-bottom:2px; display:flex; align-items:center; gap:8px; }
+.choices-q::before{ content:"◆"; color:var(--gold); font-size:11px; }
+.choice{ position:relative; text-align:left; cursor:pointer; padding:15px 18px 15px 52px;
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--r-m);
+  font-family:var(--serif); font-size:16.5px; line-height:1.6; color:var(--ink); transition:.16s;
+  box-shadow:var(--shadow-s); }
+.choice:hover{ border-color:var(--accent); transform:translateY(-2px); box-shadow:var(--shadow-m); }
+.choice:active{ transform:translateY(0); }
+.choice .num{ position:absolute; left:14px; top:50%; transform:translateY(-50%);
+  width:26px; height:26px; border-radius:50%; background:color-mix(in srgb,var(--accent) 14%,var(--panel));
+  border:1px solid var(--accent-soft); color:var(--accent-2); font-family:var(--serif); font-weight:700;
+  font-size:14px; display:flex; align-items:center; justify-content:center; }
+.choice:disabled{ opacity:.5; cursor:default; }
+
+/* 次へ */
+.scene-next{ margin:28px 0 0; display:flex; justify-content:flex-end; }
+
+/* ============ 史実パネル（朱印）============ */
+.hist-overlay{ position:fixed; inset:0; z-index:60; display:flex; align-items:flex-end;
+  justify-content:center; background:rgba(20,18,14,.5); backdrop-filter:blur(3px);
+  padding:0; opacity:0; pointer-events:none; transition:opacity .3s; }
+.hist-overlay.show{ opacity:1; pointer-events:auto; }
+.hist-panel{ width:100%; max-width:640px; background:var(--panel); border-radius:var(--r-l) var(--r-l) 0 0;
+  border:1px solid var(--line); border-bottom:none; box-shadow:var(--shadow-m); padding:26px 24px 28px;
+  transform:translateY(24px); transition:transform .34s cubic-bezier(.2,.8,.2,1); position:relative; }
+/* スクロールは内側だけに。パネル自身は overflow:visible のままにして朱印が上辺からはみ出せるようにする */
+.hist-scroll{ max-height:80dvh; overflow-y:auto; overscroll-behavior:contain; margin:0 -6px; padding:0 6px; }
+.hist-overlay.show .hist-panel{ transform:none; }
+.hist-seal{ position:absolute; top:-30px; right:22px; width:76px; height:76px; }
+.hist-verdict{ display:inline-flex; align-items:center; gap:8px; font-family:var(--gothic); font-weight:700;
+  font-size:12.5px; letter-spacing:.14em; color:var(--seal); }
+.hist-match{ margin:12px 0 0; font-family:var(--serif); font-weight:700; font-size:19px; letter-spacing:.03em;
+  color:var(--ink); text-wrap:balance; }
+.hist-match.moshimo{ color:var(--midori); }
+.hist-body{ margin:12px 0 0; font-family:var(--serif); font-size:16px; line-height:1.95; color:var(--ink-soft); }
+.hist-body p{ margin:0 0 .8em; } .hist-body p:last-child{ margin:0; }
+/* 出どころ（史料の帰属）: "a record someone wrote", one notch quieter than the body. */
+.hist-source{ margin:14px 0 0; padding:11px 14px; border:1px dashed var(--line); border-radius:var(--r-m);
+  background:color-mix(in srgb,var(--ink-faint) 5%,transparent); font-family:var(--serif); font-size:13px;
+  line-height:1.75; color:var(--ink-soft); }
+.hist-source-head{ font-weight:700; }
+.hist-source-icon{ margin-right:4px; }
+.hist-source-grade{ font-family:var(--gothic); font-weight:700; font-size:12px; white-space:nowrap;
+  color:var(--ink-faint); }
+.hist-source-grade.grade-tale{ color:var(--midori); }
+.hist-source-note{ margin:5px 0 0; font-size:12.5px; line-height:1.7; color:var(--ink-faint); }
+.hist-reward{ margin:16px 0 0; display:flex; flex-wrap:wrap; gap:8px; }
+.reward-chip{ display:inline-flex; align-items:center; gap:7px; font-family:var(--gothic); font-size:12.5px;
+  font-weight:700; padding:7px 12px; border-radius:999px; border:1px dashed; }
+.reward-chip.card{ color:var(--gold-deep); border-color:var(--gold); background:color-mix(in srgb,var(--gold) 10%,transparent); }
+.reward-chip.clue{ color:var(--seal); border-color:var(--seal); background:color-mix(in srgb,var(--seal) 8%,transparent); }
+/* ★1 メーター増減チップ（史実パネル内で「＋2」等を見せる） */
+.reward-chip.meter{ border-style:solid; color:var(--ink-soft); border-color:var(--line);
+  background:color-mix(in srgb,var(--ink-faint) 8%,transparent); }
+.reward-chip.meter.kizuna{ color:var(--seal); border-color:color-mix(in srgb,var(--seal) 50%,var(--line)); }
+.reward-chip.meter.kuni{ color:var(--gold-deep); border-color:color-mix(in srgb,var(--gold) 60%,var(--line)); }
+.reward-chip.meter.shinrai{ color:var(--accent-2); border-color:var(--accent-soft); }
+
+/* ★1「きみの秀長」メーター（HUD＝シーン上部／full＝終章まとめ） */
+.meterbar{ font-family:var(--gothic); }
+.meterbar .mb-title{ font-size:11px; letter-spacing:.14em; color:var(--ink-faint); font-weight:700; }
+.meterbar .mb-track{ background:var(--panel-2); border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.meterbar .mb-fill{ display:block; height:100%; border-radius:999px; transition:width .6s cubic-bezier(.22,1,.36,1); }
+.meterbar .mb-fill.kizuna{ background:linear-gradient(90deg,color-mix(in srgb,var(--seal) 55%,var(--panel)),var(--seal)); }
+.meterbar .mb-fill.kuni{ background:linear-gradient(90deg,color-mix(in srgb,var(--gold) 55%,var(--panel)),var(--gold-deep)); }
+.meterbar .mb-fill.shinrai{ background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 55%,var(--panel)),var(--accent)); }
+.meterbar.hud{ display:flex; align-items:center; gap:10px; padding:8px 12px;
+  border:1px solid var(--line); border-radius:999px; box-shadow:var(--shadow-s);
+  background:color-mix(in srgb,var(--gold) 5%,var(--panel)); }
+.meterbar.hud .mb-title{ flex:0 0 auto; }
+.meterbar.hud .mb-rows{ display:flex; flex:1; gap:12px; min-width:0; }
+.meterbar.hud .mb-row{ display:flex; align-items:center; gap:5px; flex:1; min-width:0; position:relative; }
+.meterbar.hud .mb-ico{ font-size:14px; flex:0 0 auto; }
+.meterbar.hud .mb-label{ display:none; }
+.meterbar.hud .mb-track{ flex:1; height:7px; min-width:16px; }
+.meterbar.full .mb-title{ display:none; }
+.meterbar.full .mb-rows{ display:flex; flex-direction:column; gap:9px; }
+.meterbar.full .mb-row{ display:flex; align-items:center; gap:9px; }
+.meterbar.full .mb-ico{ font-size:17px; flex:0 0 auto; }
+.meterbar.full .mb-label{ flex:0 0 6.2em; font-size:12.5px; font-weight:700; color:var(--ink-soft); }
+.meterbar.full .mb-track{ flex:1; height:11px; }
+.meterbar.full .mb-val{ flex:0 0 auto; min-width:1.5em; text-align:right; font-size:12px; font-weight:700; color:var(--ink-faint); }
+.meterbar.full .mb-row{ position:relative; }
+/* ★I 選択で伸びた瞬間の「＋N」。メーターの右上から浮き上がって消える。 */
+.mb-pop{ position:absolute; right:0; top:50%; z-index:2; pointer-events:none;
+  font-family:var(--gothic); font-weight:800; font-size:12.5px; line-height:1; white-space:nowrap;
+  padding:2px 6px; border-radius:999px; box-shadow:var(--shadow-s);
+  animation:meterpop 1.2s cubic-bezier(.22,1,.36,1) forwards; }
+.mb-pop.up{ color:#1c2a1f; background:color-mix(in srgb,var(--accent) 60%,#fff); }
+.mb-pop.down{ color:#3a1c17; background:color-mix(in srgb,var(--seal) 55%,#fff); }
+@keyframes meterpop{
+  0%{ opacity:0; transform:translate(6px,-40%) scale(.6); }
+  22%{ opacity:1; transform:translate(6px,-120%) scale(1.12); }
+  40%{ transform:translate(6px,-140%) scale(1); }
+  100%{ opacity:0; transform:translate(6px,-220%) scale(1); }
+}
+@media (prefers-reduced-motion:reduce){ .mb-pop{ animation-duration:.01ms; } }
+.clear-box.grew{ padding:16px 18px; border-radius:var(--r-m); border:1px solid var(--line);
+  background:color-mix(in srgb,var(--accent) 7%,var(--panel)); }
+.grew-line{ margin:14px 0 0; font-family:var(--serif); font-size:15.5px; line-height:1.9; color:var(--ink); text-wrap:pretty; }
+.hist-actions{ margin:22px 0 0; display:flex; justify-content:flex-end; }
+@keyframes stamp{ 0%{transform:scale(2.4) rotate(-18deg); opacity:0}
+  60%{transform:scale(.92) rotate(6deg); opacity:1} 100%{transform:scale(1) rotate(-6deg); opacity:1} }
+.hist-overlay.show .hist-seal{ animation:stamp .5s .12s both; }
+
+/* ============ 章クリア ============ */
+#clear .wrap{ text-align:center; padding-top:36px; }
+.clear-mon{ width:78px; height:78px; margin:0 auto 8px; }
+.clear-badge{ font-family:var(--gothic); letter-spacing:.28em; color:var(--gold-deep); font-weight:700;
+  font-size:12.5px; }
+.clear-title{ font-family:var(--serif); font-weight:700; font-size:26px; letter-spacing:.05em; margin:6px 0 0;
+  text-wrap:balance; }
+.clear-sub{ color:var(--ink-soft); font-size:14px; margin:8px 0 0; }
+.clear-box{ margin:22px 0 0; text-align:left; }
+.clear-box h4{ font-family:var(--gothic); font-size:12.5px; letter-spacing:.1em; color:var(--ink-faint);
+  margin:0 0 10px; font-weight:700; }
+.newcards{ display:flex; flex-wrap:wrap; gap:10px; }
+/* ★4 章間クリフハンガー（次章への引き） */
+.teaser-box{ margin:22px 0 0; text-align:left; padding:15px 18px; border-radius:var(--r-m);
+  background:color-mix(in srgb,var(--accent) 9%,var(--panel));
+  border:1px dashed color-mix(in srgb,var(--accent) 42%,var(--line)); }
+.teaser-box .th{ margin-bottom:6px; font-family:var(--gothic); font-weight:800; font-size:12.5px;
+  letter-spacing:.12em; color:var(--accent-2); }
+.teaser-box p{ margin:0; font-family:var(--serif); font-size:15px; line-height:1.85; color:var(--ink); text-wrap:pretty; }
+
+.clear-actions{ margin:26px 0 40px; display:flex; flex-direction:column; gap:11px; align-items:center; }
+.clear-actions .btn{ min-width:250px; }
+
+/* ============ 手帳（図鑑・年表・地図）============ */
+#notebook{ padding-bottom:48px; }
+/* タブは横スクロールでなく折返し（スマホ幅で末尾タブが見切れて存在に気づけないため）。 */
+.tabs{ display:flex; flex-wrap:wrap; gap:2px 6px; margin:18px 0 20px; border-bottom:1px solid var(--line); }
+.tab{ appearance:none; background:none; border:none; cursor:pointer; padding:11px 14px 12px;
+  font-family:var(--gothic); font-weight:700; font-size:14.5px; color:var(--ink-faint);
+  border-bottom:2.5px solid transparent; white-space:nowrap; transition:.16s; }
+.tab:hover{ color:var(--ink-soft); }
+.tab.active{ color:var(--accent); border-bottom-color:var(--accent); }
+.tabpane{ display:none; } .tabpane.active{ display:block; animation:fadeUp .3s; }
+
+.card-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px; }
+.gcard{ border-radius:var(--r-m); border:1px solid var(--line); background:var(--panel); overflow:hidden;
+  box-shadow:var(--shadow-s); transition:.18s; cursor:pointer; text-align:left; font-family:var(--gothic);
+  color:var(--ink); display:flex; flex-direction:column; }
+.gcard:hover{ transform:translateY(-3px); box-shadow:var(--shadow-m); }
+.gcard.locked{ cursor:default; opacity:1; }
+.gcard.locked:hover{ transform:none; box-shadow:var(--shadow-s); }
+.gcard-top{ height:78px; display:flex; align-items:center; justify-content:center; position:relative;
+  background:color-mix(in srgb,var(--accent) 10%, var(--panel-2)); }
+.gcard.word .gcard-top{ background:color-mix(in srgb,var(--gold) 14%, var(--panel-2)); }
+.gcard-top svg,.gcard-top .face{ width:52px; height:52px; }
+.gcard.locked .gcard-top{ background:var(--panel-2); }
+.gcard-lockicon{ font-size:26px; opacity:.4; filter:grayscale(1); }
+.gcard-body{ padding:10px 12px 12px; }
+.gcard-kind{ font-size:10.5px; letter-spacing:.1em; font-weight:700; }
+.gcard.person .gcard-kind{ color:var(--accent); } .gcard.word .gcard-kind{ color:var(--gold-deep); }
+.gcard-name{ font-family:var(--serif); font-weight:700; font-size:15px; margin-top:2px; line-height:1.35;
+  text-wrap:balance; }
+.gcard.locked .gcard-name{ color:var(--ink-faint); }
+.gcard-ch{ font-size:10.5px; color:var(--ink-faint); margin-top:4px; }
+.collect-bar{ display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.collect-meter{ flex:1; height:9px; border-radius:999px; background:var(--panel-2); overflow:hidden; border:1px solid var(--line);}
+.collect-meter i{ display:block; height:100%; background:linear-gradient(90deg,var(--accent),var(--gold)); border-radius:999px; transition:width .5s; }
+.collect-count{ font-family:var(--serif); font-weight:700; font-size:14px; color:var(--ink-soft);
+  font-variant-numeric:tabular-nums; }
+
+/* ★D 人物相関図 */
+.rel-lead{ font-family:var(--serif); font-size:14px; color:var(--ink-soft); margin:0 0 8px; line-height:1.6; }
+.relmap-wrap{ background:color-mix(in srgb,var(--accent-soft) 12%,var(--panel)); border:1px solid var(--line);
+  border-radius:var(--r-m); padding:6px; }
+.relmap-wrap svg.relmap{ display:block; width:100%; height:auto; max-width:460px; margin:0 auto; }
+.rel-legend{ display:flex; flex-wrap:wrap; gap:8px 14px; justify-content:center; margin:12px 0 2px; }
+.rel-chip{ display:inline-flex; align-items:center; gap:6px; font-family:var(--gothic); font-weight:700;
+  font-size:12.5px; color:var(--ink-soft); }
+.rel-chip i{ width:13px; height:13px; border-radius:3px; display:inline-block; }
+
+/* ★R つながり図鑑（engine/art/constellation.ts）。星の見出しは SVG の中、ふりがなの要る
+   文字列（一言・分野の凡例）はこちら側の HTML＝観察ビューと同じ分界線。
+   .stmap は SVG と寸分たがわぬ箱にする（padding も border も持たせない）: 指の座標を
+   この箱の rect から枠の単位（1000×700）へ写すので、箱が SVG より大きいと当たり判定が
+   まるごとずれる。紙（背景・余白）は外側の .stmap-wrap が持つ。 */
+.st-bar{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 16px; margin-bottom:12px; }
+.st-stat{ font-family:var(--gothic); font-size:12.5px; letter-spacing:.06em; color:var(--ink-faint); }
+.st-stat b{ font-family:var(--serif); font-size:16px; color:var(--ink-soft);
+  font-variant-numeric:tabular-nums; margin:0 2px; }
+.st-inv b{ color:var(--gold-deep); }
+.st-lead{ font-family:var(--serif); font-size:14px; color:var(--ink-soft); margin:0 0 8px; line-height:1.7; }
+.stmap-wrap{ background:color-mix(in srgb,var(--accent-soft) 12%,var(--panel)); border:1px solid var(--line);
+  border-radius:var(--r-m); padding:6px; }
+/* 指で星を運ぶジェスチャは、この盤の上でだけスクロールより優先する。 */
+.stmap{ display:block; touch-action:none; }
+.stmap svg.constellation{ display:block; width:100%; height:auto; }
+.stmap .starnode{ cursor:grab; -webkit-tap-highlight-color:transparent; }
+.stmap .starnode.lifted{ cursor:grabbing; }
+.stmap .starnode:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; border-radius:var(--r-s); }
+/* 序盤コーチ（constellation.ts の .coach）＝「ここに落とせば つながる」相手を脈動で指す。
+   .lifted の環（持っている／指の下）とは別語彙: 環は静か、脈動は呼ぶ。opacity だけ揺らす
+   （transform を使わない＝実機不明のブラウザで確実に動く）。 */
+.stmap .starnode.coach .star-pulse{ animation:starCoach 1.5s ease-in-out infinite; }
+@keyframes starCoach{ 0%,100%{ opacity:.22; } 50%{ opacity:.9; } }
+@media (prefers-reduced-motion:reduce){ .stmap .starnode.coach .star-pulse{ animation:none; opacity:.6; } }
+.st-how{ margin:8px 0 0; font-family:var(--gothic); font-size:12px; color:var(--ink-faint); text-align:center; }
+.st-legend{ display:flex; flex-wrap:wrap; gap:8px 14px; justify-content:center; margin:12px 0 2px; }
+.st-read{ display:flex; flex-wrap:wrap; gap:4px 10px; align-items:baseline; margin:14px 0 0;
+  padding:10px 13px; border-radius:var(--r-m);
+  background:color-mix(in srgb,var(--gold) 9%,var(--panel));
+  border:1px solid color-mix(in srgb,var(--gold) 40%,var(--line)); }
+.st-read-star{ font-family:var(--gothic); font-weight:700; font-size:13px; color:var(--gold-deep); }
+.st-read-text{ font-family:var(--serif); font-size:15px; line-height:1.8; color:var(--ink); text-wrap:pretty; }
+.st-tray{ list-style:none; margin:12px 0 0; padding:0; display:flex; flex-direction:column; gap:7px; }
+.st-item{ padding:9px 12px; border-radius:var(--r-m); background:var(--panel); border:1px solid var(--line); }
+.st-item-pair{ display:block; font-family:var(--gothic); font-weight:700; font-size:12px;
+  letter-spacing:.04em; color:var(--ink-faint); }
+.st-item-text{ display:block; margin-top:3px; font-family:var(--serif); font-size:14.5px;
+  line-height:1.85; color:var(--ink-soft); text-wrap:pretty; }
+/* 観察トレイと同じ動き（同じ「いま増えた一行」なので、動きも同じ家のものを使う）。 */
+.st-item.is-new{ animation:obFound .5s cubic-bezier(.2,.8,.2,1) both; }
+
+/* 手がかり */
+.riddle-box{ background:color-mix(in srgb,var(--seal) 8%,var(--panel)); border:1px solid color-mix(in srgb,var(--seal) 30%,var(--line));
+  border-radius:var(--r-m); padding:14px 16px; margin-bottom:16px; }
+.riddle-box .riddle-lead{ font-family:var(--gothic); font-weight:700; font-size:12px; letter-spacing:.1em; color:var(--seal);
+  display:flex; align-items:center; gap:7px; }
+.riddle-box .riddle-lead::before{ content:"？"; width:18px; height:18px; border-radius:50%; background:var(--seal); color:#fff;
+  display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-family:var(--serif); }
+.riddle-box p{ margin:8px 0 0; font-family:var(--serif); font-size:15px; line-height:1.85; color:var(--ink); }
+.clue-list{ display:flex; flex-direction:column; gap:10px; }
+.clue-item{ display:flex; gap:12px; padding:13px 15px; border-radius:var(--r-m); background:var(--panel); border:1px solid var(--line); }
+.clue-item.locked{ opacity:.65; }
+.clue-ic{ font-size:20px; flex:0 0 auto; line-height:1.4; }
+.clue-n{ font-family:var(--gothic); font-weight:700; font-size:13px; color:var(--accent-2); }
+.clue-n .clue-ch{ color:var(--ink-faint); font-weight:400; margin-left:6px; font-size:11.5px; }
+.clue-item.locked .clue-n{ color:var(--ink-faint); }
+.clue-tx{ margin:4px 0 0; font-family:var(--serif); font-size:14.5px; line-height:1.8; color:var(--ink-soft); }
+/* えっ！？図鑑：「もっと深く」の問いの再掲（読み返しの入口）。 */
+.spark-deepq{ margin:7px 0 0; font-family:var(--gothic); font-size:12.5px; line-height:1.7; color:var(--ink-faint); }
+
+/* ★L 分かれ道図鑑 */
+.branch-item.complete{ border-color:color-mix(in srgb,var(--gold) 55%, var(--line)); }
+.branch-body{ min-width:0; flex:1; }
+.branch-comp{ margin-left:8px; font-size:11px; font-weight:800; color:var(--gold-deep); white-space:nowrap; }
+.branch-opt{ display:flex; align-items:baseline; gap:7px; flex-wrap:wrap; margin-top:8px;
+  font-family:var(--gothic); font-size:13px; line-height:1.7; }
+.branch-opt.locked{ opacity:.6; }
+.branch-chip{ flex:0 0 auto; font-size:10.5px; font-weight:800; padding:1.5px 7px; border-radius:999px;
+  border:1px solid var(--seal); color:var(--seal); letter-spacing:.06em; }
+.branch-chip.if{ border-color:var(--ink-faint); color:var(--ink-faint); }
+.branch-chip.locked{ border-color:var(--line); color:var(--ink-faint); }
+.branch-label{ font-weight:700; color:var(--ink-soft); }
+.branch-match{ color:var(--ink-faint); font-size:12.5px; }
+.branch-opt.seen .branch-match{ color:var(--accent-2); }
+/* ★N 図鑑から章の再プレイへ直行するボタン。 */
+.branch-replay{ margin-top:10px; font-size:12.5px; }
+
+/* ★M 段取りミニゲーム（sort型） */
+.mg{ margin:18px 0 0; padding:16px 16px 18px; border-radius:var(--r-m); background:var(--panel);
+  border:1.5px solid color-mix(in srgb,var(--gold) 45%, var(--line)); box-shadow:var(--shadow-s); }
+.mg-head{ display:flex; align-items:center; gap:8px; font-family:var(--gothic); font-weight:800;
+  font-size:14.5px; color:var(--gold-deep); letter-spacing:.04em; }
+.mg-lead{ margin:8px 0 0; font-family:var(--serif); font-size:14.5px; line-height:1.9; color:var(--ink-soft); }
+.mg-placed{ margin:12px 0 0; padding:0 0 0 4px; list-style:none; counter-reset:mgstep; }
+.mg-placed li{ counter-increment:mgstep; display:flex; align-items:baseline; gap:9px; padding:7px 0;
+  font-family:var(--gothic); font-size:13.5px; line-height:1.7; color:var(--ink); animation:fadeUp .3s; }
+.mg-placed li::before{ content:counter(mgstep); flex:0 0 auto; width:20px; height:20px; border-radius:50%;
+  background:var(--accent); color:#fff; font-size:11.5px; font-weight:800; display:flex; align-items:center;
+  justify-content:center; transform:translateY(2px); }
+.mg-q{ margin:14px 0 8px; font-family:var(--gothic); font-weight:800; font-size:13.5px; color:var(--accent-2); }
+.mg-opts{ display:flex; flex-direction:column; gap:8px; }
+.mg-opt{ appearance:none; cursor:pointer; text-align:left; font-family:var(--gothic); font-size:13.5px;
+  line-height:1.7; color:var(--ink); padding:11px 13px; border-radius:var(--r-m);
+  border:1.5px solid var(--line); background:var(--panel-2); transition:.15s; }
+.mg-opt:hover{ border-color:var(--accent); transform:translateY(-1px); }
+.mg-opt.wrong{ border-color:var(--seal); background:color-mix(in srgb,var(--seal) 10%,var(--panel));
+  animation:mgshake .4s; }
+@keyframes mgshake{ 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+.mg-result{ margin:14px 0 0; font-family:var(--serif); font-weight:800; font-size:16px; color:var(--gold-deep);
+  animation:fadeUp .35s; }
+.mg-outro{ margin:8px 0 0; font-family:var(--serif); font-size:14.5px; line-height:1.9; color:var(--ink-soft); }
+.mg.done{ border-color:var(--gold); }
+.mg-gate{ display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
+.mg-skip{ font-size:12px; color:var(--ink-faint); }
+
+/* march ミニゲーム（中国大返し）。.mg 枠を流用し、内部だけ .mc-* で組む。 */
+/* --- 準備フェーズ --- */
+.mc-cards{ display:flex; flex-direction:column; gap:8px; margin:4px 0 0; }
+.mc-card{ appearance:none; cursor:pointer; text-align:left; width:100%; padding:10px 12px;
+  border-radius:var(--r-m); border:1.5px solid var(--line); background:var(--panel-2);
+  transition:.15s; display:flex; flex-direction:column; gap:5px; }
+.mc-card:hover{ border-color:var(--accent); }
+.mc-card.on{ border-color:var(--gold); background:color-mix(in srgb,var(--gold) 12%,var(--panel)); box-shadow:var(--shadow-s); }
+.mc-card-top{ display:flex; align-items:center; gap:8px; }
+.mc-card-label{ flex:1; font-family:var(--gothic); font-weight:800; font-size:13.5px; line-height:1.6; color:var(--ink); }
+.mc-check{ flex:0 0 auto; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:800; color:var(--ink-faint); background:color-mix(in srgb,var(--ink-faint) 14%,transparent); }
+.mc-card.on .mc-check{ color:#fff; background:var(--gold); }
+.mc-card-desc{ font-family:var(--serif); font-size:12.5px; line-height:1.7; color:var(--gold-deep); animation:fadeUp .25s; }
+.mc-go{ margin-top:14px; width:100%; font-size:16px; }
+.mc-go:disabled{ opacity:.45; cursor:not-allowed; }
+
+/* --- 行軍フェーズ --- */
+.mc-day{ display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin:6px 0 2px;
+  font-family:var(--gothic); font-size:14px; color:var(--ink); }
+.mc-day b{ font-size:16px; color:var(--accent-2); }
+.mc-weather{ font-size:12.5px; color:var(--ink-soft); }
+.mc-weather.rain{ color:var(--accent-2); font-weight:700; }
+.mc-wx-ok{ font-size:13px; }
+/* 道のり（地名ラベル＋補給地の目印）。準備画面のプレビューにも使う。 */
+.mc-plan-head{ margin:8px 0 2px; font-family:var(--gothic); font-size:12.5px; line-height:1.6; color:var(--ink-soft); }
+.mc-plan-head b{ color:var(--gold-deep); }
+.mc-km{ text-align:center; font-family:var(--gothic); font-weight:800; font-size:14px; color:var(--accent-2); margin:2px 0; }
+.mc-route{ margin:6px 0 4px; }
+.mc-route.prep{ margin:4px 0 8px; }
+.mc-track{ position:relative; height:12px; border-radius:99px; background:var(--panel-2);
+  border:1px solid var(--line); overflow:visible; }
+.mc-fill{ position:absolute; inset:0 auto 0 0; height:100%; border-radius:99px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-deep)); transition:width .45s cubic-bezier(.22,1,.36,1); }
+.mc-mark{ position:absolute; top:50%; width:3px; height:12px; transform:translate(-50%,-50%);
+  background:var(--ink-faint); opacity:.5; border-radius:2px; }
+.mc-mark.reached{ background:var(--gold-deep); opacity:.9; }
+.mc-mark.depot{ width:5px; height:17px; opacity:1; background:var(--gold);
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--gold) 28%,transparent); }
+.mc-runner{ position:absolute; top:-11px; transform:translateX(-50%); font-size:18px; line-height:1;
+  transition:left .45s cubic-bezier(.22,1,.36,1); filter:drop-shadow(0 1px 1px rgba(0,0,0,.2)); }
+.mc-mark-labels{ position:relative; height:16px; margin-top:7px; }
+.mc-mark-label{ position:absolute; top:0; white-space:nowrap; font-family:var(--gothic);
+  font-size:11px; color:var(--ink-faint); }
+.mc-mark-label.armed{ color:var(--gold-deep); font-weight:800; }
+.mc-mark-label.passed{ color:var(--accent-2); }
+.mc-mark-emoji{ margin-right:1px; }
+.mc-meters{ display:flex; flex-direction:column; gap:7px; margin:10px 0 0; }
+.mc-meter{ display:flex; align-items:center; gap:9px; }
+.mc-meter-lb{ flex:0 0 34px; font-family:var(--gothic); font-size:12px; color:var(--ink-soft); }
+.mc-bar{ flex:1; height:10px; border-radius:99px; background:var(--panel-2); border:1px solid var(--line); overflow:hidden; }
+.mc-bar-fill{ display:block; height:100%; border-radius:99px; background:var(--accent); transition:width .35s ease, background .3s; }
+.mc-bar-fill.warn{ background:var(--seal); }
+.mc-food-icons{ display:flex; gap:2px; }
+.mc-onigiri{ font-size:15px; line-height:1; transition:opacity .3s, filter .3s; }
+.mc-onigiri.empty{ opacity:.22; filter:grayscale(1); }
+.mc-troops{ margin-left:auto; font-family:var(--gothic); font-size:12px; color:var(--ink-soft); }
+.mc-troops b{ font-size:15px; color:var(--ink); }
+.mc-troops.low b{ color:var(--seal); }
+.mc-banner{ margin:10px 0 0; padding:9px 12px; border-radius:var(--r-m); font-family:var(--gothic);
+  font-size:13px; line-height:1.6; color:var(--seal); background:color-mix(in srgb,var(--seal) 12%,var(--panel));
+  border:1.5px solid color-mix(in srgb,var(--seal) 40%,var(--line)); animation:fadeUp .25s; }
+.mc-banner b{ color:var(--seal); }
+.mc-paces{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px; }
+.mc-pace{ appearance:none; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:3px;
+  padding:11px 8px; border-radius:var(--r-m); border:1.5px solid var(--line); background:var(--panel-2); transition:.15s; }
+.mc-pace:hover:not(:disabled){ border-color:var(--accent); transform:translateY(-1px); }
+.mc-pace:disabled{ opacity:.35; cursor:not-allowed; }
+.mc-pace.rest{ background:color-mix(in srgb,var(--accent) 8%,var(--panel-2)); }
+.mc-pace-label{ font-family:var(--gothic); font-weight:800; font-size:14px; color:var(--ink); }
+.mc-pace-boost{ margin-left:3px; font-size:12px; vertical-align:middle; }
+.mc-pace-sub{ font-family:var(--gothic); font-size:11.5px; color:var(--ink-faint); }
+.mc-pace-sub s{ opacity:.6; }
+.mc-log{ margin:11px 0 0; padding:9px 12px; border-radius:var(--r-m); font-family:var(--gothic);
+  font-size:12.5px; line-height:1.6; color:var(--ink); background:var(--panel-2); border:1px solid var(--line);
+  animation:fadeUp .3s; }
+/* --- クリア／失敗の判定（一目で勝敗が分かる大バナー＋道のりを残す） --- */
+.mc-result-head{ text-align:center; margin:10px 0 6px; animation:mcPop .42s cubic-bezier(.34,1.56,.64,1); }
+.mc-verdict{ font-family:var(--gothic); font-weight:800; font-size:30px; line-height:1.2; letter-spacing:.02em; }
+.mc-result-head.win .mc-verdict{ color:var(--gold-deep); }
+.mc-result-head.lose .mc-verdict{ color:var(--seal); }
+.mc-verdict-sub{ margin-top:6px; font-family:var(--serif); font-weight:800; font-size:15px; line-height:1.6; color:var(--ink); }
+@keyframes mcPop{ 0%{opacity:0; transform:scale(.7)} 60%{opacity:1; transform:scale(1.06)} 100%{transform:scale(1)} }
+.mg.march.done{ animation:mcWinGlow .9s ease-out; }
+@keyframes mcWinGlow{ 0%{box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 55%,transparent), var(--shadow-gold)} 100%{box-shadow:var(--shadow-s)} }
+/* --- 失敗 --- */
+.mc-fail{ margin:10px 0 0; font-family:var(--serif); font-size:15px; line-height:1.9; color:var(--ink); }
+.mc-fail b{ color:var(--seal); }
+.mc-retry{ margin-top:14px; width:100%; font-size:15px; }
+@media (prefers-reduced-motion: reduce){
+  .mc-fill, .mc-runner, .mc-bar-fill{ transition:none; }
+  .mc-result-head, .mg.march.done{ animation:none; }
+}
+
+/* ★L きみの読み（クリア画面） */
+.clear-box.yomi .yomi-line{ font-family:var(--serif); font-size:15px; line-height:1.9; margin:0; }
+.yomi-count{ font-family:var(--serif); font-weight:800; font-size:22px; color:var(--accent); margin-left:4px; }
+.yomi-total{ font-size:14px; color:var(--ink-faint); font-weight:700; }
+.yomi-sub{ font-size:12.5px; color:var(--ink-faint); line-height:1.8; margin:8px 0 6px; }
+
+/* カード詳細モーダル */
+.modal-overlay{ position:fixed; inset:0; z-index:70; display:flex; align-items:center; justify-content:center;
+  background:rgba(20,18,14,.55); backdrop-filter:blur(4px); padding:20px; opacity:0; pointer-events:none; transition:.25s; }
+.modal-overlay.show{ opacity:1; pointer-events:auto; }
+.modal{ width:100%; max-width:380px; background:var(--panel); border-radius:var(--r-l); border:1px solid var(--line);
+  box-shadow:var(--shadow-m); padding:24px; transform:scale(.94); transition:.28s;
+  max-height:calc(100dvh - 40px); overflow-y:auto; overscroll-behavior:contain; }
+.modal-overlay.show .modal{ transform:none; }
+.modal-top{ height:110px; display:flex; align-items:center; justify-content:center; border-radius:var(--r-m);
+  margin-bottom:16px; background:color-mix(in srgb,var(--accent) 10%,var(--panel-2)); }
+.modal.word .modal-top{ background:color-mix(in srgb,var(--gold) 14%,var(--panel-2)); }
+.modal-top svg,.modal-top .face{ width:76px; height:76px; }
+.modal-kind{ font-size:11px; letter-spacing:.1em; font-weight:700; color:var(--accent); }
+.modal.word .modal-kind{ color:var(--gold-deep); }
+.modal-name{ font-family:var(--serif); font-weight:700; font-size:21px; margin:3px 0 0; text-wrap:balance; }
+.modal-read{ font-size:12px; color:var(--ink-faint); margin-top:2px; }
+.modal-text{ font-family:var(--serif); font-size:15px; line-height:1.95; color:var(--ink-soft); margin:14px 0 0; }
+.modal-close{ margin-top:20px; width:100%; }
+/* 同じ人の、他の作品での本文。並べるだけで語らせる（docs/design/cross-work.md）。 */
+.modal-bridge{ margin:16px 0 0; padding:12px 14px; border-radius:var(--r-m);
+  background:var(--panel-2); border:1px dashed var(--line); }
+.bridge-work{ font-family:var(--serif); font-size:12.5px; font-weight:700; color:var(--ink-faint); }
+.bridge-name{ font-family:var(--serif); font-weight:700; font-size:16px; margin-top:4px; }
+.bridge-read{ font-size:11.5px; color:var(--ink-faint); margin-top:1px; }
+.bridge-text{ font-family:var(--serif); font-size:14px; line-height:1.9; color:var(--ink-soft); margin-top:6px; }
+.bridge-invite{ font-family:var(--serif); font-size:13.5px; line-height:1.8; color:var(--ink-faint); }
+
+/* 年表 */
+.timeline{ position:relative; margin:8px 0 0; padding-left:26px; }
+.timeline::before{ content:""; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:var(--line); }
+.tl-item{ position:relative; padding:0 0 22px; }
+.tl-item::before{ content:""; position:absolute; left:-23px; top:6px; width:12px; height:12px; border-radius:50%;
+  background:var(--panel); border:2px solid var(--accent-soft); }
+.tl-item.key::before{ background:var(--gold); border-color:var(--gold-deep); }
+.tl-item.death::before{ background:var(--seal); border-color:var(--seal); }
+.tl-year{ font-family:var(--serif); font-weight:700; font-size:14px; color:var(--seal); }
+.tl-title{ font-family:var(--serif); font-weight:700; font-size:16px; margin-top:1px; }
+.tl-desc{ font-size:13.5px; color:var(--ink-soft); margin-top:3px; line-height:1.7; }
+.tl-item.locked .tl-title,.tl-item.locked .tl-desc{ filter:blur(4px); user-select:none; }
+
+/* 地図 */
+.map-wrap{ border-radius:var(--r-l); overflow:hidden; border:1px solid var(--line); background:var(--panel-2);
+  box-shadow:var(--shadow-s); }
+.map-wrap svg{ width:100%; height:auto; display:block; }
+.map-legend{ margin:14px 0 0; display:flex; flex-direction:column; gap:8px; }
+.map-legend .li{ display:flex; gap:10px; font-size:13px; align-items:baseline; }
+.map-legend .dot{ width:11px; height:11px; border-radius:50%; flex:0 0 auto; margin-top:5px; }
+.map-legend b{ font-family:var(--serif); color:var(--ink); }
+.map-legend span{ color:var(--ink-soft); }
+/* 進軍の地図：レジェンドの色見本 */
+.map-legend .sw{ width:15px; height:15px; border-radius:4px; flex:0 0 auto; margin-top:3px; }
+.map-legend .sw.num{ border-radius:50%; background:var(--seal); color:#fff; display:inline-flex; align-items:center;
+  justify-content:center; font-size:9px; font-weight:700; width:17px; height:17px; font-family:var(--serif); }
+/* 地図ツールバー（時代スクラブ）*/
+.map-toolbar{ display:flex; flex-wrap:wrap; gap:10px 12px; align-items:center; margin:2px 0 12px; }
+.mplay{ appearance:none; cursor:pointer; font-family:var(--gothic); font-weight:700; font-size:13.5px;
+  padding:9px 15px; border-radius:999px; border:1px solid color-mix(in srgb,var(--gold) 46%,var(--line));
+  background:color-mix(in srgb,var(--gold) 14%,var(--panel)); color:var(--gold-deep); transition:.16s; }
+.mplay:hover{ background:color-mix(in srgb,var(--gold) 22%,var(--panel)); }
+.msteps{ display:flex; gap:5px; }
+.mstep{ width:31px; height:31px; border-radius:9px; border:1px solid var(--line); background:var(--panel);
+  color:var(--ink-soft); font-family:var(--serif); font-weight:700; font-size:14px; cursor:pointer; transition:.16s; }
+.mstep:hover{ border-color:var(--accent-soft); }
+.mstep.on{ background:var(--accent); color:#fff; border-color:var(--accent); }
+:root[data-theme="dark"] .mstep.on{ color:#161821; }
+.map-caption{ font-family:var(--serif); font-weight:700; font-size:14.5px; color:var(--ink); text-align:center;
+  min-height:1.6em; margin:11px 4px 2px; text-wrap:balance; }
+/* SVG 内の描画スタイル */
+.map-svg .msea{ fill:color-mix(in srgb,var(--accent-soft) 24%,var(--panel-2)); }
+.map-svg .pf{ fill:var(--map-land); stroke:color-mix(in srgb,var(--sumi) 30%,transparent); stroke-width:1;
+  stroke-linejoin:round; transition:fill .55s ease; }
+.map-svg .pf.domain{ stroke:var(--gold); stroke-width:3; }
+.card-photo{ margin:14px 0 0; padding:0; }
+.card-photo img{ display:block; width:100%; height:auto; max-height:46vh; object-fit:contain;
+  border-radius:var(--r-m);
+  border:1px solid var(--line); box-shadow:var(--shadow-s); background:var(--panel-2); }
+.card-photo figcaption{ margin-top:6px; font-family:var(--gothic); font-size:11px; line-height:1.7;
+  color:var(--ink-faint); text-align:start; }
+
+.map-svg .mriver, .scene-map .mriver{ fill:none; stroke:color-mix(in srgb,var(--accent-soft) 62%,var(--panel-2));
+  stroke-linecap:round; stroke-linejoin:round; opacity:.85; }
+.map-svg .mlake, .scene-map .mlake{ fill:color-mix(in srgb,var(--accent-soft) 44%,var(--panel-2));
+  stroke:color-mix(in srgb,var(--accent-soft) 62%,var(--panel-2)); stroke-linejoin:round; }
+.map-svg .mplabel{ fill:color-mix(in srgb,var(--ink) 62%,transparent); font-family:var(--serif); font-weight:700;
+  font-size:15px; paint-order:stroke; stroke:var(--panel); stroke-width:3px; stroke-linejoin:round; pointer-events:none; }
+.map-svg .mroute{ fill:none; stroke:var(--gold); stroke-width:5.5; stroke-linecap:round; stroke-linejoin:round;
+  opacity:0; filter:drop-shadow(0 1px 2px rgba(0,0,0,.35)); }
+.map-svg .mrunner circle{ fill:var(--gold); stroke:#fff; stroke-width:2; }
+.map-svg .mrunner{ opacity:0; transition:opacity .3s; }
+.map-svg .rlabel{ fill:var(--gold-deep); font-family:var(--serif); font-weight:700; font-size:19px; opacity:0;
+  paint-order:stroke; stroke:var(--panel); stroke-width:4px; stroke-linejoin:round; transition:opacity .4s; pointer-events:none; }
+.map-svg .mmark{ opacity:0; transition:opacity .45s ease; }
+.map-svg .mmark.show{ opacity:1; }
+.map-svg .mk-dot{ fill:var(--seal); stroke:#fff; stroke-width:2.5; }
+.map-svg .mk-n{ fill:#fff; font-family:var(--serif); font-weight:700; font-size:16px; pointer-events:none; }
+.map-svg .mk-lb{ fill:var(--ink); font-family:var(--serif); font-weight:700; font-size:16px;
+  paint-order:stroke; stroke:var(--panel); stroke-width:4px; stroke-linejoin:round; pointer-events:none; }
+
+/* 隠しページ */
+.hidden-locked{ text-align:center; padding:40px 10px; }
+.hidden-locked .lk{ font-size:40px; }
+.hidden-scroll{ background:linear-gradient(180deg,var(--panel),color-mix(in srgb,var(--gold) 6%,var(--panel)));
+  border:1px solid color-mix(in srgb,var(--gold) 40%,var(--line)); border-radius:var(--r-l); padding:26px 24px;
+  box-shadow:var(--shadow-m); }
+
+/* 汎用 */
+.center{ text-align:center; }
+.mt-l{ margin-top:30px; } .muted{ color:var(--ink-faint); }
+.backbar{ display:flex; gap:10px; align-items:center; margin:2px 0 0; }
+.linklike{ background:none; border:none; color:var(--accent); cursor:pointer; font-family:var(--gothic);
+  font-weight:700; font-size:14px; padding:6px 2px; }
+.linklike:hover{ text-decoration:underline; }
+.field{ width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:var(--r-m); background:var(--panel);
+  color:var(--ink); font-family:var(--serif); font-size:16px; }
+.field:focus{ outline:none; border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent); }
+.toast{ position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px); z-index:90;
+  background:var(--ink); color:var(--bg); padding:12px 20px; border-radius:999px; font-family:var(--gothic);
+  font-weight:700; font-size:14px; box-shadow:var(--shadow-m); opacity:0; pointer-events:none; transition:.3s; }
+.toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* Custom dialog UI (browser prompt/confirm give poor UX / blocked when sandboxed) */
+.dialog-overlay{ position:fixed; inset:0; z-index:80; display:flex; align-items:center; justify-content:center;
+  background:rgba(20,18,14,.55); backdrop-filter:blur(4px); padding:20px; opacity:0; pointer-events:none; transition:.22s; }
+.dialog-overlay.show{ opacity:1; pointer-events:auto; }
+.dialog{ width:100%; max-width:400px; background:var(--panel); border-radius:var(--r-l); border:1px solid var(--line);
+  box-shadow:var(--shadow-m); padding:24px; transform:scale(.95); transition:.24s; }
+.dialog-overlay.show .dialog{ transform:none; }
+.dlg-title{ font-family:var(--serif); font-weight:700; font-size:19px; letter-spacing:.03em; }
+.dlg-desc{ color:var(--ink-soft); font-size:14px; margin:8px 0 0; line-height:1.75; }
+.dlg-input{ margin-top:16px; }
+.dlg-actions{ margin-top:20px; display:flex; gap:10px; justify-content:flex-end; }
+.dlg-actions .btn{ padding:11px 20px; font-size:15px; }
+hr.rule{ border:none; border-top:1px solid var(--line); margin:24px 0; }
+
+@media (max-width:480px){
+  body{ font-size:16px; }
+  .scene-text{ font-size:17.5px; }
+  .wrap{ padding:0 16px; }
+  .title-main{ letter-spacing:.08em; }
+}
+/* ★J 顔あてクイズ。集めた人物カードで顔↔名前を思い出す（能動的想起）。 */
+.quizpane{ padding-top:4px; }
+.quiz-empty{ text-align:center; padding:40px 16px; color:var(--ink-soft); font-family:var(--gothic); line-height:1.9; }
+.quiz-empty-ico{ font-size:40px; margin-bottom:10px; }
+.quiz-empty-sub{ font-size:12.5px; color:var(--ink-faint); margin-top:10px; }
+.quiz-head{ display:flex; align-items:center; justify-content:center; gap:12px; font-family:var(--gothic); margin:2px 0 14px; }
+.quiz-score{ font-size:13.5px; color:var(--ink-soft); font-weight:700; }
+.quiz-score b{ color:var(--accent); font-size:16px; }
+.quiz-streak{ font-size:12.5px; font-weight:800; color:var(--gold-deep);
+  background:color-mix(in srgb,var(--gold) 16%,var(--panel)); border:1px solid color-mix(in srgb,var(--gold) 40%,var(--line));
+  border-radius:999px; padding:3px 10px; animation:fadeUp .3s both; }
+.quiz-prompt{ text-align:center; font-family:var(--serif); font-size:18px; font-weight:700; color:var(--ink); margin:2px 0 14px; }
+.quiz-prompt b{ color:var(--accent); }
+.quiz-face.big{ width:130px; height:130px; margin:0 auto 18px; border-radius:50%;
+  background:color-mix(in srgb,var(--gold) 9%,var(--panel)); border:2px solid color-mix(in srgb,var(--gold) 42%,var(--line));
+  box-shadow:var(--shadow-s); overflow:hidden; animation:faceIn .4s cubic-bezier(.2,.8,.2,1) both; }
+.quiz-face svg,.quiz-face .face{ width:100%; height:100%; display:block; }
+.quiz-options{ display:grid; gap:10px; }
+.quiz-options.names{ grid-template-columns:1fr; max-width:420px; margin:0 auto; }
+.quiz-options.faces{ grid-template-columns:1fr 1fr; max-width:420px; margin:0 auto; }
+.quiz-opt{ appearance:none; cursor:pointer; font-family:var(--gothic); color:var(--ink);
+  background:var(--panel); border:1.5px solid var(--line); border-radius:var(--r-m); transition:transform .12s, border-color .12s, background .12s; }
+.quiz-opt:not(:disabled):hover{ border-color:var(--accent); transform:translateY(-1px); }
+.quiz-opt.name{ padding:15px 16px; font-size:16px; font-weight:700; text-align:center; }
+/* 信条→章あての章ボタン（章番号＋タイトルの2段）。 */
+.quiz-opt.chapter{ display:flex; flex-direction:column; gap:2px; align-items:center; }
+.quiz-opt-cht{ font-size:12.5px; font-weight:400; color:var(--ink-soft); }
+/* 信条→章あての出題台詞（筆の一句）。 */
+.quiz-creed{ max-width:420px; margin:0 auto 16px; padding:14px 18px; border-radius:var(--r-m);
+  background:var(--panel); border:1px solid var(--line); font-family:var(--serif);
+  font-size:16px; line-height:1.9; font-weight:700; color:var(--ink); text-align:center; }
+.quiz-best{ font-size:12px; color:var(--ink-faint); font-weight:700; }
+.quiz-opt.face{ padding:10px; display:flex; flex-direction:column; align-items:center; gap:6px; }
+.quiz-opt.face .quiz-face{ width:78px; height:78px; border-radius:50%; overflow:hidden;
+  background:color-mix(in srgb,var(--gold) 8%,var(--panel-2)); border:1px solid var(--line); }
+.quiz-optname{ font-size:13px; font-weight:800; color:var(--accent); }
+/* 外した顔にも名前を開示（誤答をその場で学びに変える）。 */
+.quiz-optname.wrongname{ color:var(--ink-faint); font-weight:700; }
+.quiz-opt.correct{ border-color:var(--accent); background:color-mix(in srgb,var(--accent) 16%,var(--panel));
+  animation:quizpop .4s cubic-bezier(.22,1,.36,1) both; }
+.quiz-opt.correct.name::after{ content:" ✓"; color:var(--accent); font-weight:900; }
+.quiz-opt.wrong{ border-color:var(--seal); background:color-mix(in srgb,var(--seal) 12%,var(--panel));
+  opacity:.7; animation:quizshake .32s both; }
+@keyframes quizpop{ 0%{ transform:scale(.96); } 55%{ transform:scale(1.05); } 100%{ transform:scale(1); } }
+@keyframes quizshake{ 0%,100%{ transform:translateX(0); } 25%{ transform:translateX(-5px); } 75%{ transform:translateX(5px); } }
+.quiz-result{ text-align:center; margin:20px auto 6px; max-width:420px; animation:fadeUp .35s both; }
+.quiz-result-line{ font-family:var(--serif); font-size:16px; color:var(--ink); }
+.quiz-result-line b{ color:var(--accent); }
+.quiz-result-actions{ display:flex; align-items:center; justify-content:center; gap:16px; margin-top:14px; flex-wrap:wrap; }
+
+/* ★G 人生ステージの見せ場。地図の小さな加齢に頼らず、変わり目を大きく1枚見せる。 */
+.stage-overlay{ position:fixed; inset:0; z-index:75; display:flex; align-items:center; justify-content:center;
+  padding:24px; cursor:pointer; opacity:0; pointer-events:none; transition:opacity .35s ease;
+  background:radial-gradient(120% 90% at 50% 30%, color-mix(in srgb,var(--gold) 12%,var(--bg)) 0%, var(--bg) 72%); }
+.stage-overlay.show{ opacity:1; pointer-events:auto; }
+.stage-card{ text-align:center; max-width:360px; }
+.stage-face{ width:158px; height:158px; margin:0 auto; border-radius:50%;
+  background:color-mix(in srgb,var(--gold) 10%,var(--panel)); border:2px solid color-mix(in srgb,var(--gold) 45%,var(--line));
+  box-shadow:var(--shadow-m); overflow:hidden; }
+.stage-overlay.show .stage-face{ animation:stageface .6s cubic-bezier(.2,.8,.2,1) both; }
+.stage-face svg,.stage-face .face{ width:100%; height:100%; display:block; }
+.stage-title{ font-family:var(--serif); font-weight:700; font-size:23px; letter-spacing:.03em;
+  margin:18px 0 0; color:var(--ink); text-wrap:balance; }
+.stage-overlay.show .stage-title{ animation:fadeUp .5s .12s both; }
+.stage-caption{ font-family:var(--serif); font-size:15.5px; line-height:1.95; color:var(--ink-soft);
+  margin:12px 0 0; text-wrap:pretty; }
+.stage-overlay.show .stage-caption{ animation:fadeUp .5s .2s both; }
+.stage-btn{ margin-top:22px; min-width:160px; }
+.stage-overlay.show .stage-btn{ animation:fadeUp .5s .3s both; }
+@keyframes stageface{ 0%{ opacity:0; transform:scale(.6) translateY(14px); }
+  60%{ opacity:1; transform:scale(1.06) translateY(0); } 100%{ transform:scale(1); } }
+
+/* ★N 急報（本能寺 等）＝ crisis 変種。金のスウェルに対し、朱と闇で"激震"を立てる。 */
+.stage-overlay.crisis{
+  background:radial-gradient(120% 90% at 50% 30%, color-mix(in srgb,var(--seal) 26%,#1a1216) 0%, #14100f 74%); }
+.stage-overlay.crisis .stage-face{ background:color-mix(in srgb,var(--seal) 14%,#241a1a);
+  border-color:color-mix(in srgb,var(--seal) 62%,#000); }
+.stage-overlay.crisis .stage-title{ color:#f3e8dc; }
+.stage-overlay.crisis .stage-caption{ color:#cdbcae; }
+.stage-overlay.crisis .stage-face{ animation-duration:.4s; }
+
+@media (prefers-reduced-motion:reduce){
+  *{ animation-duration:.001s !important; transition-duration:.05s !important; }
+}

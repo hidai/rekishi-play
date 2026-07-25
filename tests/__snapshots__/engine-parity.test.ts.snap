@@ -1,0 +1,51 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`家紋・朱印・巻物アイコンの静的スナップショット（回帰固定） > monKiri 1`] = `
+"
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="0">
+      <g transform="translate(24,58)">
+          <path d="M0,4 C-13,0 -13,-33.599999999999994 0,-48 C13,-33.599999999999994 13,0 0,4 Z" fill="var(--midori)" opacity="0.9"/>
+          <rect x="-2" y="-42" width="4" height="4" rx="2" fill="var(--gold)"/><rect x="-2" y="-35" width="4" height="4" rx="2" fill="var(--gold)"/><rect x="-2" y="-28" width="4" height="4" rx="2" fill="var(--gold)"/>
+        </g><g transform="translate(50,58)">
+          <path d="M0,4 C-13,0 -13,-42 0,-60 C13,-42 13,0 0,4 Z" fill="var(--midori)" opacity="1"/>
+          <rect x="-2" y="-54" width="4" height="5" rx="2" fill="var(--gold)"/><rect x="-2" y="-47" width="4" height="5" rx="2" fill="var(--gold)"/><rect x="-2" y="-40" width="4" height="5" rx="2" fill="var(--gold)"/>
+        </g><g transform="translate(76,58)">
+          <path d="M0,4 C-13,0 -13,-33.599999999999994 0,-48 C13,-33.599999999999994 13,0 0,4 Z" fill="var(--midori)" opacity="0.9"/>
+          <rect x="-2" y="-42" width="4" height="4" rx="2" fill="var(--gold)"/><rect x="-2" y="-35" width="4" height="4" rx="2" fill="var(--gold)"/><rect x="-2" y="-28" width="4" height="4" rx="2" fill="var(--gold)"/>
+        </g>
+      </g>
+    </svg>"
+`;
+
+exports[`家紋・朱印・巻物アイコンの静的スナップショット（回帰固定） > monOmodaka（work.mon=omodaka） 1`] = `
+"
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="translate(50,52)" fill="var(--accent)">
+        <path d="M0,-34 C16,-20 24,-2 0,20 C-24,-2 -16,-20 0,-34 Z"/>
+        <path d="M0,-6 C22,-2 30,10 22,26 C10,20 2,10 0,-6 Z" opacity=".85"/>
+        <path d="M0,-6 C-22,-2 -30,10 -22,26 C-10,20 -2,10 0,-6 Z" opacity=".85"/>
+      </g>
+    </svg>"
+`;
+
+exports[`家紋・朱印・巻物アイコンの静的スナップショット（回帰固定） > scrollIcon 1`] = `
+"<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="20" y="24" width="60" height="52" rx="4" fill="color-mix(in srgb,var(--gold) 22%,var(--panel))" stroke="var(--gold-deep)" stroke-width="2"/>
+    <rect x="14" y="20" width="72" height="8" rx="4" fill="var(--gold-deep)"/>
+    <rect x="14" y="72" width="72" height="8" rx="4" fill="var(--gold-deep)"/>
+    <line x1="30" y1="38" x2="70" y2="38" stroke="var(--gold-deep)" stroke-width="2" opacity=".6"/>
+    <line x1="30" y1="48" x2="64" y2="48" stroke="var(--gold-deep)" stroke-width="2" opacity=".6"/>
+    <line x1="30" y1="58" x2="68" y2="58" stroke="var(--gold-deep)" stroke-width="2" opacity=".6"/>
+  </svg>"
+`;
+
+exports[`家紋・朱印・巻物アイコンの静的スナップショット（回帰固定） > seal（2文字） 1`] = `
+"
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="6" y="6" width="88" height="88" rx="10" fill="var(--seal)"/>
+      <rect x="12" y="12" width="76" height="76" rx="6" fill="none" stroke="#fff" stroke-width="2.5" opacity=".9"/>
+      <text x="50" y="42" text-anchor="middle" font-family="serif" font-weight="700" font-size="30" fill="#fff">史</text>
+      <text x="50" y="76" text-anchor="middle" font-family="serif" font-weight="700" font-size="30" fill="#fff">実</text>
+    </svg>"
+`;

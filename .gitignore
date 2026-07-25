@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+.claude/settings.local.json
+.vite/
+# Local render/visual-check outputs (scripts take an explicit output path; these are the common defaults)
+/out.svg
+/out/
