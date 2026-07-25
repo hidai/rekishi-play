@@ -15,8 +15,8 @@
 // engine 拡張ゼロ (design §4): 近代の顔語彙は katsu で導入済み・地図は既存 MapPoint/geoWorld・
 // territory は空。既存6作の出力を1バイトも変えない（snapshot / map-labels / face-vocab で pin）。
 //
-// figures (人の図) omitted at skeleton stage: the 起点（章一）/ 総覧（終章）figures are authored
-// WITH those chapters. Structural integrity is covered by tests/shibusawa-skeleton.test.ts +
+// figures (人の図) are authored WITH their chapters: 章二 = 席の 図（座が うつる）; the 終章 総覧 lands
+// with that chapter. Structural integrity is covered by tests/shibusawa-skeleton.test.ts +
 // the shared ALL_WORKS gates.
 import type { Work } from '../../engine/types';
 import { GEO } from '../../shared/geoJapan';
@@ -27,6 +27,7 @@ import { TIMELINE } from './timeline';
 import { FACE_SPEC, PROTAGONIST_FACE_BY_CH, PROTAGONIST_STAGES } from './faces';
 import { METERS } from './meters';
 import { RELATIONS } from './relations';
+import { FIGURES } from './figures';
 import {
   TERRITORY,
   PROTAGONIST_DOMAINS,
@@ -75,6 +76,7 @@ export const shibusawa: Work = {
   hidden: HIDDEN,
   meters: METERS,
   relations: RELATIONS,
+  figures: FIGURES,
   map: {
     geo: GEO,
     territory: TERRITORY,

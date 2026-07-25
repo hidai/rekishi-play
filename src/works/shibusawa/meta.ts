@@ -32,6 +32,7 @@ export const SHORT_NAMES: Record<string, string> = {
   'p-junchu': '惇忠',
   'p-choshichiro': '長七郎',
   'p-ichiroemon': '父',
+  'p-kisaku': '喜作',
   'p-yoshinobu': '慶喜',
   'p-akitake': '昭武',
   'p-hiraoka': '円四郎',

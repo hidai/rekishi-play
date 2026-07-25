@@ -12,8 +12,11 @@ export const RELATIONS: WorkRelations = {
   ],
   edges: [
     { pid: 'p-junchu', rel: '従兄・師（道徳の 源）', cat: 'ai' },
-    { pid: 'p-choshichiro', rel: '焼き討ちを 止めた 従兄', cat: 'ai' },
+    // 喜作が 増えて 血洗島の 輪が 混み、長い rel は 隣の 顔を 横切る（tests/relation-map）。
+    // 直すのは 言葉の ほう＝「焼き討ちを 止めた 従兄」→ 章一の creed と 同じ 手ざわりの 短い 句へ。
+    { pid: 'p-choshichiro', rel: '刀を おろさせた', cat: 'ai' },
     { pid: 'p-ichiroemon', rel: '父（藍の 商い）', cat: 'ai' },
+    { pid: 'p-kisaku', rel: '共に 京へ 出た 従兄', cat: 'ai' },
     { pid: 'p-yoshinobu', rel: '旧主（将軍）', cat: 'seal' },
     { pid: 'p-akitake', rel: 'パリの 主君', cat: 'seal' },
     { pid: 'p-hiraoka', rel: '仕官を 推した 人', cat: 'seal' },

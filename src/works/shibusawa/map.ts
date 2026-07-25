@@ -59,4 +59,15 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
       { at: 'yokohama', kind: 'town', enemy: 1, label: '横浜', note: '焼く つもりの 港', lpos: 'left' },
     ],
   },
+
+  // 2-a 京の 宿＝章二の 開幕アンカー（WRITING 地図書法1）。読者は 章一で 血洗島に 立って いたので、
+  // 章二の 最初の 仕事は「どれだけ 遠くへ 来たか」を 見せる こと。線は 引かない——道筋の 出どころは
+  // 本人の 回想だけ（地図書法2・1-b と同じ判断）。2点の 隔たりは 約320km＝cur リングの 遮蔽圏の
+  // 外（地図書法4）。
+  '2-a': {
+    markers: [
+      { at: 'kyoto', cur: 1, kind: 'town', label: '京', note: 'いま ここ' },
+      { at: 'chiharajima', kind: 'village', label: '血洗島', note: '出て きた 村', lpos: 'right' },
+    ],
+  },
 };

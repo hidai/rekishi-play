@@ -36,6 +36,12 @@ export const FACE_SPEC: Record<string, FaceSpec> = {
   // 尾高長七郎＝横浜焼き討ちを止めた従兄。剣客。止めに入る、思いつめた鋭さ（worried＋frown）。
   // oval＋frown で masako/p-kugyo（僧形の gaunt）から離す。
   'p-choshichiro': { tone:'ai', head:'chonmage', hair:'dark', shape:'oval', brow:'worried', eye:'sharp', mouth:'frown', beard:'none', nose:'thin' },
+  // 渋沢喜作（成一郎）＝二つ年上の従兄。刀を共に買い、共に京へ出て、共に一橋に仕える。のち彰義隊を
+  // ひきいて最後まで戦う側へ（§4B の典拠は明治期の写真のみ＝若い日の肖像は無い。断定的な特徴は置かず、
+  // 別人性〔要件①〕を優先）。最初に置いた「豪快な grin＋lively」は katsu の小吉・龍馬と 2.2 で衝突
+  // ——幕末の「快活な男」の帯は既に混んでいる。別の軸（square＋angry＋flat＝最後まで折れない顔）へ
+  // 逃がし、栄一@young（long/stern/frown）とも取りちがえられないようにした。
+  'p-kisaku': { tone:'ai', head:'chonmage', hair:'dark', shape:'square', brow:'angry', eye:'sharp', mouth:'flat', beard:'none', skin:'#f6d3ab', nose:'wide' },
   // 渋沢市郎右衛門＝父。藍の商いを 仕込んだ 豪農。老いた四角い顔（役割語でなくカード＝ch1 の要）。
   'p-ichiroemon': { tone:'ai', head:'chonmage', hair:'grey', shape:'square', brow:'stern', eye:'calm', mouth:'flat', beard:'full', skin:'#e9cba8', age:'old', nose:'wide' },
 

@@ -187,7 +187,12 @@ function buildAssembly(work: Work, key: string, fig: AssemblyFigure, viewCh: num
   fig.seats.forEach((s, i) => {
     const fill = activeFill(fig.fills, s.id, viewCh);
     const c = colorOf(fill?.faction || fig.base || '');
-    const isYou = !!fill?.pid && fill.pid === work.protagonistId;
+    // Life-stage variant (`p-x@young`): draw the variant FACE but open/name the base card,
+    // like the lineage figure and inline <face> (inlineFaces.ts). A seat figure that tracks
+    // one person across chapters (shibusawa ch2「きみの 座」) needs the young face, not the
+    // portrait the base card carries.
+    const cardId = fill?.pid?.split('@')[0];
+    const isYou = !!cardId && cardId === work.protagonistId;
     body.push(
       `<rect x="${(s.x - W / 2).toFixed(1)}" y="${(s.y - H / 2).toFixed(1)}" width="${W}" height="${H}" rx="8" fill="${c}" opacity="${fill ? 0.95 : 0.5}" stroke="${isYou ? PAL.gold : fill ? c : PAL.line}" stroke-width="${isYou ? 3.6 : 1.6}"/>`,
     );
@@ -197,13 +202,14 @@ function buildAssembly(work: Work, key: string, fig: AssemblyFigure, viewCh: num
       body.push(
         `<text x="${s.x}" y="${s.y + H / 2 + 24}" text-anchor="middle" font-family="serif" font-size="${FIG_FS.seatRole}" font-weight="600" fill="${PAL.ink}" opacity="0.72">${esc(s.role)}</text>`,
       );
-    if (fill?.pid && work.cards[fill.pid] && work.faces[fill.pid]) {
+    if (fill?.pid && cardId && work.cards[cardId] && work.faces[fill.pid]) {
       const r = 18,
         cx = s.x - W / 2 + 26,
         cy = s.y,
         cid = `${uid}-s${i}`;
       defs.push(`<clipPath id="${cid}"><circle cx="${cx}" cy="${cy}" r="${r - 2}"/></clipPath>`);
-      const nm = fill.label || nameOf(work, fill.pid);
+      // Name from the BASE id (like buildLineage): shortNames need not carry a variant key.
+      const nm = fill.label || nameOf(work, cardId);
       const face =
         `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${PAL.panel}" stroke="${isYou ? PAL.gold : c}" stroke-width="2.2"/>` +
         faceSvg(fill.pid, cx - r, cy - r, r * 2, cid, work.faces) +
@@ -211,7 +217,7 @@ function buildAssembly(work: Work, key: string, fig: AssemblyFigure, viewCh: num
           ? `<text x="${cx + 26}" y="${cy + midBase(FIG_FS.seatName)}" font-family="serif" font-size="${FIG_FS.seatName}" font-weight="700" fill="${PAL.ink}">${esc(nm)}</text>`
           : '');
       body.push(
-        `<g class="mapface" data-pid="${esc(fill.pid)}" role="button" tabindex="0" aria-label="${esc(nameOf(work, fill.pid) || '人物')}の カードを ひらく">${face}</g>`,
+        `<g class="mapface" data-pid="${esc(cardId)}" role="button" tabindex="0" aria-label="${esc(nameOf(work, cardId) || '人物')}の カードを ひらく">${face}</g>`,
       );
     } else if (fill?.label) {
       body.push(

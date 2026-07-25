@@ -106,7 +106,9 @@ function expectShapesFit(work: any) {
         fitsCircle(fig.dais.label, dfs, DAIS_R, `${key} dais "${fig.dais.label}"`);
       }
       for (const f of fig.fills) {
-        const nm = f.label || (f.pid ? work.shortNames[f.pid] : '') || '';
+        // Same base-id resolution as the engine (`nameOf(work, cardId)`): a variant pid would
+        // miss shortNames and silently skip this seat's fit check.
+        const nm = f.label || (f.pid ? work.shortNames[f.pid.split('@')[0]] : '') || '';
         if (!nm) continue;
         const faced = !!(f.pid && work.faces[f.pid]);
         const fs = faced ? FIG_FS.seatName : FIG_FS.seatLabel;
@@ -164,7 +166,8 @@ for (const work of WORKS) {
             expect(fk.has(f.faction), `${key} fill.faction ${f.faction}`).toBe(true);
             if (f.pid) {
               expect(work.faces[f.pid], `${key} fill.pid face ${f.pid}`).toBeTruthy();
-              expect(work.cards[f.pid], `${key} fill.pid card ${f.pid}`).toBeTruthy();
+              // `p-x@young` draws the variant face and opens the base card (lineage/inline rule).
+              expect(work.cards[f.pid.split('@')[0]], `${key} fill.pid card ${f.pid}`).toBeTruthy();
             }
           }
         } else if (fig.kind === 'battlefield') {
