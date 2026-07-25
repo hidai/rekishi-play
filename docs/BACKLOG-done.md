@@ -422,3 +422,8 @@
 - **契約の明文化**: `tests/deploy-contract.test.ts` に「共有カードはクローラ向け＝実行時の外部読込ではない」describe を新設（og:image が絶対 URL であること・指す先が同梱の `dist/og.png` であること・`%SITE_URL%` の焼き残りが無いこと）。**「外部リソース読込ゼロ」は向きのある契約**——こちらが外へ取りに行かない、の意味だと検査に書いた。
 - **ついでに直った陳腐化**: `<title>`・`description` が第1作（秀長）のままだった（作品集になって6作出荷後も未更新）。作品集の文言へ差し替え。
 - **検証**: check 0err・`npm run verify` green（**1083 test**）・焼いた PNG をラスタ目視（名前と顔の対応・衝突なし）。作品データ 0 バイト変更ゆえ `/eval-work` 非該当。
+
+
+### shibusawa 骨組み〜パイロット（live から掃き出し 2026-07-26）
+
+- [ ] **★第7作・渋沢栄一（shibusawa）＝パイロット章五 完了。次スライス＝章一「焼く 夜」** — **章五「舟の うえ」（5-a〜5-d・closeup 4枚）が `/eval-work` 2ラウンドを通過して commit 済み＝register 確定**。確定した register は下の「shibusawa 執筆の確定 register」。以下は骨組みフェーズの記録: リサーチ＋企画＋**骨組み `src/works/shibusawa/` 一式 完了**（人物11人〔上限16に余裕・私生活側は役割語〕・**算盤 mon**〔渋沢家紋は要出典確認ゆえ davinci `vinci` 型の主題エンブレム＝藍リング回避。engine `monSoroban`〕・faces §4B 典拠3層＋**cross-work 距離ループ9件解消**〔慶喜は katsu と同一顔〕・全7章の器＋stub scene・territory 空・SKELETON_WORKS 登録）。**engine 拡張ゼロ**（近代顔語彙は katsu 既存・地図 MapPoint/geoWorld）。全998テスト green・faces/mon の visual self-check 済み。**次スライス＝パイロット章五「舟のうえ」**（§8＝B頂点＋史料批判最鋭＋岩崎に声。`/eval-work` 離脱自由ペルソナで register 確定→章一〜終章を量産。執筆順 五→一→二→三→四→六→終。新章コミット時は累積離脱通し読み1本）。逐語は JOURNAL 2026-07-25（11）＋各 commit。
