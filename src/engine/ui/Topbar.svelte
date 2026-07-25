@@ -4,10 +4,11 @@
   import { useStores } from '../stores';
   import { monSvg } from '../art/icons';
   import { toggleTheme, toggleFurigana } from '../prefs';
+  import { accountAvatar } from '../save.svelte';
   import { sfx } from '../sfx.svelte';
   import { buildTrail, type CrumbTarget } from '../trail';
 
-  const { work, accounts, session, toast, exitToWorks } = useStores();
+  const { work, accounts, session, toast, exitToWorks, exitToAccounts } = useStores();
 
   const trail = $derived(
     buildTrail(
@@ -33,6 +34,12 @@
 
   let menuOpen = $state(false);
   let menuWrap = $state<HTMLElement | null>(null);
+
+  // Who is playing: the name used to appear only on the work-select screen, so inside
+  // a work nobody could tell which child's save was open (observation 2026-07-25).
+  // Reader-supplied string → plain interpolation only, never {@html} (trust boundary).
+  const who = $derived(accounts.active?.name ?? '');
+  const avatar = $derived(accountAvatar(accounts.active?.id ?? ''));
 
   const furiganaOn = $derived(!!accounts.active?.furigana);
   const dark = $derived(
@@ -109,15 +116,30 @@
     <span class="tb-div" aria-hidden="true"></span>
     <div class="tb-settings" bind:this={menuWrap}>
       <button
-        class="iconbtn"
+        class="tb-who"
         class:on={menuOpen}
-        title="せってい（ふりがな・昼夜・音）"
-        aria-label="せってい"
+        title="いま あそんでいるのは {who}（ほかの 子に かわる・せってい）"
+        aria-label="{who} で あそんでいる。ほかの 子に かわる・せってい"
         aria-haspopup="true"
         aria-expanded={menuOpen}
-        onclick={() => (menuOpen = !menuOpen)}>⚙</button>
+        onclick={() => (menuOpen = !menuOpen)}>
+        <span class="who-av" aria-hidden="true">{avatar}</span>
+        <span class="who-name">{who}</span>
+        <span class="who-gear" aria-hidden="true">⚙</span>
+      </button>
       {#if menuOpen}
         <div class="tb-menu">
+          <!-- The pill's name can ellipsize on a narrow phone; the header always
+               spells it out in full, right above the one button that changes it. -->
+          <p class="tb-mh">
+            <span class="mi-icon" aria-hidden="true">{avatar}</span>
+            <span class="mi-label">あそんでいるのは <b>{who}</b></span>
+          </p>
+          <button class="tb-mi" onclick={exitToAccounts}>
+            <span class="mi-icon" aria-hidden="true">⇄</span>
+            <span class="mi-label">ほかの 子に かわる</span>
+          </button>
+          <span class="tb-msep" aria-hidden="true"></span>
           <button class="tb-mi" onclick={() => toggleFurigana(accounts, toast)}>
             <span class="mi-icon">あ<small>ぁ</small></span>
             <span class="mi-label">ふりがな</span>

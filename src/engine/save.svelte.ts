@@ -100,6 +100,17 @@ export function makeAccount(db: AccountDB, name?: string): Account {
   };
 }
 
+const AVATARS = ['🦉', '🐯', '🐉', '🦊', '🐢', '🦅'];
+
+/**
+ * その子のしるし。名前だけだと小さな面で読み取りに時間がかかるので、id から決まる
+ * 動物を identity のアンカーにする（同じ子はどの画面でも同じ動物）。
+ */
+export function accountAvatar(id: string): string {
+  const n = +id.slice(1);
+  return AVATARS[(Number.isFinite(n) ? Math.abs(n) : 0) % AVATARS.length];
+}
+
 /** クリアした章の数（作品を指定しなければ全作品の合計）。 */
 export function doneChapters(a: Account, workId?: string): number {
   const slices = workId ? [a.works[workId]] : Object.values(a.works);

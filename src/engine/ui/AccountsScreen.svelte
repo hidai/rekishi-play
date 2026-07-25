@@ -2,6 +2,7 @@
   // 「だれで あそぶ？」。作品より上の面＝ここで選んだ名前が、どの作品へ入っても続く。
   // 作品ごとの store はまだ無いので、useStores() ではなく props で受け取る。
   import {
+    accountAvatar,
     accountStandings,
     type Account,
     type AccountStore,
@@ -27,11 +28,6 @@
   // This screen lives above the per-work store bundle, so it owns its dialog service.
   const dialog = new DialogService();
 
-  const AVATARS = ['🦉', '🐯', '🐉', '🦊', '🐢', '🦅'];
-
-  function avatar(id: string): string {
-    return AVATARS[+id.slice(1) % 6];
-  }
   /** 表の上の1行＝「いくつの作品に足あとがあるか」。数の内訳は表と合計行が持つ。 */
   function sub(s: AccountStandings): string {
     if (!s.works) return 'まだ どの 作品も あそんでいないよ';
@@ -78,7 +74,7 @@
       {#each accounts.db.accounts as a (a.id)}
         {@const st = accountStandings(a, workCards)}
         <button class="profile-card" onclick={() => pick(a)}>
-          <span class="profile-avatar">{avatar(a.id)}</span>
+          <span class="profile-avatar">{accountAvatar(a.id)}</span>
           <span class="profile-meta">
             <span class="profile-name">{a.name}</span>
             <span class="profile-sub">{sub(st)}</span>

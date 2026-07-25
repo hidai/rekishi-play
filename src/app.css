@@ -131,29 +131,28 @@ rt{ font-size:.52em; color:var(--ink-faint); font-weight:400; letter-spacing:0;
 #topbar.hidden{ display:none; }
 /* Breadcrumb: shallow → deep, so "one level up" is always the item on the left. */
 .tb-trail{ display:flex; align-items:center; gap:1px; flex:1; min-width:0; overflow:hidden; }
+/* When the bar runs out of room, the ancestor crumbs give way first (shrink 60 vs 1):
+   "where am I" is the one thing the trail must never lose, however long the名前 pill
+   on the right or the work's own name gets. */
 .crumb{ appearance:none; border:none; background:none; cursor:pointer; border-radius:var(--r-s);
-  padding:4px 7px; display:inline-flex; align-items:center; gap:6px; white-space:nowrap; flex:0 0 auto;
+  padding:4px 7px; display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+  flex:0 60 auto; min-width:0;
   font-family:var(--gothic); font-weight:600; font-size:13px; color:var(--ink-soft); transition:.16s; }
+.crumb .crumb-label{ overflow:hidden; text-overflow:ellipsis; }
 button.crumb:hover{ color:var(--accent); background:var(--panel); }
 .crumb .mon{ width:22px; height:22px; flex:0 0 auto; }
 .crumb-icon{ font-size:12.5px; }
 .crumb-up{ display:none; font-weight:700; }
 /* Current location: not a button, and the only crumb in the reading serif. */
+/* Never shrinks: flexbox spreads shrinkage proportionally, so even a 60:1 ratio steals
+   the sub-pixel that turns 「年代記」 into 「年…」. The ancestors and the名前 pill are the
+   ones that give way (both ellipsize). */
 .crumb-now{ cursor:default; color:var(--ink); font-family:var(--serif); font-weight:700;
-  font-size:15.5px; letter-spacing:.04em; min-width:0; }
-.crumb-now .crumb-label{ overflow:hidden; text-overflow:ellipsis; }
+  font-size:15.5px; letter-spacing:.04em; flex-shrink:0; min-width:0; max-width:100%; }
+/* Cancel the letter-space trailing the last character: it counts toward the width
+   ellipsis measures against, so a label that just fits renders as 「年…」. */
+.crumb-now .crumb-label{ margin-right:-.04em; }
 .crumb-sep{ color:var(--ink-soft); opacity:.5; font-size:13px; flex:0 0 auto; }
-.iconbtn{
-  appearance:none; border:1px solid var(--line); background:var(--panel);
-  color:var(--ink-soft); border-radius:var(--r-s); cursor:pointer;
-  width:38px; height:34px; display:inline-flex; align-items:center; justify-content:center;
-  font-size:13px; font-family:var(--gothic); font-weight:600; transition:.16s;
-  line-height:1;
-}
-.iconbtn:hover{ color:var(--accent); border-color:var(--accent-soft); }
-.iconbtn:active{ transform:translateY(1px); }
-.iconbtn.on{ background:var(--accent); color:#fff; border-color:var(--accent); }
-:root[data-theme="dark"] .iconbtn.on{ color:#161821; }
 /* ナビ用テキストピル（年代記・手帳）*/
 .navpill{ appearance:none; border:1px solid var(--line); background:var(--panel); color:var(--ink-soft);
   border-radius:999px; cursor:pointer; height:34px; padding:0 13px; display:inline-flex; align-items:center;
@@ -163,16 +162,35 @@ button.crumb:hover{ color:var(--accent); background:var(--panel); }
 .navpill.on{ background:var(--accent); color:#fff; border-color:var(--accent); }
 :root[data-theme="dark"] .navpill.on{ color:#161821; }
 /* Tools: the 手帳 (a place you can enter) and, past the divider, settings (not places). */
-.tb-tools{ display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+.tb-tools{ display:flex; align-items:center; gap:8px; flex:0 1 auto; min-width:0; }
 .tb-div{ width:1px; height:20px; background:var(--line); flex:0 0 auto; }
 .tb-settings{ position:relative; }
-/* width:max-content — the anchor (.tb-settings) is one button wide, so shrink-to-fit
+/* width:max-content — the anchor (.tb-settings) is one pill wide (and shrinks with the
+   name inside it), so shrink-to-fit
    would squeeze the menu to min-width and wrap every row. */
 .tb-menu{ position:absolute; top:calc(100% + 9px); right:0; z-index:60;
   width:max-content; min-width:196px; max-width:calc(100vw - 24px);
   display:flex; flex-direction:column; gap:2px; padding:6px;
   background:var(--panel); border:1px solid var(--line); border-radius:var(--r-m);
   box-shadow:0 12px 30px rgba(0,0,0,.18); }
+/* Who is playing + settings share one anchor: the name is always on screen, and the
+   ⚙ that used to sit here alone stays inside the same pill. */
+.tb-who{ appearance:none; border:1px solid var(--line); background:var(--panel); color:var(--ink-soft);
+  border-radius:999px; cursor:pointer; height:34px; padding:0 10px; display:inline-flex; align-items:center;
+  gap:6px; flex:0 10 auto; min-width:0; max-width:min(42vw,190px);
+  font-family:var(--gothic); font-weight:700; font-size:13px; transition:.16s; }
+.tb-who:hover{ color:var(--accent); border-color:var(--accent-soft); }
+.tb-who:active{ transform:translateY(1px); }
+.tb-who.on{ color:var(--accent); border-color:var(--accent); }
+.who-av{ font-size:14px; line-height:1; flex:0 0 auto; }
+/* The name is the column that gives way, so any nickname up to the 10-char input
+   limit fits beside the gear instead of pushing it off the bar. */
+.who-name{ min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.who-gear{ flex:0 0 auto; font-size:12px; opacity:.7; }
+.tb-mh{ display:flex; align-items:center; gap:10px; margin:0; padding:7px 10px 5px;
+  font-family:var(--gothic); font-size:12.5px; color:var(--ink-soft); }
+.tb-mh b{ color:var(--ink); }
+.tb-msep{ height:1px; margin:4px 6px; background:var(--line); }
 .tb-mi{ appearance:none; border:none; background:none; cursor:pointer; text-align:left;
   display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:var(--r-s);
   font-family:var(--gothic); font-weight:700; font-size:14px; color:var(--ink); transition:.16s; }
@@ -181,7 +199,7 @@ button.crumb:hover{ color:var(--accent); background:var(--panel); }
 .mi-label{ flex:1; white-space:nowrap; }
 .mi-state{ font-size:12px; font-weight:700; color:var(--ink-soft); }
 .mi-state.on{ color:var(--accent); }
-.iconbtn:focus-visible, .navpill:focus-visible, .crumb:focus-visible, button:focus-visible, .choice:focus-visible, a:focus-visible{
+.navpill:focus-visible, .tb-who:focus-visible, .crumb:focus-visible, button:focus-visible, .choice:focus-visible, a:focus-visible{
   outline:3px solid var(--accent-soft); outline-offset:2px;
 }
 /* Narrow: keep only "one level up" and "you are here" — the two the reader acts on. */
@@ -190,6 +208,11 @@ button.crumb:hover{ color:var(--accent); background:var(--panel); }
   .crumb-up{ display:inline; }
   .navpill .np-label{ display:none; }
   .navpill{ padding:0 11px; }
+  /* Phone: the bar carries three things that all want room. The gear glyph is the
+     only hint (the pill still opens the settings), so it is what goes. */
+  .tb-who{ max-width:34vw; padding:0 9px; gap:5px; }
+  .who-gear{ display:none; }
+  #topbar{ padding-left:12px; padding-right:12px; gap:8px; }
 }
 
 /* ============ ボタン ============ */
