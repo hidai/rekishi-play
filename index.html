@@ -2,9 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>ひでなが 〜天下人の弟、日本一の補佐役〜</title>
+  <title>歴史の 人に、なりきる。｜ rekishi-play</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="豊臣秀長になりきる歴史アドベンチャー。選択と史実のギャップから「なぜ？」が生まれる、7章立ての教材。">
+  <meta name="description" content="歴史上の人物ひとりの一生を、その人になりきって7章で生きるブラウザ教材（小5〜中1むけ）。秀長・清盛・勝海舟・家康・ダ・ヴィンチ・政子。えらんだあとに「史実では…」がひらいて、「なぜ？」が生まれます。">
+  <!-- 共有カード（X などにリンクを貼ったとき出る1枚）。%SITE_URL% はビルド時に vite.config.ts が
+       焼く。og:image に絶対 URL が要るのはクローラが取りに来るためで、アプリ本体の「外部リソース
+       読込ゼロ・base path 非依存」とは別の話（tests/deploy-contract.test.ts に明記）。 -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="rekishi-play">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="%SITE_URL%">
+  <meta property="og:title" content="歴史の 人に、なりきる。">
+  <meta property="og:description" content="ひとりの一生を7章で生きるブラウザ教材（小5〜中1むけ）。えらぶのはきみ。そのあとで「史実では…」がひらく。">
+  <meta property="og:image" content="%SITE_URL%og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="作品の主人公たちの似顔絵がならんだ表紙">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:,">
 </head>
 <body>

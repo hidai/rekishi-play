@@ -58,6 +58,7 @@
 ## 技術メモ
 
 - **配信の形**: 要件は2つだけ——**配信先の base path に依存しない**（GitHub Pages のサブパス、将来の独自ドメイン直下のどちらでも動く）と、**外部リソース読込ゼロ**（ランタイム外部依存ゼロ）。`tests/deploy-contract.test.ts` がこの2点を検査する。実装は `base: './'` の**チャンク分割ビルド**（`dist/index.html` ＋ `dist/assets/*`）。かつては `vite-plugin-singlefile` で1ファイルに畳んでいたが、カードに実物の写真（`Card.photo`＝PD の複製を data URI で同梱）が入って全作品ぶんを毎回運ぶ形になったため分割へ移した——入口（`src/works/registry.ts`）が既に「一覧は軽量 card・本体は `load()` で遅延」の契約なので、**秀長の写真は秀長を開いたときだけ届く**。ブラウザの `prompt`/`confirm`/`alert` は使わず自前ダイアログ UI（`engine/dialog.svelte.ts`）。
+- **共有カード（OGP）**: X などにリンクを貼ると出る1枚（`index.html` の `og:*` ＋ `public/og.png`）。絵は作品レジストリから組む（主人公全員の似顔絵＋生没年）ので、作品が増えたら `npx vite-node scripts/render-og.ts` で焼き直す——忘れると `tests/og-card.test.ts` の snapshot が赤くなる。`og:image` の絶対 URL だけはビルド時に焼く（`vite.config.ts` の `SITE_URL`。既定は公開先、`SITE_URL=... npm run build` で上書き）。これは**クローラがこちらへ取りに来る**ための宣言で、「外部リソース読込ゼロ」＝実行時にこちらが外へ取りに行かない、とは別の話（`tests/deploy-contract.test.ts` に明記）。
 - **エンジンと作品の分離**: 両者の契約は `Work` 型（`src/engine/types.ts`）。エンジンは作品固有の定数（章数・主人公 ID 等）を持たない。
 - **ビジュアルは全てインライン SVG**＋絵文字＋CSS アニメーション。似顔絵は `<defs>`・`id` を含まない純粋 SVG（複数の顔が同一 DOM に同居するため）。地図は緯度経度の地名辞書（gaz）を実行時投影（`engine/map/project.ts`）で SVG 座標化する。
 - **地図データ出典**: [dataofjapan/land](https://github.com/dataofjapan/land)（国土数値情報 由来の都道府県境界 GeoJSON）を簡略化して inline。海外海岸線は Natural Earth 系データから同様に生成。
@@ -80,6 +81,7 @@ npm run verify    # build → 全テスト
 npx vite-node scripts/render-faces.ts <出力ディレクトリ>        # 全人物の似顔絵コンタクトシート
 npx vite-node scripts/render-scene.ts <出力.svg> [章] [シーンid] # シーンのメインビジュアル
 npx vite-node scripts/visual-coverage.ts [作品slug]             # 全シーンの主ビジュアル在庫レポート
+npx vite-node scripts/render-og.ts                             # 共有カード public/og.png を焼き直す
 ```
 
 ## 作品を追加する

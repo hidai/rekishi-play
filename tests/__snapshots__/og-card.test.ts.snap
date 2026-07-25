@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`共有カード（OGP） > 作品の顔ぶれ・レイアウトが変わったら焼き直す（snapshot が動いたら scripts/render-og.ts） 1`] = `
+{
+  "sha256": "84cb2b78a69726fb",
+  "works": [
+    "秀長 1540ごろ〜1591",
+    "清盛 1118ごろ〜1181",
+    "勝海舟 1823〜1899",
+    "徳川家康 1543〜1616",
+    "レオナルド／ダ・ヴィンチ 1452〜1519",
+    "政子 1157ごろ〜1225",
+  ],
+}
+`;

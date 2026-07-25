@@ -11,7 +11,7 @@
 
 ## タスク（優先順）
 
-現在地（2026-07-25）: **shibusawa パイロット章五 完成（10シーン中4シーンに主ビジュアル＝ch5 の closeup 4枚）→ 次は章一**。**新しい観察メモ1件（X 共有のリンクカード）が来ている＝次サイクルの先頭**。以下は前提: **既存6作すべて全7章 完成・出荷済み**（hidenaga/kiyomori/katsu/ieyasu/davinci/masako）。主ビジュアル在庫 100%・顔エンジン要件①②完了・地図の面は令制国・gaz 実座標化済み。**第7作・渋沢栄一（shibusawa）は骨組みまで完了**（engine 拡張ゼロ・SKELETON_WORKS 登録）。→ 前の観察メモ5件は全件決着（①西暦・②顔・③トップバー・⑤アカウント＝実装済み／④ひらがなタイトル＝回答済み）。**作品間の連携は 1・2・3 完了＝⛔ の S2b 以外なし**（清盛→政子は人物カード上限）。**観察メモの新規更新は毎サイクル確認を継続**（人間は古いメモを新メモに置換する）。
+現在地（2026-07-25）: **shibusawa パイロット章五 完成（10シーン中4シーンに主ビジュアル＝ch5 の closeup 4枚）→ 次は章一**。**観察メモは全件決着済み＝次サイクルは shibusawa 章一「焼く 夜」**（着手前に観察メモの新規更新を確認する）。以下は前提: **既存6作すべて全7章 完成・出荷済み**（hidenaga/kiyomori/katsu/ieyasu/davinci/masako）。主ビジュアル在庫 100%・顔エンジン要件①②完了・地図の面は令制国・gaz 実座標化済み。**第7作・渋沢栄一（shibusawa）は骨組みまで完了**（engine 拡張ゼロ・SKELETON_WORKS 登録）。→ 前の観察メモ5件は全件決着（①西暦・②顔・③トップバー・⑤アカウント＝実装済み／④ひらがなタイトル＝回答済み）。**作品間の連携は 1・2・3 完了＝⛔ の S2b 以外なし**（清盛→政子は人物カード上限）。**観察メモの新規更新は毎サイクル確認を継続**（人間は古いメモを新メモに置換する）。
 
 **★ieyasu の「熱」＝観察待ち宿題**: 逐語は docs/BACKLOG-done.md「ieyasu の熱」。要点＝ieyasu は「頭で驚く」・hidenaga は「心で泣く」＝終章で読者が選択参加できるかの差。家族の観察が来たら精読。
 
@@ -19,12 +19,9 @@
 
 **★davinci 執筆の確定 register（全7章 完成・出荷済み）**: 逐語は docs/BACKLOG-done.md「davinci 執筆の確定 register」＋各 commit。要点＝岐路は両側に魅力＋代償・二段確度◎○△/☆・むすび署名句は隣接非重複・終章は同じ答えを複数装置に逐語多重化しない・新章コミット時は累積離脱通し読み・敵役/庇護者に声を・対面 closeup POV は相手の顔のみ。
 
-### 進行中（★観察メモは最優先。先頭＝いま来ている1件）
+### 進行中（★観察メモは最優先。いまは在庫ゼロ＝次は shibusawa 章一）
 
-- [ ] **★観察メモ（新規）「X(Twitter)などでの共有用に、リンクカードが出るようにして」＝次サイクルの先頭タスク** — OGP/Twitter Card の meta を `index.html` に入れる。制約2つと衝突しうるので下ごしらえが要る: ①**base path 非依存**（`og:image` は絶対 URL が要る＝配信 URL をどこから取るか。ビルド時の env か、GitHub Pages の固定 URL を deploy workflow で焼くか）②**外部リソース読込ゼロ**（画像はリポジトリ同梱の静的ファイルにする＝`dist/` に 1 枚出す必要あり。`tests/deploy-contract.test.ts` が守る契約に触れるので、テスト側の意図（＝実行時に外部を取りに行かない）と OGP（＝クローラが取りに来る）の区別を明文化する）。作品ごとのカードにするか作品集1枚で始めるかは AI 判断でよい（まず1枚で十分）。
-- [x] **★観察メモ（2026-07-25 16:23）「今どのアカウントで遊んでいるのかがわかりにくい／切替方法もわかりにくい」＝実装済み**（bdcec52・トップバーの ⚙ を名前つきピル `🐢 ゆい ⚙` に格上げ＋ポップオーバー先頭に切替・`accountAvatar` 共有・`tests/account-identity.test.ts`）。逐語・確定判断は docs/BACKLOG-done.md。
-- [x] **観察メモ（前）①西暦 ／ ②女性の顔（第1スライス）／ ③トップバー＝パンくず ／ ⑤作品横断の1アカウント — すべて実装済み**。逐語・実測・★学びは docs/BACKLOG-done.md 2026-07-25 の各エントリ ＋ docs/design/face-engine.md §8 ＋ 各 commit。**残は下の ②-2 と ④ だけ**。
-- [x] **②-2 顔の既定値バイアスを7作横断で配り直した**（1cde376・分布ゲート `tests/face-variety.test.ts` 新設。逐語は design/face-engine.md §8-4）。
+- [x] **観察メモは全件決着**（①西暦／②顔＋②-2 既定値の配り直し 1cde376／③トップバー＝パンくず／⑤作品横断の1アカウント／⑥アカウントの現在地 bdcec52／⑦**X 共有のリンクカード＝OGP**〔`public/og.png`・`index.html` の `og:*`・`scripts/lib/og-card.ts`＋`render-og.ts`・絶対 URL は `vite.config.ts` の `SITE_URL`・`tests/og-card.test.ts`〕）。逐語は docs/BACKLOG-done.md ＋ design/face-engine.md §8 ＋ 各 commit。**残は下の ④ だけ**。
 - [ ] **④ 左上のタイトルがひらがな（意図的か）** — **意図的**（topbarName は ruby を置けない小さな面なので全作ひらがな。davinci のみカタカナ）。ただし `katsu` の「かつ」は据わりが悪い（「かいしゅう」等）。**回答は REVIEW ④ に載せた**＝人間が「変えて」と書いたら着手。
 - [ ] **★第7作・渋沢栄一（shibusawa）＝パイロット章五 完了。次スライス＝章一「焼く 夜」** — **章五「舟の うえ」（5-a〜5-d・closeup 4枚）が `/eval-work` 2ラウンドを通過して commit 済み＝register 確定**。確定した register は下の「shibusawa 執筆の確定 register」。以下は骨組みフェーズの記録: リサーチ＋企画＋**骨組み `src/works/shibusawa/` 一式 完了**（人物11人〔上限16に余裕・私生活側は役割語〕・**算盤 mon**〔渋沢家紋は要出典確認ゆえ davinci `vinci` 型の主題エンブレム＝藍リング回避。engine `monSoroban`〕・faces §4B 典拠3層＋**cross-work 距離ループ9件解消**〔慶喜は katsu と同一顔〕・全7章の器＋stub scene・territory 空・SKELETON_WORKS 登録）。**engine 拡張ゼロ**（近代顔語彙は katsu 既存・地図 MapPoint/geoWorld）。全998テスト green・faces/mon の visual self-check 済み。**次スライス＝パイロット章五「舟のうえ」**（§8＝B頂点＋史料批判最鋭＋岩崎に声。`/eval-work` 離脱自由ペルソナで register 確定→章一〜終章を量産。執筆順 五→一→二→三→四→六→終。新章コミット時は累積離脱通し読み1本）。逐語は JOURNAL 2026-07-25（11）＋各 commit。
 

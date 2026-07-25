@@ -12,9 +12,21 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 //
 // `base: './'` keeps every emitted asset a RELATIVE path, so the same dist works on a GitHub Pages
 // sub-path and at a domain root alike (the contract's first half).
+// 共有カード（OGP）の絶対 URL。og:image はクローラが取りに来るので相対では解決できず、ここだけ
+// 配信先を知る必要がある——アプリ本体は相対のままで、base path 非依存の契約は動かない。
+// 既定は公開先（README「デプロイ」）。別の場所へ配るビルドは SITE_URL=... で上書きする。
+// `||` は空文字も既定に落とす（SITE_URL= を渡すと og:image が相対になり、共有カードが死ぬ）。
+const SITE_URL = (process.env.SITE_URL || 'https://hidai.github.io/rekishi-play/').replace(/\/*$/, '/');
+
 export default defineConfig({
   base: './',
-  plugins: [svelte()],
+  plugins: [
+    svelte(),
+    {
+      name: 'site-url',
+      transformIndexHtml: (html: string) => html.replaceAll('%SITE_URL%', SITE_URL),
+    },
+  ],
   build: {
     target: 'esnext',
     cssCodeSplit: false,

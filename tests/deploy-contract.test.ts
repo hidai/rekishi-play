@@ -32,3 +32,26 @@ describe.skipIf(!hasDist)('配信の契約（base path 非依存・外部依存�
     expect(head).toContain('<meta charset="utf-8">');
   });
 });
+
+// 「外部リソース読込ゼロ」は**実行時**の契約——アプリが動くために外を取りに行かない、の意味。
+// 共有カード（OGP）は逆向きで、X などのクローラが**こちらへ取りに来る**ための宣言なので、
+// og:image に絶対 URL が入るのは契約違反ではない。ただし指す先はリポジトリ同梱の静的ファイル
+// （dist/og.png）に限る＝画像ホスティング等の外部依存は持ち込まない。絶対 URL は
+// vite.config.ts の SITE_URL がビルド時に焼く（既定は公開先の GitHub Pages）。
+describe.skipIf(!hasDist)('共有カード（OGP）はクローラ向け＝実行時の外部読込ではない', () => {
+  const html = hasDist ? readFileSync(distFile, 'utf8') : '';
+  const meta = (prop: string) =>
+    new RegExp(`<meta[^>]*(?:property|name)="${prop}"[^>]*content="([^"]*)"`, 'i').exec(html)?.[1] ?? '';
+
+  it('og:image が絶対 URL で、同梱の静的ファイルを指している', () => {
+    const img = meta('og:image');
+    expect(img).toMatch(/^https?:\/\//);
+    expect(img.endsWith('/og.png')).toBe(true);
+    expect(readdirSync(distDir)).toContain('og.png');
+  });
+
+  it('プレースホルダが焼き残っていない', () => {
+    expect(html).not.toContain('%SITE_URL%');
+    expect(meta('og:url')).toMatch(/^https?:\/\/.+\/$/);
+  });
+});
