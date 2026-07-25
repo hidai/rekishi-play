@@ -47,4 +47,16 @@ export const GAZ: Record<string, GazPoint> = {
 };
 
 // Per-scene maps are authored together with each chapter (see header).
-export const SCENE_MAPS: Record<string, SceneMapDef> = {};
+export const SCENE_MAPS: Record<string, SceneMapDef> = {
+  // 1-b 計画の 地図＝章一 唯一の 地図（本作で 地図が 主装置に 立つのは ch3/ch4 だけ・design §3）。
+  // 開幕アンカー（WRITING 地図書法1）: 読者が 立つのは「きみの 村」で、まだ 見ぬ 標的が 南に ある。
+  // 線は 引かない——鎌倉街道を 通る 道筋は 本人の 回想が 唯一の 出どころ（△）で、ルート線は
+  // 係争を 解像する 断定に なる（地図書法2）。高崎城は 置けない: 血洗島から 約27km＝cur リングの
+  // 遮蔽圏内（地図書法4）。城は 本文が 語り、地図は「村と 港」の 2点だけを 引き受ける。
+  '1-b': {
+    markers: [
+      { at: 'chiharajima', cur: 1, kind: 'village', label: '血洗島', note: 'きみの 村' },
+      { at: 'yokohama', kind: 'town', enemy: 1, label: '横浜', note: '焼く つもりの 港', lpos: 'left' },
+    ],
+  },
+};
