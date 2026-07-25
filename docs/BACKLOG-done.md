@@ -4,6 +4,9 @@
 
 ## DONE
 
+- 2026-07-25 **★作品間の連携 3＝6作の通し達成（「だれで あそぶ？」の1行サマリ → 作品ごとの達成表）** — commit **2243fdc**。`accountSummary(a)` を **`accountStandings(a, cards: WorkCard[])`** に格上げ（`src/engine/save.svelte.ts`・純関数）＝作品ごとの `{done/total 章, cards 枚, played, complete}` 行＋合計（`chapters/totalChapters`・`cards`・`complete` 作数）。UI は `AccountsScreen` に3列グリッド（名前｜章・枚｜✓）＋罫線つき「ぜんぶで 10/42章 ・ 15枚」行。`App.svelte` が `workCards` を渡す（EraBand と同じ **card 層だけで完結**＝`load()` も新しい状態も増やさない）。実ブラウザ（playwright-core＋system chrome）で 390px / 900px 目視。check 0・**1074 テスト緑**（+5）。
+  - **確定した設計判断**: ①**達成の分母は「登録されている作品」**＝アカウント枠に残った登録外作品のセーブは合計に混ぜない（分母と食い違わせないため）。②**章数は総章数でクランプ**（章が減った作品の古いセーブで「7/5章」を出さない）・`totalChapters === 0`（骨組み作品）にコンプリート印を付けない——どちらも**ガードを直接踏むテストを追加**（code-reviewer sonnet の唯一の指摘＝ガードは書いたがテストが境界を踏んでいなかった）。③**未プレイ行は「まだ」でなく「まだ 会っていない」**＝VISION 監査が「未達リストの宿題感」を 2/5（＝3点未満）と採点したのを、行を消さずに**欠落の語彙を人物との出会いの語彙へ置き換えて**解消（人間の起票は「6作の通し達成」＝全作品を並べること自体が要件）。④**名前列だけが縮む**（`minmax(0, max-content)`＋ellipsis）＝長い作品名（レオナルド・ダ・ヴィンチ）が 390px で削除✕に食い込む事故を構造で止める。
+
 - 2026-07-18 **★つながり図鑑の「序盤コーチ」＝ダビンチ §11 エンジン先行②の最後の一片** — commit **5b5a2df**。②-b が意図的に切り出していた一片＝これまで `WorkGraph.coachUntilChapter` は誰も呼ばない死に欄だった。実装＝持ち上げた星に「いま重ねれば灯る相手」（`coachTargets`）を脈動リング `.star-pulse` で指す（davinci §5-3・序盤だけ）。**②装置3ピース（観察ビュー a5b1903・つながり図鑑 b60d217・序盤コーチ 本コミット）が全揃い**。出荷 graph データはゼロ＝画面は不変。check 0・704テスト緑（+6）・code-reviewer（sonnet）欠陥ゼロ。
   - **確定した設計判断（davinci 執筆・将来の装置に効く）**:
     - ①**「窓を破れる一行」を UI から締め出す＝章判定をまるごとエンジン純関数へ**。②-a が `coachTargets` に窓を引数で持たせたのに、UI が「今どの章か」を `session.ch`（ホーム/再読で古い）で渡すと、窓の外でもコーチが答えを配り続ける事故が一行で復活する。→ (1) 章導出を `readerChapter(save.active?.scene)` 純関数に＝再開地点 `scene.ch`（章 done で更新停止・work-clear で null＝story.ts）から引く。**ch5 到達後に ch1 を読み返してもコーチしない**（`session.ch`=1 なら誤コーチ）。(2) null（読了・ホーム・未開始）も窓外扱いを `coachTargets` 側で吸収（`chapter == null || chapter > coachUntilChapter → []`）＝呼び手が破れない。UI は「持っているとき算出」の一行だけ。
