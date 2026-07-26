@@ -96,4 +96,16 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
       { at: 'marseille', kind: 'town', label: 'マルセイユ', note: '船を おりた 港', lpos: 'right' },
     ],
   },
+
+  // 4-a 静岡＝章四の 開幕アンカー（WRITING 地図書法1）。章三の むすびで きみが 立った 静岡から、
+  // 呼び出しの 紙が 来た 東京へ——読者が 立って いるのは まだ 静岡なので、cur は 静岡。線は
+  // 引かない（船で 行ったか 陸を 行ったかは 踏んで いない＝地図書法2）。2点の 隔たりは 約150km＝
+  // cur リングの 遮蔽圏の 外（地図書法4）。会社の 点の 散布は この 章では 置かない——1873年の
+  // 時点で 立って いるのは 兜町の 一つだけで、散布は 終章の 総覧の 仕事（design §2）。
+  '4-a': {
+    markers: [
+      { at: 'shizuoka', cur: 1, kind: 'town', label: '静岡', note: 'いま ここ' },
+      { at: 'tokyo', kind: 'town', label: '東京', note: '呼ばれた 先', lpos: 'right' },
+    ],
+  },
 };

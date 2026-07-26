@@ -15,6 +15,8 @@ import type { Figure } from '../../engine/types';
 const AI = '#31608c'; // 血洗島・渋沢の 家（relations.ts と同じ literal）
 const RONIN = '#6b6f76'; // 攘夷の 浪士＝どこにも 属さない 灰
 const SEAL = '#b23a2e'; // 徳川（一橋も 幕府も 同じ 家）
+const GOLD = '#a67c1a'; // 明治政府（relations.ts と同じ literal）
+const MIDORI = '#4a7a5a'; // 実業・民の 側
 
 export const FIGURES: Record<string, Figure> = {
   seat: {
@@ -39,6 +41,39 @@ export const FIGURES: Record<string, Figure> = {
       { seat: 'roshi', fromCh: 2, faction: 'ronin' },
       { seat: 'hito', fromCh: 2, faction: 'seal' },
       { seat: 'baku', fromCh: 2, faction: 'seal', pid: 'p-eiichi@young', label: '栄一' },
+    ],
+  },
+
+  // ★P 章四の 装置＝seat の 対句（別キー。figures.ts 冒頭の 申し送りどおり 図は 増やさず 起こす）。
+  // 章二の caption は「上の 人が うごくと、下の 座も うごく」——章四は その 逆を 一枚で 言う: 上座
+  // （政府）は 動かず、動いたのは きみの ほう。だから 席は 章二と 同じ 高さの 一列で 右へ 進み、
+  // 五つめだけが 列を 外れて 下がる（＝官を すてる。章題そのもの）。
+  // 一列は 幕臣（章二の 最後の 座）から 継ぐ——四つ 全部を 並べ直すと 8席に なり、この 図の 主張
+  // 「いま 下りた」より「これまで 動いた」が 前に 出る。
+  seatDown: {
+    kind: 'assembly',
+    title: 'きみの 座（つづき）',
+    // 章二の caption「上の 人が うごくと、下の 座も うごく」への 返し。数は 言わない——この 図は
+    // 幕臣から 継ぐので「五つめ」と 書くと 読者が 数える 席（4つ）と 合わない。
+    caption: '今度 うごいたのは、上の 人では なく きみ',
+    vb: [1000, 300],
+    factions: [
+      { key: 'seal', label: '徳川の 家', color: SEAL },
+      { key: 'gold', label: '明治の 政府', color: GOLD },
+      { key: 'min', label: '民（商いの 側）', color: MIDORI },
+    ],
+    dais: { x: 500, y: 46, label: '政府', faction: 'gold' },
+    seats: [
+      { id: 'baku', x: 150, y: 150, role: '幕臣' },
+      { id: 'shizu', x: 400, y: 150, role: '静岡の 藩' },
+      { id: 'kan', x: 650, y: 150, role: '国の 役人' },
+      { id: 'min', x: 820, y: 245, role: '一人の 商人' },
+    ],
+    fills: [
+      { seat: 'baku', fromCh: 4, faction: 'seal' },
+      { seat: 'shizu', fromCh: 4, faction: 'seal' },
+      { seat: 'kan', fromCh: 4, faction: 'gold' },
+      { seat: 'min', fromCh: 4, faction: 'min', pid: 'p-eiichi@prime', label: '栄一' },
     ],
   },
 };
