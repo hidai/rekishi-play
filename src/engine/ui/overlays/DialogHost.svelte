@@ -45,6 +45,9 @@
   {#if dialog.current}
     <div class="dialog">
       <div class="dlg-title">{dialog.current.title}</div>
+      <!-- desc はエンジンの固定文言（ruby/<br> を置ける）。subject は読者が打った文字列＝
+           テキスト補間でしか描かない（信頼境界: 作品データだけが信頼済み HTML）。 -->
+      {#if dialog.current.subject}<p class="dlg-subject">「{dialog.current.subject}」</p>{/if}
       {#if dialog.current.desc}<p class="dlg-desc">{@html dialog.current.desc}</p>{/if}
       {#if dialog.current.input}
         <input

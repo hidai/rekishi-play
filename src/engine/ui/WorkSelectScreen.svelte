@@ -73,8 +73,11 @@
       </div>
     {/if}
     <div class="who">
-      <span>いま あそんでいるのは <b>{account.name}</b></span>
-      <button class="linklike" onclick={onSwitchAccount}>ほかの 子に かわる</button>
+      <span
+        >{#if account.name}いま あそんでいるのは <b>{account.name}</b>{:else}なまえを つけなくても
+          あそべるよ{/if}</span>
+      <button class="linklike" onclick={onSwitchAccount}
+        >{account.name ? 'ほかの 子に かわる' : 'なまえ・ほかの 子'}</button>
     </div>
   </div>
 </section>

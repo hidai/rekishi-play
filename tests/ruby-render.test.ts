@@ -123,7 +123,7 @@ function svelteFiles(dir: string): string[] {
 const EXEMPT: Record<string, string> = {
   // Reader-typed save-slot names. MUST stay text-interpolated — the trust boundary
   // covers work data only, never reader input.
-  'AccountsScreen.svelte:{a.name}': 'reader-typed account name',
+  'AccountsScreen.svelte:{accountLabel(a)}': 'reader-typed account name (or the なまえ なし fallback)',
   'WorkSelectScreen.svelte:{account.name}': 'reader-typed account name',
   // Engine-owned strings (not work data): dialog copy and the confidence-mark legend.
   'DialogHost.svelte:{dialog.current.title}': 'engine dialog copy',

@@ -11,7 +11,7 @@
 
   const lead = $derived(
     save.active
-      ? `${accounts.active?.name ?? ''} の 冒険 — 手がかり ${save.active.clues.length}/${total}、カード ${save.active.cards.length}/${totalCards}`
+      ? `${accounts.active?.name || 'きみ'} の 冒険 — 手がかり ${save.active.clues.length}/${total}、カード ${save.active.cards.length}/${totalCards}`
       : '',
   );
 

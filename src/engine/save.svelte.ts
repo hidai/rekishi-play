@@ -89,11 +89,30 @@ export function emptyWorkSave(): WorkSave {
   };
 }
 
+/** 名前の上限（入力欄の maxlength と同じ）。 */
+export const NAME_MAX = 10;
+
+/** 名前をつけていない子の見え方。 */
+export const NO_NAME = 'なまえ なし';
+
+/**
+ * 入力された名前を保存形へ。空文字＝名前なしで、それが最初の既定
+ * （名前は「もう一人あそびたくなった」ときに初めて要る＝観察メモ 2026-07-26）。
+ */
+export function normalizeName(name?: string | null): string {
+  return (name ?? '').trim().slice(0, NAME_MAX);
+}
+
+/** 画面に出す呼び名。名前なしでも空欄にはしない（押せば つけられる、の入口）。 */
+export function accountLabel(a: Account | null | undefined): string {
+  return normalizeName(a?.name) || NO_NAME;
+}
+
 /** アカウント生成部（純粋。DB への push はストア側）。 */
 export function makeAccount(db: AccountDB, name?: string): Account {
   return {
     id: nextUid(db),
-    name: name || 'なまえ',
+    name: normalizeName(name),
     furigana: true,
     theme: null,
     works: {},
@@ -224,6 +243,14 @@ export class AccountStore {
     this.active = this.db.accounts[this.db.accounts.length - 1];
     this.persist();
     return this.active;
+  }
+
+  /** 名前をつける・かえる（空文字にすると名前なしへ戻る）。 */
+  rename(id: string, name: string): void {
+    const a = this.db.accounts.find((x) => x.id === id);
+    if (!a) return;
+    a.name = normalizeName(name);
+    this.persist();
   }
 
   setActive(id: string): void {

@@ -4,6 +4,10 @@ import {
   parseDB,
   serializeDB,
   makeAccount,
+  normalizeName,
+  accountLabel,
+  NO_NAME,
+  NAME_MAX,
   emptyWorkSave,
   accountStandings,
   doneChapters,
@@ -42,6 +46,29 @@ describe('makeAccount', () => {
     expect(a.name).toBe('ぼく');
     expect(a.theme).toBe(null);
     expect(a.works).toEqual({});
+  });
+});
+
+// 名前は「もう一人あそびたくなった」ときに初めて要る（観察メモ 2026-07-26）＝
+// 名前なしで始められること自体が要件で、空文字はその状態を表す正規の値。
+describe('名前は後づけ', () => {
+  it('名前を渡さずに作れる（＝最初の画面が入力フォームにならない）', () => {
+    const a = makeAccount({ accounts: [], activeId: null });
+    expect(a.name).toBe('');
+    expect(a.id).toBe('p1');
+  });
+
+  it('前後の空白は落とし、長すぎる名前は切る', () => {
+    expect(normalizeName('  たろう  ')).toBe('たろう');
+    expect(normalizeName('あ'.repeat(30))).toHaveLength(NAME_MAX);
+    expect(normalizeName(undefined)).toBe('');
+    expect(normalizeName('   ')).toBe('');
+  });
+
+  it('呼び名は空欄にならない（名前なしでも画面に出る言葉がある）', () => {
+    expect(accountLabel(makeAccount({ accounts: [], activeId: null }))).toBe(NO_NAME);
+    expect(accountLabel(null)).toBe(NO_NAME);
+    expect(accountLabel(makeAccount({ accounts: [], activeId: null }, 'けん'))).toBe('けん');
   });
 });
 

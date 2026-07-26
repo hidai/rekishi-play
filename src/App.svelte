@@ -2,8 +2,9 @@
   // App shell: owns who is playing (the account), which Work is active, and the
   // global audio unlock.
   //
-  // The account sits ABOVE the works: the reader picks a name once and it carries
-  // into every work, so the boot order is 「だれで あそぶ？」→ 作品えらび → 作品.
+  // The account sits ABOVE the works: one slot per child, carried into every work.
+  // Boot goes straight to 作品えらび → 作品 (a fresh reader gets an unnamed slot below);
+  // 「だれで あそぶ？」 only appears when a second child is added or one is switched to.
   // With a single work registered the middle step is skipped. Switching works
   // re-mounts WorkRoot inside {#key selected.id} so every per-work store is
   // re-created against the same AccountStore.
@@ -25,6 +26,11 @@
   let selected = $state<Work | null>(null);
   /** Re-opening the account screen while an account is already active. */
   let switching = $state(false);
+
+  // A first-time reader is not asked for a name: an unnamed account is created here so
+  // the app opens on the works, not on a form (observation 2026-07-26). The name is only
+  // needed once a second child wants a slot, and can be set any time from the ⚙ menu.
+  if (!accounts.active && !accounts.db.accounts.length) accounts.newAccount();
 
   applyAccountPrefs(accounts.active);
 

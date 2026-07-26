@@ -3,7 +3,13 @@
 // Replaces the legacy showDialog/showConfirm with a Promise API (same behavior).
 export interface DialogOpts {
   title: string;
+  /**
+   * エンジンの固定文言。`{@html}` で描く（`<br />` 等を置ける）＝**可変文字列を混ぜない**。
+   * 読者が打った文字列（セーブ枠の名前）は subject に渡す（`tests/dialog-trust.test.ts` が強制）。
+   */
   desc?: string;
+  /** 読者が打った文字列（名前など）。必ずテキストとして描く＝信頼境界のこちら側。 */
+  subject?: string;
   input?: boolean;
   placeholder?: string;
   maxlength?: number;
@@ -32,8 +38,8 @@ export class DialogService {
   }
 
   /** 確認（旧 showConfirm）。OK=true / キャンセル=false。 */
-  confirm(title: string, desc?: string, ok?: string): Promise<boolean> {
-    return this.open({ title, desc, ok: ok || 'OK', cancel: 'やめる', input: false }).then(
+  confirm(opts: Omit<DialogOpts, 'input' | 'placeholder' | 'maxlength' | 'value'>): Promise<boolean> {
+    return this.open({ ...opts, ok: opts.ok || 'OK', cancel: 'やめる', input: false }).then(
       (v) => v !== null,
     );
   }

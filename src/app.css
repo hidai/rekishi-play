@@ -310,8 +310,11 @@ button.crumb:hover{ color:var(--accent); background:var(--panel); }
 .profile-meta{ flex:1; min-width:0; }
 .profile-name{ font-weight:700; font-size:17px; }
 .profile-sub{ font-size:12.5px; color:var(--ink-faint); }
-.profile-del{ color:var(--ink-faint); border:none; background:none; cursor:pointer; padding:8px; font-size:13px; }
-.profile-del:hover{ color:var(--seal); }
+.profile-mini{ color:var(--ink-faint); border:none; background:none; cursor:pointer; padding:8px; font-size:13px; }
+.profile-mini:hover{ color:var(--accent); }
+.profile-mini.danger:hover{ color:var(--seal); }
+/* 名前なしの子＝呼び名の欄が「まだ空いている」ことが見てわかる（押せば つけられる）。 */
+.profile-name.noname{ font-weight:600; color:var(--ink-faint); }
 
 /* ============ 章選択（すごろく／地図）============ */
 .chapter-track{ display:flex; flex-direction:column; gap:0; margin:12px 0 40px; position:relative; }
@@ -1108,6 +1111,9 @@ button.crumb:hover{ color:var(--accent); background:var(--panel); }
 .dialog-overlay.show .dialog{ transform:none; }
 .dlg-title{ font-family:var(--serif); font-weight:700; font-size:19px; letter-spacing:.03em; }
 .dlg-desc{ color:var(--ink-soft); font-size:14px; margin:8px 0 0; line-height:1.75; }
+/* だれの記録の話かを、本文より前に・強く出す（読者が打った文字列＝テキスト描画）。 */
+.dlg-subject{ color:var(--ink); font-weight:700; font-size:15px; margin:8px 0 0;
+  overflow-wrap:anywhere; }
 .dlg-input{ margin-top:16px; }
 .dlg-actions{ margin-top:20px; display:flex; gap:10px; justify-content:flex-end; }
 .dlg-actions .btn{ padding:11px 20px; font-size:15px; }

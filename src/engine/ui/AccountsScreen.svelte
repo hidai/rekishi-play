@@ -3,7 +3,9 @@
   // 作品ごとの store はまだ無いので、useStores() ではなく props で受け取る。
   import {
     accountAvatar,
+    accountLabel,
     accountStandings,
+    NAME_MAX,
     type Account,
     type AccountStore,
     type AccountStandings,
@@ -39,34 +41,71 @@
     onPicked();
   }
   async function del(a: Account) {
-    const ok = await dialog.confirm(
-      '記録を 消す？',
-      `「${a.name}」の 進みぐあいと カードが、ぜんぶの 作品ぶん 消えます。もとに もどせません。`,
-      'けす',
-    );
+    const ok = await dialog.confirm({
+      title: '記録を 消す？',
+      subject: accountLabel(a),
+      desc: 'この 記録の 進みぐあいと カードが、ぜんぶの 作品ぶん 消えます。もとに もどせません。',
+      ok: 'けす',
+    });
     if (ok) accounts.deleteAccount(a.id);
   }
+  /** 名前は後づけ・付け替え自由。空のまま決めれば「なまえ なし」に戻る。 */
+  async function rename(a: Account) {
+    const name = await dialog.prompt({
+      title: a.name ? 'なまえを かえる' : 'なまえを つける',
+      desc: 'ニックネームでOK。あとから いつでも かえられるよ。',
+      placeholder: '例：たろう',
+      value: a.name,
+      maxlength: NAME_MAX,
+      ok: 'きめる',
+    });
+    if (name !== null) accounts.rename(a.id, name);
+  }
   async function add() {
+    // 二人目がほしくなった瞬間＝名前が要りようになる唯一の場面。それでも空で通れる。
     const name = await dialog.prompt({
       title: 'あたらしく はじめる',
-      desc: '名前を いれてね（ニックネームでOK）。',
+      desc: '名前を いれてね（ニックネームでOK）。<br />いれなくても はじめられるよ。',
       placeholder: '例：たろう',
-      maxlength: 10,
+      maxlength: NAME_MAX,
       ok: 'はじめる',
     });
     if (name === null) return;
-    accounts.newAccount((name || 'なまえ').slice(0, 10));
+    accounts.newAccount(name);
     applyAccountPrefs(accounts.active);
     onPicked();
   }
 </script>
+
+<!-- The card itself is the pick button, so these ride inside it and swallow the click. -->
+{#snippet mini(icon: string, label: string, act: () => void, danger?: boolean)}
+  <span
+    class="profile-mini"
+    class:danger
+    title={label}
+    aria-label={label}
+    role="button"
+    tabindex="0"
+    onclick={(e) => {
+      e.stopPropagation();
+      act();
+    }}
+    onkeydown={(e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.stopPropagation();
+        act();
+      }
+    }}>{icon}</span>
+{/snippet}
 
 <section class="screen active" id="accounts">
   <div class="wrap">
     <div class="screen-head">
       <h2 class="section-title">だれで あそぶ？</h2>
       <p class="section-lead">
-        名前を えらぶと、どの 作品でも この 名前で つづきから あそべるよ。<br />
+        ひとり ひとつ、記録の 場所。えらぶと どの 作品でも つづきから あそべるよ。<br />
+        名前は ✎ で いつでも つけられる（なくても あそべる）。<br />
         下の ならびは 作品ごとの 進みぐあい。ぜんぶの 章を クリアすると ✓ が つくよ。
       </p>
     </div>
@@ -76,7 +115,7 @@
         <button class="profile-card" onclick={() => pick(a)}>
           <span class="profile-avatar">{accountAvatar(a.id)}</span>
           <span class="profile-meta">
-            <span class="profile-name">{a.name}</span>
+            <span class="profile-name" class:noname={!a.name}>{accountLabel(a)}</span>
             <span class="profile-sub">{sub(st)}</span>
             <span class="ach">
               {#each st.rows as r (r.id)}
@@ -96,22 +135,8 @@
               </span>
             </span>
           </span>
-          <span
-            class="profile-del"
-            title="消す"
-            role="button"
-            tabindex="0"
-            onclick={(e) => {
-              e.stopPropagation();
-              del(a);
-            }}
-            onkeydown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                e.stopPropagation();
-                del(a);
-              }
-            }}>✕</span>
+          {@render mini('✎', a.name ? 'なまえを かえる' : 'なまえを つける', () => rename(a))}
+          {@render mini('✕', '消す', () => del(a), true)}
         </button>
       {/each}
       {#if !accounts.db.accounts.length}
