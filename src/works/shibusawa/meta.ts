@@ -62,7 +62,7 @@ export const CHAPTER_POINTS: Record<string, string> = {
 export const CHAPTER_CAPTIONS: Record<string, string> = {
   1: '<ruby>血洗島<rt>ちあらいじま</rt></ruby>。<ruby>藍<rt>あい</rt></ruby>の 家の 子が、横浜を 焼こうと している。',
   2: '<ruby>京<rt>きょう</rt></ruby>。<ruby>攘夷<rt>じょうい</rt></ruby>の 志士が、一橋の <ruby>殿<rt>との</rt></ruby>に つかえる ことに なる。',
-  3: 'パリ。外国を 焼こうと した 男が、外国の しくみを 学ぶ。',
+  3: 'パリ。<ruby>銀行<rt>ぎんこう</rt></ruby>と <ruby>鉄道<rt>てつどう</rt></ruby>を 見て いる あいだに、帰る 国が 消える。',
   4: '<ruby>東京<rt>とうきょう</rt></ruby>。<ruby>役人<rt>やくにん</rt></ruby>の 椅子を、自分で おりる。',
   5: '<ruby>隅田川<rt>すみだがわ</rt></ruby>の 舟の 上。<ruby>独占<rt>どくせん</rt></ruby>か、みんなでか。',
   6: '東京。<ruby>負<rt>ま</rt></ruby>けた あるじの ために、紙を 積む。',
