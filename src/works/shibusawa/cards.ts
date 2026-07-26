@@ -21,7 +21,7 @@ export const CARDS: Record<string, Card> = {
   'p-kisaku': { type: 'person', ch: 2, tone: 'ai', name: '渋沢喜作', read: 'しぶさわ きさく',
     text: 'きみの 二つ 年上の <ruby>従兄<rt>いとこ</rt></ruby>。<ruby>刀<rt>かたな</rt></ruby>を いっしょに 買い集め、村を 出て <ruby>京<rt>きょう</rt></ruby>へ 上り、<ruby>一橋家<rt>ひとつばしけ</rt></ruby>にも いっしょに 仕えた。——だが <ruby>幕府<rt>ばくふ</rt></ruby>が たおれた とき、この人は 最後まで 戦う 側に つく。<ruby>上野<rt>うえの</rt></ruby>に あつまった <ruby>彰義隊<rt>しょうぎたい</rt></ruby>の かしらに なったが、<ruby>仲間割<rt>なかまわ</rt></ruby>れで 隊を はなれ、みずから ひきいた 別の 隊は <ruby>飯能<rt>はんのう</rt></ruby>で <ruby>敗<rt>やぶ</rt></ruby>れた。それでも やめず、<ruby>箱館<rt>はこだて</rt></ruby>まで 落ちのびて とらえられた。同じ 家に 生まれ、同じ 夜に 刀を 買った 二人の 道は、そこで 分かれる。——のちに ゆるされ、<ruby>生糸<rt>きいと</rt></ruby>や 米の <ruby>商<rt>あきな</rt></ruby>いで 身を 立てた。' },
   'p-yoshinobu': { type: 'person', ch: 2, tone: 'seal', name: '徳川慶喜', read: 'とくがわ よしのぶ',
-    text: 'きみの あるじ。<ruby>一橋家<rt>ひとつばしけ</rt></ruby>の 当主で、きみを <ruby>攘夷<rt>じょうい</rt></ruby>の 志士から <ruby>家来<rt>けらい</rt></ruby>に した 人。1866年に 15代 <ruby>将軍<rt>しょうぐん</rt></ruby>に なり、きみは <ruby>図<rt>はか</rt></ruby>らずも <ruby>幕臣<rt>ばくしん</rt></ruby>に なった。やがて <ruby>幕府<rt>ばくふ</rt></ruby>は <ruby>倒<rt>たお</rt></ruby>れる。明治の 世で「<ruby>臆病者<rt>おくびょうもの</rt></ruby>」と <ruby>評<rt>ひょう</rt></ruby>された この <ruby>旧主<rt>きゅうしゅ</rt></ruby>の <ruby>名誉<rt>めいよ</rt></ruby>を、きみは 長い 年月を かけて 回復しようと する。' },
+    text: 'きみの あるじ。<ruby>一橋家<rt>ひとつばしけ</rt></ruby>の 当主で、きみを <ruby>攘夷<rt>じょうい</rt></ruby>の 志士から <ruby>家来<rt>けらい</rt></ruby>に した 人。1866年に 15代 <ruby>将軍<rt>しょうぐん</rt></ruby>に なり、きみは <ruby>図<rt>はか</rt></ruby>らずも <ruby>幕臣<rt>ばくしん</rt></ruby>に なった。やがて <ruby>幕府<rt>ばくふ</rt></ruby>は <ruby>倒<rt>たお</rt></ruby>れる。兵を 大坂に 置いた まま <ruby>江戸<rt>えど</rt></ruby>へ もどった ことを、<ruby>味方<rt>みかた</rt></ruby>からも <ruby>敵<rt>てき</rt></ruby>からも 責められた。その <ruby>旧主<rt>きゅうしゅ</rt></ruby>の 一生を 紙に 残そうと、きみは 二十五年を つかう ことに なる。' },
   'p-akitake': { type: 'person', ch: 3, tone: 'seal', name: '徳川昭武', read: 'とくがわ あきたけ',
     text: '<ruby>慶喜<rt>よしのぶ</rt></ruby>の 弟。1867年、<ruby>将軍<rt>しょうぐん</rt></ruby>の <ruby>名代<rt>みょうだい</rt></ruby>として パリ<ruby>万国博覧会<rt>ばんこくはくらんかい</rt></ruby>へ 送られた。きみは その お<ruby>供<rt>とも</rt></ruby>として 海を わたり、フランスを <ruby>拠点<rt>きょてん</rt></ruby>に <ruby>欧州<rt>おうしゅう</rt></ruby>の <ruby>銀行<rt>ぎんこう</rt></ruby>・会社・<ruby>鉄道<rt>てつどう</rt></ruby>を 見た。まだ 10代の 若い <ruby>殿<rt>との</rt></ruby>だったが、パリでは みずから <ruby>髷<rt>まげ</rt></ruby>を 落とし、<ruby>洋服<rt>ようふく</rt></ruby>で 学んだ。' },
   'p-hiraoka': { type: 'person', ch: 2, tone: 'seal', name: '平岡円四郎', read: 'ひらおか えんしろう',
@@ -39,6 +39,8 @@ export const CARDS: Record<string, Card> = {
   // しくみ / ch5 = 合本 の岐路). 制度語は 本文に出さず ここと deep へ（design §0-5）。
   'w-ginko': { type: 'word', ch: 3, tone: 'midori', name: '銀行', read: 'ぎんこう',
     text: 'お金を あずかり、それを 必要な 人へ 貸す 家。あずけた 人には <ruby>利<rt>り</rt></ruby>が つき、借りた 人は 大きな ことが できる。——きみが パリで 見た とき、日本には まだ 一つも なかった。やがて きみは、日本で 最初の 銀行を つくる ことに なる。' },
+  'w-koden': { type: 'word', ch: 6, tone: 'seal', name: '徳川慶喜公伝', read: 'とくがわ よしのぶ こうでん',
+    text: 'きみが 二十五年 かけて つくらせた、<ruby>旧主<rt>きゅうしゅ</rt></ruby>の 一生の 本。1918年に 八<ruby>巻<rt>かん</rt></ruby>で 世に 出た。<b>その ころ 書かれた 紙を あつめ、食いちがう ところを 本人に たずね、書いた 下書きを もう一度 本人に 読んで もらった</b>のが、この 本の 作り方だ。<br>——ただし 作らせたのは、その 人に 仕えた 家来の 側。<ruby>敵<rt>てき</rt></ruby>だった 人が 集めた 資料は、ここには 入って いない。ほめる 側が 集めた ものだ、という ことは 頭の すみに 置いて おきたい。' },
   'w-gappon': { type: 'word', ch: 5, tone: 'midori', name: '合本', read: 'がっぽん',
     text: 'きみの やり方。大きな ことを する とき、一つの 家の お金では なく、<b>おおぜいの 人から 少しずつ 出して もらう</b>（<ruby>株<rt>かぶ</rt></ruby>）。もうけも、出し合った みんなで 分ける。<ruby>三井<rt>みつい</rt></ruby>・三菱・<ruby>住友<rt>すみとも</rt></ruby>が 一つの 家に <ruby>富<rt>とみ</rt></ruby>を あつめた 時代に、きみは そう しなかった。——ただし「合本」という 言葉を きみが よく 使うのは、これより あとの ことだ。' },
 };

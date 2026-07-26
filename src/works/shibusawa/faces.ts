@@ -50,6 +50,17 @@ export const FACE_SPEC: Record<string, FaceSpec> = {
   // 慶喜は katsu にも出る（同一人物は作品をまたいで同じ特徴＝tests/face-distinct の cross-work 契約）。
   // katsu の p-yoshinobu を tone だけ変えて写す（比較は tone を除いて行われる）。
   'p-yoshinobu': { tone:'seal', head:'chonmage', hair:'dark', shape:'long', brow:'soft', eye:'narrow', mouth:'soft', beard:'none', skin:'#f2dcc6', nose:'tall' },
+  // ch6 の 慶喜は 明治を 30年 生きた 人（1893〜1913 = 56〜76さい）。章二/章三の 月代のままだと
+  // 「最後の 将軍が 明治の 世に いる」ことを 絵が 打ち消す。変えるのは head/hair/age/garb だけ——
+  // 恒常シグネチャ（shape/brow/eye/nose/mouth/skin）は動かさない（要件①: variant は別人ではない。
+  // p-akitake@paris と同じ規律）。口髭は置かない: 明治期の写真は有髭・無髭が並び、典拠が拮抗する
+  // ものは動かさない（要件②・hidenaga の南蛮帽と同じ判断）。
+  // garb:'western' は識別のためでなく典拠から（§4B「洋装・乗馬服の写真も有名」）——だが結果として
+  // 6-b/6-c の 対面が 読めるように なった: 初稿（和装）は ビジュアル読解ペルソナに「栄一と慶喜が
+  // ほぼ同じ人に見えた・見分けたのは名札の色と口髭の線1本だけ」と読まれた。face-distinct の
+  // 重み付き距離は通っていた＝**機械ゲートは識別設計の代替ではない**（要件② の既知の学び）。
+  // 和装の実業家（一万円札の顔）と 洋装の元将軍、という 取り合わせ自体も 章の 主題に かなう。
+  'p-yoshinobu@old': { tone:'seal', head:'sangiri', hair:'grey', shape:'long', brow:'soft', eye:'narrow', mouth:'soft', beard:'none', skin:'#f2dcc6', nose:'tall', age:'old', garb:'western' },
   // 徳川昭武＝パリ万博の主君（慶喜の弟）。渡欧時は10代の若さ。やわらかな公達。
   'p-akitake': { tone:'seal', head:'chonmage', hair:'dark', shape:'oval', brow:'soft', eye:'gentle', mouth:'soft', beard:'none', skin:'#f6d3ab', cheek:'blush', nose:'thin' },
   // 昭武もパリで髷を落とし洋装で学んだ（残る写真は洋装・断髪の少年）。ch3 後半の closeup を

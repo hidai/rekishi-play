@@ -65,7 +65,7 @@ export const CHAPTER_CAPTIONS: Record<string, string> = {
   3: 'パリ。<ruby>銀行<rt>ぎんこう</rt></ruby>と <ruby>鉄道<rt>てつどう</rt></ruby>を 見て いる あいだに、帰る 国が 消える。',
   4: '<ruby>東京<rt>とうきょう</rt></ruby>。<ruby>役人<rt>やくにん</rt></ruby>の 椅子を、自分で おりる。',
   5: '<ruby>隅田川<rt>すみだがわ</rt></ruby>の 舟の 上。<ruby>独占<rt>どくせん</rt></ruby>か、みんなでか。',
-  6: '東京。<ruby>負<rt>ま</rt></ruby>けた あるじの ために、紙を 積む。',
+  6: '東京。二十年 だまって いた 人が、やっと 口を ひらく。',
   7: '東京。この 人の 顔が、一万円札に なる。',
 };
 
