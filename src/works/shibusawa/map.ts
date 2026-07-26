@@ -19,7 +19,16 @@ import type {
   SceneMapDef,
   CampaignRoute,
   FactionPhase,
+  Geo,
 } from '../../engine/types';
+import { GEO_WEUROPE } from '../../shared/geoWorld';
+
+// Stages other than the home geo (Japan). A scene picks one by key via SceneMapDef.geo.
+// 章三の主題は「海の むこう」＝欧州そのものなので、その章の地図は日本の舞台に立てない
+// (katsu ch3 の太平洋と同じ判断: 舞台はシーンの主題であって作品の属性ではない)。
+// davinci の GEO_EUROPE ではなく GEO_WEUROPE を使う——前者は 49°N で切れており パリ(48.86N) が
+// 焼き上げの上端に張りつく（顔と名前が枠外に切れる。geoWorld.ts の GEO_WEUROPE 冒頭に理由）。
+export const GEOS: Record<string, Geo> = { europe: GEO_WEUROPE };
 
 // No campaign-map / territory layer at skeleton stage (see header).
 export const TERRITORY: Record<string, number> = {};
@@ -42,8 +51,10 @@ export const GAZ: Record<string, GazPoint> = {
   tokyo: { lon: 139.7767, lat: 35.6811 },
   // 静岡 — 帰国後、隠棲する 慶喜のもと・商法会所 (ch3 むすび)。
   shizuoka: { lon: 138.3831, lat: 34.9769 },
-  // パリ — 1867年の 渡欧 (ch3)。scene map で GEO_EUROPE を借りて描く（bounds 内）。
+  // パリ — 1867年の 渡欧 (ch3)。scene map は GEOS.europe（GEO_WEUROPE）を借りて描く。
   paris: { lon: 2.3522, lat: 48.8566 },
+  // マルセイユ — 一行が 船を おりた 港 (ch3)。ここから 陸を 北へ 上って パリへ 入る。
+  marseille: { lon: 5.3698, lat: 43.2965 },
 };
 
 // Per-scene maps are authored together with each chapter (see header).
@@ -68,6 +79,21 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     markers: [
       { at: 'kyoto', cur: 1, kind: 'town', label: '京', note: 'いま ここ' },
       { at: 'chiharajima', kind: 'village', label: '血洗島', note: '出て きた 村', lpos: 'right' },
+    ],
+  },
+
+  // 3-b パリ＝章三の 開幕アンカー（WRITING 地図書法1）。章一は 血洗島、章二は 京——この 章で
+  // 初めて 舞台が 日本を 出る。だから 地図の 仕事は「どれだけ 遠いか」で、そのために 舞台ごと
+  // 別の 世界（GEOS.europe）へ 移す（katsu ch3 の太平洋と同じ。SceneMapDef.geo の注記）。
+  // 2点だけ: 船を おりた 港と、いま 立って いる 町。線は 引かない——マルセイユから パリまでの
+  // 道筋（リヨン回りの 汽車）は 断定に 足る 出どころを 踏んで いない（地図書法2）。
+  // 血洗島・横浜は この 舞台の 外＝枠の 外の 矢印に しかならないので 置かない（katsu の
+  // 「対岸は 矢印に しか ならない」の裏返し。遠さは 川と 海岸線が すでに 語る）。
+  '3-b': {
+    geo: 'europe',
+    markers: [
+      { at: 'paris', cur: 1, kind: 'town', label: 'パリ', note: 'いま ここ' },
+      { at: 'marseille', kind: 'town', label: 'マルセイユ', note: '船を おりた 港', lpos: 'right' },
     ],
   },
 };

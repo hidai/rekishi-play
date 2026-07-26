@@ -14,7 +14,8 @@
 //   beard:'mustache'|'full'|'beard'。渋沢の3 variant は全て既存語彙で描ける。
 //
 // tone = camp color for THIS work（人物固有の属性ではない）:
-//   ai=血洗島・渋沢の家（藍玉の家）/ seal=徳川・旧主 / gold=明治政府 / midori=実業・もう一つの道.
+//   ai=血洗島・渋沢の家（藍玉の家）/ seal=徳川・旧主 / gold=明治政府 / midori=実業・もう一つの道 /
+//   ink=海のむこう（どの陣営でもない）.
 /* eslint-disable */
 
 import type { FaceSpec } from '../../engine/types';
@@ -51,6 +52,11 @@ export const FACE_SPEC: Record<string, FaceSpec> = {
   'p-yoshinobu': { tone:'seal', head:'chonmage', hair:'dark', shape:'long', brow:'soft', eye:'narrow', mouth:'soft', beard:'none', skin:'#f2dcc6', nose:'tall' },
   // 徳川昭武＝パリ万博の主君（慶喜の弟）。渡欧時は10代の若さ。やわらかな公達。
   'p-akitake': { tone:'seal', head:'chonmage', hair:'dark', shape:'oval', brow:'soft', eye:'gentle', mouth:'soft', beard:'none', skin:'#f6d3ab', cheek:'blush', nose:'thin' },
+  // 昭武もパリで髷を落とし洋装で学んだ（残る写真は洋装・断髪の少年）。ch3 後半の closeup を
+  // 基底（月代）のままにすると「殿は髷を通した」と絵が言ってしまう＝典拠に反する断定。
+  // 変えるのは head/garb だけ——同一人物の恒常シグネチャ（shape/brow/eye/nose/skin/cheek）は
+  // 動かさない（顔エンジン要件①: variant は別人ではない）。
+  'p-akitake@paris': { tone:'seal', head:'sangiri', hair:'dark', shape:'oval', brow:'soft', eye:'gentle', mouth:'soft', beard:'none', skin:'#f6d3ab', cheek:'blush', nose:'thin', garb:'western' },
   // 平岡円四郎＝一橋家の用人。渋沢を見いだし仕官させた（ch2 closeup）。切れ者。round＋narrow で
   // ieyasu/p-hanzo・katsu/p-tesshu（角面の武人）から離す。
   'p-hiraoka': { tone:'seal', head:'chonmage', hair:'dark', shape:'round', brow:'stern', eye:'narrow', mouth:'flat', beard:'beard', nose:'wide' },
@@ -69,6 +75,15 @@ export const FACE_SPEC: Record<string, FaceSpec> = {
   // 土佐の 気迫、豊かな髭、押しの強い大柄。角面の武人群（yoshitomo/yoriie）と一代の豪胆さを分けるため、
   // round＋lively eye＋grin（自ら財閥を築いた自信）で masako/p-yoshikazu・kiyomori/p-yoshitomo から離す。
   'p-yataro': { tone:'midori', head:'chonmage', hair:'dark', shape:'round', brow:'angry', eye:'lively', mouth:'grin', beard:'full', nose:'wide', morph:{browY:1} },
+
+  // 海の むこうの 人 (ink)。どの陣営でもない＝この作品で ink を使うのは 3-c の二人だけ。
+  // 役割語だけの人物（カードなし・名は peopleExtra）。3-c は この二人が「同じ 机に 同じ 高さで
+  // つく」ことが 章の 主題そのものなので、closeup が 二人を 同じ 高さに 並べる ことで 絵が 本文の
+  // 代わりに 語る（WRITING 原則7）。名前を 与えないのは 原則5「名前だけの人物を出さない」。
+  // 二人とも笑っている口にするのは絵の主題（対等・気やすさ）＝しかめ面の並びは「もめている」に
+  // 読める（ビジュアル読解ペルソナ 2026-07-26）。軍の人は brow だけ stern で軍人の骨格を残す。
+  'p-banker': { tone:'ink', head:'sangiri', hair:'grey', shape:'round', brow:'calm', eye:'gentle', mouth:'laugh', beard:'full', skin:'#f2dcc6', age:'old', nose:'tall', garb:'western' },
+  'p-officer': { tone:'ink', head:'sangiri', hair:'dark', shape:'square', brow:'stern', eye:'narrow', mouth:'smile', beard:'mustache', skin:'#f2dcc6', nose:'wide', garb:'navy' },
 
   '_default': { tone:'ai', head:'chonmage', hair:'dark', shape:'oval', brow:'calm', eye:'calm', mouth:'flat', beard:'none' },
 };

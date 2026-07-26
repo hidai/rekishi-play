@@ -38,6 +38,7 @@ import {
   MAPPOINTS,
   GAZ,
   SCENE_MAPS,
+  GEOS,
 } from './map';
 import {
   RIDDLE,
@@ -71,7 +72,7 @@ export const shibusawa: Work = {
   timeline: TIMELINE,
   faces: FACE_SPEC,
   shortNames: SHORT_NAMES,
-  peopleExtra: {},
+  peopleExtra: { 'p-banker': '銀行の 人', 'p-officer': '軍の 人' },
   strings: STRINGS,
   hidden: HIDDEN,
   meters: METERS,
@@ -79,6 +80,7 @@ export const shibusawa: Work = {
   figures: FIGURES,
   map: {
     geo: GEO,
+    geos: GEOS,
     territory: TERRITORY,
     protagonistDomains: PROTAGONIST_DOMAINS,
     routes: ROUTES,

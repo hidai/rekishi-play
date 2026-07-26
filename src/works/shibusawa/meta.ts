@@ -45,8 +45,8 @@ export const SHORT_NAMES: Record<string, string> = {
 /**
  * Chapter → default current location (GAZ key). WRITING 地図書法6: no contested place here — the
  * bare cur pin falls back to these until each chapter's scene map lands. ch3 (Paris) points at
- * 横浜, the port he sailed from, because the base notebook stage is Japan; Paris lives in GAZ for
- * the chapter-three European scene map, authored later.
+ * 横浜, the port he sailed from, because the notebook stage is Japan and Paris cannot be pinned on
+ * it; the chapter's own map (3-b) stages itself on GEOS.europe instead (map.ts).
  */
 export const CHAPTER_POINTS: Record<string, string> = {
   1: 'chiharajima',

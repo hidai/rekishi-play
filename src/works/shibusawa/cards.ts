@@ -23,7 +23,7 @@ export const CARDS: Record<string, Card> = {
   'p-yoshinobu': { type: 'person', ch: 2, tone: 'seal', name: '徳川慶喜', read: 'とくがわ よしのぶ',
     text: 'きみの あるじ。<ruby>一橋家<rt>ひとつばしけ</rt></ruby>の 当主で、きみを <ruby>攘夷<rt>じょうい</rt></ruby>の 志士から <ruby>家来<rt>けらい</rt></ruby>に した 人。1866年に 15代 <ruby>将軍<rt>しょうぐん</rt></ruby>に なり、きみは <ruby>図<rt>はか</rt></ruby>らずも <ruby>幕臣<rt>ばくしん</rt></ruby>に なった。やがて <ruby>幕府<rt>ばくふ</rt></ruby>は <ruby>倒<rt>たお</rt></ruby>れる。明治の 世で「<ruby>臆病者<rt>おくびょうもの</rt></ruby>」と <ruby>評<rt>ひょう</rt></ruby>された この <ruby>旧主<rt>きゅうしゅ</rt></ruby>の <ruby>名誉<rt>めいよ</rt></ruby>を、きみは 長い 年月を かけて 回復しようと する。' },
   'p-akitake': { type: 'person', ch: 3, tone: 'seal', name: '徳川昭武', read: 'とくがわ あきたけ',
-    text: '慶喜の 弟。1867年、将軍の <ruby>名代<rt>みょうだい</rt></ruby>として パリ万国博覧会へ 送られた。きみは その お供として 海を わたり、フランスを <ruby>拠点<rt>きょてん</rt></ruby>に 欧州の 銀行・会社・鉄道を 見た。まだ 10代の 若い <ruby>殿<rt>との</rt></ruby>だった。' },
+    text: '<ruby>慶喜<rt>よしのぶ</rt></ruby>の 弟。1867年、<ruby>将軍<rt>しょうぐん</rt></ruby>の <ruby>名代<rt>みょうだい</rt></ruby>として パリ<ruby>万国博覧会<rt>ばんこくはくらんかい</rt></ruby>へ 送られた。きみは その お<ruby>供<rt>とも</rt></ruby>として 海を わたり、フランスを <ruby>拠点<rt>きょてん</rt></ruby>に <ruby>欧州<rt>おうしゅう</rt></ruby>の <ruby>銀行<rt>ぎんこう</rt></ruby>・会社・<ruby>鉄道<rt>てつどう</rt></ruby>を 見た。まだ 10代の 若い <ruby>殿<rt>との</rt></ruby>だったが、パリでは みずから <ruby>髷<rt>まげ</rt></ruby>を 落とし、<ruby>洋服<rt>ようふく</rt></ruby>で 学んだ。' },
   'p-hiraoka': { type: 'person', ch: 2, tone: 'seal', name: '平岡円四郎', read: 'ひらおか えんしろう',
     text: '一橋家の <ruby>用人<rt>ようにん</rt></ruby>（家の 仕事を まとめる 役）。名も ない 攘夷の 志士だった きみの <ruby>見<rt>み</rt></ruby>どころを 見ぬき、慶喜への <ruby>仕官<rt>しかん</rt></ruby>を <ruby>推<rt>お</rt></ruby>してくれた 人。——この 出会いが なければ、きみが 将軍の 家来に なる ことも なかった。' },
   'p-okuma': { type: 'person', ch: 4, tone: 'gold', name: '大隈重信', read: 'おおくま しげのぶ',
@@ -35,7 +35,10 @@ export const CARDS: Record<string, Card> = {
   'p-yataro': { type: 'person', ch: 5, tone: 'midori', name: '岩崎弥太郎', read: 'いわさき やたろう',
     text: '<ruby>三菱<rt>みつびし</rt></ruby>を 一代で <ruby>築<rt>きず</rt></ruby>いた 男。<ruby>土佐<rt>とさ</rt></ruby>の <ruby>武士<rt>ぶし</rt></ruby>の 中で いちばん 下に 近い 家に 生まれ、先ぞが 手ばなした 武士の <ruby>身分<rt>みぶん</rt></ruby>を、お金を つくって 買いもどした。きみが「みんなで <ruby>株<rt>かぶ</rt></ruby>を 出し合う（<ruby>合本<rt>がっぽん</rt></ruby>）」を 説いたのに 対し、この人は「一つの 家が <ruby>独占<rt>どくせん</rt></ruby>して 強く なる」を 選んだ。——ただの 敵では ない。<b>その 独占が、<ruby>海運<rt>かいうん</rt></ruby>で 国の 力を 守った 面も ある</b>。もう 一つの 正解を 生きた 人。1885年、きみとの 争いの まん中で <ruby>病<rt>やまい</rt></ruby>に たおれ、50さいで 世を さった。' },
 
-  // ---- Words ---- (a word card earns its place only when a scene needs it; ch5 = 合本 の岐路)
+  // ---- Words ---- (a word card earns its place only when a scene needs it; ch3 = パリで 見た
+  // しくみ / ch5 = 合本 の岐路). 制度語は 本文に出さず ここと deep へ（design §0-5）。
+  'w-ginko': { type: 'word', ch: 3, tone: 'midori', name: '銀行', read: 'ぎんこう',
+    text: 'お金を あずかり、それを 必要な 人へ 貸す 家。あずけた 人には <ruby>利<rt>り</rt></ruby>が つき、借りた 人は 大きな ことが できる。——きみが パリで 見た とき、日本には まだ 一つも なかった。やがて きみは、日本で 最初の 銀行を つくる ことに なる。' },
   'w-gappon': { type: 'word', ch: 5, tone: 'midori', name: '合本', read: 'がっぽん',
     text: 'きみの やり方。大きな ことを する とき、一つの 家の お金では なく、<b>おおぜいの 人から 少しずつ 出して もらう</b>（<ruby>株<rt>かぶ</rt></ruby>）。もうけも、出し合った みんなで 分ける。<ruby>三井<rt>みつい</rt></ruby>・三菱・<ruby>住友<rt>すみとも</rt></ruby>が 一つの 家に <ruby>富<rt>とみ</rt></ruby>を あつめた 時代に、きみは そう しなかった。——ただし「合本」という 言葉を きみが よく 使うのは、これより あとの ことだ。' },
 };
