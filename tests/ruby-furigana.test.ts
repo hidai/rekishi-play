@@ -42,10 +42,7 @@ const BASELINE: Record<string, number> = {
   // masako: 197 件
   'masako:ch1': 25, 'masako:ch2': 11, 'masako:ch3': 25, 'masako:ch4': 15, 'masako:ch5': 17,
   'masako:ch6': 27, 'masako:ch7': 13, 'masako:card': 26, 'masako:clue': 3, 'masako:timeline': 35,
-  // shibusawa: 90 件（機械検査より前に書かれた最後の作品）
-  'shibusawa:ch1': 1, 'shibusawa:ch2': 3, 'shibusawa:ch4': 1, 'shibusawa:ch5': 14,
-  'shibusawa:ch6': 3, 'shibusawa:ch7': 8, 'shibusawa:card': 6, 'shibusawa:clue': 3,
-  'shibusawa:hidden': 2, 'shibusawa:timeline': 49,
+  // shibusawa: 棚卸し済み（0 件。2026-07-27）＝以後この作品は新章と同じ「登録なし＝0 要求」で守られる。
 };
 
 describe('学年別漢字配当表（同梱データの検算）', () => {
