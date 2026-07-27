@@ -31,10 +31,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - コミット前に必ず通す: `npm run check`（svelte-check）と `npm test`（vitest）
 - `npm run verify` — build ＋ 全テスト（build は `dist/` を生成）
-- ビジュアル確認（`src/engine/art/`・`src/engine/map/`・`faces.ts` の変更時に加え、`map.ts` のシーン地図・story の closeup/figure データを新規執筆・変更したら実行して目視確認する。描画の破綻も「初見の子どもに伝わらない絵」も型チェック・テストでは検知できない）:
+- ビジュアル確認（`src/engine/art/`・`src/engine/map/`・`faces.ts`・`map.ts` のシーン地図・story の closeup/figure を新規執筆・変更したら実行して目視する。描画の破綻も「初見の子どもに伝わらない絵」も型チェック・テストでは検知できない）:
   - `npx vite-node scripts/render-faces.ts <出力ディレクトリ>` — 全人物の似顔絵コンタクトシート
   - `npx vite-node scripts/render-scene.ts <出力.svg> [章] [シーンid]` — シーンのメインビジュアル（closeup があれば対面の場、なければ読み解き地図）。例: `... /tmp/scene.svg 7 7-a2`
   - `npx vite-node scripts/visual-coverage.ts [作品slug]` — 全シーンの主ビジュアル在庫レポート（フォールバック地図のまま＝未執筆のシーンを可視化。fail はしない。完成作品の回帰は `tests/visual-coverage.test.ts` が担保）
+- `npx vite-node scripts/ruby-audit.ts [作品slug]` — ふりがなの棚卸し（面ごとの未ルビ初出を抜粋つきで列挙）。ゲート＝`tests/ruby-furigana.test.ts`（新章・新作品は 0 件）
 
 ## アーキテクチャ上の制約
 
@@ -47,9 +48,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## データの由来（手編集の可否）
 
-`src/works/hidenaga/` のデータは第1作の移植時に旧 vanilla 実装（`legacy/index.html`）から逐語抽出したのが起源だが、**抽出パイプライン（旧 `scripts/extract-data.mjs`）は廃止済み**で、`src/works/hidenaga/` の全ファイル（cards.ts・clues.ts・timeline.ts・faces.ts・story/index.ts・map.ts）と `src/shared/geoJapan.ts` は**手書き管理**（編集してよい）。以後の新作品も同じ——静的な手書きデータの集合。
-
-`legacy/` 系統（旧 vanilla 実装 `legacy/index.html` と `tests/fixtures/legacy-harness.*`）は撤去済み。かつては `tests/engine-parity.test.ts` が家紋・朱印・巻物アイコンの出力を旧実装とバイト照合する黄金基準に使ったが、これらは入力非依存の静的 SVG ゆえ**スナップショット**（`tests/__snapshots__/engine-parity.test.ts.snap`・初期値＝撤去時点の legacy 一致出力）へ置換した。データファイル先頭の「元は legacy/index.html 由来」コメントは由来の史実として残す。
+`src/works/*/` の全データファイル（cards・clues・timeline・faces・story・map 等）と `src/shared/geoJapan.ts` は**手書き管理**（編集してよい）——新作品も同じ、静的な手書きデータの集合。第1作 hidenaga は旧 vanilla 実装からの逐語抽出が起源だが、抽出パイプラインも `legacy/` 系統も撤去済み（家紋等の黄金基準は `tests/__snapshots__/engine-parity.test.ts.snap` へ置換）。経緯は git / JOURNAL-archive。
 
 ## 規約
 
