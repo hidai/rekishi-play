@@ -23,7 +23,7 @@ import {
   orphanScenes,
 } from '../scripts/lib/card-reachability';
 
-const COMPLETED = ['hidenaga', 'kiyomori', 'katsu', 'ieyasu', 'davinci', 'masako'];
+const COMPLETED = ['hidenaga', 'kiyomori', 'katsu', 'ieyasu', 'davinci', 'masako', 'shibusawa'];
 
 describe('card reachability: 完成作品の全カードが何らかの経路で付与される', () => {
   it('COMPLETED が出荷済み作品を取りこぼしていない（WORKS ⊆ COMPLETED）', () => {

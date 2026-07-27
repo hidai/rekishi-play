@@ -96,6 +96,16 @@ export const FACE_SPEC: Record<string, FaceSpec> = {
   'p-banker': { tone:'ink', head:'sangiri', hair:'grey', shape:'round', brow:'calm', eye:'gentle', mouth:'laugh', beard:'full', skin:'#f2dcc6', age:'old', nose:'tall', garb:'western' },
   'p-officer': { tone:'ink', head:'sangiri', hair:'dark', shape:'square', brow:'stern', eye:'narrow', mouth:'smile', beard:'mustache', skin:'#f2dcc6', nose:'wide', garb:'navy' },
 
+  // 終章 7-c の「会の 人」＝救護法実施促進期成同盟会の委員（役割語だけの人物・カードなし）。
+  // 章一〜六の closeup は すべて 二人組で、終章だけ 顔の ある 他人が 消えて いた（eval round2 の
+  // 両ペルソナ）。史実の 場面（1930年11月8日、委員が 飛鳥山邸に 栄一を 訪ね 出馬を 請う）に
+  // 実在する 相手なので、3-c の 二人と 同じ 役割語の 作法で 顔を 与える。
+  // 近代の ざんぎり洋装帯は 混む（register ㊱）ので、既存の p-banker（grey/round/full/laugh）・
+  // p-officer（dark/square/mustache/navy）・p-eiichi（grey/oval/mustache/和装）から
+  // shape・beard・眉で 離す。長面・無ひげは p-eiichi@prime と 知覚距離 2.2 で 衝突したので
+  // （face-audit の 経験ループ）、丸面＋口ひげへ 振り直した。
+  'p-iin': { tone:'gold', head:'sangiri', hair:'dark', shape:'round', brow:'worry', eye:'wide', mouth:'flat', beard:'mustache', skin:'#e9cba8', nose:'round', garb:'western' },
+
   '_default': { tone:'ai', head:'chonmage', hair:'dark', shape:'oval', brow:'calm', eye:'calm', mouth:'flat', beard:'none' },
 };
 

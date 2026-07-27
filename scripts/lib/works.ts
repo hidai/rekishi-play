@@ -20,11 +20,10 @@
 // 骨組み作品を登録したら SKELETON_WORKS から外すこと。外し忘れは
 // tests/ieyasu-skeleton.test.ts の「SKELETON_WORKS は WORKS と交わらない」が落とす。
 import { WORKS } from '../../src/works/index';
-import { shibusawa } from '../../src/works/shibusawa/index';
 import type { Work } from '../../src/engine/types';
 
-/** 未登録（骨組み段階）の作品。登録したらここから外す。shibusawa（第7作）＝執筆前の骨組み。 */
-export const SKELETON_WORKS: Work[] = [shibusawa];
+/** 未登録（骨組み段階）の作品。登録したらここから外す。いまは空＝全7作が出荷済み。 */
+export const SKELETON_WORKS: Work[] = [];
 
 /** 登録済み＋骨組み。作品データの検査・開発用レンダラはこちらを回す。 */
 export const ALL_WORKS: Work[] = [...WORKS, ...SKELETON_WORKS];

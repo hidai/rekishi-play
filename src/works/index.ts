@@ -7,5 +7,6 @@ import { katsu } from './katsu/index';
 import { ieyasu } from './ieyasu/index';
 import { davinci } from './davinci/index';
 import { masako } from './masako/index';
+import { shibusawa } from './shibusawa/index';
 
-export const WORKS: Work[] = [hidenaga, kiyomori, katsu, ieyasu, davinci, masako];
+export const WORKS: Work[] = [hidenaga, kiyomori, katsu, ieyasu, davinci, masako, shibusawa];

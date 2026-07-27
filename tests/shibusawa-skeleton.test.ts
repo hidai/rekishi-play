@@ -1,7 +1,9 @@
-// 渋沢栄一（第7作・近代経済の主人公1号）の骨組み。
+// 渋沢栄一（第7作・近代経済の主人公1号）の作品契約。
 // 構造整合（遷移・参照・地図・章数・相関図・顔識別等）と体験予算は、tests/helpers/all-works.ts の
 // ALL_WORKS 経由で work-integrity / style-budget / face-distinct が **未登録の骨組みにも** 回している。
 // ここに残すのは、セーブの枠の分離（Account.works[id]）と shibusawa 固有の設計契約だけ。
+// 2026-07-27 の出荷（全7章 content-complete → WORKS 登録）で、骨組み段階を pin していた2件を
+// 出荷後の契約へ反転させた——枠の分離は「自分以外の6作と衝突しない」、未登録の主張は「登録済み」へ。
 import { describe, it, expect } from 'vitest';
 import { shibusawa } from '../src/works/shibusawa/index';
 import { WORKS } from '../src/works/index';
@@ -9,17 +11,24 @@ import { katsu } from '../src/works/katsu/index';
 import { MON } from '../src/engine/art/icons';
 
 describe('shibusawa: セーブの枠の分離（Account.works[id]）', () => {
-  it('新規 id で、既存 6作の 枠に 触れない', () => {
+  it('ほかの 6作の 枠に 触れない', () => {
     for (const w of WORKS) {
+      if (w.id === shibusawa.id) continue;
       expect(shibusawa.faceHintKey, `vs ${w.id}`).not.toBe(w.faceHintKey);
-      expect(shibusawa.id, `vs ${w.id}`).not.toBe(w.id);
     }
+    expect(WORKS.filter((w) => w.id === shibusawa.id)).toHaveLength(1);
   });
 });
 
-describe('shibusawa: 骨組み段階（家族のビルドに 準備中の章を 出さない）', () => {
-  it('WORKS には まだ 入っていない（全7章 content-complete で 反転する）', () => {
-    expect(WORKS.some((w) => w.id === 'shibusawa')).toBe(false);
+describe('shibusawa: 出荷（全7章 content-complete）', () => {
+  it('WORKS に 登録され、準備中の 章が 残って いない', () => {
+    expect(WORKS.some((w) => w.id === 'shibusawa')).toBe(true);
+    // 検知語は「骨組み」でなく、スタブ生成器が書いていた一文そのもの——「骨組み」は
+    // 近代経済の説明語として本文に正当に現れうる（timeline の「近代経済の 骨組みづくり」）。
+    const stubs = shibusawa.story.chapters.filter((ch) =>
+      Object.values(ch.scenes).some((sc) => sc.text.includes('これから 書きます')),
+    );
+    expect(stubs.map((ch) => ch.id), '準備中のままの章').toEqual([]);
   });
 });
 

@@ -1,15 +1,17 @@
-// Map data (skeleton stage). shibusawa は「近代＝地図の文法が変わる」作品として設計されている
+// Map data. shibusawa は「近代＝地図の文法が変わる」作品として設計されている
 // (research §5 / design §0-4・§3): 力は 藩の 面（令制国ポリゴン）でなく、**会社・鉄道・港・銀行の
 // 点のネットワーク**に宿る。ゆえに TERRITORY は塗らず（近代日本を令制国で塗らない）、地図が主装置に
-// 立つのは章三（欧州＝davinci の GEO_EUROPE を借りる）と章四（会社の点＝MapPoint の散布）の2章だけ。
+// 立つのは 章三（欧州）・終章（会社の 散らばり／人形の 渡った 海）だけ＝7章中3章で「過半が 地図惰性」
+// の 契約は 保たれる（design §3）。
 //
-// campaign-map の層（TERRITORY / MAPPOINTS / FACTION_PHASES）は骨組みでは空。会社/鉄道を別アイコンで
-// 描き分けない——「約500社」を暗記させない（design §3-4）。会社の点は MapPoint（revealCh で章ごと増加）で、
-// 章四の執筆時に足す。territory は空のまま（近代は塗らない・既存機能。design §4②）。
+// campaign-map の層（TERRITORY / MAPPOINTS / FACTION_PHASES）は最後まで空。会社/鉄道を別アイコンで
+// 描き分けない——「約500社」を暗記させない（design §3-4）。会社の 点は 手帳の MapPoint でなく
+// **終章の シーン地図**で 散らした: 章ごとに 増える 足あとでは なく、一度に 見わたす 総覧が
+// 貫通の謎 B の 答えだから（design §2 円環）。
 //
-// SKELETON SCOPE: SCENE_MAPS は空。シーン地図は各章と一緒に書く（開幕アンカーの原則は、その
-// シーンの開幕状況が先に無いと決められない）。欧州は GEO_EUROPE、渡米西海岸は GEO_US_WEST/PACIFIC を
-// scene map 側で借用する（design §9・engine 拡張ゼロ）。Hand-managed.
+// ★note も label と同じ SVG <text>＝ruby は タグのまま 出る（tests/svg-text-fields が 見る）。
+// 欧州は GEO_WEUROPE、太平洋は katsu の GEO_PACIFIC を scene map 側で借用する
+// （design §9・engine 拡張ゼロ）。Hand-managed.
 /* eslint-disable */
 
 import type {
@@ -21,16 +23,17 @@ import type {
   FactionPhase,
   Geo,
 } from '../../engine/types';
-import { GEO_WEUROPE } from '../../shared/geoWorld';
+import { GEO_WEUROPE, GEO_PACIFIC } from '../../shared/geoWorld';
 
 // Stages other than the home geo (Japan). A scene picks one by key via SceneMapDef.geo.
 // 章三の主題は「海の むこう」＝欧州そのものなので、その章の地図は日本の舞台に立てない
 // (katsu ch3 の太平洋と同じ判断: 舞台はシーンの主題であって作品の属性ではない)。
 // davinci の GEO_EUROPE ではなく GEO_WEUROPE を使う——前者は 49°N で切れており パリ(48.86N) が
 // 焼き上げの上端に張りつく（顔と名前が枠外に切れる。geoWorld.ts の GEO_WEUROPE 冒頭に理由）。
-export const GEOS: Record<string, Geo> = { europe: GEO_WEUROPE };
+// 終章 7-b は 太平洋を またぐ ので katsu の GEO_PACIFIC を借りる（design §9・engine 拡張ゼロ）。
+export const GEOS: Record<string, Geo> = { europe: GEO_WEUROPE, pacific: GEO_PACIFIC };
 
-// No campaign-map / territory layer at skeleton stage (see header).
+// No campaign-map / territory layer in this work at all (see header).
 export const TERRITORY: Record<string, number> = {};
 export const PROTAGONIST_DOMAINS: Record<string, number[]> = {};
 export const ROUTES: Record<string, RouteDef> = {};
@@ -55,9 +58,23 @@ export const GAZ: Record<string, GazPoint> = {
   paris: { lon: 2.3522, lat: 48.8566 },
   // マルセイユ — 一行が 船を おりた 港 (ch3)。ここから 陸を 北へ 上って パリへ 入る。
   marseille: { lon: 5.3698, lat: 43.2965 },
+  // 大阪・札幌 — 終章の 点の 総覧 (ch7)。大阪紡績 (1882) と 札幌麦酒 (1887) ＝ 下野の あとに
+  // 民の 側で 起こした 会社のうち、**東京から 遠い** もの。日本煉瓦 (深谷・上敷免) の 点は
+  // 血洗島 (ch1 の gaz) が 引き受ける——上敷免は 生家から 数km で、この 縮尺では 同じ 点。
+  osaka: { lon: 135.5023, lat: 34.6937 },
+  sapporo: { lon: 141.3545, lat: 43.0618 },
+  // 太平洋の 向こう (ch7 の 人形)。katsu と 同じく GEO_PACIFIC の proj.wrap が 負の経度を
+  // 海の 向こう側へ 解決する（この 舞台に 立つ シーンだけが pin できる）。
+  sf: { lon: -122.4194, lat: 37.7749 },
+  // 海そのものの 名前が すわる 場所。子どもは 青い 面だけでは「太平洋」と 教われない（katsu ch3
+  // の 判断）。両岸から 離れた 沖に 置く——note が 岸に 付くと 枠の 外へ はみ出す。
+  taiheiyo: { lon: 185, lat: 36.7 },
 };
 
 // Per-scene maps are authored together with each chapter (see header).
+// ラベルの 逃がし先は「フレームの どちら端に いるか」で決まる（tests/map-labels が 両方を 落とす）:
+// 終章 7-a は 東京＝下端ぎわ・大阪＝南西の 角 ゆえ どちらも note を 上へ、7-b は 横浜が 西の 端
+// ゆえ 東（海の 側）へ 逃がす。
 export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // 1-b 計画の 地図＝章一 唯一の 地図（本作で 地図が 主装置に 立つのは ch3/ch4 だけ・design §3）。
   // 開幕アンカー（WRITING 地図書法1）: 読者が 立つのは「きみの 村」で、まだ 見ぬ 標的が 南に ある。
@@ -106,6 +123,35 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     markers: [
       { at: 'shizuoka', cur: 1, kind: 'town', label: '静岡', note: 'いま ここ' },
       { at: 'tokyo', kind: 'town', label: '東京', note: '呼ばれた 先', lpos: 'right' },
+    ],
+  },
+
+  // 7-a 会社の 点の 総覧＝章四で 先送りした 仕事（4-a の 注記・design §2）。この 作品で 唯一
+  // 「移動」でなく「散らばり」を 語る 地図で、貫通の謎 B（なぜ 財閥を つくらなかったか）の 答えを
+  // 絵が 受け持つ——きみは 一つの 家に 富を 積まず、点を よそへ ばらまいた。
+  // 線は 引かない: 会社どうしを 結ぶ 線は 実在しない 関係を 描く ことに なる（地図書法2）。
+  // むすびでは ないが 終章の 総覧＝この シーン 自体が 見わたしを 主題に する（地図書法1 の 例外）。
+  '7-a': {
+    markers: [
+      { at: 'tokyo', cur: 1, kind: 'town', label: '東京', note: 'きみが 立てた 銀行', lpos: 'above' },
+      { at: 'osaka', kind: 'town', label: '大阪', note: 'わたを つむぐ 会社', lpos: 'above' },
+      { at: 'sapporo', kind: 'town', label: '札幌', note: 'ビールの 会社', lpos: 'left' },
+      { at: 'chiharajima', kind: 'village', label: '血洗島', note: 'れんがを 焼いた 村', lpos: 'left' },
+    ],
+  },
+
+  // 7-b 人形が わたった 海。katsu ch3 と 同じ 太平洋の 舞台を 借りる。この 地図が 語るのは
+  // 距離では なく **数の かたより**——12,739 と 58 が 向かい合う。
+  // 長い note は 沖（taiheiyo）に 置く: 岸に 付けると 枠の 外へ はみ出し、対岸の ラベルとも
+  // ぶつかる（katsu ch3 と 同じ 逃がし方。tests/map-labels がどちらも 落とす）。数の やりとりは
+  // どちらの 岸でも なく 海の 上で 起きた こと でも ある。
+  // 線は 引かない: 人形を 積んだ 船の 航路は 踏んで いない（地図書法2）。
+  '7-b': {
+    geo: 'pacific',
+    markers: [
+      { at: 'yokohama', cur: 1, kind: 'town', label: '日本・横浜', note: '58たいを 送りかえした', lpos: 'right' },
+      { at: 'taiheiyo', kind: 'sea', label: '太平洋' },
+      { at: 'sf', kind: 'town', label: 'アメリカ', note: '12,739たいが 来た' },
     ],
   },
 };

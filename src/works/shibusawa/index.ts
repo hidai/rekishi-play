@@ -1,10 +1,9 @@
-// Assembles the "shibusawa" (渋沢栄一) Work object (skeleton = unregistered data layer).
+// Assembles the "shibusawa" (渋沢栄一) Work object.
 // Design: docs/design/shibusawa.md; facts: docs/research/shibusawa.md.
 //
-// NOT in src/works/index.ts (WORKS) on purpose — it lives only in SKELETON_WORKS
-// (scripts/lib/works.ts). The story is still placeholders; the kiyomori/katsu/ieyasu/davinci/masako
-// precedent keeps an unfinished work out of the family's build until it has something to play.
-// Registration lands when the chapters are written (pilot = 章五, design §8).
+// SHIPPED (2026-07-27): all 7 chapters content-complete → registered in src/works/index.ts (WORKS)
+// and src/works/registry.ts, and dropped from SKELETON_WORKS (scripts/lib/works.ts, now empty —
+// every work is shipped). Written in the order 章五(pilot) → 一 → 二 → 三 → 四 → 六 → 終.
 //
 // 7th work, first modern-economy protagonist. Device grammar follows the person, not habit
 // (design §3): power lives not in land but in 会社・人・港の点 (合本), so territory is never painted
@@ -15,9 +14,9 @@
 // engine 拡張ゼロ (design §4): 近代の顔語彙は katsu で導入済み・地図は既存 MapPoint/geoWorld・
 // territory は空。既存6作の出力を1バイトも変えない（snapshot / map-labels / face-vocab で pin）。
 //
-// figures (人の図) are authored WITH their chapters: 章二 = 席の 図（座が うつる）; the 終章 総覧 lands
-// with that chapter. Structural integrity is covered by tests/shibusawa-skeleton.test.ts +
-// the shared ALL_WORKS gates.
+// figures (人の図) are authored WITH their chapters: 章二 = 席の図（座が うつる）／章四 = その対句
+// （下りたのは きみ）／終章 = 七席を一列に並べた総覧（上座を置かない＝どれが上かも入れかわった）。
+// Structural integrity is covered by tests/shibusawa-skeleton.test.ts + the shared ALL_WORKS gates.
 import type { Work } from '../../engine/types';
 import { GEO } from '../../shared/geoJapan';
 import { STORY } from './story/index';
@@ -72,7 +71,7 @@ export const shibusawa: Work = {
   timeline: TIMELINE,
   faces: FACE_SPEC,
   shortNames: SHORT_NAMES,
-  peopleExtra: { 'p-banker': '銀行の 人', 'p-officer': '軍の 人' },
+  peopleExtra: { 'p-banker': '銀行の 人', 'p-officer': '軍の 人', 'p-iin': '会の 人' },
   strings: STRINGS,
   hidden: HIDDEN,
   meters: METERS,

@@ -25,11 +25,24 @@ function svgTextFields(work: (typeof ALL_WORKS)[number]): Array<[string, string]
     } else if (fig.kind === 'assembly') {
       if (fig.dais?.label) out.push([`figure ${key} dais`, fig.dais.label]);
       for (const f of fig.fills) if (f.label) out.push([`figure ${key} seat ${f.seat}`, f.label]);
+      // 席そのものの役ラベル（rect の下に <text> で出る）。battlefield の unit.role は下の枝で
+      // 見ているのに、assembly の seat.role だけ抜けていた。
+      for (const s of fig.seats) if (s.role) out.push([`figure ${key} seat role ${s.id}`, s.role]);
     } else {
       for (const u of fig.units) {
         if (u.label) out.push([`figure ${key} unit ${u.id}`, u.label]);
         if (u.role) out.push([`figure ${key} role ${u.id}`, u.role]);
       }
+    }
+  }
+  // シーン地図のマーカー。label は map-labels 側でも幅を測るが、**note は どこも見て いなかった**
+  // ——shibusawa 7-a を書いた回に ruby 入りの note を置き、タグごと <text> に出た（枠外判定で
+  // 間接的に落ちただけで、名指しは されなかった）。ObserveHotspot.caption の型注記が言うとおり
+  // note は label と同じ制約の下に ある。
+  for (const [sid, def] of Object.entries(work.map.sceneMaps)) {
+    for (const m of def.markers ?? []) {
+      if (m.label) out.push([`sceneMap ${sid} label`, m.label]);
+      if (m.note) out.push([`sceneMap ${sid} note`, m.note]);
     }
   }
   return out;

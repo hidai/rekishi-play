@@ -1,10 +1,9 @@
-// Assembles the "davinci" (レオナルド・ダ・ヴィンチ) Work object (skeleton-1b = unregistered data layer).
+// Assembles the "davinci" (レオナルド・ダ・ヴィンチ) Work object.
 // Design: docs/design/davinci.md (human GO 2026-07-16); facts: docs/research/davinci.md.
 //
-// NOT in src/works/index.ts (WORKS) on purpose — it lives only in SKELETON_WORKS (scripts/lib/works.ts).
-// The story is still placeholders, and the kiyomori/katsu/ieyasu precedent keeps an unfinished work
-// out of the family's build until it has something to play. Live registration + boot wiring land once
-// a playable pilot chapter exists (design §7 / WRITING 10 パイロットシーン制).
+// SHIPPED: all 7 chapters content-complete → registered in src/works/index.ts (WORKS) and
+// src/works/registry.ts. (This header sat on the skeleton-1b text long after registration; the
+// stale「NOT in WORKS」was found by the code review of the shibusawa ship, 2026-07-27.)
 //
 // FIRST OVERSEAS WORK: the home stage is GEO_EUROPE (Italy + southern France), not the shared Japan
 // GEO — Leonardo's life is a journey court to court across Renaissance Italy and into France.

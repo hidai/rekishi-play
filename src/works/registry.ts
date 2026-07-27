@@ -15,6 +15,8 @@ import { PROTAGONIST_ID as DAVINCI_PID, STRINGS as DAVINCI_STRINGS, TOTAL_CHAPTE
 import { FACE_SPEC as DAVINCI_FACES } from './davinci/faces';
 import { PROTAGONIST_ID as MASAKO_PID, STRINGS as MASAKO_STRINGS, TOTAL_CHAPTERS as MASAKO_CHAPTERS } from './masako/meta';
 import { FACE_SPEC as MASAKO_FACES } from './masako/faces';
+import { PROTAGONIST_ID as SHIBUSAWA_PID, STRINGS as SHIBUSAWA_STRINGS, TOTAL_CHAPTERS as SHIBUSAWA_CHAPTERS } from './shibusawa/meta';
+import { FACE_SPEC as SHIBUSAWA_FACES } from './shibusawa/faces';
 
 export const WORK_ENTRIES: WorkEntry[] = [
   {
@@ -88,5 +90,17 @@ export const WORK_ENTRIES: WorkEntry[] = [
       totalChapters: MASAKO_CHAPTERS,
     },
     load: () => import('./masako/index').then((m) => m.masako),
+  },
+  {
+    card: {
+      id: 'shibusawa',
+      protagonistId: SHIBUSAWA_PID,
+      faces: SHIBUSAWA_FACES,
+      titleMain: SHIBUSAWA_STRINGS.titleMain,
+      titleSub: SHIBUSAWA_STRINGS.titleSub,
+      years: SHIBUSAWA_STRINGS.years,
+      totalChapters: SHIBUSAWA_CHAPTERS,
+    },
+    load: () => import('./shibusawa/index').then((m) => m.shibusawa),
   },
 ];

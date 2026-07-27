@@ -101,8 +101,24 @@ describe('橋の3態（未プレイ＝誘い／未取得＝出さない／取得
     expect(xw.peers('hidenaga', 'p-takatora')).toEqual([]);
   });
 
-  it('未登録（骨組み）の作品へは橋を架けない', () => {
+  // 『栄一』の出荷で、この橋（慶喜）が骨組み期の「架からない」から「架かる」へ反転した。
+  // 同じ人を別の側から見る対＝勝海舟の主君であり、渋沢の主君でもある人。
+  it('出荷済みの相手作品へは橋が架かる（katsu ↔ shibusawa の慶喜）', () => {
     const { xw } = fresh();
+    expect(xw.peers('katsu', 'p-yoshinobu').map((p) => p.workId)).toEqual(['shibusawa']);
+    expect(xw.peers('shibusawa', 'p-yoshinobu').map((p) => p.workId)).toEqual(['katsu']);
+  });
+
+  // 未登録（骨組み）の作品へは橋を架けない、という契約そのもの。実データは全7作とも出荷済みに
+  // なったので、契約は合成の表で pin する（作品を1つ足すたびに素通りする形にしない）。
+  it('未登録（骨組み）の作品へは橋を架けない', () => {
+    const accounts = new AccountStore();
+    accounts.newAccount('けん');
+    const xw = new CrossWorkStore(
+      [{ pid: 'p-yoshinobu', works: ['katsu', 'mirai'] }],
+      WORK_ENTRIES,
+      accounts,
+    );
     expect(xw.peers('katsu', 'p-yoshinobu')).toEqual([]);
   });
 });
