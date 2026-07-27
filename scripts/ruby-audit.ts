@@ -157,6 +157,21 @@ export function auditBuckets(work: Work): Record<string, number> {
   return out;
 }
 
+/**
+ * Unclosed `<ruby>` per bucket. A missing `</ruby>` leaves coverage on for the rest of the
+ * field, so every later kanji looks furigana'd and its miss is never reported — the audit
+ * under-counts exactly where the tag is broken (hidenaga hid 75 misses this way).
+ */
+export function unclosedRuby(work: Work): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const s of workSurfaces(work))
+    for (const p of s.parts) {
+      const open = (p.match(/<ruby>/g) ?? []).length - (p.match(/<\/ruby>/g) ?? []).length;
+      if (open > 0) out[bucketOf(s.id)] = (out[bucketOf(s.id)] ?? 0) + open;
+    }
+  return out;
+}
+
 // CLI entry (vite-node consumes the script path; under vitest argv[1] is the vitest bin).
 if (process.argv[1]?.includes('vite-node')) {
   const { ALL_WORKS, resolveWork } = await import('./lib/works');

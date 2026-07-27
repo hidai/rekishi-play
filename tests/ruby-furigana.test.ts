@@ -12,7 +12,7 @@
 // しきい値の緩和ではなく帳簿なので、下げるのは自律で可・上げるのは「書いたものを直す」まで不可。
 import { describe, it, expect } from 'vitest';
 import { ALL_WORKS } from './helpers/all-works';
-import { auditBuckets, auditWork, bucketOf, type RubyMiss } from '../scripts/ruby-audit';
+import { auditBuckets, auditWork, bucketOf, unclosedRuby, type RubyMiss } from '../scripts/ruby-audit';
 import { KYOIKU_KANJI_BY_GRADE, kanjiGrade } from '../scripts/lib/kanji-grades';
 
 /**
@@ -21,9 +21,9 @@ import { KYOIKU_KANJI_BY_GRADE, kanjiGrade } from '../scripts/lib/kanji-grades';
  * 現物は `npx vite-node scripts/ruby-audit.ts <作品slug>` で面ごとに列挙できる。
  */
 const BASELINE: Record<string, number> = {
-  // hidenaga: 236 件（第1作。非章面＝card/clue/hidden/timeline は棚卸し済み＝0 要求）
-  'hidenaga:ch1': 26, 'hidenaga:ch2': 23, 'hidenaga:ch3': 22, 'hidenaga:ch4': 45,
-  'hidenaga:ch5': 40, 'hidenaga:ch6': 34, 'hidenaga:ch7': 46,
+  // hidenaga: 183 件（第1作。非章面と ch1〜ch3 は棚卸し済み＝0 要求。ch4〜ch7 は
+  // 下の UNCLOSED のぶんだけ実数より少なく見えている——閉じ忘れを直すと数が出てくる）
+  'hidenaga:ch4': 45, 'hidenaga:ch5': 40, 'hidenaga:ch6': 34, 'hidenaga:ch7': 46,
   // kiyomori: 144 件
   'kiyomori:ch1': 3, 'kiyomori:ch2': 3, 'kiyomori:ch3': 11, 'kiyomori:ch4': 1,
   'kiyomori:ch5': 6, 'kiyomori:ch6': 3, 'kiyomori:ch7': 8, 'kiyomori:card': 73,
@@ -42,6 +42,14 @@ const BASELINE: Record<string, number> = {
   'masako:ch1': 25, 'masako:ch2': 11, 'masako:ch3': 25, 'masako:ch4': 15, 'masako:ch5': 17,
   'masako:ch6': 27, 'masako:ch7': 13, 'masako:card': 26, 'masako:clue': 3, 'masako:timeline': 35,
   // shibusawa: 棚卸し済み（0 件。2026-07-27）＝以後この作品は新章と同じ「登録なし＝0 要求」で守られる。
+};
+
+/**
+ * 閉じ忘れた `</ruby>` の帳簿。閉じ忘れは以降の字を「ルビ済み」に見せるので、上の BASELINE を
+ * その面のぶんだけ**過少に**する（＝ゲートが自分の目をふさぐ）。BASELINE と同じラチェット。
+ */
+const UNCLOSED: Record<string, number> = {
+  'hidenaga:ch4': 6, 'hidenaga:ch5': 6, 'hidenaga:ch6': 8, 'hidenaga:ch7': 4,
 };
 
 describe('学年別漢字配当表（同梱データの検算）', () => {
@@ -79,6 +87,21 @@ describe('ruby-furigana: 習っていない漢字は面ごとに初出でルビ'
             ? `ルビの無い初出:\n${misses.map((m) => `  ${m.surface} 「${m.char}」 …${m.excerpt}…`).join('\n')}`
             : `BASELINE['${key}'] を ${misses.length} に直す（増えていたら書いたものにルビを足す。npx vite-node scripts/ruby-audit.ts ${work.id}）`,
         ).toBe(allowed);
+      });
+    }
+  }
+
+  for (const work of ALL_WORKS) {
+    const found = Object.fromEntries(
+      Object.entries(unclosedRuby(work)).map(([b, n]) => [`${work.id}:${b}`, n]),
+    );
+    const keys = [
+      ...new Set([...Object.keys(found), ...Object.keys(UNCLOSED).filter((k) => k.startsWith(`${work.id}:`))]),
+    ].sort();
+    for (const key of keys) {
+      const allowed = UNCLOSED[key] ?? 0;
+      it(`${key}: 閉じ忘れた <ruby> ${allowed} 件のまま（増やさない・直したら帳簿を下げる）`, () => {
+        expect(found[key] ?? 0, `UNCLOSED['${key}'] を直す（閉じ忘れは未ルビ初出を隠す）`).toBe(allowed);
       });
     }
   }
