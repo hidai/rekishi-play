@@ -120,16 +120,18 @@ export const STORY: Story = {
                 body: `<p>きみは <ruby>工房<rt>こうぼう</rt></ruby>の みんなと 手を そろえ、よい <ruby>弟子<rt>でし</rt></ruby>として、波風 立てずに とけこんだ ことに なる。師の 顔も つぶさず、絵は きれいに <ruby>仕上<rt>しあ</rt></ruby>がる。それは それで、一つの <ruby>幸<rt>しあわ</rt></ruby>せな 道だ。</p><p>ただ、きみの 目が ほんとうに 見た あの 光は、その 絵には 出ない。だれも、きみの 目に 気づかない。——けれど、いつ「きみらしさ」を 出すかは、きみが 決めて いい。</p>` } },
             { label: '<ruby>自分<rt>じぶん</rt></ruby>の 目が 見た 光の とおりに 描く', to: '2-c', canon: true, effect: { miru: 2 },
               hist: { verdict: '史実では', match: '<ruby>自分<rt>じぶん</rt></ruby>の 目で 見た 光で、天使を 描いた',
-                body: `<p><ruby>史実<rt>じじつ</rt></ruby>の きみは、<ruby>教<rt>おそ</rt></ruby>わった <ruby>型<rt>かた</rt></ruby>でなく、自分の 目が 見た とおりに 光と かげを 置いた。その <ruby>天使<rt>てんし</rt></ruby>は <ruby>工房<rt>こうぼう</rt></ruby>の どの 手とも ちがい、生きて いるようだと 言われた。まだ 若い きみの 名が、はじめて 世に 知られる。</p><p>だが、<ruby>弟子<rt>でし</rt></ruby>が 師の 絵の 中で ひとり <ruby>際立<rt>きわだ</rt></ruby>つのは、たやすい ことでは ない。しかも「あまりの <ruby>出来<rt>でき</rt></ruby>に 師が <ruby>筆<rt>ふで</rt></ruby>を 折った」とまで <ruby>語<rt>かた</rt></ruby>られる。人と 同じに <ruby>仕上<rt>しあ</rt></ruby>げられない——その 生き方が、ここから 始まる。</p>` } },
+                body: `<p><ruby>史実<rt>じじつ</rt></ruby>の きみは、<ruby>教<rt>おそ</rt></ruby>わった <ruby>型<rt>かた</rt></ruby>でなく、自分の 目が 見た とおりに 光と かげを 置いた。その <ruby>天使<rt>てんし</rt></ruby>は <ruby>工房<rt>こうぼう</rt></ruby>の どの 手とも ちがい、生きて いるようだと 言われた。まだ 若い きみの 名が、はじめて 世に 知られる。</p><p>だが、<ruby>弟子<rt>でし</rt></ruby>が 師の 絵の 中で ひとり <ruby>際立<rt>きわだ</rt></ruby>つのは、たやすい ことでは ない。人と 同じに <ruby>仕上<rt>しあ</rt></ruby>げられない——その 生き方が、ここから 始まる。</p>` } },
           ] },
 
         '2-c': { place: 'フィレンツェ・<ruby>工房<rt>こうぼう</rt></ruby>',
           closeup: { tone: 'solemn', cast: [ { face: 'p-verrocchio', name: '師ヴェロッキオ' } ] },
           text: `<p>絵が <ruby>仕上<rt>しあ</rt></ruby>がった。きみの 描いた <ruby>天使<rt>てんし</rt></ruby>は、<ruby>工房<rt>こうぼう</rt></ruby>の だれの 手とも ちがって いた。やわらかな 光が <ruby>頬<rt>ほお</rt></ruby>を なで、いまにも <ruby>息<rt>いき</rt></ruby>を しそうだった。</p>
-            <p>師ヴェロッキオが、その <ruby>天使<rt>てんし</rt></ruby>の 前に 立った。何も 言わず、長い あいだ、ただ じっと 見つめて いた。</p>`,
-          spark: 'え！？「あまりの <ruby>出来<rt>でき</rt></ruby>に、師ヴェロッキオは 二度と <ruby>絵筆<rt>えふで</rt></ruby>を とらなかった」——この <ruby>有名<rt>ゆうめい</rt></ruby>な <ruby>話<rt>はなし</rt></ruby>、じつは <ruby>五十<rt>ごじゅう</rt></ruby>年も あとの <ruby>伝記<rt>でんき</rt></ruby>だけが <ruby>語<rt>かた</rt></ruby>る <ruby>尾<rt>お</rt></ruby>ひれ？',
+            <p>師ヴェロッキオが、その <ruby>天使<rt>てんし</rt></ruby>の 前に 立った。何も 言わず、長い あいだ、ただ じっと 見つめて いた。</p>
+            <p>先に <ruby>弟子入<rt>でしい</rt></ruby>りして いた <ruby>兄弟子<rt>あにでし</rt></ruby>が、きみの 耳もとで ささやいた。</p>
+            <p class="speak">「親方は もう、<ruby>絵筆<rt>えふで</rt></ruby>を とらないかもな。……あんな 天使を 見せられて は」</p>`,
+          spark: 'え！？ 兄弟子の よそうは、はずれ。師は その あとも <ruby>工房<rt>こうぼう</rt></ruby>を 続け、やがて <ruby>彫刻<rt>ちょうこく</rt></ruby>を 本業に した。なのに「師は 二度と 絵筆を とらなかった」と 書いた 本が、きみが 死んで <ruby>三十<rt>さんじゅう</rt></ruby>年 あまり あとに 出る？',
           deep: { q: '師は、ほんとうに <ruby>筆<rt>ふで</rt></ruby>を 折ったの？',
-            body: `きみが 左の <ruby>天使<rt>てんし</rt></ruby>を 描いたこと <ruby>自体<rt>じたい</rt></ruby>は、いまの <ruby>研究<rt>けんきゅう</rt></ruby>も おおむね みとめる（絵の <ruby>具<rt>ぐ</rt></ruby>の ちがいなどから）。だが「師が 二度と <ruby>筆<rt>ふで</rt></ruby>を とらなかった」の <ruby>部分<rt>ぶぶん</rt></ruby>は、きみが <ruby>死<rt>し</rt></ruby>んで <ruby>五十<rt>ごじゅう</rt></ruby>年 ほど あとに 書かれた ヴァザーリの <ruby>伝記<rt>でんき</rt></ruby>だけの <ruby>話<rt>はなし</rt></ruby>。じっさいの 師は、その あとも <ruby>工房<rt>こうぼう</rt></ruby>を <ruby>続<rt>つづ</rt></ruby>けた。<ruby>本業<rt>ほんぎょう</rt></ruby>は もともと <ruby>彫刻<rt>ちょうこく</rt></ruby>で、だんだん そちらへ <ruby>移<rt>うつ</rt></ruby>った、というのが ほんとうらしい。うつくしい <ruby>天使<rt>てんし</rt></ruby>も、ふくらんだ うわさも、この 一枚から 生まれた。`,
+            body: `きみが 左の <ruby>天使<rt>てんし</rt></ruby>を 描いたこと <ruby>自体<rt>じたい</rt></ruby>は、いまの <ruby>研究<rt>けんきゅう</rt></ruby>も おおむね みとめる（絵の <ruby>具<rt>ぐ</rt></ruby>の ちがいなどから）。だが「師が 二度と <ruby>筆<rt>ふで</rt></ruby>を とらなかった」の <ruby>部分<rt>ぶぶん</rt></ruby>は、きみが <ruby>死<rt>し</rt></ruby>んで <ruby>三十<rt>さんじゅう</rt></ruby>年 あまり あとに 書かれた ヴァザーリの <ruby>伝記<rt>でんき</rt></ruby>だけの <ruby>話<rt>はなし</rt></ruby>。<ruby>工房<rt>こうぼう</rt></ruby>で そんな うわさが 立ったという 紙も、当時の ものは 残って いない。じっさいの 師は、その あとも 工房を <ruby>続<rt>つづ</rt></ruby>けた。<ruby>本業<rt>ほんぎょう</rt></ruby>は もともと <ruby>彫刻<rt>ちょうこく</rt></ruby>で、だんだん そちらへ <ruby>移<rt>うつ</rt></ruby>った、というのが ほんとうらしい。うつくしい <ruby>天使<rt>てんし</rt></ruby>も、ふくらんだ うわさも、この 一枚から 生まれた。`,
             cite: '※ きみが <ruby>天使<rt>てんし</rt></ruby>を 描いた＝おおむね たしか（○）。「師が <ruby>筆<rt>ふで</rt></ruby>を 折った」＝ずっと あとの <ruby>伝記<rt>でんき</rt></ruby>だけ（☆）。<ruby>事実<rt>じじつ</rt></ruby>の <ruby>核<rt>かく</rt></ruby>と、<ruby>尾<rt>お</rt></ruby>ひれを 分ける。',
             confidence: '○' },
           onEnter: { card: 'w-tenshi' },
@@ -380,7 +382,7 @@ export const STORY: Story = {
               { id: 'ob6-curl', nodeId: 'n-curl', x: 0.30, y: 0.52, r: 0.062,
                 caption: 'かみの ながれ——ひとすじ ひとすじが、水の ように ながれて いる。' },
             ] },
-          spark: 'え！？ 世界一 有名な ほほえみを 描く ために、きみは <ruby>死体<rt>したい</rt></ruby>を 切り開いた？ しかも <ruby>心臓<rt>しんぞう</rt></ruby>の 中で「血の うず」を 見つけ、500年 あとの 医学が それを 確かめた？',
+          spark: 'え！？ この ほほえみ ひとつの ために、きみは <ruby>死体<rt>したい</rt></ruby>を 切り開いた？ しかも <ruby>心臓<rt>しんぞう</rt></ruby>の 中で「血の うず」を 見つけ、500年 あとの 医学が それを 確かめた？',
           deep: { q: 'ほほえみを 描く のに、なぜ 死体を?',
             body: `ほんとうだ。きみは 死んだ 人の 体を 自分の 手で 切り開き、<ruby>骨<rt>ほね</rt></ruby>や <ruby>筋肉<rt>きんにく</rt></ruby>を 何百枚も 写生した。「よく 見る」ためだ。<ruby>心臓<rt>しんぞう</rt></ruby>では、血が うずを 巻いて <ruby>弁<rt>べん</rt></ruby>を 閉じるのを 助けると 考え、スケッチに 残した。約500年 あとの 2014年、<ruby>医師<rt>いし</rt></ruby>が 新しい MRIで 生きた 人の 心臓を のぞくと、その うずは 本当に あった。まだ 少ない 人の しらべだが、きみの 目は 正しかった。`,
             cite: '※ 観察して スケッチしたのは たしか（◎）。近ごろ MRIで 確かめられたのは ほんの 少しの 人（○）。それでも、500年 ごしに 目が 合った。',
@@ -420,7 +422,7 @@ export const STORY: Story = {
                 body: `<p>きみは この 一枚に しばられず、<ruby>放<rt>ほう</rt></ruby>り出した ままの 何十枚もの 絵に、手を もどせたかも しれない。世界には いまより ずっと 多くの、"仕上がった レオナルド"が あった——かも しれない。</p><p>どちらが よかったかは、だれにも 言えない。<ruby>史実<rt>じじつ</rt></ruby>の きみは、この 一枚を えらんだ。</p>` } },
             { label: 'まだ 手を 入れたい。<ruby>手<rt>て</rt></ruby>ばなさない', to: '6-c2', canon: true, effect: { tamesu: 2 },
               hist: { verdict: '史実では', match: '手ばなさなかった。死ぬまで、そばに 置いた',
-                body: `<p>きみは この 絵を 商人に わたさず、十年 あまり 持ち歩いた。<ruby>絹商人<rt>きぬしょうにん</rt></ruby>は、ついに 妻の 顔を 受けとれなかった。</p><p>最後は アルプスを こえて フランスまで 連れて いく。"<ruby>未完<rt>みかん</rt></ruby>"の まま なで続けた 一枚が、世界一 有名な 絵に なった——<ruby>放<rt>ほう</rt></ruby>り出した ままの、ほかの 絵たちを 置いて。</p>` } },
+                body: `<p>きみは この 絵を 商人に わたさず、十年 あまり 持ち歩いた。<ruby>絹商人<rt>きぬしょうにん</rt></ruby>は、ついに 妻の 顔を 受けとれなかった。</p><p>最後は アルプスを こえて フランスまで 連れて いく。"<ruby>未完<rt>みかん</rt></ruby>"の まま なで続けた その 一枚を 見る ために、いまも 世界じゅうから 人が パリの <ruby>美術館<rt>びじゅつかん</rt></ruby>へ やって 来る——<ruby>放<rt>ほう</rt></ruby>り出した ままの、ほかの 絵たちを 置いて。</p>` } },
           ] },
 
         // 1513〜16 ローマ (research §2 年表・§4-4). Grants p-giuliano — the other card no path granted.
@@ -499,7 +501,7 @@ export const STORY: Story = {
             <p class="speak">「先生。……この 山ほどの「なぜ」を、かならず わたしが 守ります」</p>
             <p>——つなぎ<ruby>続<rt>つづ</rt></ruby>けた <ruby>網<rt>あみ</rt></ruby>を、次の 手へ。</p>`,
           onEnter: { cards: ['p-melzi', 'w-shuki', 'w-vasari'] },
-          spark: 'え！？「フランス<ruby>王<rt>おう</rt></ruby>の うでの 中で レオナルドは <ruby>息<rt>いき</rt></ruby>を 引きとった」——だれもが 知る この 名場面、じつは その 日、<ruby>王<rt>おう</rt></ruby>は 別の <ruby>城<rt>しろ</rt></ruby>に いた？',
+          spark: 'え！？ きみの まくらもとに いたのは、<ruby>弟子<rt>でし</rt></ruby>の メルツィ。なのに <ruby>三十<rt>さんじゅう</rt></ruby>年 あまり あとの 本は、この 場面に フランス<ruby>王<rt>おう</rt></ruby>を 出した——「レオナルドは 王の うでの 中で <ruby>息<rt>いき</rt></ruby>を 引きとった」。その 日、王は 別の <ruby>城<rt>しろ</rt></ruby>に いたのに？',
           deep: { q: '王の うでの 中で 死んだ、って ほんとう?',
             body: `いかにも 美しい <ruby>話<rt>はなし</rt></ruby>だが、その 日の <ruby>王<rt>おう</rt></ruby>の <ruby>記録<rt>きろく</rt></ruby>を たどると、王は 遠く はなれた 別の <ruby>城<rt>しろ</rt></ruby>に いた。この 名場面を 広めたのも、あの ヴァザーリの <ruby>伝記<rt>でんき</rt></ruby>だ。「師が <ruby>筆<rt>ふで</rt></ruby>を 折った」も、この「<ruby>王<rt>おう</rt></ruby>の うで」も——きみが 死んで <ruby>三十<rt>さんじゅう</rt></ruby>年 あまり あと、<ruby>直接<rt>ちょくせつ</rt></ruby> きみを 知らない 人が 書いた、たった <ruby>一冊<rt>いっさつ</rt></ruby>の 本から 広まった。名場面ほど、もとを たしかめる。`,
             cite: '※ 王が その 日 別の <ruby>城<rt>しろ</rt></ruby>に いた <ruby>記録<rt>きろく</rt></ruby>は 残る（○）。「うでの 中で」は 後の <ruby>伝記<rt>でんき</rt></ruby>が 足した 話（☆）。',
