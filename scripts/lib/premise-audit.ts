@@ -59,6 +59,8 @@ export const ALLOWED_PREMISE: Record<string, { n: number; why: string }> = {
   'ieyasu|ch6/6-c#deep|語られてきた': { n: 1, why: '淀殿犯人説の帰属ヘッジ。直後に「たしかめられる紙はとぼしい」（△）が続く' },
   'ieyasu|card:p-yodo|語られてきた': { n: 1, why: '同上をカード裏で。「勝った側の世で貼られたラベル」と出どころまで名指す' },
   'ieyasu|card:w-shikamizo|語られてきた': { n: 1, why: 'しかみ像の伝承の帰属ヘッジ。直後に2015年の記録簿調査が続く' },
+  // kiyomori: 潮流説の学説史。旧説を無主体で削ると「流れが勝敗を決めた」が断定に戻る。
+  'kiyomori|ch7/7-b#deep|語られてきた': { n: 1, why: '壇ノ浦の潮流説（旧説→近年の疑問）。deep 内で旧説を名指し、直後に「疑いの声」で受ける' },
 };
 
 /** Live hit counts per ALLOWED_PREMISE key — the ledger's reconciliation input. */

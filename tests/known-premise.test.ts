@@ -10,6 +10,10 @@
 //  ・登録の無いバケツ（新しい章・新しい作品）は 0 でなければ落ちる＝これから書くものは最初から守る。
 //  ・直したら数が減って落ちる＝同じサイクルで帳簿を下げさせる（リストは減る一方）。
 // マーカーは proxy＝**床**であって、通説をマーカー無しで語る本文は見えない（天井は /eval-work のペルソナ）。
+// **0 件は「前提依存 0」ではない**: kiyomori 5-a はマーカーを消したら、裏返す相手（告発）まで本文から
+// 消えて deep へ潜り、初見の読者が通説を外から補うしかない形に悪化した（2026-07-28（5）・eval が捕捉）。
+// 語句の置換ではなく「だれが着せたか」を書き直すこと。作中世界の群衆描写（「だれもが 目を うたがう」）は
+// そもそも規則の対象外＝直す必要はない（残すなら ALLOWED_PREMISE へ理由つきで）。
 // 審査して「残す」と決めた面は `ALLOWED_PREMISE`（scripts/lib/premise-audit.ts）へ理由1行つきで移す
 // ＝この BASELINE は「未修正の帳簿」だけを持つ。
 import { describe, it, expect } from 'vitest';
@@ -33,9 +37,7 @@ const BASELINE: Record<string, number> = {
   // hidenaga: 6 件（背骨は掃き出し済み＝謎は「信長や 秀吉の 名は のこり、秀長の 名は のこらなかった」へ。
   // 残りは A 型 spark（ch2/ch4/ch6）とカード）
   'hidenaga:ch2': 2, 'hidenaga:ch4': 1, 'hidenaga:ch6': 1, 'hidenaga:card': 2,
-  // kiyomori: 12 件
-  'kiyomori:ch1': 1, 'kiyomori:ch3': 1, 'kiyomori:ch4': 2, 'kiyomori:ch5': 4,
-  'kiyomori:ch6': 3, 'kiyomori:ch7': 1,
+  // kiyomori: 0 件（③ A型仕分けで章の面は掃き出し済み。7-b#deep の潮流説は学説史ゆえ ALLOWED_PREMISE へ）
   // katsu: 3 件（海舟本人が語った話を後で相対化する＝作中人物の口に載った型が多い）
   'katsu:ch1': 2, 'katsu:ch5': 1,
   // ieyasu: 2 件（③ A型仕分けで章の面と clue は掃き出し済み＝残りはカードの面だけ。
