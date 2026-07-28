@@ -12,6 +12,7 @@
 
 ### 2026-07-28 live から掃き出した完了群（逐語は各 commit）
 
+- **★前提知識 ①＝規律とゲート**（e32f4c9）: WRITING に**書法11「前提は作品の中で着せる」**（裏返してよいのは読者が作中で持たされた思い込みだけ＝①読者の選択→hist ②遊んだ場面 ③作中人物の口。載せられない通説は deep・手帳へ）と**12「外側の声はなりきりの息継ぎでだけ話す」**を新設し、`scripts/lib/premise-audit.ts`（既知前提マーカー11語を ruby-audit と同じ「面」モデルで総当たり＋背骨＝riddle/titleSub/titleHeroTease 等の面を追加）と `tests/known-premise.test.ts`（作品別 BASELINE のラチェット・注入検査つき）で機械化。**実測 63件**（hidenaga 13・kiyomori 13・ieyasu 16・davinci 10・masako 7・katsu 3・shibusawa 1）＋反転型 spark 旧5作 19/36・新2作 1/30（設計 §2 の手計測を機械が再現）。**副産物＝`scripts/{ruby-audit,content-stats}.ts` の pure lib／CLI 分割**（vite-node は entry script をargv に載せないので、ハイブリッドを import すると相手の CLI が走る。既存 idiom `scripts/lib/*` に合わせた）。WRITING は 7,945/8,000 で満杯だったため、経緯・重複規則・空になった EXEMPT 注記を圧縮して枠を作った。
 - **観察メモ①〜⑧の決着**（①西暦／②顔＋②-2 既定値／③トップバー＝パンくず／⑤1アカウント／⑥現在地 bdcec52／⑦OGP）。**⑧「最初に名前を入力させられるのが嫌」** — 初回は無名アカウントを自動生成して作品えらびへ直行。名前は ⚙ メニューと アカウント画面の ✎ でいつでも付与・変更・削除（空文字＝「なまえ なし」が正規値）。逐語は JOURNAL 2026-07-26（31）＋ commit。
 - **★章跨ぎ一貫パス（shibusawa ch2/ch3 の反転定型を間引く）**（72c35b2） — 逐語は JOURNAL 2026-07-26（30）。register ㉘〜㉚ に codify 済み。
 - **★ふりがなの機械ゲート新設**（学年別漢字配当表を同梱し「面ごとの初出ルビ」をラチェットで守る。`scripts/ruby-audit.ts` ＋ `tests/ruby-furigana.test.ts`）— e9bc89f。逐語は JOURNAL 2026-07-27（2）。
