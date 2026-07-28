@@ -34,9 +34,7 @@ import { bucketOf } from '../scripts/lib/ruby-audit';
  * 現物は `npx vite-node scripts/premise-audit.ts <作品slug>` で面ごとに列挙できる。
  */
 const BASELINE: Record<string, number> = {
-  // hidenaga: 6 件（背骨は掃き出し済み＝謎は「信長や 秀吉の 名は のこり、秀長の 名は のこらなかった」へ。
-  // 残りは A 型 spark（ch2/ch4/ch6）とカード）
-  'hidenaga:ch2': 2, 'hidenaga:ch4': 1, 'hidenaga:ch6': 1, 'hidenaga:card': 2,
+  // hidenaga: 0 件（③ A型仕分けで章もカードも掃き出し済み。墨俣一夜城は「先に遊ばせ、章のおわりで裏返す」型へ）
   // kiyomori: 0 件（③ A型仕分けで章の面は掃き出し済み。7-b#deep の潮流説は学説史ゆえ ALLOWED_PREMISE へ）
   // katsu: 3 件（海舟本人が語った話を後で相対化する＝作中人物の口に載った型が多い）
   'katsu:ch1': 2, 'katsu:ch5': 1,
