@@ -1,5 +1,5 @@
 // ★ふりがなの機械ゲート。規則は「まだ習っていない漢字は、面ごとに初出でルビを振る」
-// （検査の実装と面の定義は scripts/ruby-audit.ts のヘッダ）。
+// （検査の実装と面の定義は scripts/lib/ruby-audit.ts のヘッダ）。
 //
 // なぜ要るか: G8（ルビ漏れ）は shibusawa 章三〜章六で**連続して評価の最大の指摘**だった。
 // 人手（LLM 監査）は毎章ちがう漏れを拾い、毎章とりこぼす——面の数が多すぎるから
@@ -12,7 +12,7 @@
 // しきい値の緩和ではなく帳簿なので、下げるのは自律で可・上げるのは「書いたものを直す」まで不可。
 import { describe, it, expect } from 'vitest';
 import { ALL_WORKS } from './helpers/all-works';
-import { auditBuckets, auditWork, bucketOf, unclosedRuby, type RubyMiss } from '../scripts/ruby-audit';
+import { auditBuckets, auditWork, bucketOf, unclosedRuby, type RubyMiss } from '../scripts/lib/ruby-audit';
 import { KYOIKU_KANJI_BY_GRADE, kanjiGrade } from '../scripts/lib/kanji-grades';
 
 /**

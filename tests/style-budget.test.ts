@@ -10,7 +10,7 @@
 // 経緯は docs/WRITING.md「成立の経緯」（2026-07-12 観察メモ「教科書的で引き込まれない」）を参照。
 import { describe, it, expect } from 'vitest';
 import { ALL_WORKS } from './helpers/all-works';
-import { chapterStats, personCardCount } from '../scripts/content-stats';
+import { chapterStats, personCardCount } from '../scripts/lib/content-stats';
 
 const BUDGET = {
   maxSceneText: 300, // 純テキスト字数/シーン

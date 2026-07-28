@@ -6,7 +6,7 @@
 import { describe, it, expect } from 'vitest';
 import { WORKS } from '../src/works/index';
 import { inlineFaces } from '../src/engine/inlineFaces';
-import { plainText } from '../scripts/content-stats';
+import { plainText } from '../scripts/lib/content-stats';
 
 const FACE_TAG = /<face pid="([^"]+)">([\s\S]*?)<\/face>/g;
 
