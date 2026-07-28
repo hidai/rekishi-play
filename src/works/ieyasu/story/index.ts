@@ -93,7 +93,10 @@ export const STORY: Story = {
       // into the mirror trap of a cold schemer. Scene maps land with the ch2 map slice (the
       // opening-anchor principle reads off the written scenes); katsu's pilot deferred the same.
       id: 2, num: '二', title: '三方ヶ原の 大敗', years: '1572〜1573',
-      lead: '生涯 最大の 大敗。逃げ帰った その 顔を、家康は 絵に 描かせた——と、長く 語られて きた。',
+      // The old lead hedged with 「と、長く 語られて きた」 (a known-premise marker). Dropping the hedge
+      // outright asserted 家康が描かせた — which the chapter's own 2-d reveal marks ◎ as unsupported
+      // (徳川美術館 states the attribution has no documentary basis). Hedge without the marker instead.
+      lead: '生涯 最大の 大敗。「逃げ帰った ときの 顔」だ という 絵が、いまも 残って いる。だれが、何の ために 描かせた？',
       start: '2-a',
       teaser: '<ruby>本能寺<rt>ほんのうじ</rt></ruby>が 燃えた。<ruby>堺<rt>さかい</rt></ruby>に いる きみの まわりは、敵だらけだ。',
       scenes: {

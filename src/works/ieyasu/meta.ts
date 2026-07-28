@@ -72,7 +72,7 @@ export const CHAPTER_POINTS: Record<string, string> = {
 /** Chapter → notebook world-map caption. Plain text (no ruby): rendered as a caption line. */
 export const CHAPTER_CAPTIONS: Record<string, string> = {
   1: '三河・岡崎に 生まれ、六さいで 人質に。駿府で 十一年——「苦しい 人質」だったのか？',
-  2: '遠江・三方ヶ原。武田信玄に、生涯 最大の 大敗。逃げ帰った 顔の 絵が、いまも 残る。',
+  2: '遠江・三方ヶ原。武田信玄に、生涯 最大の 大敗。逃げ帰った 顔だ という 絵が、いまも 残る。',
   3: '本能寺の 変。堺に いた きみは、敵地を こえて 三河へ——忍者に 守られて、ほんとうに？',
   4: '小牧・長久手で 渡り合った 相手に、頭を 下げる。そして 関東へ——左遷か、栄転か。',
   5: '美濃・関ヶ原。天下 分け目の 一日。あの 裏切りは、ほんとうに あの 時 だったのか。',

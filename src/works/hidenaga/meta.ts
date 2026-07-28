@@ -3,9 +3,11 @@
 //（titleKnownFaces / titleHeroTease / protagonistRuby 等）も、ここで手書き管理する。
 import type { WorkStrings, Hidden } from '../../engine/types';
 
-/** 貫通する謎（旧 RIDDLE, legacy 866）。 */
+// 貫通する謎。The riddle used to ask why 秀長 is missing from a textbook — an absence a
+// 10-year-old cannot perceive (docs/design/known-premise.md). It now points at the two faces
+// the title screen just handed the reader (titleKnownFaces), so the premise is worn, not assumed.
 export const RIDDLE =
-  'なぜ、天下人の 実の 弟で、大和100万石の 大大名 だったのに——秀長は 教科書に ほとんど 載って いないのだろう？';
+  'なぜ、天下人の 実の 弟で、大和100万石の 大大名 だったのに——信長や 秀吉の 名は のこり、秀長の 名は のこらなかったのだろう？';
 
 /** 顔があるがカードに無い人物の表示名（旧 PEOPLE_EXTRA, legacy 1241）。 */
 export const PEOPLE_EXTRA: Record<string, string> = {
@@ -72,7 +74,7 @@ export const STRINGS: WorkStrings = {
   years: '1540ごろ〜1591',
   riddleLead: '物語をつらぬく謎',
   titleHeroTease:
-    'そう、この人。豊臣秀長。有名な あの ふたりの すぐ そばに いたのに、教科書には いない。なぜ？ → はじめて みよう',
+    'そう、この人。豊臣秀長。いま ならんだ ふたりの すぐ そばに いたのに、この人の 名前だけ のこらなかった。なぜ？ → はじめて みよう',
   protagonistRuby: '<ruby>秀長<rt>ひでなが</rt></ruby>',
   riddleHeart:
     '—— こんなに 兄を 支えた 弟のこと、ちゃんと 分かって もらえるのかな？<br>その 答えは、きみが いちばん 近くで 見つけて いく。',

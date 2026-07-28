@@ -84,7 +84,7 @@ export const STRINGS: WorkStrings = {
   // The 小5 emotional thread beside the abstract riddle. Concrete and bodily: everything came from
   // one head that trusted its own eyes.
   riddleHeart:
-    '—— いちばん 有名な 絵も、空を とぶ 夢も、ぜんぶ ひとりの 頭から 生まれた。<br>その 目で 世界を 見た 一生を、きみが 生きて いく。',
+    '—— 一枚の 絵も、空を とぶ 夢も、ぜんぶ ひとりの 頭と 手から 生まれた。<br>その 目で 世界を 見た 一生を、きみが 生きて いく。',
   titleNote: 'きみは レオナルド・ダ・ヴィンチ。<br>人生の 分かれ道で、きみなら どうする？',
   homeTitle: 'レオナルド 年代記',
   notebookName: 'レオナルド手記',

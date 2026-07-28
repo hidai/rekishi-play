@@ -352,7 +352,7 @@ export const STORY: Story = {
       // riddle「なぜ完成させなかったか」right here. 解剖 is touched with 畏れと倫理 only (spark/deep, no gore;
       // sexual orientation untouched — research §0). Other chapters stay stubs until their own writing cycle.
       id: 6, num: '六', title: 'モナ・リザと 解剖', years: '1503〜1516',
-      lead: '世界一 有名な ほほえみを 描きながら、きみは 死体を 切り開き、体の 中の うずを 写す。',
+      lead: '<ruby>絹商人<rt>きぬしょうにん</rt></ruby>の 妻の ほほえみを 描きながら、きみは 死体を 切り開き、体の 中の うずを 写す。',
       start: '6-a',
       teaser: 'フランスの 王が、きみを 招く。アルプスを こえた 先に、きみの <ruby>最期<rt>さいご</rt></ruby>が ある。',
       scenes: {

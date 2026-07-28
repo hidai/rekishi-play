@@ -22,19 +22,19 @@ import { bucketOf } from '../scripts/lib/ruby-audit';
  * 現物は `npx vite-node scripts/premise-audit.ts <作品slug>` で面ごとに列挙できる。
  */
 const BASELINE: Record<string, number> = {
-  // hidenaga: 13 件（riddle そのものが「読んだことのない教科書の不在」を驚けと言っている）
-  'hidenaga:spine': 3, 'hidenaga:ch1': 1, 'hidenaga:ch2': 2, 'hidenaga:ch4': 1,
-  'hidenaga:ch6': 1, 'hidenaga:ch7': 3, 'hidenaga:card': 2,
-  // kiyomori: 13 件
-  'kiyomori:ch1': 2, 'kiyomori:ch3': 1, 'kiyomori:ch4': 2, 'kiyomori:ch5': 4,
+  // hidenaga: 6 件（背骨は掃き出し済み＝謎は「信長や 秀吉の 名は のこり、秀長の 名は のこらなかった」へ。
+  // 残りは A 型 spark（ch2/ch4/ch6）とカード）
+  'hidenaga:ch2': 2, 'hidenaga:ch4': 1, 'hidenaga:ch6': 1, 'hidenaga:card': 2,
+  // kiyomori: 12 件
+  'kiyomori:ch1': 1, 'kiyomori:ch3': 1, 'kiyomori:ch4': 2, 'kiyomori:ch5': 4,
   'kiyomori:ch6': 3, 'kiyomori:ch7': 1,
   // katsu: 3 件（海舟本人が語った話を後で相対化する＝作中人物の口に載った型が多い）
   'katsu:ch1': 2, 'katsu:ch5': 1,
-  // ieyasu: 16 件（最重。各章が「よく知られた家康像」を1枚ずつ剥がす設計の帰結）
-  'ieyasu:ch2': 4, 'ieyasu:ch4': 1, 'ieyasu:ch5': 2, 'ieyasu:ch6': 1, 'ieyasu:ch7': 3,
+  // ieyasu: 15 件（最重。各章が「よく知られた家康像」を1枚ずつ剥がす設計の帰結）
+  'ieyasu:ch2': 3, 'ieyasu:ch4': 1, 'ieyasu:ch5': 2, 'ieyasu:ch6': 1, 'ieyasu:ch7': 3,
   'ieyasu:card': 4, 'ieyasu:clue': 1,
-  // davinci: 10 件
-  'davinci:spine': 1, 'davinci:ch2': 1, 'davinci:ch6': 3, 'davinci:ch7': 1, 'davinci:card': 4,
+  // davinci: 8 件
+  'davinci:ch2': 1, 'davinci:ch6': 2, 'davinci:ch7': 1, 'davinci:card': 4,
   // masako: 7 件（1-b は未プレイ章の山場を先食いしている＝D 型）
   'masako:ch1': 2, 'masako:ch6': 2, 'masako:card': 1, 'masako:clue': 2,
   // shibusawa: 1 件
