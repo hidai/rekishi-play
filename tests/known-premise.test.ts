@@ -10,10 +10,18 @@
 //  ・登録の無いバケツ（新しい章・新しい作品）は 0 でなければ落ちる＝これから書くものは最初から守る。
 //  ・直したら数が減って落ちる＝同じサイクルで帳簿を下げさせる（リストは減る一方）。
 // マーカーは proxy＝**床**であって、通説をマーカー無しで語る本文は見えない（天井は /eval-work のペルソナ）。
-// 審査して「残す」と決めた面が出たら、そのときに理由1行つきの許可表をここに作る（いまは全件が未審査）。
+// 審査して「残す」と決めた面は `ALLOWED_PREMISE`（scripts/lib/premise-audit.ts）へ理由1行つきで移す
+// ＝この BASELINE は「未修正の帳簿」だけを持つ。
 import { describe, it, expect } from 'vitest';
 import { ALL_WORKS } from './helpers/all-works';
-import { auditBuckets, auditSurface, auditWork, spineSurface } from '../scripts/lib/premise-audit';
+import {
+  ALLOWED_PREMISE,
+  allowKeyCounts,
+  auditBuckets,
+  auditSurface,
+  auditWork,
+  spineSurface,
+} from '../scripts/lib/premise-audit';
 import { bucketOf } from '../scripts/lib/ruby-audit';
 
 /**
@@ -30,9 +38,9 @@ const BASELINE: Record<string, number> = {
   'kiyomori:ch6': 3, 'kiyomori:ch7': 1,
   // katsu: 3 件（海舟本人が語った話を後で相対化する＝作中人物の口に載った型が多い）
   'katsu:ch1': 2, 'katsu:ch5': 1,
-  // ieyasu: 15 件（最重。各章が「よく知られた家康像」を1枚ずつ剥がす設計の帰結）
-  'ieyasu:ch2': 3, 'ieyasu:ch4': 1, 'ieyasu:ch5': 2, 'ieyasu:ch6': 1, 'ieyasu:ch7': 3,
-  'ieyasu:card': 4, 'ieyasu:clue': 1,
+  // ieyasu: 2 件（③ A型仕分けで章の面と clue は掃き出し済み＝残りはカードの面だけ。
+  // 「語られてきた」5件は違反でなく帰属ヘッジ＝ALLOWED_PREMISE へ移した）
+  'ieyasu:card': 2,
   // davinci: 8 件
   'davinci:ch2': 1, 'davinci:ch6': 2, 'davinci:ch7': 1, 'davinci:card': 4,
   // masako: 7 件（1-b は未プレイ章の山場を先食いしている＝D 型）
@@ -45,7 +53,7 @@ describe('known-premise: 通説は作品の中で着せてから裏返す', () =
   for (const work of ALL_WORKS) {
     const found = auditBuckets(work);
     const byBucket = new Map<string, ReturnType<typeof auditWork>>();
-    for (const h of auditWork(work)) {
+    for (const h of auditWork(work).filter((h) => !h.allowed)) {
       const key = `${work.id}:${bucketOf(h.surface)}`;
       byBucket.set(key, [...(byBucket.get(key) ?? []), h]);
     }
@@ -68,6 +76,16 @@ describe('known-premise: 通説は作品の中で着せてから裏返す', () =
       });
     }
   }
+
+  // 許可表も帳簿と同じく腐る: 面を書き直してマーカーが消えたのに理由だけ残ると、次に同じ語を
+  // 書いたとき無審査で通る（許可の意味が「審査したその1件」から「その語ぜんぶ」へ静かに広がる）。
+  // ゆえに件数まで突き合わせる＝過不足どちらも赤にする。
+  it('ALLOWED_PREMISE が実データと1件ずつ合う（消えた許可も、無審査で増えた1件も赤にする）', () => {
+    const live = allowKeyCounts(ALL_WORKS);
+    expect(Object.fromEntries(Object.entries(ALLOWED_PREMISE).map(([k, v]) => [k, v.n]))).toEqual(
+      live,
+    );
+  });
 
   it('BASELINE に死んだ登録が無い（作品・章が消えたら掃除する・キーの名前空間ずれの検知）', () => {
     const live = new Set(

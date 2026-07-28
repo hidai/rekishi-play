@@ -5,7 +5,7 @@
 import type { Clue } from '../../engine/types';
 
 export const CLUES: Record<string, Clue> = {
-  'clue-1': { ch: 1, text: '「かわいそうな <ruby>人質<rt>ひとじち</rt></ruby>」の <ruby>話<rt>はなし</rt></ruby>は、あとの <ruby>世<rt>よ</rt></ruby>の <ruby>小説<rt>しょうせつ</rt></ruby>が 大きく <ruby>広<rt>ひろ</rt></ruby>めた もの。<ruby>当時<rt>とうじ</rt></ruby>の <ruby>記録<rt>きろく</rt></ruby>は、ずいぶん ちがう <ruby>姿<rt>すがた</rt></ruby>を 見せる。<b>おなじみの イメージほど、どこから 来たかを 見る</b>。' },
+  'clue-1': { ch: 1, text: '「かわいそうな <ruby>人質<rt>ひとじち</rt></ruby>」の <ruby>話<rt>はなし</rt></ruby>は、あとの <ruby>世<rt>よ</rt></ruby>の <ruby>小説<rt>しょうせつ</rt></ruby>が 大きく <ruby>広<rt>ひろ</rt></ruby>めた もの。<ruby>当時<rt>とうじ</rt></ruby>の <ruby>記録<rt>きろく</rt></ruby>は、ずいぶん ちがう <ruby>姿<rt>すがた</rt></ruby>を 見せる。<b>広まって いる <ruby>姿<rt>すがた</rt></ruby>ほど、どこから 来たかを 見る</b>。' },
   'clue-2': { ch: 2, text: '「<ruby>戒<rt>いまし</rt></ruby>めの ために 描かせた 絵」——いかにも いい <ruby>話<rt>はなし</rt></ruby>だ。だが、その 絵と <ruby>戦<rt>いくさ</rt></ruby>を むすぶ <ruby>記録<rt>きろく</rt></ruby>は 見あたらなかった。<b><ruby>教訓<rt>きょうくん</rt></ruby>に なる 話ほど、もとを たしかめる ねうちが ある</b>。' },
   'clue-3': { ch: 3, text: '<ruby>忍者<rt>にんじゃ</rt></ruby>が 守りぬいた という 話が 出てくるのは、その <ruby>忍者<rt>にんじゃ</rt></ruby>たち <ruby>自身<rt>じしん</rt></ruby>が 書いた <ruby>由緒書<rt>ゆいしょがき</rt></ruby>。しかも、<ruby>幕府<rt>ばくふ</rt></ruby>での <ruby>待遇<rt>たいぐう</rt></ruby>を よくしたい <ruby>時期<rt>じき</rt></ruby>の もの。<b><ruby>家<rt>いえ</rt></ruby>に <ruby>伝<rt>つた</rt></ruby>わる <ruby>手<rt>て</rt></ruby>がら話は、その 家の ために <ruby>書<rt>か</rt></ruby>かれる</b>。' },
   'clue-4': { ch: 4, text: 'おなじ「<ruby>関東<rt>かんとう</rt></ruby>へ 行け」が、<ruby>左遷<rt>させん</rt></ruby>にも <ruby>栄転<rt>えいてん</rt></ruby>にも 読める。<b>おなじ <ruby>出来事<rt>できごと</rt></ruby>でも、どの <ruby>立場<rt>たちば</rt></ruby>から 見るかで <ruby>意味<rt>いみ</rt></ruby>が 変わる</b>。だから「だれが そう 言ったか」を 見る。' },

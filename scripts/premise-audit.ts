@@ -7,8 +7,10 @@ import { ALL_WORKS, resolveWork } from './lib/works';
 const slug = process.argv[2];
 for (const w of slug ? [resolveWork(slug)] : ALL_WORKS) {
   const hits = auditWork(w);
+  const open = hits.filter((h) => !h.allowed);
   const sparks = reversalSparks(w);
-  console.log(`== ${w.id}: 既知前提マーカー ${hits.length}件 / 反転型 spark ${sparks.length}件（spark 総数 ${sparkCount(w)}）`);
-  for (const h of hits) console.log(`  ${h.surface}  「${h.marker}」  …${h.excerpt}…`);
+  console.log(`== ${w.id}: 既知前提マーカー ${open.length}件（審査ずみ 許可 ${hits.length - open.length}件）/ 反転型 spark ${sparks.length}件（spark 総数 ${sparkCount(w)}）`);
+  for (const h of hits)
+    console.log(`  ${h.allowed ? '[許可]' : '      '} ${h.surface}  「${h.marker}」  …${h.excerpt}…${h.allowed ? `\n            ↳ ${h.allowed}` : ''}`);
   for (const s of sparks) console.log(`  [A型?] ${s.scene}  ${s.excerpt.slice(0, 56)}…`);
 }
