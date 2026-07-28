@@ -36,8 +36,8 @@ import { bucketOf } from '../scripts/lib/ruby-audit';
 const BASELINE: Record<string, number> = {
   // hidenaga: 0 件（③ A型仕分けで章もカードも掃き出し済み。墨俣一夜城は「先に遊ばせ、章のおわりで裏返す」型へ）
   // kiyomori: 0 件（③ A型仕分けで章の面は掃き出し済み。7-b#deep の潮流説は学説史ゆえ ALLOWED_PREMISE へ）
-  // katsu: 3 件（海舟本人が語った話を後で相対化する＝作中人物の口に載った型が多い）
-  'katsu:ch1': 2, 'katsu:ch5': 1,
+  // katsu: 0 件（③ A型仕分け済み。苦学談は「えらんでから章のおわりで裏返す」型へ、
+  // 無血開城と意見書は「きみがいましたこと」を相手に裏返す型へ）
   // ieyasu: 2 件（③ A型仕分けで章の面と clue は掃き出し済み＝残りはカードの面だけ。
   // 「語られてきた」5件は違反でなく帰属ヘッジ＝ALLOWED_PREMISE へ移した）
   'ieyasu:card': 2,

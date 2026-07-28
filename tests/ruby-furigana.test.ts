@@ -28,8 +28,8 @@ const BASELINE: Record<string, number> = {
   'kiyomori:ch1': 3, 'kiyomori:ch2': 3, 'kiyomori:ch3': 11, 'kiyomori:ch4': 1,
   'kiyomori:ch5': 6, 'kiyomori:ch6': 3, 'kiyomori:ch7': 8, 'kiyomori:card': 73,
   'kiyomori:clue': 2, 'kiyomori:hidden': 5, 'kiyomori:timeline': 29,
-  // katsu: 192 件
-  'katsu:ch1': 19, 'katsu:ch3': 22, 'katsu:ch4': 3, 'katsu:ch5': 3, 'katsu:ch6': 3,
+  // katsu: 184 件
+  'katsu:ch1': 11, 'katsu:ch3': 22, 'katsu:ch4': 3, 'katsu:ch5': 3, 'katsu:ch6': 3,
   'katsu:ch7': 2, 'katsu:card': 100, 'katsu:clue': 3, 'katsu:hidden': 3, 'katsu:timeline': 34,
   // ieyasu: 208 件
   'ieyasu:ch1': 11, 'ieyasu:ch2': 8, 'ieyasu:ch3': 9, 'ieyasu:ch4': 15, 'ieyasu:ch5': 5,
