@@ -136,7 +136,7 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
       { at: 'tokyo', cur: 1, kind: 'town', label: '東京', note: 'きみが 立てた 銀行', lpos: 'above' },
       { at: 'osaka', kind: 'town', label: '大阪', note: 'わたを つむぐ 会社', lpos: 'above' },
       { at: 'sapporo', kind: 'town', label: '札幌', note: 'ビールの 会社', lpos: 'left' },
-      { at: 'chiharajima', kind: 'village', label: '血洗島', note: 'れんがを 焼いた 村', lpos: 'left' },
+      { at: 'chiharajima', kind: 'village', label: '血洗島', note: 'となりは れんがの 村', lpos: 'left' },
     ],
   },
 
