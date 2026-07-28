@@ -36,7 +36,7 @@ export const CARDS: Record<string, Card> = {
   'p-yasutoki': { type: 'person', ch: 7, tone: 'ai', name: '北条泰時', read: 'ほうじょう やすとき',
     text: 'きみの <ruby>甥<rt>おい</rt></ruby>（義時の 子）。承久の 乱では 幕府軍を <ruby>率<rt>ひき</rt></ruby>いて 京へ のぼった。政子が 死んだ あと、武士の ための きまり『<ruby>御成敗式目<rt>ごせいばいしきもく</rt></ruby>』（1232年）を 作る。——政子が 作ったのは <ruby>制度<rt>せいど</rt></ruby>では なく、<ruby>続<rt>つづ</rt></ruby>いた ことの ほうだ。' },
   'p-kagemori': { type: 'person', ch: 6, tone: 'midori', name: '安達景盛', read: 'あだち かげもり',
-    text: '政子に 近い 御家人。1221年、御家人を 集めた 場で、幕府の 正史『吾妻鏡』は「政子は <ruby>御簾<rt>みす</rt></ruby>の 内に いて、この 人が その 言葉を 読みあげた」と 読める 書き方を している。日本一 有名な <ruby>演説<rt>えんぜつ</rt></ruby>の、もう 一人の 主役かも しれない 人。' },
+    text: '政子に 近い 御家人。1221年、御家人を 集めた 場で、幕府の 正史『吾妻鏡』は「政子は <ruby>御簾<rt>みす</rt></ruby>の 内に いて、この 人が その 言葉を 読みあげた」と 読める 書き方を している。あの 場の、もう 一人の 主役かも しれない 人。' },
   'p-yoshikazu': { type: 'person', ch: 3, tone: 'midori', name: '比企能員', read: 'ひき よしかず',
     text: '頼家の <ruby>後<rt>うし</rt></ruby>ろだて。娘が 頼家の 子・<ruby>一幡<rt>いちまん</rt></ruby>を 生み、<ruby>比企<rt>ひき</rt></ruby>の 家は 次の 代を にぎる はずだった。1203年、北条の 側に 討たれる。この 事件を 書いた 記録も、勝った 北条の 側の ものだ。' },
   'p-kagetoki': { type: 'person', ch: 2, tone: 'midori', name: '梶原景時', read: 'かじわら かげとき',

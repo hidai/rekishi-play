@@ -43,8 +43,8 @@ const BASELINE: Record<string, number> = {
   'ieyasu:card': 2,
   // davinci: 0 件（③ A型仕分けで章もカードも掃き出し済み。ヴェロッキオ伝説は兄弟子のささやきで着せ、
   // 王の腕の中の最期は「読者が遊んだ臨終」を伝記が書きかえた形へ）
-  // masako: 7 件（1-b は未プレイ章の山場を先食いしている＝D 型）
-  'masako:ch1': 2, 'masako:ch6': 2, 'masako:card': 1, 'masako:clue': 2,
+  // masako: 0 件（③ A/D型仕分け済み。走った夜は選択肢の label で着せて章のむすびで裏返す型へ、
+  // 承久の乱の演説は「きみのひと声」＝読者がいま語った言葉を相手に裏返す型へ）
   // shibusawa: 1 件
   'shibusawa:clue': 1,
 };
