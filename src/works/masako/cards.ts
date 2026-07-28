@@ -12,7 +12,7 @@ export const CARDS: Record<string, Card> = {
   'p-masako': { type: 'person', ch: 1, tone: 'ai', name: '北条政子', read: 'ほうじょう まさこ',
     text: 'きみ 自身。<ruby>伊豆<rt>いず</rt></ruby>の 小さな <ruby>武士<rt>ぶし</rt></ruby>の 家に 生まれ、流されて きた <ruby>源頼朝<rt>みなもとの よりとも</rt></ruby>と 結ばれた。夫の 死の あと 26年、子を <ruby>廃<rt>はい</rt></ruby>し、父を 追い、次の <ruby>鎌倉殿<rt>かまくらどの</rt></ruby>を 京から 迎えて、<ruby>武士<rt>ぶし</rt></ruby>の 世を 守りつづけた。——ただし、この 人が 書いた 文字は 一枚も 残っていない。' },
   'p-yoritomo': { type: 'person', ch: 1, tone: 'seal', name: '源頼朝', read: 'みなもとの よりとも',
-    text: 'きみの 夫。13さいで 父を 失い、<ruby>平清盛<rt>たいらの きよもり</rt></ruby>に <ruby>伊豆<rt>いず</rt></ruby>へ 流された <ruby>流人<rt>るにん</rt></ruby>。1180年に 兵を 挙げ、<ruby>鎌倉<rt>かまくら</rt></ruby>に 武士の <ruby>政府<rt>せいふ</rt></ruby>を つくった。1199年に 死ぬが、その 死の <ruby>前後<rt>ぜんご</rt></ruby>を 幕府の 正史『<ruby>吾妻鏡<rt>あづまかがみ</rt></ruby>』は 書いて いない——理由は わかって いない。' },
+    text: 'きみの 夫。13さいで 父を 失い、<ruby>平清盛<rt>たいらの きよもり</rt></ruby>に <ruby>伊豆<rt>いず</rt></ruby>へ 流された <ruby>流人<rt>るにん</rt></ruby>。1180年に 兵を 挙げ、<ruby>鎌倉<rt>かまくら</rt></ruby>に 武士の <ruby>政府<rt>せいふ</rt></ruby>を つくった——その とき、頼朝を 流した 清盛は、まだ 京に 生きて いた。1199年に 死ぬが、その 死の <ruby>前後<rt>ぜんご</rt></ruby>を 幕府の 正史『<ruby>吾妻鏡<rt>あづまかがみ</rt></ruby>』は 書いて いない——理由は わかって いない。' },
   'p-tokimasa': { type: 'person', ch: 1, tone: 'ai', name: '北条時政', read: 'ほうじょう ときまさ',
     text: 'きみの 父。はじめは <ruby>流人<rt>るにん</rt></ruby>の <ruby>見張<rt>みは</rt></ruby>り役、やがて 頼朝の <ruby>後<rt>うし</rt></ruby>ろだてに。1205年、きみと 弟・<ruby>義時<rt>よしとき</rt></ruby>に よって <ruby>伊豆<rt>いず</rt></ruby>へ 追われた。追った 理由を 書いているのは、追った 側の <ruby>子孫<rt>しそん</rt></ruby>が 作った 記録の ほうだ。' },
   'p-yoshitoki': { type: 'person', ch: 3, tone: 'ai', name: '北条義時', read: 'ほうじょう よしとき',

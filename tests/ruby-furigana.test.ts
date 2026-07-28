@@ -40,7 +40,7 @@ const BASELINE: Record<string, number> = {
   'davinci:hidden': 1, 'davinci:star': 4, 'davinci:timeline': 23,
   // masako: 197 件
   'masako:ch1': 23, 'masako:ch2': 11, 'masako:ch3': 25, 'masako:ch4': 15, 'masako:ch5': 17,
-  'masako:ch6': 27, 'masako:ch7': 13, 'masako:card': 26, 'masako:clue': 3, 'masako:timeline': 35,
+  'masako:ch6': 26, 'masako:ch7': 13, 'masako:card': 26, 'masako:clue': 3, 'masako:timeline': 35,
   // shibusawa: 棚卸し済み（0 件。2026-07-27）＝以後この作品は新章と同じ「登録なし＝0 要求」で守られる。
 };
 

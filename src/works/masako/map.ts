@@ -59,6 +59,12 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     route: 'tokaido',
     markers: [
       { at: 'kamakura', cur: 1, kind: 'castle', label: '鎌倉', note: 'ここから 西へ', lpos: 'above' },
+      // note は 場の 名指しに とどめる。6-d の C型 spark（力の 向きが 西から 東へ 逆転した）を
+      // ここへ 移そうとして 失敗した記録（2026-07-28）＝**地図の note は 命題を 運べない**。
+      // 「命じて きた 都」→小5 は「京が 攻めて きた」と 誤読（来る/行くの 語が 進軍の 線と 向きを 争う）。
+      // 「命じて いた 都」→誤読は 消えたが「誰が 誰に 何を？」が 絵に 無く「ふーん」で 流れる。
+      // 「命じる 側 だった」→幅が 足りず 枠外（tests/map-labels.test.ts）。逆転は 既に monologue と
+      // 6-e むすびが 内側から 言っている＝**抜いた 跡は 言い換えでなく 削除**（design/known-premise.md §4）。
       { at: 'kyoto', kind: 'town', enemy: 1, label: '京', note: 'せめのぼる 先', lpos: 'left' },
     ],
   },
