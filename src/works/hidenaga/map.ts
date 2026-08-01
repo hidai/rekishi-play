@@ -73,7 +73,7 @@ export const SCENE_MAPS: Record<string, SceneMapDef>={
     {at:'kiyosu',kind:'castle',lpos:'right',label:'清洲城',note:'兄が 仕える 織田家'}]},
   '1-c':{markers:[
     {at:'nakamura',cur:1,kind:'village',label:'中村'},
-    {at:'kiyosu',kind:'castle',lpos:'right',label:'清洲城',note:'武士への 道'}]},
+    {at:'kiyosu',kind:'castle',lpos:'right',label:'清洲城',note:'侍への 道'}]},
   '1-d':{markers:[{at:'nakamura',cur:1,kind:'village',label:'尾張 中村',note:'侍・木下小一郎に',people:['p-hideyoshi','p-naka']}]},
 
   '2-a':{markers:[

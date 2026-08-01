@@ -37,8 +37,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - `npx vite-node scripts/render-faces.ts <出力ディレクトリ>` — 全人物の似顔絵コンタクトシート
   - `npx vite-node scripts/render-scene.ts <出力.svg> [章] [シーンid]` — シーンのメインビジュアル（closeup があれば対面の場、なければ読み解き地図）。例: `... /tmp/scene.svg 7 7-a2`
   - `npx vite-node scripts/visual-coverage.ts [作品slug]` — 全シーンの主ビジュアル在庫レポート（フォールバック地図のまま＝未執筆のシーンを可視化。fail はしない。完成作品の回帰は `tests/visual-coverage.test.ts` が担保）
-- `npx vite-node scripts/ruby-audit.ts [作品slug]` — ふりがなの棚卸し（面ごとの未ルビ初出を抜粋つきで列挙）。ゲート＝`tests/ruby-furigana.test.ts`（新章・新作品は 0 件）
-- `npx vite-node scripts/premise-audit.ts [作品slug]` — 前提知識の棚卸し（既知前提マーカーと反転型 spark の列挙）。ゲート＝`tests/known-premise.test.ts`（新章・新作品は 0 件）
+- 読者面の棚卸し（`npx vite-node scripts/<名>.ts [作品slug]`。抜粋つきで列挙する診断。どれも**新章・新作品は 0 件**をゲートが要求する）: `ruby-audit`＝未ルビ初出（`tests/ruby-furigana.test.ts`）／`premise-audit`＝既知前提マーカーと反転型 spark（`tests/known-premise.test.ts`）／`institution-audit`＝主線で言い換え無しに初出する制度語（`tests/institution-gloss.test.ts`）
 
 ## アーキテクチャ上の制約
 

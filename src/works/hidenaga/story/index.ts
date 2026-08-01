@@ -9,7 +9,7 @@ export const STORY: Story = { chapters: [
 
 /* ========================= 第1章 ========================= */
 {
-  id:1, num:'其の一', title:'<ruby>尾張<rt>おわり</rt></ruby>中村・農民の子 <ruby>小竹<rt>こちく</rt></ruby>', years:'1540〜1564',
+  id:1, num:'其の一', title:'<ruby>尾張<rt>おわり</rt></ruby>中村・<ruby>百姓<rt>ひゃくしょう</rt></ruby>の子 <ruby>小竹<rt>こちく</rt></ruby>', years:'1540〜1564',
   lead:'すべては、尾張の 小さな 村から はじまった。',
   start:'1-a',
   teaser:'兄弟に くだる 無茶な 命令——敵の 目の 前に、一晩で 城を 建てられるか？',
@@ -17,18 +17,18 @@ export const STORY: Story = { chapters: [
     '1-a':{ art:'village', place:'<ruby>尾張国<rt>おわりのくに</rt></ruby> <ruby>愛知郡<rt>あいちぐん</rt></ruby> 中村',
       text:`<p>きみの 名は <ruby>小竹<rt>こちく</rt></ruby>。<ruby>尾張<rt>おわり</rt></ruby>の <ruby>中村<rt>なかむら</rt></ruby>という 小さな 村で 生まれた、<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子だ。</p>
         <p>年は <ruby>天文<rt>てんぶん</rt></ruby>9年——<em>1540年ごろ</em>と いわれて いる。田を たがやし、母の <b>なか</b>を 手つだう 毎日。空の 下、きみは まだ ただの 村の 子どもだった。</p>`,
-      spark:'え！？ <ruby>天下人<rt>てんかびと</rt></ruby> 兄弟なのに、ふたりの「父が だれか」さえ、じつは わかっていない——？',
+      spark:'え！？ のちに <ruby>天下<rt>てんか</rt></ruby>を とる 兄弟なのに、ふたりの「父が だれか」さえ、じつは わかっていない——？',
       deep:{ q:'そもそも、<ruby>秀長<rt>ひでなが</rt></ruby>は いつ どこで 生まれた？', body:`生まれた 年は <b>1540年が 有力</b>だけれど、じつは 「はっきり 書いた 当時の 記録」は ない。1541年 という 説も ある。さらに おどろく ことに、<b><ruby>秀吉<rt>ひでよし</rt></ruby>と 秀長の 「父が だれか」さえ 定かでは ない</b>。ふたりは 父ちがいの 兄弟（<ruby>異父弟<rt>いふてい</rt></ruby>）だったとも、同じ 父の 兄弟だったとも いわれ、今も 決着が ついていない。`, cite:'※ 秀吉・秀長 自身が 父について 語った 記録は 一つも 残っていない。' },
       onEnter:{ card:'p-naka' },
       next: '1-b' },
 
     '1-b':{ art:'village', place:'ある日の 中村',
-      text:`<p>ある日、村に ひとりの 若者が 帰って きた。きみの 兄・<ruby>藤吉郎<rt>とうきちろう</rt></ruby>だ。針売りから 身を おこし、いまは <ruby>織田<rt>おだ</rt></ruby>家に 仕えて いるという。</p>
+      text:`<p>ある日、村に ひとりの 若者が 帰って きた。きみの 兄・<ruby>藤吉郎<rt>とうきちろう</rt></ruby>だ。針売りから 身を おこし、いまは <ruby>織田<rt>おだ</rt></ruby>家（この あたりを 治める 家）に 仕えて いるという。</p>
         <p>兄は きみの <ruby>肩<rt>かた</rt></ruby>を つかんで、目を かがやかせて 言った。</p>
         <p class="speak">「小竹、<em><ruby>侍<rt>さむらい</rt></ruby></em>に ならんか。お前も おれと 来い。この 世は これから、大きく 変わるぞ」</p>`,
       choices:[
         { label:'兄について いく。侍に なる', to:'1-c', canon:true, effect:{ kizuna:2 },
-          hist:{ verdict:'史実では', match:'きみの <ruby>選択<rt>せんたく</rt></ruby>は、史実と 同じだ！', body:`<p><ruby>秀長<rt>ひでなが</rt></ruby>は 兄・<ruby>秀吉<rt>ひでよし</rt></ruby>に <ruby>誘<rt>さそ</rt></ruby>われ、<b>農民から 武士へ</b>と 人生を 変えた。安定した 農家を <ruby>継<rt>つ</rt></ruby>ぐ 道も あった はずなのに、<ruby>彼<rt>かれ</rt></ruby>は 兄の 手を とった。</p><p>これが、日本一の <ruby>補佐役<rt>ほさやく</rt></ruby>の 出発点に なる。</p>`,
+          hist:{ verdict:'史実では', match:'きみの <ruby>選択<rt>せんたく</rt></ruby>は、史実と 同じだ！', body:`<p><ruby>秀長<rt>ひでなが</rt></ruby>は 兄・<ruby>秀吉<rt>ひでよし</rt></ruby>に <ruby>誘<rt>さそ</rt></ruby>われ、<b><ruby>百姓<rt>ひゃくしょう</rt></ruby>から <ruby>侍<rt>さむらい</rt></ruby>へ</b>と 人生を 変えた。安定した 農家を <ruby>継<rt>つ</rt></ruby>ぐ 道も あった はずなのに、<ruby>彼<rt>かれ</rt></ruby>は 兄の 手を とった。</p><p>これが、日本一の <ruby>補佐役<rt>ほさやく</rt></ruby>の 出発点に なる。</p>`,
             source:{ grade:'tale',
               name:'『<ruby>太閤素生記<rt>たいこうすじょうき</rt></ruby>』など、<ruby>江戸時代<rt>えどじだい</rt></ruby>に 書かれた <ruby>伝記<rt>でんき</rt></ruby>',
               note:'わかい ころの 兄弟の ことを、その場で 書いた 記録は ない。のちの 世に まとめられた 話だ。' },
@@ -38,7 +38,7 @@ export const STORY: Story = { chapters: [
             card:'p-hideyoshi', clue:'clue-1' } },
       ] },
 
-    '1-c':{ art:'village', place:'武士への 第一歩', monologue:'（田んぼしか 知らなかった おれが、刀を さす。こわい。でも——兄さの となりなら、行ける 気が する。）',
+    '1-c':{ art:'village', place:'<ruby>侍<rt>さむらい</rt></ruby>への 第一歩', monologue:'（田んぼしか 知らなかった おれが、刀を さす。こわい。でも——兄さの となりなら、行ける 気が する。）',
       text:`<p>きみは <ruby>木下<rt>きのした</rt></ruby><ruby>小一郎<rt>こいちろう</rt></ruby>と 名のった。兄は 気さくで <ruby>大胆<rt>だいたん</rt></ruby>、人の 心を つかむのが うまい。だが——大きな 仕事を まわすには、こまかな <ruby>段<rt>だん</rt></ruby><ruby>取<rt>ど</rt></ruby>りを する 者が いる。</p>
         <p>兄が 前に 出て <ruby>手柄<rt>てがら</rt></ruby>を たてる かげで、きみは 何を する <ruby>侍<rt>さむらい</rt></ruby>に なる？</p>`,
       choices:[
@@ -283,7 +283,7 @@ export const STORY: Story = { chapters: [
       text:`<p>根白坂の 敗北で 戦意を 失った <ruby>島津義久<rt>しまづよしひさ</rt>は、<ruby>髪<rt>かみ</rt></ruby>を そって 降伏した。九州の 平定が 決まる。四国も 九州も、きみが 総大将として 導いた 戦いだ。</p>
         <p>だが——「戦わずに まとめた」「段取りで 勝った」戦いは、劇的な 討死や 逆転劇より、ずっと 語られにくい。手がかりを ひとつ。</p>`,
       spark:'え！？ 島津義久が 髪を そったのは、じつは「もう 戦わない」という 合図だった——？',
-      deep:{ q:'なぜ <ruby>髪<rt>かみ</rt></ruby>を そると、<ruby>降伏<rt>こうふく</rt></ruby>に なるの？', body:`<ruby>武士<rt>ぶし</rt></ruby>が 髪を おろして おぼうさんの 姿に なるのは、「もう 世の 争いから 身を ひく」という 合図だった。<ruby>島津義久<rt>しまづよしひさ</rt></ruby>は 頭を そり、<ruby>龍伯<rt>りゅうはく</rt></ruby>と 名を あらためて <ruby>秀吉<rt>ひでよし</rt></ruby>の 前に 出た。<br>そして——戦いを やめたいと はじめに 申し入れて きた 相手は、秀吉では なく、きみだった。`, cite:'' },
+      deep:{ q:'なぜ <ruby>髪<rt>かみ</rt></ruby>を そると、<ruby>降伏<rt>こうふく</rt></ruby>に なるの？', body:`<ruby>侍<rt>さむらい</rt></ruby>が 髪を おろして おぼうさんの 姿に なるのは、「もう 世の 争いから 身を ひく」という 合図だった。<ruby>島津義久<rt>しまづよしひさ</rt></ruby>は 頭を そり、<ruby>龍伯<rt>りゅうはく</rt></ruby>と 名を あらためて <ruby>秀吉<rt>ひでよし</rt></ruby>の 前に 出た。<br>そして——戦いを やめたいと はじめに 申し入れて きた 相手は、秀吉では なく、きみだった。`, cite:'' },
       onEnter:{ card:'p-yoshihisa' },
       next:'5-e' },
 

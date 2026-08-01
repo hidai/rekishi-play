@@ -66,7 +66,9 @@ export const STRINGS: WorkStrings = {
   eyebrow: 'なりきり歴史アドベンチャー',
   titleMain: '<ruby>秀長<rt>ひでなが</rt></ruby>',
   // ruby を置けない面（プレーン文字列）ゆえ、教育漢字だけで書く（ruby-audit ヘッダ）。
-  titleSub: '天下を とった 兄を、すぐ そばで ささえた 弟',
+  // 「天下」はこの作品ぜんたいの背骨になる語なので、読者が最初に会うここで一句そえる
+  //（WRITING 13。以後の章は裸で使える）。
+  titleSub: '天下（日本 ぜんぶ）を とった 兄を、すぐ そばで ささえた 弟',
   years: '1540ごろ〜1591',
   riddleLead: '物語をつらぬく謎',
   // ★ 入口のフック（engagement.md §14 型1）。知ってる顔を並べる装置を廃した代わりに、

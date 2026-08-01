@@ -6,7 +6,7 @@ import type { TimelineEntry } from '../../engine/types';
 
 export const TIMELINE: TimelineEntry[] = [
   { y:'1540?', ch:1, key:true,  t:'<ruby>秀長<rt>ひでなが</rt></ruby> 生まれる', d:'<ruby>尾張中村<rt>おわりなかむら</rt></ruby>。<ruby>生年<rt>せいねん</rt></ruby>は <ruby>諸説<rt>しょせつ</rt></ruby>あり（1540年 有力）。' },
-  { y:'1561?', ch:1,            t:'兄に <ruby>誘<rt>さそ</rt></ruby>われ 武士に', d:'農民から <ruby>侍<rt>さむらい</rt></ruby>へ。<ruby>木下小一郎<rt>きのしたこいちろう</rt></ruby>と 名のる。' },
+  { y:'1561?', ch:1,            t:'兄に <ruby>誘<rt>さそ</rt></ruby>われ <ruby>侍<rt>さむらい</rt></ruby>に', d:'<ruby>百姓<rt>ひゃくしょう</rt></ruby>から 侍へ。<ruby>木下小一郎<rt>きのしたこいちろう</rt></ruby>と 名のる。' },
   { y:'1566?', ch:2,            t:'<ruby>墨俣<rt>すのまた</rt></ruby> の 伝説', d:'<ruby>一夜城<rt>いちやじょう</rt></ruby>の <ruby>逸話<rt>いつわ</rt></ruby>。史実性は あやしいが、<ruby>裏方<rt>うらかた</rt></ruby>の 力の <ruby>象徴<rt>しょうちょう</rt></ruby>。' },
   { y:'1577', ch:3, key:true,  t:'<ruby>但馬<rt>たじま</rt></ruby>へ <ruby>侵攻<rt>しんこう</rt></ruby>', d:'<ruby>竹田城<rt>たけだじょう</rt></ruby>を おさえ、<ruby>城代<rt>じょうだい</rt></ruby>に。<ruby>生野銀山<rt>いくのぎんざん</rt></ruby>を まもる。' },
   { y:'1580', ch:3,            t:'<ruby>但馬<rt>たじま</rt></ruby> <ruby>平定<rt>へいてい</rt></ruby>', d:'<ruby>出石<rt>いずし</rt></ruby>（<ruby>有子山城<rt>ありこやまじょう</rt></ruby>）が 開城。初の まとまった <ruby>領国<rt>りょうごく</rt></ruby>を 得る。' },

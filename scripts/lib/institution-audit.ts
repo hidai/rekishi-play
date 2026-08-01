@@ -1,0 +1,178 @@
+// ★制度語の機械検査。tests/institution-gloss.test.ts（ゲート）と
+// scripts/institution-audit.ts（CLI）が共用する。
+//
+// 検査する規則は1つ（docs/WRITING.md 13）——**主線に出す制度語は、その場で一句で言い換える**。
+// 読み通し検査（docs/design/engagement.md §14 型3）で7作すべてに出た欠陥＝**読めるのに意味が
+// 分からない語**（幕府・幕臣・身分・百姓・朝廷・上皇・一門・棟梁・石高・主家・私生児・攘夷…）。
+// 成功例はすでにコーパスの中にある: 清盛 1-c「宋（今の中国）」・勝海舟「蘭学（オランダ語で学ぶ
+// 西洋の学問）」＝読者の逐語「こういう書き方を全部の言葉にしてほしい」。
+//
+// ルビの帳簿との違い＝**ここは「読めるか」ではなく「意味が届くか」を見る**。前身の
+// scripts/glossary-audit.ts は「本文でルビを振った語」を候補にして失敗した（ルビは*漢字が難しい*
+// の印であって*概念が難しい*の印ではない＝地名と日常語に埋もれる）。ゆえに語は**手で選ぶ**
+// ——下の INSTITUTION_TERMS が帳簿の本体で、PREMISE_MARKERS と同じ「人が育てるリスト」。
+//
+// 判定（3つだけ）:
+//   ・初出主義: 作品の主線で**最初に出た1回**だけを見る（同じ語の2回目以降は読者はもう知っている）。
+//   ・言い換え = その語の直後の「（…）」。他の形（同格のダッシュ・直前の一句・絵や選択肢が担う）で
+//     済ませたものは ALLOWED_INSTITUTION へ理由1行つきで移す＝**審査した記録が残る**。
+//   ・説明が後の面（deep・カード）に有るかは見ない。**読者はそれを開かない**のが型3 の中身。
+//
+// 対象の面（silent cap にしないため明記する）: 入口（タイトル画面）＋各シーンの画面本体
+// （place・本文・内語・え！？・問い・選択肢のラベル・ミニゲーム）。**deep・hist・creed・カード・
+// 手がかりは対象外**——そこは説明の置き場だから（WRITING 3・4）。その面の天井は /eval-work の
+// 読み通しペルソナが見る。⚠️ WRITING 13 の後半「**同じものを2つの語で呼ばない**（侍／武士）」は
+// 面を限定しない規律だが、機械が数えるのは主線の初出だけ＝**言い換えの有無しか見ない**
+//（同義語の混在は初出1回ずつで通る）。そこは書き手と eval の仕事。
+import type { Work } from '../../src/engine/types';
+import { plainText } from './content-stats';
+import { bucketOf, type Surface } from './ruby-audit';
+
+/**
+ * 制度・身分・役職・仕組みを名ざす語。**読める（ルビが振ってある）が、初見の小5には
+ * 意味が届かない**ものを手で選ぶ。固有名詞（人名・地名）は対象外＝顔と地図が受け持つ。
+ * 語を足すのは自律で可（＝厳格化）。外すときは ALLOWED_INSTITUTION へ理由つきで移す。
+ */
+export const INSTITUTION_TERMS: string[] = [
+  // 武家の世（hidenaga・kiyomori・masako・ieyasu）
+  '幕府', '幕臣', '将軍', '大名', '武士', '侍', '家臣', '主君', '主家', '家督',
+  '一門', '棟梁', '御家人', '執権', '御台所', '守護', '地頭', '奉行', '元服', '出家',
+  '人質', '領国', '年貢', '兵糧', '石高', '天下人', '天下', '身分', '百姓', '牢人', '浪人',
+  // 朝廷（kiyomori・masako）
+  '朝廷', '上皇', '法皇', '院政', '公家', '貴族', '関白', '太政大臣', '太閤', '摂政', '朝敵', '官位',
+  // 近代（katsu・shibusawa）
+  '攘夷', '開国', '蘭学', '藩', '老中', '旗本', '御用金', '尊王', '討幕', '士族', '株式会社', '合本',
+  // ルネサンスのイタリア（davinci）
+  '私生児', '公証人', '工房', '共和国', '君主',
+];
+
+/**
+ * 審査して「言い換えを置かない」と決めた語、キーは `作品|語` → 理由。
+ *
+ * 帳簿（BASELINE）が「まだ直していない」を持つのに対し、ここは「**直す必要が無いと判断した**」を
+ * 持つ。両方を機械が突き合わせるので、判断は1回で済み、次のサイクルが同じ語を読み直さない。
+ * 言い換えの形は「（…）」だけが機械に見える——同格のダッシュ・直前の一句・絵や選択肢が意味を
+ * 担う形は正しい書き方だが機械には区別できないので、ここへ理由つきで置く。
+ */
+export const ALLOWED_INSTITUTION: Record<string, string> = {
+  // hidenaga（2026-08-01 棚卸し・entry と ch1）
+  'hidenaga|百姓': '初出（入口の謎）が「百姓の 子として、田を たがやして いた」＝直後の同格が言い換えそのもの',
+  'hidenaga|侍': '初出（入口のフック）が「田んぼの まん中」との対比で位置づけられる。語自体も小5に既知',
+};
+
+export interface InstitutionHit {
+  surface: string;
+  term: string;
+  /** 前後の抜粋（作者が現物を探せるように）。 */
+  excerpt: string;
+  /** 審査して残すと決めた語。ALLOWED_INSTITUTION の理由。 */
+  allowed?: string;
+}
+
+/** 面の部品をつなぐ印。つなぎ目で「語＋（…）」が偶然できるのを防ぐ。 */
+const SEP = '｜';
+
+/**
+ * 読者が「開かずに」読む面だけを、読む順に。入口＝タイトル画面（`titleSub` はプレーン文字列で
+ * ruby を置けない面だが、制度語は語そのものの問題なのでここでは対象）。
+ */
+export function mainSurfaces(work: Work): Surface[] {
+  const s = work.strings;
+  const out: Surface[] = [
+    {
+      id: 'entry',
+      parts: [s.titleMain, s.titleSub, s.titleHook, work.riddle, s.riddleHeart ?? '', s.titleNote],
+    },
+  ];
+  for (const ch of work.story.chapters) {
+    out.push({ id: `ch${ch.id}`, parts: [ch.title, ch.lead, ch.teaser ?? ''] });
+    for (const [sid, sc] of Object.entries(ch.scenes)) {
+      const parts = [
+        sc.place,
+        sc.text,
+        sc.monologue,
+        sc.spark,
+        sc.q,
+        ...(sc.choices ?? []).map((c) => c.label),
+      ];
+      if (sc.minigame?.type === 'sort')
+        parts.push(
+          sc.minigame.title,
+          sc.minigame.lead,
+          ...sc.minigame.items,
+          sc.minigame.outro,
+        );
+      out.push({ id: `ch${ch.id}/${sid}`, parts: parts.filter(Boolean) as string[] });
+    }
+  }
+  return out;
+}
+
+/** その位置から始まる最長の制度語（「天下」が「天下人」を食わないように）。 */
+function termAt(text: string, i: number): string | undefined {
+  let best: string | undefined;
+  for (const t of INSTITUTION_TERMS)
+    if (text.startsWith(t, i) && (!best || t.length > best.length)) best = t;
+  return best;
+}
+
+/** 直後に「（…）」が続くか＝その場の一句の言い換え。 */
+function glossedAt(text: string, end: number): boolean {
+  return /^（[^）]{1,40}）/.test(text.slice(end));
+}
+
+/**
+ * 作品の主線で、制度語の**初出の面**に言い換えが無いもの。初出が裸なら、あとの面で言い換えても
+ * 読者はもう置いていかれているので hit のまま（説明は先か、その場か、のどちらかしかない）。
+ * 判定は面ぐるみ＝同じ画面のどこかで言い換えていればよい（place が語を先に出し、本文が
+ * 受けて言い換える形は「その場」のうち）。
+ */
+export function auditWork(work: Work): InstitutionHit[] {
+  const hits: InstitutionHit[] = [];
+  const seen = new Set<string>();
+  for (const surface of mainSurfaces(work)) {
+    const text = surface.parts.map(plainText).join(SEP);
+    const here = new Map<string, { at: number; glossed: boolean }>();
+    for (let i = 0; i < text.length; i++) {
+      const term = termAt(text, i);
+      if (!term) continue;
+      const end = i + term.length;
+      if (!seen.has(term)) {
+        const prev = here.get(term);
+        here.set(term, {
+          at: prev?.at ?? i,
+          glossed: (prev?.glossed ?? false) || glossedAt(text, end),
+        });
+      }
+      i = end - 1;
+    }
+    for (const [term, { at, glossed }] of here) {
+      seen.add(term);
+      if (glossed) continue;
+      const why = ALLOWED_INSTITUTION[`${work.id}|${term}`];
+      hits.push({
+        surface: surface.id,
+        term,
+        excerpt: text.slice(Math.max(0, at - 12), at + term.length + 12),
+        ...(why ? { allowed: why } : {}),
+      });
+    }
+  }
+  return hits;
+}
+
+/** 章ごとの未言い換え件数（審査ずみは除く）＝ラチェットが見る数。 */
+export function auditBuckets(work: Work): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const h of auditWork(work))
+    if (!h.allowed) out[bucketOf(h.surface)] = (out[bucketOf(h.surface)] ?? 0) + 1;
+  return out;
+}
+
+/** ALLOWED_INSTITUTION のうち、いま実データに出ているキー＝許可表の突き合わせ入力。 */
+export function allowedKeysInUse(works: Work[]): string[] {
+  const out = new Set<string>();
+  for (const w of works)
+    for (const h of auditWork(w)) if (h.allowed) out.add(`${w.id}|${h.term}`);
+  return [...out].sort();
+}
