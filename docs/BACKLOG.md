@@ -28,7 +28,7 @@
   - **★ここまでの仕事は全部「摩擦を減らす」側だった**（用量・理解）。**最初の指摘＝「その人を読む動機が無い」への直接の答えは〈入口〉だけ**で、しかも shibusawa 1作にしか入っていない。**摩擦を減らしても引きは生まれない**——次の優先順位はここから決まる。
   - **★次の作業＝型で直す**（根拠は engagement.md **§14**＝全7作の第一章に読み通し検査をかけた結果。**上から1サイクル1件**。個別の画面でなく型を直す＝CLAUDE.md「課題は型で直す」）:
     1. [x] **型1 入口＝完了**（5f0ab26・逐語は engagement.md **§15**）: 顔ならべ装置を engine ごと撤去し、`titleHook` を必須化して7作へ／謎を行為の並置型へ（6作）／入口ゲート新設。**副産物＝ルビゲートが入口面を一度も見ていなかった穴を塞いだ**（`'entry'` 面・7作 0 件）。
-    2. [x] **型3 規律と計器＝完了**（1369711・逐語は engagement.md **§16**）: WRITING 書法13 ＋ `scripts/institution-audit.ts` ＋ `tests/institution-gloss.test.ts`（作品×章のラチェット・実測 71件）＋ **hidenaga（入口＋章一）棚卸し済み**。⏳ **残り6作は1サイクル1作**（kiyomori 10・katsu 12・ieyasu 15・davinci 4・masako 10・shibusawa 7。現物は `npx vite-node scripts/institution-audit.ts <slug>`・直したら BASELINE を下げる）。
+    2. [x] **型3 規律と計器＝完了**（1369711・逐語は engagement.md **§16**）: WRITING 書法13 ＋ `scripts/institution-audit.ts` ＋ `tests/institution-gloss.test.ts`（作品×章のラチェット・実測 71件）＋ **hidenaga（入口＋章一）棚卸し済み**。⏳ **残り5作は1サイクル1作**（katsu 12・ieyasu 15・davinci 4・masako 10・shibusawa 7。現物は `npx vite-node scripts/institution-audit.ts <slug>`・直したら BASELINE を下げる）。**kiyomori 10→0 は 61c22d2 で完了**（全章。言い換えを足すと体験予算が反対から押す＝**同じサイクルで刈る所を探す**のが実務。逐語は JOURNAL）。
     3. **型5 因果の一文抜け**（7/7作）: WRITING に「**因果を省略しない**」を追加（現行の規律は「感情は要約しない」だけで因果の穴を禁じていない）＋ §14 の該当箇所を直す。
     4. **型4 改名の同定不能**（hidenaga・ieyasu）: 改名の場面で、その場に対応を書く。**新証拠**（2026-08-01 の読み通し）＝hidenaga は本文が「小竹／藤吉郎」、**hist パネルだけが「秀長／秀吉」**と呼び替え、対応は入口の titleNote 1か所にしかない（＋一字違いで取り違える）。**面をまたぐ呼び替えが本体**なので、章一の hist から見る。
     5. **型6・型7 spark**（6/7作）: **知識ゼロの読者に裏返す期待は無い**＝装置の前提の問題。§13 前提4「史料批判を注釈から遊びへ」として**単独で設計する**（いちばん深い）。
