@@ -12,10 +12,11 @@ export const PROTAGONIST_ID = 'p-katsu';
 
 /**
  * The overarching riddle (design §1-1). ★型1 (engagement.md §14): acts first, question after.
- * 幕府 is glossed on the spot (型3) because the whole riddle turns on him serving it.
+ * 将軍 is glossed on the spot (型3) because the whole riddle turns on him serving it; 幕府 itself
+ * comes down off the entry screen and enters in 1-a, where there is room to gloss it.
  */
 export const RIDDLE =
-  '<ruby>将軍<rt>しょうぐん</rt></ruby>の <ruby>政府<rt>せいふ</rt></ruby>（<ruby>幕府<rt>ばくふ</rt></ruby>）の 家来だった。日本の 船で <ruby>太平洋<rt>たいへいよう</rt></ruby>を わたる 旅に 出た。せめて きた <ruby>敵<rt>てき</rt></ruby>の <ruby>大将<rt>たいしょう</rt></ruby>と 会って、<ruby>江戸<rt>えど</rt></ruby>の 町を 戦わずに わたした。——ぜんぶ、同じ 人だ。<br>自分の あるじの 世を 終わらせた この 人は、なぜ そう したのだろう？ そして その 手がら話は、だれの 口から のこったのだろう？';
+  '<ruby>将軍<rt>しょうぐん</rt></ruby>（日本を おさめる いちばん 上の 人）の 家来だった。日本の 船で <ruby>太平洋<rt>たいへいよう</rt></ruby>を わたる 旅に 出た。せめて きた <ruby>敵<rt>てき</rt></ruby>の <ruby>大将<rt>たいしょう</rt></ruby>と 会って、<ruby>江戸<rt>えど</rt></ruby>の 町を 戦わずに わたした。——ぜんぶ、同じ 人だ。<br>自分の あるじの 世を 終わらせた この 人は、なぜ そう したのだろう？ そして その 手がら話は、だれの 口から のこったのだろう？';
 
 /** Person id → short label used on the map / figures. */
 export const SHORT_NAMES: Record<string, string> = {

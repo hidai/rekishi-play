@@ -106,10 +106,11 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // core line, body verbatim/反響), matching hidenaga's every-scene precedent.
   //
   // 1-a: birth — 貧乏旗本の子、江戸の本所に生まれる. 父・小吉's face sits at the birthplace
-  // (parallels hidenaga 1-a's 母 at 中村). Note keeps 侍 not 旗本: on the map there is no
+  // (parallels hidenaga 1-a's 母 at 中村). Note says 武士 not 旗本: on the map there is no
   // ruby, and a 小5 image-only read stumbled on 旗本 (the body delivers it with ruby).
+  // 武士 (not 侍) because the mainline calls this one thing by one word (WRITING 13).
   '1-a': { markers: [
-    { at: 'honjo', cur: 1, kind: 'town', label: '江戸・本所', note: '貧乏な 侍の 子、ここに 生まれる', people: ['p-kokichi'] },
+    { at: 'honjo', cur: 1, kind: 'town', label: '江戸・本所', note: '貧乏な 武士の 子、ここに 生まれる', people: ['p-kokichi'] },
   ] },
   // 1-riddle: a bare quiet anchor at 江戸 (きみ's starting point), matching hidenaga 1-riddle
   // (label only, no note). An earlier draft voiced the riddle's future event (「町を敵に
@@ -144,7 +145,7 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // both paths. No arrow (focus on the human fork), face = きみ only (格式派 are 役割語, no card).
   // Note says 身分 not 格式: the map has no ruby and a 小5 image-only read stumbled on 格式's
   // reading+meaning (2026-07-14 visual-read persona); 身分 is the theme word the body repeats and
-  // is 小5-readable (the body still delivers 格式 with ruby). Same rule as ch1's 旗本→侍.
+  // is 小5-readable (the body still delivers 格式 with ruby). Same rule as ch1's 旗本→武士.
   '2-b': { markers: [
     { at: 'dejima', cur: 1, kind: 'town', label: '長崎・出島', note: '身分か、実力か' },
   ] },
@@ -302,7 +303,7 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // inward-facing, not the outward-sea grammar of ch2/ch3. The note arc rides 告発 → 岐路 → 表裏.
   // Notes stay ruby-free-readable body reverberations: the chapter's abstract theme words
   // (英断/不忠/裏切り者〔裏 is a 6年 kanji〕) are dropped to concrete body-verbatim synonyms, the
-  // ch1「旗本→侍」/ch2「格式→身分」/ch4「身分→者」 codify (a map has no ruby; the body delivers the
+  // ch1「旗本→武士」/ch2「格式→身分」/ch4「身分→者」 codify (a map has no ruby; the body delivers the
   // theme words with ruby and context).
   //
   // 6-a: opening — the old 海舟, called a traitor for surviving into the winners' world (the opening

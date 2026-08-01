@@ -14,7 +14,7 @@ export const RELATIONS: WorkRelations = {
   // Relations seen from Katsu (center). pid is a card id.
   edges: [
     { pid: 'p-kokichi', rel: '父', cat: 'bakushin' },
-    { pid: 'p-yoshinobu', rel: '主君（最後の 将軍）', cat: 'bakushin' },
+    { pid: 'p-yoshinobu', rel: 'あるじ（最後の 将軍）', cat: 'bakushin' },
     { pid: 'p-oguri', rel: '主戦論の 同僚', cat: 'bakushin' },
     { pid: 'p-saigo', rel: '最も 信じた 敵将', cat: 'satsuma' },
     { pid: 'p-ryoma', rel: '弟子（脱藩浪士）', cat: 'kaigun' },

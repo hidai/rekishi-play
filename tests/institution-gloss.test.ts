@@ -41,12 +41,7 @@ const BASELINE: Record<string, number> = {
   'hidenaga:ch6': 2,
   'hidenaga:ch7': 3, // 「天下人」の初出が ch1 から ここへ移った（ch1 は「天下を とる 兄弟」へ）
   // kiyomori: 全章 棚卸し済み（一門/棟梁→一族・院政は主線から降ろす／貴族・上皇・太政大臣は ALLOWED）
-  'katsu:entry': 2,
-  'katsu:ch1': 4,
-  'katsu:ch3': 1,
-  'katsu:ch4': 2,
-  'katsu:ch6': 2,
-  'katsu:ch7': 1,
+  // katsu: 全章 棚卸し済み（幕府は入口から降ろして 1-a へ／主家・主君→あるじに統一／蘭学は ALLOWED）
   'ieyasu:ch1': 4,
   'ieyasu:ch2': 1,
   'ieyasu:ch3': 2,

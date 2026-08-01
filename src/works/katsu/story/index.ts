@@ -10,22 +10,22 @@ export const STORY: Story = {
   chapters: [
     {
       id: 1, num: '一', title: '貧乏旗本の 子', years: '1823〜1853',
-      lead: 'すべては、江戸の 貧乏旗本の 子から はじまった。',
+      lead: 'すべては、江戸の 貧乏旗本（将軍の 家来の 中でも 下）の 子から はじまった。',
       start: '1-a',
       teaser: 'まもなく <ruby>黒船<rt>くろふね</rt></ruby>が 来る。世界に ひらく ただ 一つの 窓・<ruby>長崎<rt>ながさき</rt></ruby>で、きみは 何を 学ぶ？',
       scenes: {
         '1-a': { place: '江戸・本所',
           monologue: '（うちは <ruby>貧乏<rt>びんぼう</rt></ruby>だ。<ruby>父上<rt>ちちうえ</rt></ruby>は けんかと <ruby>道楽<rt>どうらく</rt></ruby>ばかり。……それでも おれは、この <ruby>家<rt>いえ</rt></ruby>の 子で よかったと 思って いる。）',
-          text: `<p>きみは <ruby>勝麟太郎<rt>かつ りんたろう</rt></ruby>、のちの <ruby>海舟<rt>かいしゅう</rt></ruby>。<ruby>将軍<rt>しょうぐん</rt></ruby>に お<ruby>目見<rt>めみ</rt></ruby>えできる <ruby>家<rt>いえ</rt></ruby>がらでも、<ruby>暮<rt>く</rt></ruby>らしは かつかつ——<ruby>幕府<rt>ばくふ</rt></ruby>の 中でも ずっと <ruby>下<rt>した</rt></ruby>の、<ruby>貧乏旗本<rt>びんぼうはたもと</rt></ruby>の 子だ。</p>
+          text: `<p>きみは <ruby>勝麟太郎<rt>かつ りんたろう</rt></ruby>、のちの <ruby>海舟<rt>かいしゅう</rt></ruby>。<ruby>将軍<rt>しょうぐん</rt></ruby>に お<ruby>目見<rt>めみ</rt></ruby>えできる <ruby>家<rt>いえ</rt></ruby>がらでも、<ruby>暮<rt>く</rt></ruby>らしは かつかつ——<ruby>幕府<rt>ばくふ</rt></ruby>（<ruby>将軍<rt>しょうぐん</rt></ruby>の <ruby>政府<rt>せいふ</rt></ruby>）の 中でも ずっと <ruby>下<rt>した</rt></ruby>の、<ruby>貧乏旗本<rt>びんぼうはたもと</rt></ruby>の 子だ。</p>
             <p><ruby>父<rt>ちち</rt></ruby>・<face pid="p-kokichi"><ruby>小吉<rt>こきち</rt></ruby></face>は、けんかと <ruby>道楽<rt>どうらく</rt></ruby>ばかりの、とんでもない 男。<ruby>出世<rt>しゅっせ</rt></ruby>とは まるで <ruby>縁<rt>えん</rt></ruby>が なかった。——なのに この <ruby>父<rt>ちち</rt></ruby>、のちに 自分の しくじりだらけの <ruby>一生<rt>いっしょう</rt></ruby>を、自分で <ruby>一冊<rt>いっさつ</rt></ruby>の <ruby>本<rt>ほん</rt></ruby>に 書いて しまう。<b>人が、自分で 自分を <ruby>語<rt>かた</rt></ruby>る</b>。この <ruby>物語<rt>ものがたり</rt></ruby>は、そういう <ruby>話<rt>はなし</rt></ruby>から <ruby>始<rt>はじ</rt></ruby>まる。</p>`,
           onEnter: { cards: ['p-kokichi', 'w-hatamoto'] },
           next: '1-b' },
 
         '1-b': { place: '<ruby>剣<rt>けん</rt></ruby>か、<ruby>蘭学<rt>らんがく</rt></ruby>か',
-          text: `<p>きみは <ruby>剣<rt>けん</rt></ruby>の <ruby>道場<rt>どうじょう</rt></ruby>で めきめき 腕を 上げ、やがて <ruby>免許皆伝<rt>めんきょかいでん</rt></ruby>を ゆるされる ほどの 使い手に なった。</p>
+          text: `<p>きみは <ruby>剣<rt>けん</rt></ruby>の <ruby>道場<rt>どうじょう</rt></ruby>で めきめき 腕を 上げ、やがて <ruby>免許皆伝<rt>めんきょかいでん</rt></ruby>を ゆるされる ほどの 使い手に なった。<ruby>武士<rt>ぶし</rt></ruby>（いくさに そなえるのが つとめの 家）の 子には、まっすぐな 道だ。</p>
             <p>だが、世は ゆれはじめて いた。<ruby>海<rt>うみ</rt></ruby>の むこうから、<ruby>異国<rt>いこく</rt></ruby>の <ruby>船<rt>ふね</rt></ruby>が しきりに <ruby>姿<rt>すがた</rt></ruby>を 見せる。<ruby>剣<rt>けん</rt></ruby>で 名を 上げるか——それとも、まだ <face pid="p-shozan"><ruby>佐久間象山<rt>さくま しょうざん</rt></ruby></face>ら ひとにぎりの <ruby>者<rt>もの</rt></ruby>しか 見ない <ruby>蘭学<rt>らんがく</rt></ruby>、オランダ<ruby>語<rt>ご</rt></ruby>で <ruby>学<rt>まな</rt></ruby>ぶ <ruby>西洋<rt>せいよう</rt></ruby>の <ruby>学問<rt>がくもん</rt></ruby>に かけるか。</p>`,
           onEnter: { card: 'p-shozan' },
-          q: '身分の 低い きみは、何に 賭ける？',
+          q: '<ruby>身分<rt>みぶん</rt></ruby>（生まれで 決まる 上下）の 低い きみは、何に 賭ける？',
           choices: [
             { label: '<ruby>剣<rt>けん</rt></ruby>の 腕で、<ruby>武士<rt>ぶし</rt></ruby>として 名を 上げる', to: '1-c', effect: { kimo: 1 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし <ruby>剣<rt>けん</rt></ruby>ひとすじで 生きて いたら……',
@@ -121,7 +121,7 @@ export const STORY: Story = {
       id: 3, num: '三', title: '咸臨丸、世界の 海へ', years: '1860',
       lead: '日本の 船で 太平洋を わたり、サンフランシスコへ。',
       start: '3-a',
-      teaser: 'つぎは <ruby>神戸<rt>こうべ</rt></ruby>。<ruby>幕臣<rt>ばくしん</rt></ruby>なのに、幕府の 敵に なりうる 者まで 一つの 船に 乗せる——なぜ？',
+      teaser: 'つぎは <ruby>神戸<rt>こうべ</rt></ruby>。<ruby>幕臣<rt>ばくしん</rt></ruby>（幕府に 仕える 身）なのに、幕府の 敵に なりうる 者まで 一つの 船に 乗せる——なぜ？',
       scenes: {
         '3-a': { place: '<ruby>品川<rt>しながわ</rt></ruby>、世界へ',
           monologue: '（<ruby>黒船<rt>くろふね</rt></ruby>に 国じゅうが おどろいた 日は、まだ 昨日の ことのようだ。……その 海の むこうへ、こんどは おれたちが、自分の 船で 行く。）',
@@ -167,14 +167,14 @@ export const STORY: Story = {
     },
     {
       id: 4, num: '四', title: '神戸、身分を こえた 船', years: '1862〜1865',
-      lead: '幕臣・諸藩士・脱藩浪士を、一つの 船に 乗せる。',
+      lead: '幕府の 家来も、よその 家を ぬけ出した 者も、同じ 船に 乗せる。',
       start: '4-a',
       teaser: 'つぎは <ruby>江戸<rt>えど</rt></ruby>。戦えば 灰、明けわたせば「裏切り者」——町ぜんぶを かけた 分かれ道が やって くる。',
       scenes: {
         '4-a': { place: '<ruby>神戸<rt>こうべ</rt></ruby>・<ruby>海軍操練所<rt>かいぐんそうれんじょ</rt></ruby>',
           monologue: '（<ruby>身分<rt>みぶん</rt></ruby>の <ruby>低<rt>ひく</rt></ruby>い おれは、<ruby>腕<rt>うで</rt></ruby>ひとつで ここまで <ruby>来<rt>き</rt></ruby>た。……ならば こんどは、<ruby>身分<rt>みぶん</rt></ruby>など 問わぬ <ruby>場<rt>ば</rt></ruby>を、おれが つくって みせる。）',
           text: `<p>1864<ruby>年<rt>ねん</rt></ruby>、きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）は <ruby>神戸<rt>こうべ</rt></ruby>に <ruby>海軍操練所<rt>かいぐんそうれんじょ</rt></ruby>を ひらいた。<ruby>船<rt>ふね</rt></ruby>を <ruby>動<rt>うご</rt></ruby>かす <ruby>者<rt>もの</rt></ruby>を、ここで <ruby>育<rt>そだ</rt></ruby>てる。</p>
-            <p>そこへ、<ruby>土佐<rt>とさ</rt></ruby>を ぬけ<ruby>出<rt>だ</rt></ruby>した <ruby>若者<rt>わかもの</rt></ruby>・<face pid="p-ryoma"><ruby>坂本龍馬<rt>さかもと りょうま</rt></ruby></face>が たずねて <ruby>来<rt>き</rt></ruby>た。<ruby>藩<rt>はん</rt></ruby>を ぬけた <ruby>脱藩浪士<rt>だっぱんろうし</rt></ruby>——<ruby>幕府<rt>ばくふ</rt></ruby>から <ruby>見<rt>み</rt></ruby>れば、いつ <ruby>敵<rt>てき</rt></ruby>に まわるか わからぬ <ruby>者<rt>もの</rt></ruby>だ。<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>家来<rt>けらい</rt></ruby>である きみが、その <ruby>者<rt>もの</rt></ruby>まで、この <ruby>船<rt>ふね</rt></ruby>に <ruby>乗<rt>の</rt></ruby>せるのか——。</p>`,
+            <p>そこへ、<ruby>土佐<rt>とさ</rt></ruby>を ぬけ<ruby>出<rt>だ</rt></ruby>した <ruby>若者<rt>わかもの</rt></ruby>・<face pid="p-ryoma"><ruby>坂本龍馬<rt>さかもと りょうま</rt></ruby></face>が たずねて <ruby>来<rt>き</rt></ruby>た。<ruby>藩<rt>はん</rt></ruby>（その 土地を おさめる 家）を ぬけた <ruby>脱藩浪士<rt>だっぱんろうし</rt></ruby>——<ruby>幕府<rt>ばくふ</rt></ruby>から <ruby>見<rt>み</rt></ruby>れば、いつ <ruby>敵<rt>てき</rt></ruby>に まわるか わからぬ <ruby>者<rt>もの</rt></ruby>だ。<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>家来<rt>けらい</rt></ruby>である きみが、その <ruby>者<rt>もの</rt></ruby>まで、この <ruby>船<rt>ふね</rt></ruby>に <ruby>乗<rt>の</rt></ruby>せるのか——。</p>`,
           onEnter: { cards: ['w-soren', 'w-datsuhan'] },
           next: '4-b' },
 
@@ -206,7 +206,7 @@ export const STORY: Story = {
 
         '4-d': { place: '<ruby>第<rt>だい</rt></ruby>4<ruby>章<rt>しょう</rt></ruby> むすび',
           onEnter: { clues: ['clue-4'] },
-          text: `<p>やがて、この <ruby>賭<rt>か</rt></ruby>けには <ruby>高<rt>たか</rt></ruby>い <ruby>代償<rt>だいしょう</rt></ruby>が ついた。<ruby>京<rt>きょう</rt></ruby>で <ruby>戦<rt>いくさ</rt></ruby>が おこると、<ruby>脱藩浪士<rt>だっぱんろうし</rt></ruby>を かかえる <ruby>操練所<rt>そうれんじょ</rt></ruby>は あやしまれ、きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）は <ruby>軍艦奉行<rt>ぐんかんぶぎょう</rt></ruby>の <ruby>職<rt>しょく</rt></ruby>を <ruby>解<rt>と</rt></ruby>かれ、二<ruby>年<rt>ねん</rt></ruby>ちかく <ruby>家<rt>いえ</rt></ruby>に とじこめられた。</p>
+          text: `<p>やがて、この <ruby>賭<rt>か</rt></ruby>けには <ruby>高<rt>たか</rt></ruby>い <ruby>代償<rt>だいしょう</rt></ruby>が ついた。<ruby>京<rt>きょう</rt></ruby>で <ruby>戦<rt>いくさ</rt></ruby>が おこると、<ruby>脱藩浪士<rt>だっぱんろうし</rt></ruby>を かかえる <ruby>操練所<rt>そうれんじょ</rt></ruby>は あやしまれ、きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）は <ruby>軍艦奉行<rt>ぐんかんぶぎょう</rt></ruby>（<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>海軍<rt>かいぐん</rt></ruby>の かしら）の <ruby>職<rt>しょく</rt></ruby>を <ruby>解<rt>と</rt></ruby>かれ、二<ruby>年<rt>ねん</rt></ruby>ちかく <ruby>家<rt>いえ</rt></ruby>に とじこめられた。</p>
             <p>それでも——ここで <ruby>育<rt>そだ</rt></ruby>った <ruby>者<rt>もの</rt></ruby>たちは、のちの <ruby>日本<rt>にほん</rt></ruby>の <ruby>海軍<rt>かいぐん</rt></ruby>の <ruby>芽<rt>め</rt></ruby>に なって いく。<ruby>龍馬<rt>りょうま</rt></ruby>も、その <ruby>一人<rt>ひとり</rt></ruby>だった。<ruby>手<rt>て</rt></ruby>がかりを ひとつ <ruby>手<rt>て</rt></ruby>に <ruby>入<rt>い</rt></ruby>れた。<ruby>手帳<rt>てちょう</rt></ruby>を のぞいて みよう。</p>`,
           creed: { line: '「<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>船<rt>ふね</rt></ruby>でも、<ruby>藩<rt>はん</rt></ruby>の <ruby>船<rt>ふね</rt></ruby>でも ない。——<ruby>日本<rt>にほん</rt></ruby>の <ruby>海軍<rt>かいぐん</rt></ruby>を つくる。<ruby>垣根<rt>かきね</rt></ruby>の <ruby>外<rt>そと</rt></ruby>の <ruby>者<rt>もの</rt></ruby>こそ、いる。」',
             act: '——<ruby>幕臣<rt>ばくしん</rt></ruby>で ありながら、<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>敵<rt>てき</rt></ruby>に なりうる <ruby>者<rt>もの</rt></ruby>まで <ruby>育<rt>そだ</rt></ruby>てた。その <ruby>賭<rt>か</rt></ruby>けは <ruby>職<rt>しょく</rt></ruby>を <ruby>失<rt>うしな</rt></ruby>う <ruby>代償<rt>だいしょう</rt></ruby>を まねいたが、<ruby>身分<rt>みぶん</rt></ruby>を こえて <ruby>育<rt>そだ</rt></ruby>った <ruby>芽<rt>め</rt></ruby>が、<ruby>次<rt>つぎ</rt></ruby>の <ruby>世<rt>よ</rt></ruby>を <ruby>動<rt>うご</rt></ruby>かして いく。' },
@@ -272,14 +272,14 @@ export const STORY: Story = {
           monologue: '（<ruby>幕府<rt>ばくふ</rt></ruby>を <ruby>畳<rt>たた</rt></ruby>み、<ruby>勝<rt>か</rt></ruby>った <ruby>側<rt>がわ</rt></ruby>の <ruby>世<rt>よ</rt></ruby>に、おれは <ruby>生<rt>い</rt></ruby>き<ruby>残<rt>のこ</rt></ruby>った。……「<ruby>裏切<rt>うらぎ</rt></ruby>り<ruby>者<rt>もの</rt></ruby>」と <ruby>言<rt>い</rt></ruby>いたい <ruby>者<rt>もの</rt></ruby>には、<ruby>言<rt>い</rt></ruby>わせて おけば いい。）',
           text: `<p>あれから 三十<ruby>年<rt>ねん</rt></ruby>あまり。きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）は、<ruby>赤坂氷川<rt>あかさか ひかわ</rt></ruby>の <ruby>家<rt>いえ</rt></ruby>で、<ruby>白髪<rt>しらが</rt></ruby>の <ruby>老人<rt>ろうじん</rt></ruby>に なって いた。<ruby>髷<rt>まげ</rt></ruby>は とうに 落とし、<ruby>髪<rt>かみ</rt></ruby>は <ruby>短<rt>みじか</rt></ruby>く、<ruby>洋服<rt>ようふく</rt></ruby>の <ruby>襟<rt>えり</rt></ruby>を まとって いる。ちょんまげの <ruby>世<rt>よ</rt></ruby>は、もう <ruby>終<rt>お</rt></ruby>わった。</p>
             <p><ruby>江戸<rt>えど</rt></ruby>を <ruby>明<rt>あ</rt></ruby>けわたした あと、きみは <ruby>新<rt>あたら</rt></ruby>しい <ruby>世<rt>よ</rt></ruby>の <ruby>政府<rt>せいふ</rt></ruby>に まねかれ、<ruby>海軍<rt>かいぐん</rt></ruby>を あずかる <ruby>役<rt>やく</rt></ruby>にも ついた。ほろびた <ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>家来<rt>けらい</rt></ruby>たちが <ruby>暮<rt>く</rt></ruby>らしに <ruby>困<rt>こま</rt></ruby>れば、かげで <ruby>力<rt>ちから</rt></ruby>を つくして <ruby>助<rt>たす</rt></ruby>けた。</p>
-            <p>——だが、その <ruby>生<rt>い</rt></ruby>き<ruby>方<rt>かた</rt></ruby>を、こう <ruby>呼<rt>よ</rt></ruby>ぶ <ruby>声<rt>こえ</rt></ruby>が あった。「<ruby>裏切<rt>うらぎ</rt></ruby>り<ruby>者<rt>もの</rt></ruby>」——<ruby>主家<rt>しゅか</rt></ruby>を <ruby>見<rt>み</rt></ruby>すてて、<ruby>勝<rt>か</rt></ruby>った <ruby>側<rt>がわ</rt></ruby>に すりよった 男だ、と。</p>`,
+            <p>——だが、その <ruby>生<rt>い</rt></ruby>き<ruby>方<rt>かた</rt></ruby>を、こう <ruby>呼<rt>よ</rt></ruby>ぶ <ruby>声<rt>こえ</rt></ruby>が あった。「<ruby>裏切<rt>うらぎ</rt></ruby>り<ruby>者<rt>もの</rt></ruby>」——<ruby>長<rt>なが</rt></ruby>く <ruby>仕<rt>つか</rt></ruby>えた あるじを <ruby>見<rt>み</rt></ruby>すてて、<ruby>勝<rt>か</rt></ruby>った <ruby>側<rt>がわ</rt></ruby>に すりよった 男だ、と。</p>`,
           next: '6-b' },
 
         '6-b': { place: '<ruby>同<rt>おな</rt></ruby>じ <ruby>船<rt>ふね</rt></ruby>に <ruby>乗<rt>の</rt></ruby>った <ruby>男<rt>おとこ</rt></ruby>',
           closeup: { tone: 'tense', cast: [ { face: 'p-katsu@old', name: '海舟（きみ）' }, { face: 'p-fukuzawa', name: '福澤諭吉' } ] },
           text: `<p>その <ruby>声<rt>こえ</rt></ruby>を、いちばん するどく <ruby>上<rt>あ</rt></ruby>げた <ruby>一人<rt>ひとり</rt></ruby>が——<face pid="p-fukuzawa"><ruby>福澤諭吉<rt>ふくざわ ゆきち</rt></ruby></face>だった。むかし <ruby>咸臨丸<rt>かんりんまる</rt></ruby>で、きみと <ruby>同<rt>おな</rt></ruby>じ <ruby>船<rt>ふね</rt></ruby>に <ruby>乗<rt>の</rt></ruby>って アメリカへ わたった 男。その <ruby>福澤<rt>ふくざわ</rt></ruby>が、<ruby>書<rt>か</rt></ruby>きものの <ruby>中<rt>なか</rt></ruby>で、きみの <ruby>生<rt>い</rt></ruby>き<ruby>方<rt>かた</rt></ruby>を <ruby>正面<rt>しょうめん</rt></ruby>から <ruby>責<rt>せ</rt></ruby>めた。</p>
-            <p class="speak">「<ruby>一度<rt>いちど</rt></ruby> <ruby>仕<rt>つか</rt></ruby>えた <ruby>主君<rt>しゅくん</rt></ruby>を <ruby>見<rt>み</rt></ruby>かぎり、<ruby>勝<rt>か</rt></ruby>った <ruby>側<rt>がわ</rt></ruby>に すりよって また <ruby>仕<rt>つか</rt></ruby>える。<ruby>負<rt>ま</rt></ruby>けると 分かって いても、<ruby>意地<rt>いじ</rt></ruby>を <ruby>通<rt>とお</rt></ruby>して こそ <ruby>武士<rt>ぶし</rt></ruby>では ないか。あなたの したことは、<ruby>武士<rt>ぶし</rt></ruby>の <ruby>筋<rt>すじ</rt></ruby>に <ruby>反<rt>はん</rt></ruby>する」</p>
-            <p>これは、ただの <ruby>悪口<rt>わるぐち</rt></ruby>では ない。<ruby>福澤<rt>ふくざわ</rt></ruby>もまた、<ruby>自分<rt>じぶん</rt></ruby>の <ruby>筋<rt>すじ</rt></ruby>を まっすぐ <ruby>通<rt>とお</rt></ruby>す 人。その <ruby>目<rt>め</rt></ruby>から <ruby>見<rt>み</rt></ruby>れば、<ruby>戦<rt>たたか</rt></ruby>わずに <ruby>主家<rt>しゅか</rt></ruby>を <ruby>畳<rt>たた</rt></ruby>んだ <ruby>海舟<rt>かいしゅう</rt></ruby>は、どうしても <ruby>許<rt>ゆる</rt></ruby>せなかったのだ。</p>`,
+            <p class="speak">「<ruby>一度<rt>いちど</rt></ruby> <ruby>仕<rt>つか</rt></ruby>えた あるじを <ruby>見<rt>み</rt></ruby>かぎり、<ruby>勝<rt>か</rt></ruby>った <ruby>側<rt>がわ</rt></ruby>に すりよって また <ruby>仕<rt>つか</rt></ruby>える。<ruby>負<rt>ま</rt></ruby>けると 分かって いても、<ruby>意地<rt>いじ</rt></ruby>を <ruby>通<rt>とお</rt></ruby>して こそ <ruby>武士<rt>ぶし</rt></ruby>では ないか。あなたの したことは、<ruby>武士<rt>ぶし</rt></ruby>の <ruby>筋<rt>すじ</rt></ruby>に <ruby>反<rt>はん</rt></ruby>する」</p>
+            <p>これは、ただの <ruby>悪口<rt>わるぐち</rt></ruby>では ない。<ruby>福澤<rt>ふくざわ</rt></ruby>もまた、<ruby>自分<rt>じぶん</rt></ruby>の <ruby>筋<rt>すじ</rt></ruby>を まっすぐ <ruby>通<rt>とお</rt></ruby>す 人。その <ruby>目<rt>め</rt></ruby>から <ruby>見<rt>み</rt></ruby>れば、<ruby>戦<rt>たたか</rt></ruby>わずに あるじの <ruby>家<rt>いえ</rt></ruby>を <ruby>畳<rt>たた</rt></ruby>んだ <ruby>海舟<rt>かいしゅう</rt></ruby>は、どうしても <ruby>許<rt>ゆる</rt></ruby>せなかったのだ。</p>`,
           spark: 'え！？ <ruby>江戸<rt>えど</rt></ruby>を <ruby>救<rt>すく</rt></ruby>った <ruby>英雄<rt>えいゆう</rt></ruby>・<ruby>海舟<rt>かいしゅう</rt></ruby>を、<ruby>面<rt>めん</rt></ruby>と むかって「<ruby>裏切<rt>うらぎ</rt></ruby>り<ruby>者<rt>もの</rt></ruby>」と <ruby>呼<rt>よ</rt></ruby>んだ 人が いた？ ——しかも、むかし <ruby>同<rt>おな</rt></ruby>じ <ruby>船<rt>ふね</rt></ruby>で <ruby>海<rt>うみ</rt></ruby>を わたった、<ruby>福澤諭吉<rt>ふくざわ ゆきち</rt></ruby>だった？',
           deep: { q: '「<ruby>裏切<rt>うらぎ</rt></ruby>り<ruby>者<rt>もの</rt></ruby>」か、「<ruby>恩人<rt>おんじん</rt></ruby>」か？',
             body: `<ruby>福澤<rt>ふくざわ</rt></ruby>は『<ruby>瘠我慢<rt>やせがまん</rt></ruby>の <ruby>説<rt>せつ</rt></ruby>』という <ruby>書<rt>か</rt></ruby>きもので、<ruby>海舟<rt>かいしゅう</rt></ruby>の <ruby>生<rt>い</rt></ruby>き<ruby>方<rt>かた</rt></ruby>を 痛烈に 批判した。これは たしかに あった こと——たしかさマークは ◎（<ruby>確<rt>たし</rt></ruby>かな こと）。<br>だが、<ruby>別<rt>べつ</rt></ruby>の 人は <ruby>同<rt>おな</rt></ruby>じ <ruby>海舟<rt>かいしゅう</rt></ruby>を「<ruby>江戸<rt>えど</rt></ruby>を <ruby>救<rt>すく</rt></ruby>った <ruby>恩人<rt>おんじん</rt></ruby>」と <ruby>呼<rt>よ</rt></ruby>ぶ。「<ruby>裏切<rt>うらぎ</rt></ruby>り者」か「<ruby>恩人<rt>おんじん</rt></ruby>」か——これは、◎○△☆の どれでも <ruby>決<rt>き</rt></ruby>められない。<b>その 人の <ruby>立場<rt>たちば</rt></ruby>で、まるで <ruby>変<rt>か</rt></ruby>わる</b>からだ。`,
@@ -303,7 +303,7 @@ export const STORY: Story = {
 
         '6-d': { place: '<ruby>第<rt>だい</rt></ruby>6<ruby>章<rt>しょう</rt></ruby> むすび',
           onEnter: { clues: ['clue-6'] },
-          text: `<p><ruby>同<rt>おな</rt></ruby>じ 一つの <ruby>行<rt>おこな</rt></ruby>い——<ruby>戦<rt>たたか</rt></ruby>わずに <ruby>江戸<rt>えど</rt></ruby>を <ruby>畳<rt>たた</rt></ruby>んだ こと——が、ある 人には「<ruby>百万<rt>ひゃくまん</rt></ruby>の <ruby>町<rt>まち</rt></ruby>を <ruby>救<rt>すく</rt></ruby>った <ruby>英断<rt>えいだん</rt></ruby>」に、ある 人には「<ruby>主家<rt>しゅか</rt></ruby>を <ruby>見<rt>み</rt></ruby>すてた <ruby>不忠<rt>ふちゅう</rt></ruby>」に <ruby>見<rt>み</rt></ruby>える。<ruby>表<rt>おもて</rt></ruby>と <ruby>裏<rt>うら</rt></ruby>だ。</p>
+          text: `<p><ruby>同<rt>おな</rt></ruby>じ 一つの <ruby>行<rt>おこな</rt></ruby>い——<ruby>戦<rt>たたか</rt></ruby>わずに <ruby>江戸<rt>えど</rt></ruby>を <ruby>畳<rt>たた</rt></ruby>んだ こと——が、ある 人には「<ruby>百万<rt>ひゃくまん</rt></ruby>の <ruby>町<rt>まち</rt></ruby>を <ruby>救<rt>すく</rt></ruby>った <ruby>英断<rt>えいだん</rt></ruby>」に、ある 人には「あるじを <ruby>見<rt>み</rt></ruby>すてた <ruby>不忠<rt>ふちゅう</rt></ruby>」に <ruby>見<rt>み</rt></ruby>える。<ruby>表<rt>おもて</rt></ruby>と <ruby>裏<rt>うら</rt></ruby>だ。</p>
             <p>だから、<ruby>歴史<rt>れきし</rt></ruby>を <ruby>読<rt>よ</rt></ruby>む ときは、"だれが そう <ruby>言<rt>い</rt></ruby>ったか"まで <ruby>見<rt>み</rt></ruby>る。「<ruby>裏切<rt>うらぎ</rt></ruby>り<ruby>者<rt>もの</rt></ruby>」と <ruby>言<rt>い</rt></ruby>ったのは <ruby>福澤<rt>ふくざわ</rt></ruby>、「<ruby>恩人<rt>おんじん</rt></ruby>」と <ruby>呼<rt>よ</rt></ruby>ぶのは <ruby>別<rt>べつ</rt></ruby>の 人だ。<ruby>手<rt>て</rt></ruby>がかりを ひとつ <ruby>手<rt>て</rt></ruby>に <ruby>入<rt>い</rt></ruby>れた。<ruby>手帳<rt>てちょう</rt></ruby>を のぞいて みよう。</p>`,
           creed: { line: '「わたしの した ことは、わたしの <ruby>中<rt>なか</rt></ruby>に ある。ほめるも けなすも、<ruby>他人<rt>たにん</rt></ruby>の かってだ。」',
             act: '——「<ruby>裏切<rt>うらぎ</rt></ruby>り<ruby>者<rt>もの</rt></ruby>」とも「<ruby>恩人<rt>おんじん</rt></ruby>」とも <ruby>呼<rt>よ</rt></ruby>ばれながら、<ruby>海舟<rt>かいしゅう</rt></ruby>は どちらの <ruby>声<rt>こえ</rt></ruby>にも <ruby>言<rt>い</rt></ruby>いわけを しなかった。<ruby>自分<rt>じぶん</rt></ruby>の したことを、<ruby>自分<rt>じぶん</rt></ruby>の <ruby>中<rt>なか</rt></ruby>に <ruby>置<rt>お</rt></ruby>いた まま。' },
@@ -320,7 +320,7 @@ export const STORY: Story = {
           closeup: { tone: 'grief', cast: [ { face: 'p-katsu@old', name: '海舟（きみ）' }, { face: 'p-saigo', name: '西郷隆盛' } ] },
           text: `<p>あれから 三十<ruby>年<rt>ねん</rt></ruby>あまり。きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）は、<ruby>白髪<rt>しらが</rt></ruby>の <ruby>老人<rt>ろうじん</rt></ruby>に なって いた。<ruby>幕府<rt>ばくふ</rt></ruby>は とうに なく、<ruby>江戸<rt>えど</rt></ruby>は「<ruby>東京<rt>とうきょう</rt></ruby>」と <ruby>名<rt>な</rt></ruby>を 変えた。</p>
             <p>かつて <ruby>江戸<rt>えど</rt></ruby>を かけて <ruby>向<rt>む</rt></ruby>きあった <ruby>敵将<rt>てきしょう</rt></ruby>・<face pid="p-saigo"><ruby>西郷<rt>さいごう</rt></ruby></face>は、のちに <ruby>新<rt>あたら</rt></ruby>しい <ruby>政府<rt>せいふ</rt></ruby>と <ruby>戦<rt>たたか</rt></ruby>い、<ruby>国<rt>くに</rt></ruby>に そむいた <ruby>者<rt>もの</rt></ruby>（<ruby>逆賊<rt>ぎゃくぞく</rt></ruby>）と されて <ruby>死<rt>し</rt></ruby>んだ。——だが きみは、その <ruby>西郷<rt>さいごう</rt></ruby>を わすれなかった。<ruby>自分<rt>じぶん</rt></ruby>の お<ruby>金<rt>かね</rt></ruby>で <ruby>西郷<rt>さいごう</rt></ruby>を まつる <ruby>石碑<rt>せきひ</rt></ruby>を <ruby>建<rt>た</rt></ruby>て、その <ruby>死<rt>し</rt></ruby>を <ruby>生涯<rt>しょうがい</rt></ruby> かなしみつづけた。</p>
-            <p>「おれは <ruby>天下<rt>てんか</rt></ruby>で、<ruby>恐<rt>おそ</rt></ruby>ろしい ものを <ruby>二人<rt>ふたり</rt></ruby> <ruby>見<rt>み</rt></ruby>た。……その <ruby>一人<rt>ひとり</rt></ruby>が、<ruby>西郷<rt>さいごう</rt></ruby>だ」——<ruby>敵<rt>てき</rt></ruby>で ありながら、いちばん <ruby>信<rt>しん</rt></ruby>を <ruby>置<rt>お</rt></ruby>いた <ruby>相手<rt>あいて</rt></ruby>。その <ruby>想<rt>おも</rt></ruby>いは、<ruby>最後<rt>さいご</rt></ruby>まで 変わらなかった。</p>`,
+            <p>「おれは <ruby>天下<rt>てんか</rt></ruby>（<ruby>国<rt>くに</rt></ruby> ぜんたい）で、<ruby>恐<rt>おそ</rt></ruby>ろしい ものを <ruby>二人<rt>ふたり</rt></ruby> <ruby>見<rt>み</rt></ruby>た。……その <ruby>一人<rt>ひとり</rt></ruby>が、<ruby>西郷<rt>さいごう</rt></ruby>だ」——<ruby>敵<rt>てき</rt></ruby>で ありながら、いちばん <ruby>信<rt>しん</rt></ruby>を <ruby>置<rt>お</rt></ruby>いた <ruby>相手<rt>あいて</rt></ruby>。その <ruby>想<rt>おも</rt></ruby>いは、<ruby>最後<rt>さいご</rt></ruby>まで 変わらなかった。</p>`,
           next: '7-b' },
 
         '7-b': { place: '<ruby>語<rt>かた</rt></ruby>り<ruby>残<rt>のこ</rt></ruby>した 一生',
@@ -357,7 +357,7 @@ export const STORY: Story = {
 
         '7-d': { place: '終章 むすび',
           text: `<p><ruby>正解<rt>せいかい</rt></ruby>は、ひとつじゃない。<ruby>手<rt>て</rt></ruby>がかりを <ruby>集<rt>あつ</rt></ruby>めて、<ruby>自分<rt>じぶん</rt></ruby>なりの <ruby>答<rt>こた</rt></ruby>えを <ruby>組<rt>く</rt></ruby>み立てる——それが、<ruby>歴史<rt>れきし</rt></ruby>の <ruby>楽<rt>たの</rt></ruby>しみだ。</p>
-            <p>「<ruby>英断<rt>えいだん</rt></ruby>」と <ruby>呼<rt>よ</rt></ruby>ぶ <ruby>声<rt>こえ</rt></ruby>も、「<ruby>不忠<rt>ふちゅう</rt></ruby>」と <ruby>呼<rt>よ</rt></ruby>ぶ <ruby>声<rt>こえ</rt></ruby>も あった。<ruby>海舟<rt>かいしゅう</rt></ruby>は、その どちらにも <ruby>言<rt>い</rt></ruby>いわけを しなかった。……そして <ruby>最後<rt>さいご</rt></ruby>には、<ruby>畳<rt>たた</rt></ruby>んだ <ruby>主家<rt>しゅか</rt></ruby>・<ruby>徳川<rt>とくがわ</rt></ruby>の <ruby>血筋<rt>ちすじ</rt></ruby>と、<ruby>勝<rt>かつ</rt></ruby>の <ruby>家<rt>いえ</rt></ruby>を、<ruby>縁組<rt>えんぐ</rt></ruby>みで <ruby>結<rt>むす</rt></ruby>んだ。<ruby>敵<rt>てき</rt></ruby>にも、<ruby>主家<rt>しゅか</rt></ruby>にも、<ruby>生涯<rt>しょうがい</rt></ruby> <ruby>信<rt>しん</rt></ruby>を <ruby>通<rt>とお</rt></ruby>した 一生だった。</p>
+            <p>「<ruby>英断<rt>えいだん</rt></ruby>」と <ruby>呼<rt>よ</rt></ruby>ぶ <ruby>声<rt>こえ</rt></ruby>も、「<ruby>不忠<rt>ふちゅう</rt></ruby>」と <ruby>呼<rt>よ</rt></ruby>ぶ <ruby>声<rt>こえ</rt></ruby>も あった。<ruby>海舟<rt>かいしゅう</rt></ruby>は、その どちらにも <ruby>言<rt>い</rt></ruby>いわけを しなかった。……そして <ruby>最後<rt>さいご</rt></ruby>には、<ruby>畳<rt>たた</rt></ruby>んだ あるじ・<ruby>徳川<rt>とくがわ</rt></ruby>の <ruby>血筋<rt>ちすじ</rt></ruby>と、<ruby>勝<rt>かつ</rt></ruby>の <ruby>家<rt>いえ</rt></ruby>を、<ruby>縁組<rt>えんぐ</rt></ruby>みで <ruby>結<rt>むす</rt></ruby>んだ。<ruby>敵<rt>てき</rt></ruby>にも、あるじにも、<ruby>生涯<rt>しょうがい</rt></ruby> <ruby>信<rt>しん</rt></ruby>を <ruby>通<rt>とお</rt></ruby>した 一生だった。</p>
             <p><ruby>明治<rt>めいじ</rt></ruby> <ruby>三十二<rt>さんじゅうに</rt></ruby><ruby>年<rt>ねん</rt></ruby>（1899年）、きみは <ruby>静<rt>しず</rt></ruby>かに <ruby>世<rt>よ</rt></ruby>を <ruby>去<rt>さ</rt></ruby>る。——<ruby>語<rt>かた</rt></ruby>りを うたがっても なお <ruby>残<rt>のこ</rt></ruby>る、ほんとうの <ruby>海舟<rt>かいしゅう</rt></ruby>。それを <ruby>確<rt>たし</rt></ruby>かめたのは、ほかでも ない、きみ <ruby>自身<rt>じしん</rt></ruby>だ。</p>
             <p class="speak">よく ここまで、<ruby>海舟<rt>かいしゅう</rt></ruby>と いっしょに <ruby>旅<rt>たび</rt></ruby>を してくれた。<ruby>手帳<rt>てちょう</rt></ruby>の「？？？」が、ひらいたよ。</p>`,
           creed: { line: '「おれの <ruby>話<rt>はなし</rt></ruby>は、<ruby>半分<rt>はんぶん</rt></ruby>は <ruby>盛<rt>も</rt></ruby>りだ。だが、<ruby>江戸<rt>えど</rt></ruby>は <ruby>焼<rt>や</rt></ruby>けなかった。……<ruby>盛<rt>も</rt></ruby>りを <ruby>割<rt>わ</rt></ruby>り<ruby>引<rt>び</rt></ruby>いて なお <ruby>残<rt>のこ</rt></ruby>る もの——それを <ruby>見<rt>み</rt></ruby>つけるのが、お前の <ruby>仕事<rt>しごと</rt></ruby>よ。」',
