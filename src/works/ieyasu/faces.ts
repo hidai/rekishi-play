@@ -3,7 +3,7 @@
 // suberakashi/wakamusha/maegami) — research §5/§6 note that this era needs no new art.
 //
 // tone = camp color for THIS work (design §4's relation axis), not a fixed per-person property:
-//   ai=徳川がわ / gold=渡り歩いた 主君・同盟者（今川・織田・豊臣）/ seal=戦った 相手 /
+//   ai=徳川がわ / gold=渡り歩いた あるじ・同盟者（今川・織田・豊臣）/ seal=戦った 相手 /
 //   midori=死なせた 家族 / ink=神君の 話を つくった 側.
 // Nobunaga/Hideyoshi keep their hidenaga FEATURES verbatim (design §4: never contradict a person
 // across works) but take this work's camp tone — in hidenaga, Nobunaga is 'seal' because he is the
@@ -49,7 +49,7 @@ export const FACE_SPEC: Record<string, FaceSpec> = {
   //     a god. Ages here are 数え, per research §1/§2 — say which, or the off-by-one comes back.
   'p-ieyasu@old': { tone:'ai', head:'eboshi', hair:'grey', shape:'round', brow:'calm', eye:'narrow', mouth:'flat', beard:'mustache', skin:'#e9cba8', age:'old', nose:'round', morph:{mouthScale:0.92} },
 
-  // 渡り歩いた 主君・同盟者（gold）— design §4's spine: 今川 → 織田 → 豊臣.
+  // 渡り歩いた あるじ・同盟者（gold）— design §4's spine: 今川 → 織田 → 豊臣.
   // 義元＝名門今川の当主。公家風の冠・白い肌・落ち着き（研究では「軟弱な公家大名」像自体が俗説寄り）。
   'p-yoshimoto': { tone:'gold', head:'kanmuri', hair:'dark', shape:'round', brow:'calm', eye:'narrow', mouth:'soft', beard:'mustache', skin:'#f2dcc6', nose:'round' },
   // 信長＝hidenaga と同一の造作（面長・茶筅髷・つり眉・鋭い細目・青白い肌・冷たい暗紫の瞳）。
@@ -97,7 +97,7 @@ export const FACE_SPEC: Record<string, FaceSpec> = {
   // a warm, living boy in ch2 — a stern flat face made his death cost nothing to look at.
   'p-nobuyasu': { tone:'midori', head:'wakamusha', hair:'dark', shape:'round', brow:'soft', eye:'lively', mouth:'smile', beard:'none', nose:'wide' },
 
-  // 徳川がわ の 家臣（ai）。
+  // 徳川がわ の 家来（ai）。
   // 半蔵＝「忍者の頭領」像を剥がす対象（研究 §3-11）。だからこそ顔は忍びでなく、兜の武辺者に描く。
   // nose 'wide' = the blunt fighting man「鬼半蔵」(was distance 1 from THREE faces across works:
   // hidenaga/p-takatora, kiyomori/p-kiyomori@young, kiyomori/p-tomomori — face-audit 2026-07-17).

@@ -27,7 +27,7 @@ export const METERS: MetersConfig = {
       key: 'yuzuranu',
       icon: '⛰',
       label: 'ゆずらぬ 心',
-      summary: 'とりわけ 一度 決めたら、身内にも 主家にも ゆずらない、こわいほど 強い 人に 育った',
+      summary: 'とりわけ 一度 決めたら、身内にも あるじにも ゆずらない、こわいほど 強い 人に 育った',
       progress: 'だんだん 決めたら ゆずらなく なってきた',
     },
   ],

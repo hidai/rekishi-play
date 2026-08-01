@@ -33,7 +33,7 @@ const BASELINE: Record<string, number> = {
   'katsu:ch1': 10, 'katsu:ch3': 22, 'katsu:ch5': 3, 'katsu:ch6': 3,
   'katsu:ch7': 2, 'katsu:card': 100, 'katsu:clue': 3, 'katsu:hidden': 3, 'katsu:timeline': 34,
   // ieyasu: 198 件
-  'ieyasu:ch1': 10, 'ieyasu:ch2': 8, 'ieyasu:ch3': 9, 'ieyasu:ch4': 15, 'ieyasu:ch5': 5,
+  'ieyasu:ch1': 10, 'ieyasu:ch2': 8, 'ieyasu:ch3': 8, 'ieyasu:ch4': 15, 'ieyasu:ch5': 5,
   'ieyasu:ch6': 10, 'ieyasu:ch7': 4, 'ieyasu:card': 94, 'ieyasu:clue': 1, 'ieyasu:timeline': 40,
   // davinci: 126 件
   'davinci:ch1': 8, 'davinci:ch2': 11, 'davinci:ch3': 12, 'davinci:ch4': 15,

@@ -240,7 +240,7 @@ export const MAPPOINTS: MapPoint[] = [
   { n: 4, ch: 3, id: 'shirako', ...GAZ.shirako, label: '白子', sub: '船で 三河へ 帰った 港' },
   { n: 5, ch: 4, id: 'edo', ...GAZ.edo, label: '江戸', sub: '関東へ 移された 先' },
   { n: 6, ch: 5, id: 'sekigahara', ...GAZ.sekigahara, label: '関ヶ原', sub: '天下 分け目の 一日' },
-  { n: 7, ch: 6, id: 'osaka', ...GAZ.osaka, label: '大坂城', sub: '主家が 終わった 城' },
+  { n: 7, ch: 6, id: 'osaka', ...GAZ.osaka, label: '大坂城', sub: '仕えた 家が 終わった 城' },
   { n: 8, ch: 7, id: 'nikko', ...GAZ.nikko, label: '日光', sub: '神と して まつられた 地' },
 ];
 
@@ -631,7 +631,7 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // marker, no march — nothing has moved yet at the scene's opening, the decision IS the scene.
   '6-b': { markers: [
     { at: 'sunpu', cur: 1, kind: 'castle', label: '駿河・駿府城', note: '話し合いは、こわれた' },
-    { at: 'osaka', enemy: 1, kind: 'flag', label: '豊臣', note: '米を 買いこみ、侍を 集めて いる', people: ['p-yodo', 'p-hideyori'] },
+    { at: 'osaka', enemy: 1, kind: 'flag', label: '豊臣', note: '米を 買いこみ、兵を 集めて いる', people: ['p-yodo', 'p-hideyori'] },
   ] },
   // 6-c has no map entry: its main visual is the closeup (老家康 × 淀殿, tense) — 2-c/4-c2/5-c
   // precedent. Its fallback pin is CHAPTER_POINTS[6] = osaka, exactly where the scene stands.
@@ -675,7 +675,7 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // 久能山 is NOT drawn anywhere in this scene or the next two's company: it is 8 map units from
   // 駿府 (ch2's face-disc law), so it can only appear on a map 駿府 is absent from — which is 7-c.
   '7-a': { markers: [
-    { at: 'sunpu', cur: 1, kind: 'castle', label: '駿河・駿府城', note: '人質だった 町へ、天下人で 帰った' },
+    { at: 'sunpu', cur: 1, kind: 'castle', label: '駿河・駿府城', note: '人質だった 町へ、天下を とって 帰った' },
     { at: 'okazaki', kind: 'castle', label: '三河・岡崎', note: '生まれた 城' },
     { at: 'edo', kind: 'town', label: '江戸', note: 'ここから、秀忠が 来た' },
   ] },
