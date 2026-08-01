@@ -26,7 +26,6 @@ import {
 } from './map';
 import {
   RIDDLE,
-  TITLE_KNOWN_FACES,
   CHAPTER_POINTS,
   SHORT_NAMES,
   CHAPTER_CAPTIONS,
@@ -45,7 +44,6 @@ export const katsu: Work = {
   protagonistId: PROTAGONIST_ID,
   protagonistFacesByChapter: PROTAGONIST_FACE_BY_CH,
   protagonistStages: PROTAGONIST_STAGES,
-  titleKnownFaces: TITLE_KNOWN_FACES,
   // 勝家 crest (丸に剣花菱); the monKenhanabishi icon now lives in engine/art/icons.ts.
   // Geometry is SVG self-checked (4-fold symmetric, within bounds); raster目視 pending (attended).
   mon: 'kenhanabishi',

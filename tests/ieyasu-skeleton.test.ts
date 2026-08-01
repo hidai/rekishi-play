@@ -44,12 +44,10 @@ describe('ieyasu: 設計の契約（docs/design/ieyasu.md）', () => {
     expect(ieyasu.mon).toBe('aoi');
   });
 
-  it('★6 タイトルの「見せてから問う」顔が成立する（信長・秀吉 → 家康）', () => {
-    expect(ieyasu.titleKnownFaces).toEqual(['p-nobunaga', 'p-hideyoshi']);
-    for (const id of [...(ieyasu.titleKnownFaces ?? []), ieyasu.protagonistId]) {
-      expect(ieyasu.faces[id], `title face ${id}`).toBeTruthy();
-      expect(ieyasu.cards[id]?.name?.trim(), `title card ${id}`).toBeTruthy();
-    }
+  it('入口は「六つで 家を 出される」＝知識ゼロで 刺さる 具体（型1）', () => {
+    expect(ieyasu.strings.titleHook).toContain('六つ');
+    expect(ieyasu.faces[ieyasu.protagonistId], 'protagonist face').toBeTruthy();
+    expect(ieyasu.cards[ieyasu.protagonistId]?.name?.trim(), 'protagonist card').toBeTruthy();
   });
 
   it('駿府の円環: 章一と終章の 既定地が 同じ 一点（人質として 来て、天下人として 帰り 死ぬ）', () => {

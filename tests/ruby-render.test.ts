@@ -135,7 +135,6 @@ const EXEMPT: Record<string, string> = {
     'engine breadcrumb labels (作品/年代記/第N章/手帳) + strings.topbarName, which is ruby-free by contract — the topbar is too small a surface to carry ruby',
   // Work data contractually kept ruby-free — guarded by the data-side tests above.
   'GCard.svelte:{c.name}': 'card name (ruby-free by contract)',
-  'TitleScreen.svelte:{f.name}': 'card name via titleKnownFaces (ruby-free by contract)',
   'CardModal.svelte:{card.name}': 'card name (ruby-free by contract)',
   'CardModal.svelte:{peer.card.name}': 'card name of the same person in another work (ruby-free by contract)',
   'QuizPane.svelte:{answerCard.name}': 'card name (ruby-free by contract)',

@@ -21,14 +21,6 @@ export const PROTAGONIST_ID = 'p-eiichi';
 export const RIDDLE =
   '<ruby>横浜<rt>よこはま</rt></ruby>の <ruby>外国人<rt>がいこくじん</rt></ruby>を 焼こうと した。<ruby>将軍<rt>しょうぐん</rt></ruby>に つかえた。その 将軍を たおした 国の <ruby>役人<rt>やくにん</rt></ruby>に なった。——ぜんぶ、同じ 人だ。<br>なんども <ruby>立場<rt>たちば</rt></ruby>を 変えた この 人が、変えなかった ものは 何だろう？ そして この 人は、<ruby>日本一<rt>にっぽんいち</rt></ruby>の <ruby>金持<rt>かねも</rt></ruby>ちに なれた はずなのに、そう しなかった。なぜ？';
 
-/**
- * ★6 Title "show, then ask": known faces → protagonist (design §1).
- * A child may already know the last shogun 慶喜 (whom he served, then whose defeat he outlived)
- * and the zaibatsu founder 岩崎 (the man who DID what Eiichi refused). Eiichi is the one standing
- * between them — the face now on the ten-thousand-yen note, whom few can actually place.
- */
-export const TITLE_KNOWN_FACES = ['p-yoshinobu', 'p-yataro'];
-
 /** Person id → short label used on the map / figures. */
 export const SHORT_NAMES: Record<string, string> = {
   'p-eiichi': '栄一',
@@ -87,13 +79,11 @@ export const STRINGS: WorkStrings = {
   titleHook:
     // 年齢は「十七」だけにする（代官所は数え、1863年は満＝二つ並べると数え方が混ざる）。
     '十七の とき、「<ruby>百姓<rt>ひゃくしょう</rt></ruby>の くせに」と 笑われた。<br>やがて、<ruby>横浜<rt>よこはま</rt></ruby>を 焼く 計画を 立てた。<br>——その 顔が いま、一万円札に なっている。',
-  titleHeroTease:
-    'そう、渋沢栄一。いまの 一万円札の 顔だ。この 人の 十七さいから はじめよう → はじめて みよう',
   protagonistRuby: '<ruby>渋沢栄一<rt>しぶさわ えいいち</rt></ruby>',
   riddleHeart:
-    '—— 立場は 何度も 変わった。芯は、変わらなかったのか。<br>この 人が どんな 人だったかは、きみが 決める しかない。',
+    '—— 立場は 何度も 変わった。<ruby>芯<rt>しん</rt></ruby>は、変わらなかったのか。<br>この 人が どんな 人だったかは、きみが 決める しかない。',
   titleNote:
-    'きみは 渋沢栄一。<br>人生の 分かれ道で、きみなら どうする？',
+    'きみは <ruby>渋沢栄一<rt>しぶさわ えいいち</rt></ruby>。<br>人生の 分かれ道で、きみなら どうする？',
   homeTitle: '栄一 年代記',
   notebookName: '栄一手帳',
   notebookLead: 'あつめた ことば・人物、年表、人の 図。',

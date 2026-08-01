@@ -8,17 +8,13 @@ export const FACE_HINT_KEY = 'kiyomori_facehint';
 export const TOTAL_CHAPTERS = 7;
 export const PROTAGONIST_ID = 'p-kiyomori';
 
-/** The overarching riddle (design §1-1). */
-export const RIDDLE =
-  'なぜ、<ruby>清盛<rt>きよもり</rt></ruby>は「おごれる 悪人」として 語りつがれたのだろう？——<ruby>武士<rt>ぶし</rt></ruby>で はじめて 天下の てっぺんに 立ち、海の 道まで ひらいた 男なのに。';
-
 /**
- * ★6 Title "show, then ask": known faces → protagonist (design §3-4).
- * Kiyomori is a *known* protagonist, so we place the Genpei "winners" (Yoshitsune,
- * Yoritomo) as the known faces and ask "was he really an evil man?" over Kiyomori's own
- * face — inverting the device's meaning versus work 1's unknown hero.
+ * The overarching riddle (design §1-1). ★型1 (engagement.md §14): three acts of one life
+ * first, the question after — the old form asked "why was he called an evil man?" of a reader
+ * who had never heard him called anything.
  */
-export const TITLE_KNOWN_FACES = ['p-yoshitsune', 'p-yoritomo'];
+export const RIDDLE =
+  '海の むこうと 船で 品を やりとりして、家を 豊かに した。<ruby>都<rt>みやこ</rt></ruby>の いくさに 二度 勝ち、<ruby>武士<rt>ぶし</rt></ruby>で はじめて 国の いちばん 上に 立った。その 都を まるごと 海の そばへ 動かそうと して、半年で あきらめた。——ぜんぶ、同じ 人だ。<br>それなのに この 人は、あとの 世で ずっと「おごれる 悪人」として 語りつがれた。なぜ？';
 
 /** Person id → short label used on the map. */
 export const SHORT_NAMES: Record<string, string> = {
@@ -70,8 +66,9 @@ export const STRINGS: WorkStrings = {
   titleSub: '海の 道を ひらいた「悪役」',
   years: '1118ごろ〜1181',
   riddleLead: '物語をつらぬく謎',
-  titleHeroTease:
-    'そう、平清盛。きみが よく 知ってる『おごれる 悪人』。本当に そうだったのか、なりきって 確かめよう → はじめて みよう',
+  // ★ 入口のフック（engagement.md §14 型1）。刀でなく船で上がった家、という具体から入る。
+  titleHook:
+    '<ruby>刀<rt>かたな</rt></ruby>では なく、船で のし上がった 家に 生まれた。<br>その 子の 母が だれかは、いまも わかって いない。<br>——やがて <ruby>都<rt>みやこ</rt></ruby>は 二つに 割れ、この 子は 身内に 刀を 向ける ことに なる。',
   protagonistRuby: '<ruby>清盛<rt>きよもり</rt></ruby>',
   riddleHeart:
     '—— "悪い やつ"って、ほんとうに そうなのかな？<br>その 答えは、きみが いちばん 近くで 見つけて いく。',

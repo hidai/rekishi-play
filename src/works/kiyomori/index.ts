@@ -24,7 +24,6 @@ import {
 } from './map';
 import {
   RIDDLE,
-  TITLE_KNOWN_FACES,
   CHAPTER_POINTS,
   SHORT_NAMES,
   CHAPTER_CAPTIONS,
@@ -43,7 +42,6 @@ export const kiyomori: Work = {
   protagonistId: PROTAGONIST_ID,
   protagonistFacesByChapter: PROTAGONIST_FACE_BY_CH,
   protagonistStages: PROTAGONIST_STAGES,
-  titleKnownFaces: TITLE_KNOWN_FACES,
   mon: 'agehacho',
   finalMon: 'agehacho',
   riddle: RIDDLE,

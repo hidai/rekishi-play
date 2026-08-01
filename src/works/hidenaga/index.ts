@@ -23,7 +23,6 @@ import {
 import {
   RIDDLE,
   PEOPLE_EXTRA,
-  TITLE_KNOWN_FACES,
   CHAPTER_POINTS,
   SHORT_NAMES,
   CHAPTER_CAPTIONS,
@@ -44,7 +43,6 @@ export const hidenaga: Work = {
   protagonistFacesByChapter: PROTAGONIST_FACE_BY_CH,
   protagonistStages: PROTAGONIST_STAGES,
   sceneFaceOverrides: SCENE_FACE_OVERRIDES,
-  titleKnownFaces: TITLE_KNOWN_FACES,
   mon: 'omodaka',
   finalMon: 'kiri',
   riddle: RIDDLE,

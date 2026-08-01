@@ -324,10 +324,15 @@ export function registerWorkStructure(work: Work): void {
   });
 
   /* --- 顔・タイトル・主人公顔 --- */
-  it('titleKnownFaces が faces に解決する', () => {
-    for (const id of work.titleKnownFaces ?? []) {
-      expect(faceIds.has(id), `title face ${id}`).toBe(true);
-    }
+  // 入口の型（docs/design/engagement.md §14 型1）。読み通し検査で 7/7 の読者が
+  // 「知らない顔が ならんで いるだけ」と答えた顔ならべ装置を廃したので、その代わりに
+  // ①知識ゼロで刺さる具体（titleHook）が必ずある ②謎は行為を並べてから問う、を要求する。
+  it('入口: titleHook があり、謎は「なぜ」から始めない（行為を並べてから問う）', () => {
+    const hook = work.strings.titleHook;
+    expect(hook?.trim(), 'titleHook').toBeTruthy();
+    expect(hook, 'titleHook は副題の言い換えでない').not.toBe(work.strings.titleSub);
+    expect(work.riddle.startsWith('なぜ'), 'riddle が「なぜ」始まり').toBe(false);
+    expect(work.riddle.includes('？'), 'riddle に問いが残っている').toBe(true);
   });
 
   it('protagonistFacesByChapter の値・protagonistStages のキーが faces に解決する', () => {

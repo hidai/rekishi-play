@@ -1,25 +1,20 @@
 // 作品「ひでなが」固有の定数。旧 index.html でエンジンに散在していた秀長固有値を集約。
 // 逐語移植した文字列に加え、エンジン汎用化で作品側へ降ろした新規文言
-//（titleKnownFaces / titleHeroTease / protagonistRuby 等）も、ここで手書き管理する。
+//（titleHook / protagonistRuby 等）も、ここで手書き管理する。
 import type { WorkStrings, Hidden } from '../../engine/types';
 
 // 貫通する謎。The riddle used to ask why 秀長 is missing from a textbook — an absence a
-// 10-year-old cannot perceive (docs/design/known-premise.md). It now points at the two faces
-// the title screen just handed the reader (titleKnownFaces), so the premise is worn, not assumed.
+// 10-year-old cannot perceive (docs/design/known-premise.md) — and then leaned on 信長・秀吉
+// being faces the reader already knows. 型1 (engagement.md §14) killed that assumption: the
+// riddle now lays three ACTS of one life side by side before it asks anything.
 export const RIDDLE =
-  'なぜ、天下人の 実の 弟で、大和100万石の 大大名 だったのに——信長や 秀吉の 名は のこり、秀長の 名は のこらなかったのだろう？';
+  '<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子として、田を たがやして いた。何万の <ruby>兵<rt>へい</rt></ruby>の めしと 道を ととのえて、兄の いくさを ささえた。<ruby>大和<rt>やまと</rt></ruby>（今の 奈良）ぜんたいを あずかる 身に なった。——ぜんぶ、同じ 人だ。<br>その 兄は 天下を とり、名を のこした。すぐ そばに いた この 人の 名は、のこらなかった。なぜ？';
 
 /** 顔があるがカードに無い人物の表示名（旧 PEOPLE_EXTRA, legacy 1241）。 */
 export const PEOPLE_EXTRA: Record<string, string> = {
   'p-mitsuhide': '明智光秀',
   'p-katsuie': '柴田勝家',
 };
-
-/**
- * ★6 タイトル「見せてから問う」の顔ならべ：知ってる顔 → 主人公の順。
- * タップで人物カードが開く（エンジン汎用。Work.titleKnownFaces）。
- */
-export const TITLE_KNOWN_FACES = ['p-nobunaga', 'p-hideyoshi'];
 
 /** 章 → 既定の現在地 GAZ キー（旧 CH_PT, legacy 1578）。 */
 export const CHAPTER_POINTS: Record<string, string> = {
@@ -70,16 +65,19 @@ export const STRINGS: WorkStrings = {
   topbarName: 'ひでなが',
   eyebrow: 'なりきり歴史アドベンチャー',
   titleMain: '<ruby>秀長<rt>ひでなが</rt></ruby>',
-  titleSub: '天下人の弟、日本一の補佐役',
+  // ruby を置けない面（プレーン文字列）ゆえ、教育漢字だけで書く（ruby-audit ヘッダ）。
+  titleSub: '天下を とった 兄を、すぐ そばで ささえた 弟',
   years: '1540ごろ〜1591',
   riddleLead: '物語をつらぬく謎',
-  titleHeroTease:
-    'そう、この人。豊臣秀長。いま ならんだ ふたりの すぐ そばに いたのに、この人の 名前だけ のこらなかった。なぜ？ → はじめて みよう',
+  // ★ 入口のフック（engagement.md §14 型1）。知ってる顔を並べる装置を廃した代わりに、
+  //   知識ゼロで刺さる具体＝「兄が村に帰ってきた日」を入口の主役に置く。
+  titleHook:
+    'ある日、村を 出て いった 兄が 帰って きて、きみの <ruby>肩<rt>かた</rt></ruby>を つかんだ。<br>「おれと 来い。<ruby>侍<rt>さむらい</rt></ruby>に ならんか」<br>——<ruby>田<rt>た</rt></ruby>んぼの まん中で、きみは 返事を する。',
   protagonistRuby: '<ruby>秀長<rt>ひでなが</rt></ruby>',
   riddleHeart:
     '—— こんなに 兄を 支えた 弟のこと、ちゃんと 分かって もらえるのかな？<br>その 答えは、きみが いちばん 近くで 見つけて いく。',
   titleNote:
-    'きみは羽柴小一郎——のちの豊臣秀長。<br>人生の分かれ道で、きみならどうする？',
+    'きみは <ruby>羽柴<rt>はしば</rt></ruby><ruby>小一郎<rt>こいちろう</rt></ruby>——のちの <ruby>豊臣秀長<rt>とよとみ ひでなが</rt></ruby>。<br>人生の 分かれ道で、きみなら どうする？',
   homeTitle: 'ひでなが 年代記',
   notebookName: 'ひでなが手帳',
   notebookLead: 'あつめた ことば・人物、年表、進軍の地図。',

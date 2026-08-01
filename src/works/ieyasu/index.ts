@@ -30,7 +30,6 @@ import {
 } from './map';
 import {
   RIDDLE,
-  TITLE_KNOWN_FACES,
   CHAPTER_POINTS,
   SHORT_NAMES,
   CHAPTER_CAPTIONS,
@@ -49,7 +48,6 @@ export const ieyasu: Work = {
   protagonistId: PROTAGONIST_ID,
   protagonistFacesByChapter: PROTAGONIST_FACE_BY_CH,
   protagonistStages: PROTAGONIST_STAGES,
-  titleKnownFaces: TITLE_KNOWN_FACES,
   // 徳川家の三つ葉葵; the monAoi icon now lives in engine/art/icons.ts (raster-checked at both
   // real sizes — 96px title / 22px topbar — via scripts/render-mon.ts).
   mon: 'aoi',

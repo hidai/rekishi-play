@@ -41,7 +41,6 @@ import {
 } from './map';
 import {
   RIDDLE,
-  TITLE_KNOWN_FACES,
   CHAPTER_POINTS,
   SHORT_NAMES,
   CHAPTER_CAPTIONS,
@@ -59,7 +58,6 @@ export const shibusawa: Work = {
   protagonistId: PROTAGONIST_ID,
   protagonistFacesByChapter: PROTAGONIST_FACE_BY_CH,
   protagonistStages: PROTAGONIST_STAGES,
-  titleKnownFaces: TITLE_KNOWN_FACES,
   // 算盤 (abacus) = a thematic emblem, NOT a family crest — the Shibusawa crest is 要出典確認 and
   // encoding an unconfirmed crest into the topbar is the 藍リング trap. Follows davinci's `vinci`
   // (non-samurai → thematic mark). Added to the MON registry this cycle (engine/art/icons.ts).

@@ -13,8 +13,12 @@
 //
 // 対象外（silent cap にしないため明記する）: SVG `<text>` で描く面——地図ラベル・note・相関図の
 // rel・席の図・習作ページ——は `<ruby>` を持てない契約なので検査しない（その面の守りは
-// tests/ruby-render.test.ts と tests/svg-text-fields.test.ts）。UI 文字列（strings・meters）も
-// エンジンの面で作品の本文ではない。
+// tests/ruby-render.test.ts と tests/svg-text-fields.test.ts）。同じ理由で **titleSub・topbarName・
+// meters・カードの name** も対象外＝プレーン文字列として描かれ ruby を置けない面（だからこそ
+// **その面は語をやさしくするしか手が無い**）。
+// ただし**入口（タイトル画面）の本文は対象**——riddle / titleHook / riddleHeart / titleNote は
+// `{@html}` で描く作品の本文で、しかも読者が最初に読む面なのに、2026-08-01 まで一度も走査されて
+// いなかった（型1 の eval が発見。'entry' 面として追加した）。
 import type { Work, Scene } from '../../src/engine/types';
 import { isKanji, kanjiGrade } from './kanji-grades';
 
@@ -115,6 +119,12 @@ function sceneSurfaces(chId: number, sid: string, sc: Scene): Surface[] {
 /** Every reader-facing prose surface of a work, in the order a reader meets them. */
 export function workSurfaces(work: Work): Surface[] {
   const out: Surface[] = [];
+  // 入口＝タイトル画面。読者が最初に読む1面（ruby を置ける欄だけ）。
+  const s = work.strings;
+  out.push({
+    id: 'entry',
+    parts: [s.titleMain, s.titleHook, work.riddle, s.riddleHeart ?? '', s.titleNote],
+  });
   for (const ch of work.story.chapters) {
     // Home screen chapter card, then the chapter's own lead.
     out.push({ id: `ch${ch.id}`, parts: [ch.title, ch.lead] });

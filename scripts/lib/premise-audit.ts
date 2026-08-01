@@ -88,7 +88,7 @@ export function spineSurface(work: Work): Surface {
   const s = work.strings;
   return {
     id: 'spine',
-    parts: [work.riddle, s.titleSub, s.riddleLead, s.riddleHeart, s.titleHeroTease, s.titleFacesLead, s.titleNote]
+    parts: [work.riddle, s.titleSub, s.riddleLead, s.titleHook, s.riddleHeart, s.titleNote]
       .filter(Boolean) as string[],
   };
 }

@@ -38,7 +38,6 @@ import {
 } from './map';
 import {
   RIDDLE,
-  TITLE_KNOWN_FACES,
   CHAPTER_POINTS,
   SHORT_NAMES,
   CHAPTER_CAPTIONS,
@@ -56,7 +55,6 @@ export const masako: Work = {
   protagonistId: PROTAGONIST_ID,
   protagonistFacesByChapter: PROTAGONIST_FACE_BY_CH,
   protagonistStages: PROTAGONIST_STAGES,
-  titleKnownFaces: TITLE_KNOWN_FACES,
   // 三つ鱗 = the Hojo crest, added to the MON registry this cycle. Solid wedges (no thin detail)
   // so it survives the topbar's real 22px — the aoi lesson (engine/art/icons.ts).
   mon: 'mitsuuroko',

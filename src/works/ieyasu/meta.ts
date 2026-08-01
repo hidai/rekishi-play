@@ -17,15 +17,7 @@ export const PROTAGONIST_ID = 'p-ieyasu';
  * winners (B = 史料批判). B threads through the clues; A drives the main line.
  */
 export const RIDDLE =
-  'なぜ、「<ruby>律儀者<rt>りちぎもの</rt></ruby>」と 呼ばれた <ruby>家康<rt>いえやす</rt></ruby>が、いちばん 長く 仕えた <ruby>主家<rt>しゅけ</rt></ruby>を、自分の 手で ほろぼしたのだろう？——そして なぜ その 家康は、死んだ あとに「<ruby>神<rt>かみ</rt></ruby>」に まつり上げられたのか。その「<ruby>神君<rt>しんくん</rt></ruby>」の すがたは、どこまで ほんとうなのか。';
-
-/**
- * ★6 Title "show, then ask": known faces → protagonist (design §3-4 grammar).
- * Unlike katsu (name known, image thin), Ieyasu's face IS known — so the twist inverts:
- * the two 三英傑 children know best stand first, and the third face they can name gets the
- * question "how much of THAT face did the winners paint?" (riddle B).
- */
-export const TITLE_KNOWN_FACES = ['p-nobunaga', 'p-hideyoshi'];
+  '家来たちが 二つに 割れ、その 多くが きみに 弓を 引いた。いくさに 負けて、<ruby>命<rt>いのち</rt></ruby>からがら 城へ にげ帰った ことも ある。長い あいだ 頭を 下げて きた 家を、さいごは 自分の 手で ほろぼした。——ぜんぶ、同じ 人だ。<br>それなのに この 人は、死んだ あとに「<ruby>神<rt>かみ</rt></ruby>」として まつられた。その「<ruby>神君<rt>しんくん</rt></ruby>」の すがたを <ruby>描<rt>えが</rt></ruby>いたのは だれで、どこまで ほんとうなのだろう？';
 
 /** Person id → short label used on the map / figures. */
 export const SHORT_NAMES: Record<string, string> = {
@@ -85,11 +77,13 @@ export const STRINGS: WorkStrings = {
   topbarName: 'いえやす',
   eyebrow: 'なりきり歴史アドベンチャー',
   titleMain: '<ruby>徳川<rt>とくがわ</rt></ruby><ruby>家康<rt>いえやす</rt></ruby>',
-  titleSub: '主家を ほろぼし、神に なった 男',
+  // ruby を置けない面ゆえ「主家」を使わず、riddle と同じ言い方に そろえる。
+  titleSub: 'つかえた 家を ほろぼし、神に なった 男',
   years: '1543〜1616',
   riddleLead: '物語をつらぬく謎',
-  titleHeroTease:
-    'そう、徳川家康。天下を とり、260年 つづく 泰平を ひらいた 男。——でも「神君」の すがたを 描いたのは、勝った 側の 人たち。ほんとうの 家康を、なりきって 確かめよう → はじめて みよう',
+  // ★ 入口のフック（engagement.md §14 型1）。読者が知らなくても刺さる具体＝家を出される日。
+  titleHook:
+    '三つの とき、母が 家から 出された。<br>六つの とき、こんどは きみが 出される——「<ruby>約束<rt>やくそく</rt></ruby>の しるし」として、よその 家へ。<br>——その 子が つくった 世は、260年 つづいた。',
   protagonistRuby: '<ruby>家康<rt>いえやす</rt></ruby>',
   // ★F The 小5 emotional thread beside the abstract riddle. Concrete and bodily: the god was
   // once a man who ran away in terror (ch2 三方ヶ原 = the pilot).

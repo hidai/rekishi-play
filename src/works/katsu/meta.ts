@@ -10,18 +10,12 @@ export const FACE_HINT_KEY = 'katsu_facehint';
 export const TOTAL_CHAPTERS = 7;
 export const PROTAGONIST_ID = 'p-katsu';
 
-/** The overarching riddle (design §1-1). */
-export const RIDDLE =
-  'なぜ、<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>家来<rt>けらい</rt></ruby>だった <ruby>勝海舟<rt>かつ かいしゅう</rt></ruby>が、その 幕府を 終わらせる 側に 回れたのだろう？——しかも、<ruby>江戸<rt>えど</rt></ruby>に せめのぼる <ruby>敵<rt>てき</rt></ruby>の <ruby>大将<rt>たいしょう</rt></ruby>に、町ぜんぶを あずけて。';
-
 /**
- * ★6 Title "show, then ask": known faces → protagonist (design §3-4).
- * Katsu's *name* is known but his real image is thin. We place the two Bakumatsu heroes
- * children know best (Ryoma, Saigo) as the known faces and ask "who is this?" over Katsu's
- * face — "the master of Ryoma, the man who handed Edo to Saigo. But his exploits were told
- * by himself."
+ * The overarching riddle (design §1-1). ★型1 (engagement.md §14): acts first, question after.
+ * 幕府 is glossed on the spot (型3) because the whole riddle turns on him serving it.
  */
-export const TITLE_KNOWN_FACES = ['p-ryoma', 'p-saigo'];
+export const RIDDLE =
+  '<ruby>将軍<rt>しょうぐん</rt></ruby>の <ruby>政府<rt>せいふ</rt></ruby>（<ruby>幕府<rt>ばくふ</rt></ruby>）の 家来だった。日本の 船で <ruby>太平洋<rt>たいへいよう</rt></ruby>を わたる 旅に 出た。せめて きた <ruby>敵<rt>てき</rt></ruby>の <ruby>大将<rt>たいしょう</rt></ruby>と 会って、<ruby>江戸<rt>えど</rt></ruby>の 町を 戦わずに わたした。——ぜんぶ、同じ 人だ。<br>自分の あるじの 世を 終わらせた この 人は、なぜ そう したのだろう？ そして その 手がら話は、だれの 口から のこったのだろう？';
 
 /** Person id → short label used on the map / figures. */
 export const SHORT_NAMES: Record<string, string> = {
@@ -65,14 +59,17 @@ export const STRINGS: WorkStrings = {
   topbarName: 'かつ',
   eyebrow: 'なりきり歴史アドベンチャー',
   titleMain: '<ruby>勝<rt>かつ</rt></ruby><ruby>海舟<rt>かいしゅう</rt></ruby>',
-  titleSub: '幕府を 終わらせた 幕臣',
+  // ruby を置けない面ゆえ「幕府・幕臣」を使わず、意味の分かる語で書く。
+  titleSub: '将軍の 世を 終わらせた、将軍の 家来',
   years: '1823〜1899',
   riddleLead: '物語をつらぬく謎',
-  titleHeroTease:
-    'そう、勝海舟。龍馬の 師で、西郷に 江戸を 託した 男。でも、その 手がら話は 本人が 語った もの。ほんとうの 海舟を、なりきって 確かめよう → はじめて みよう',
+  // ★ 入口のフック（engagement.md §14 型1）。貧しい家と父、そして「その話はだれが語ったか」
+  //   というこの作品の背骨を、注釈でなく具体の一行で先に見せる。
+  titleHook:
+    '父は けんかと <ruby>遊<rt>あそ</rt></ruby>びごとばかり。うちは いつも お金が なかった。<br>その 子は、オランダ<ruby>語<rt>ご</rt></ruby>の 分厚い <ruby>辞書<rt>じしょ</rt></ruby>を まる 一年 かけて 手で 書き<ruby>写<rt>うつ</rt></ruby>した——と、年を とって から 自分で 語った。',
   protagonistRuby: '<ruby>海舟<rt>かいしゅう</rt></ruby>',
   riddleHeart:
-    '—— "えらい 人"の 話は、だれが 語った ものだろう？<br>その 答えは、きみが いちばん 近くで 確かめて いく。',
+    '—— <ruby>江戸<rt>えど</rt></ruby>には 百万の 人が 住んで いた。その 町を 焼くか 焼かないかを、ひとりの 家来が 決めようと して いる。<br>きみなら、どうする。',
   titleNote:
     'きみは 勝海舟。<br>人生の 分かれ道で、きみなら どうする？',
   homeTitle: '海舟 年代記',

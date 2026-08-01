@@ -85,12 +85,8 @@ describe('shibusawa: 設計の契約（docs/design/shibusawa.md）', () => {
     expect(shibusawa.map.chapterPoints['7']).toBe('tokyo');
   });
 
-  it('★6 タイトルの 顔ならべは 旧主・慶喜と 好敵手・岩崎（栄一 自身の 顔は 知られていない）', () => {
-    expect(shibusawa.titleKnownFaces).toEqual(['p-yoshinobu', 'p-yataro']);
-    for (const pid of shibusawa.titleKnownFaces!) {
-      expect(shibusawa.faces[pid], `${pid} の顔`).toBeTruthy();
-      expect(shibusawa.cards[pid]?.name?.trim(), `${pid} のカード`).toBeTruthy();
-    }
+  it('入口のフックは「十七で 笑われた」＝知識ゼロで 刺さる 具体（型1）', () => {
+    expect(shibusawa.strings.titleHook).toContain('十七');
     // 主人公も カードを持つ（card-reachability の 恒久ゲートに 乗る前提）。
     expect(shibusawa.cards[shibusawa.protagonistId]?.name).toBe('渋沢栄一');
   });

@@ -82,12 +82,8 @@ describe('masako: 設計の契約（docs/design/masako.md）', () => {
     expect(masako.map.chapterPoints['7']).toBe('kamakura');
   });
 
-  it('★6 タイトルの 顔ならべは 夫と 敵（この人 自身の 顔は 誰も 知らない）', () => {
-    expect(masako.titleKnownFaces).toEqual(['p-yoritomo', 'p-gotoba']);
-    for (const pid of masako.titleKnownFaces!) {
-      expect(masako.faces[pid], `${pid} の顔`).toBeTruthy();
-      expect(masako.cards[pid]?.name?.trim(), `${pid} のカード`).toBeTruthy();
-    }
+  it('入口のフックは この人 自身の 空白（自筆も たしかな 顔も 無い）', () => {
+    expect(masako.strings.titleHook).toContain('一枚も');
     // 秀長と違い 主人公も カードを持つ（card-reachability の 恒久ゲートに 乗る前提）。
     expect(masako.cards[masako.protagonistId]?.name).toBe('北条政子');
     expect(hidenaga.id).toBe('hidenaga'); // 較正元の 存在を pin（import の 意図を 明示）

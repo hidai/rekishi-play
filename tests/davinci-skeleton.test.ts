@@ -67,9 +67,7 @@ describe('davinci: 設計の契約（docs/design/davinci.md）', () => {
     expect(invention?.card && davinci.cards[invention.card], '発明カードが解決').toBeTruthy();
   });
 
-  it('★6 タイトルは「顔ならべ」を出さない（外国人＝主人公の顔以外は初見・grammar 反転）', () => {
-    // design §3-4: レオナルドの known face は本人（自画像）ゆえ titleKnownFaces は空。
-    expect(davinci.titleKnownFaces).toEqual([]);
+  it('タイトルは主人公の顔だけで成立する（顔ならべは engine ごと廃止＝型1）', () => {
     expect(davinci.faces[davinci.protagonistId], 'protagonist face').toBeTruthy();
     expect(davinci.cards[davinci.protagonistId]?.name?.trim(), 'protagonist card').toBeTruthy();
   });

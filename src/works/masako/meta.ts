@@ -13,15 +13,7 @@ export const PROTAGONIST_ID = 'p-masako';
  * carried in the main line; B = whose brush kept her voice, carried by the clues.
  */
 export const RIDDLE =
-  'なぜ、<ruby>夫<rt>おっと</rt></ruby>と 4人の 子を 見おくった この 人は、その 子らを うしなう もとに なった <ruby>実家<rt>じっか</rt></ruby>と ならんで、<ruby>鎌倉<rt>かまくら</rt></ruby>を 守りつづけたのだろう？——そして その <ruby>声<rt>こえ</rt></ruby>は、だれの <ruby>筆<rt>ふで</rt></ruby>で のこったのだろう。';
-
-/**
- * ★6 Title "show, then ask": known faces → protagonist (design §1).
- * Masako's husband and the emperor she beat are the faces a child may already know from
- * school; she is the one standing beside them without a name of her own — so the two
- * "known" faces here are 頼朝 and 後鳥羽.
- */
-export const TITLE_KNOWN_FACES = ['p-yoritomo', 'p-gotoba'];
+  'きみの 家は、都から 流された 男を <ruby>見張<rt>みは</rt></ruby>る 役だった。その 男を、きみは えらんだ。<ruby>夫<rt>おっと</rt></ruby>が 死に、4人の 子を つぎつぎ 見おくった。ばらばらだった 東の <ruby>武士<rt>ぶし</rt></ruby>たちを ひとつに して、都から 来た 軍を しりぞけた。——ぜんぶ、同じ 人だ。<br>それでも この 人は、父と 弟の 家と ならんで <ruby>鎌倉<rt>かまくら</rt></ruby>を 守りつづけた。なぜ？ そして その <ruby>声<rt>こえ</rt></ruby>は、だれの <ruby>筆<rt>ふで</rt></ruby>で のこったのだろう。';
 
 /** Person id → short label used on the map / figures. */
 export const SHORT_NAMES: Record<string, string> = {
@@ -78,8 +70,10 @@ export const STRINGS: WorkStrings = {
   titleSub: '声の のこらなかった 人',
   years: '1157ごろ〜1225',
   riddleLead: '物語をつらぬく謎',
-  titleHeroTease:
-    'そう、北条政子。武士の 世を 守った 人。でも この 人が 書いた 文字は、一枚も 残っていない → はじめて みよう',
+  // ★ 入口のフック（engagement.md §14 型1）。見張る側の家の娘という具体から入り、
+  //   この作品の背骨（自筆が一枚も無い）を最後の一行で置く。
+  titleHook:
+    'この 人が 書いた 文字は、一枚も のこって いない。<br>たしかな <ruby>顔<rt>かお</rt></ruby>の 絵も、一枚も ない。<br>——それでも、<ruby>鎌倉<rt>かまくら</rt></ruby>の <ruby>武士<rt>ぶし</rt></ruby>たちを 動かした ひと声だけが、いまも 伝わって いる。',
   protagonistRuby: '<ruby>政子<rt>まさこ</rt></ruby>',
   riddleHeart:
     '—— 母で ありながら、家を 続ける 人でも あった。<br>その 人が どんな 人だったかは、きみが 決める しかない。',

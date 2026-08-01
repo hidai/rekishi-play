@@ -34,7 +34,6 @@ import {
 } from './map';
 import {
   RIDDLE,
-  TITLE_KNOWN_FACES,
   CHAPTER_POINTS,
   SHORT_NAMES,
   CHAPTER_CAPTIONS,
@@ -53,7 +52,6 @@ export const davinci: Work = {
   protagonistId: PROTAGONIST_ID,
   protagonistFacesByChapter: PROTAGONIST_FACE_BY_CH,
   protagonistStages: PROTAGONIST_STAGES,
-  titleKnownFaces: TITLE_KNOWN_FACES,
   // Leonardo had no family crest (design/JOURNAL 骨組み-1: 個人エンブレム). `vinci` = his own
   // geometry — the Vitruvian "squared circle" (a bold ring + inscribed square), added to the MON
   // registry (engine/art/icons.ts) this cycle. Legible at the topbar's real 22px (no thin detail).

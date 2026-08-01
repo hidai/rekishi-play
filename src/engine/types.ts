@@ -1082,23 +1082,13 @@ export interface WorkStrings {
   years: string;
   riddleLead: string;
   /**
-   * ★6 タイトル「見せてから問う」の誘い文（例「まず、この 顔を タップして みて——」）。
-   * 未定義ならエンジン既定文。titleKnownFaces がある作品でのみ使われる。
-   */
-  titleFacesLead?: string;
-  /**
-   * ★6 タイトルで主人公の顔（「この人は？」）をタップしたときの返し。
-   * 「知ってる顔のすぐそばにいたのに、知らない」の驚きを一言で返し、「はじめる」へ誘う。
-   * 未定義ならエンジンが主人公名から汎用文を組み立てる。
-   */
-  titleHeroTease?: string;
-  /**
-   * 入口のフック（ruby 可・改行 <br> 可）。**その人を知らない読者が、読む理由を持つための一行**。
+   * 入口のフック（ruby 可・改行 <br> 可）。**その人を知らない読者が、読む理由を持つための数行**。
    * 謎（riddle）は「なぜ〜なのか」＝すでにその人を知っている読者への問いになりやすく、初見の
    * 小5には遠い（docs/design/engagement.md §2）。ここには通説でも評価でもなく、**知識ゼロで
-   * 刺さる具体的な行為**を置く（例「十七で『百姓のくせに』と笑われた」）。未定義なら出さない。
+   * 刺さる具体的な行為**を置く（例「十七で『百姓のくせに』と笑われた」）。
+   * 全作必須（`tests/work-integrity.test.ts`）＝入口で読者に既知の顔を求めない代わりの装置。
    */
-  titleHook?: string;
+  titleHook: string;
   /**
    * ★K 信条まわりの見出しで使う主人公名（ruby 可。例「<ruby>秀長<rt>ひでなが</rt></ruby>」）。
    * 未定義なら shortNames[protagonistId] のプレーン表記で代用する。
@@ -1175,12 +1165,6 @@ export interface Work {
    * 名前・カードは元の人物 id のまま、見た目（faceSvg）だけを上書きする。
    */
   sceneFaceOverrides?: Record<string, Record<string, string>>;
-  /**
-   * ★6 タイトル「見せてから問う」：誰もが知る顔の人物 id 列（cards/faces にあること）。
-   * 「知ってる顔 → 知らない主人公の顔」の順に並べ、読む前にタップさせる。
-   * タップでその人物カードが開く。未定義・空なら顔ならべ自体を出さない。
-   */
-  titleKnownFaces?: string[];
   /** 家紋 SVG の種別キー（engine/art/icons.ts のレジストリ）。 */
   mon: string;
   /** Crest key for the final-chapter clear screen (e.g. hidenaga's Toyotomi kiri). Falls back to `mon`. */

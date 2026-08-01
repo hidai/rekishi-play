@@ -20,16 +20,7 @@ export const PROTAGONIST_ID = 'p-leonardo';
  * you trust it? Same 史料批判 器 as ieyasu's 神君 and katsu's 本人談.
  */
 export const RIDDLE =
-  'なぜ、なんでも できた この <ruby>天才<rt>てんさい</rt></ruby>は、手がけた ものの ほとんどを、"<ruby>完成<rt>かんせい</rt></ruby>"させなかったのだろう？——そして、いま わたしたちが 知る「天才レオナルド」の <ruby>話<rt>はなし</rt></ruby>は、だれが、いつ 作った ものなのか。その すがたは、どこまで ほんとうなのか。';
-
-/**
- * ★6 Title "show, then ask" (design §3-4 grammar). Leonardo INVERTS the usual pattern: for a
- * Renaissance foreigner no OTHER person is known to a Japanese child by a generated portrait, so
- * the known face IS the protagonist himself (the iconic long-bearded self-portrait). The famous
- * hooks — モナ・リザ・空とぶ機械 — are objects, not faces, so they live in titleHeroTease instead.
- * Empty ⇒ the engine draws no face row and presents Leonardo directly.
- */
-export const TITLE_KNOWN_FACES: string[] = [];
+  '空を とぶ <ruby>機械<rt>きかい</rt></ruby>を 考えた。人の からだを 切りひらいて、中の しくみを <ruby>描<rt>えが</rt></ruby>いた。一枚の 絵を 十年 いじょう 持ち歩いて、それでも「できた」と 言わなかった。——ぜんぶ、同じ 人だ。<br>手がけた ものの ほとんどを、この 人は 仕上げなかった。なぜ？ そして、いま 語られる「<ruby>天才<rt>てんさい</rt></ruby>レオナルド」の 話は、だれが 作った ものなのだろう？';
 
 /** Person id → short label used on the map / figures. */
 export const SHORT_NAMES: Record<string, string> = {
@@ -78,8 +69,10 @@ export const STRINGS: WorkStrings = {
   titleSub: '仕上げなかった 天才の なぞ',
   years: '1452〜1519',
   riddleLead: '物語をつらぬく謎',
-  titleHeroTease:
-    'そう、レオナルド・ダ・ヴィンチ。モナ・リザを 描き、空とぶ 機械を 考えた 天才。——でも その 手は、手がけた ものの 多くを 途中で 止めた。なぜ？ そして、その「天才」の 話は だれが 作った？ なりきって 確かめよう → はじめて みよう',
+  // ★ 入口のフック（engagement.md §14 型1）。学校に入れない子と、鏡文字のノート＝知識ゼロで
+  //   刺さる具体（研究 §3・§3-5 の ◎ だけで組む）。
+  titleHook:
+    '学校には 入れて もらえなかった。父の 仕事も つげない 子どもだった。<br>かわりに、川の <ruby>流<rt>なが</rt></ruby>れと 鳥の <ruby>羽<rt>はね</rt></ruby>を、一日じゅう 見つめて いた。<br>——その ノートの 文字は、<ruby>鏡<rt>かがみ</rt></ruby>に うつした ように 左右 さかさまだ。',
   protagonistRuby: 'レオナルド',
   // The 小5 emotional thread beside the abstract riddle. Concrete and bodily: everything came from
   // one head that trusted its own eyes.
