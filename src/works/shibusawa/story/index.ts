@@ -57,7 +57,7 @@ export const STORY: Story = {
           onEnter: { cards: ['p-eiichi', 'p-ichiroemon'] } },
 
         '1-b': { place: '<ruby>従兄<rt>いとこ</rt></ruby>の 家の 二階',
-          text: `<p>1863年。<ruby>港<rt>みなと</rt></ruby>が ひらかれ、外国の 商人が 日本に 入って きた。<ruby>生糸<rt>きいと</rt></ruby>も 米も <ruby>値<rt>ね</rt></ruby>が はねあがる。「外国人を 追い出せ」——その 声は、こんな 村にまで <ruby>届<rt>とど</rt></ruby>いて いた。</p>
+          text: `<p>1863年。<ruby>幕府<rt>ばくふ</rt></ruby>が <ruby>港<rt>みなと</rt></ruby>を ひらき、外国の 商人が 日本に 入って きた。<ruby>生糸<rt>きいと</rt></ruby>も 米も <ruby>値<rt>ね</rt></ruby>が はねあがる。「外国人を 追い出せ」——その 声は、こんな 村にまで <ruby>届<rt>とど</rt></ruby>いて いた。</p>
             <p>朝ごとに『<ruby>論語<rt>ろんご</rt></ruby>』を 教えて くれた <ruby>従兄<rt>いとこ</rt></ruby>の <ruby>兄<rt>あに</rt></ruby>。その 家の 二階に、<ruby>刀<rt>かたな</rt></ruby>と <ruby>鎧<rt>よろい</rt></ruby>が 積まれて いく。<ruby>藍<rt>あい</rt></ruby>を 売った 金で 買い集めた ものだ。</p>
             <p class="speak">「<ruby>高崎<rt>たかさき</rt></ruby>の 城を のっとって 武器を 取る。<ruby>街道<rt>かいどう</rt></ruby>を 下って <ruby>横浜<rt>よこはま</rt></ruby>へ 行き、<b>外国人の 町を 焼き、外国人を <ruby>斬<rt>き</rt></ruby>る</b>。」</p>
             <p>仲間は およそ 69人。<ruby>決行<rt>けっこう</rt></ruby>は 冬の 夜——あと ひと月。</p>`,
@@ -99,7 +99,7 @@ export const STORY: Story = {
         '1-d': { place: '<ruby>渋沢<rt>しぶさわ</rt></ruby>の 家——その 冬',
           closeup: { tone: 'solemn',
             cast: [{ face: 'p-ichiroemon', name: '父・市郎右衛門', expr: { brow: 'worried', eye: 'closed', mouth: 'flat' } }] },
-          text: `<p>計画は やめた。だが、村に いる ことも できない。<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>役人<rt>やくにん</rt></ruby>が、もう 刀の 話を かぎつけて いた。</p>
+          text: `<p>計画は やめた。だが、村に いる ことも できない。外国人を おそう ことは、その 外国人を 招き入れた <ruby>幕府<rt>ばくふ</rt></ruby>に <ruby>弓<rt>ゆみ</rt></ruby>を 引く のと 同じだ。役人は もう、刀の 話を かぎつけて いた。</p>
             <p>きみは 父の 前に すわった。</p>`,
           q: '父に、何と 言う？',
           choices: [
@@ -127,13 +127,13 @@ export const STORY: Story = {
     },
     {
       id: 2, num: '二', title: '敵の 家に つかえる', years: '1864〜1866',
-      lead: '<ruby>攘夷<rt>じょうい</rt></ruby>を <ruby>貫<rt>つらぬ</rt></ruby>くか、外国を 開いた <ruby>将軍<rt>しょうぐん</rt></ruby>の 家・<ruby>一橋<rt>ひとつばし</rt></ruby>（<ruby>慶喜<rt>よしのぶ</rt></ruby>）に 仕えるか。村を <ruby>捨<rt>す</rt></ruby>てて <ruby>京<rt>きょう</rt></ruby>へ 出た 二人を 待って いたのは、金の 切れ目と、<ruby>追<rt>お</rt></ruby>われる 身の 知らせだった。',
+      lead: '外国を 追いはらう <ruby>志<rt>こころざし</rt></ruby>を <ruby>貫<rt>つらぬ</rt></ruby>くか、その 外国に 港を ひらいた <ruby>将軍<rt>しょうぐん</rt></ruby>の 家・<ruby>一橋<rt>ひとつばし</rt></ruby>（<ruby>慶喜<rt>よしのぶ</rt></ruby>）に 仕えるか。村を <ruby>捨<rt>す</rt></ruby>てて <ruby>京<rt>きょう</rt></ruby>へ 出た 二人を 待って いたのは、金の 切れ目と、<ruby>追<rt>お</rt></ruby>われる 身の 知らせだった。',
       start: '2-a',
       teaser: '<ruby>慶喜<rt>よしのぶ</rt></ruby>が <ruby>将軍<rt>しょうぐん</rt></ruby>に なり、きみは <ruby>図<rt>はか</rt></ruby>らずも <ruby>幕臣<rt>ばくしん</rt></ruby>に。そして パリへ わたる ことに なる。',
       scenes: {
         '2-a': { place: '<ruby>京<rt>きょう</rt></ruby>・<ruby>三条<rt>さんじょう</rt></ruby>の <ruby>宿<rt>やど</rt></ruby>',
           monologue: '（……村には 帰れない。帰らない ことに して、出て きたのだから。）',
-          text: `<p>村を 出て、<ruby>京<rt>きょう</rt></ruby>。<ruby>攘夷<rt>じょうい</rt></ruby>を さけぶ <ruby>若者<rt>わかもの</rt></ruby>が、この 町には あふれて いた。きみと <ruby>喜作<rt>きさく</rt></ruby>も その 中に まじり、人に 会い、うわさを 集める。年が 明けた。ふところの 金は、もう ない。</p>
+          text: `<p>村を 出て、<ruby>京<rt>きょう</rt></ruby>。「外国を 追いはらえ」と さけぶ <ruby>若者<rt>わかもの</rt></ruby>が、この 町には あふれて いた。きみと <ruby>喜作<rt>きさく</rt></ruby>も その 中に まじり、人に 会い、うわさを 集める。年が 明けた。ふところの 金は、もう ない。</p>
             <p class="speak">「なあ <ruby>栄一<rt>えいいち</rt></ruby>。おれたちは、何を しに 京へ 来たんだろうな。」</p>
             <p>そこへ 知らせが 来る。<ruby>長七郎<rt>ちょうしちろう</rt></ruby>が 人を あやめて とらえられた。その ふところには、きみが 書いた 手紙が あった。<ruby>幕府<rt>ばくふ</rt></ruby>は もう、きみの 名を 知って いる。</p>`,
           spark: 'え！？ その 京へ、きみは <b>「<ruby>一橋家<rt>ひとつばしけ</rt></ruby>の 家来」と 名のって</b> 入って いた。焼こうと して いた 側の 家の 名で、<ruby>関所<rt>せきしょ</rt></ruby>を 通ったのだ。',
@@ -146,12 +146,12 @@ export const STORY: Story = {
           closeup: { tone: 'tense', cast: [{ face: 'p-hiraoka', name: '平岡円四郎' }, { face: 'p-eiichi@young', name: '栄一（きみ）' }] },
           text: `<p><ruby>平岡円四郎<rt>ひらおかえんしろう</rt></ruby>。一橋家の <ruby>用人<rt>ようにん</rt></ruby>——<ruby>殿<rt>との</rt></ruby>の そばで 家の 仕事を まとめる 人だ。<ruby>呼<rt>よ</rt></ruby>びつけられた 二人に、その 人は いきなり こう 言った。</p>
             <p class="speak">「このままでは、おぬしら 半年も もたぬ。——うちへ 来い。<ruby>一橋<rt>ひとつばし</rt></ruby>の <ruby>家来<rt>けらい</rt></ruby>に なれ。」</p>
-            <p>一橋の 殿・<ruby>慶喜<rt>よしのぶ</rt></ruby>は <ruby>将軍<rt>しょうぐん</rt></ruby>の 家の 人。<ruby>港<rt>みなと</rt></ruby>を ひらいた 側、きみが 焼こうと して いた 側だ。</p>
+            <p>一橋家は、<ruby>将軍<rt>しょうぐん</rt></ruby>を 出す <ruby>徳川<rt>とくがわ</rt></ruby>の 一族だ。つまり <ruby>港<rt>みなと</rt></ruby>を ひらいた 側——きみが 焼こうと して いた 相手の 側で ある。</p>
             <p>きみは 顔を 上げた。</p>
             <p class="speak">「ただ 使われる だけなら、おことわりします。思う ことを 言わせて いただけますか。」</p>`,
           q: 'きみは どう する？',
           choices: [
-            { label: 'ことわる。<ruby>攘夷<rt>じょうい</rt></ruby>を つらぬく', to: '2-c', effect: { rongo: 2 },
+            { label: 'ことわる。外国を 追いはらう <ruby>志<rt>こころざし</rt></ruby>を つらぬく', to: '2-c', effect: { rongo: 2 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし 敵の 家に 入らなかったら……',
                 body: `<p>ことわれば、きみは <ruby>浪人<rt>ろうにん</rt></ruby>の まま 京に 残る。だれにも 頭を 下げず、言って きた ことを 曲げずに すむ。この まま 生きのびた 仲間の 中には、のちに 新しい 国を 動かす 側に なった 者も いる。</p><p>だが 1864年の 京は、<ruby>志士<rt>しし</rt></ruby>が いちばん 多く 死んだ 年だった。夏、<ruby>池田屋<rt>いけだや</rt></ruby>で 同じ こころざしの 者たちが <ruby>斬<rt>き</rt></ruby>られ、つづく <ruby>戦<rt>いくさ</rt></ruby>で 町の 大半が 焼ける。</p><p>金は なく、幕府は 手紙で きみの 名を 知って いる。——外から さけびつづけた 若者の 名は、いくつも 残って いない。一万円札の 顔も、べつの だれかに なる。<b>史実の きみは、<ruby>敵<rt>てき</rt></ruby>の 家に 入った。</b></p>` } },
             { label: '<ruby>仕<rt>つか</rt></ruby>える。ただし、ものが 言える ことを 条件に', to: '2-c', canon: true, effect: { rongo: 1, soroban: 1 },
@@ -164,7 +164,7 @@ export const STORY: Story = {
 
         '2-c': { place: '京——その 年の 夏',
           closeup: { tone: 'grief', cast: [{ face: 'p-hiraoka', name: '平岡円四郎' }] },
-          text: `<p>その 年の 夏。平岡は 京の 町なかで <ruby>斬<rt>き</rt></ruby>られた。斬ったのは <ruby>水戸<rt>みと</rt></ruby>の <ruby>攘夷<rt>じょうい</rt></ruby>の 男たち。「<ruby>殿<rt>との</rt></ruby>を 外国びいきに した 悪い 家来だ」と いう ことだった。</p>
+          text: `<p>その 年の 夏。平岡は 京の 町なかで <ruby>斬<rt>き</rt></ruby>られた。斬ったのは、きみと 同じ「外国を 追いはらえ」の <ruby>水戸<rt>みと</rt></ruby>の 男たち。「<ruby>殿<rt>との</rt></ruby>を 外国びいきに した 悪い 家来だ」と いう ことだった。</p>
             <p>去年の 秋まで、きみも 同じ ことを さけんで いた。<ruby>刀<rt>かたな</rt></ruby>を 買い集め、<ruby>港<rt>みなと</rt></ruby>を 焼くと 言って いた。</p>
             <p>その <ruby>刃<rt>やいば</rt></ruby>が、きみを ひろって くれた 人を <ruby>殺<rt>ころ</rt></ruby>した。</p>
             <p>きみは 一橋の 家に 残った。</p>`,
@@ -176,7 +176,7 @@ export const STORY: Story = {
           closeup: { tone: 'solemn', cast: [{ face: 'p-yoshinobu', name: '一橋慶喜' }, { face: 'p-eiichi@young', name: '栄一（きみ）' }] },
           text: `<p>きみに 回って きたのは、<ruby>戦<rt>いくさ</rt></ruby>の 仕事では なかった。一橋の <ruby>領地<rt>りょうち</rt></ruby>の 村を 一つずつ 回り、<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 家から 兵を 出して もらう こと。</p>
             <p><ruby>侍<rt>さむらい</rt></ruby>が 上から 命じても、村は 動かない。きみは <ruby>土間<rt>どま</rt></ruby>に すわりこみ、<ruby>藍<rt>あい</rt></ruby>の 葉を 買いつけて いた ころと 同じ 顔で 話した。兵は 集まった。つづけて <ruby>木綿<rt>もめん</rt></ruby>の 売り方を 変え、<ruby>火薬<rt>かやく</rt></ruby>の もとを つくらせる。一橋の <ruby>金蔵<rt>かなぐら</rt></ruby>が ふくらんだ。</p>
-            <p><ruby>殿<rt>との</rt></ruby>の 前に 呼ばれた。<ruby>慶喜<rt>よしのぶ</rt></ruby>は 終わりまで 聞き、それから 一言だけ 言った。</p>
+            <p><ruby>殿<rt>との</rt></ruby>の 前に 呼ばれた。きみは、この 家で 次に やりたい ことを 一つずつ 申し上げた。<ruby>慶喜<rt>よしのぶ</rt></ruby>は 終わりまで 聞き、それから 一言だけ 言った。</p>
             <p class="speak">「——<ruby>聞<rt>き</rt></ruby>いて おく。」</p>
             <p>顔いろは 変わらない。何を 思ったかは、わからない。</p>`,
           spark: 'え！？ 一橋の 家には、<b><ruby>城<rt>しろ</rt></ruby>が 無い</b>。<ruby>殿<rt>との</rt></ruby>は <ruby>将軍<rt>しょうぐん</rt></ruby>に なれる ほどの 家の 人なのに、土地は 国じゅうに ちらばった 村の 集まりだ。——きみが <ruby>城下町<rt>じょうかまち</rt></ruby>では なく 村を 一つずつ 歩いたのは、その ためだ。',
@@ -188,7 +188,7 @@ export const STORY: Story = {
 
         '2-e': { place: '第2章 むすび',
           monologue: '（……たおす はずだった 家の、いちばん 内がわに いる。）',
-          figure: 'seat',
+          closeup: { tone: 'solemn', cast: [{ face: 'p-eiichi@young', name: '栄一（きみ）', expr: { brow: 'worried', eye: 'narrow', mouth: 'flat' } }] },
           text: `<p>1866年。<ruby>将軍<rt>しょうぐん</rt></ruby>が <ruby>亡<rt>な</rt></ruby>くなった。あとを つぐ 人が いない。まわりは <ruby>慶喜<rt>よしのぶ</rt></ruby>を <ruby>押<rt>お</rt></ruby>した。慶喜は なんども ことわり、それでも その 年の <ruby>暮<rt>く</rt></ruby>れ、15代 将軍に なる。</p>
             <p>きみは よろこばなかった。一橋の <ruby>家来<rt>けらい</rt></ruby>だった きみは、その日から <ruby>幕臣<rt>ばくしん</rt></ruby>——将軍の 家来だ。<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子に 生まれ、外国人を 焼こうと して、いま きみは 日本で いちばん 古い 家の 中に すわって いる。</p>
             <p>きみは 一歩も 動いて いない。上の 人が 動いた。それだけで、きみの <ruby>座<rt>ざ</rt></ruby>も 動いた。</p>`,
@@ -200,7 +200,7 @@ export const STORY: Story = {
     },
     {
       id: 3, num: '三', title: '海の むこうの しくみ', years: '1867〜1868',
-      lead: 'パリで きみは、<ruby>攘夷<rt>じょうい</rt></ruby>の 目で 外国を <ruby>拒<rt>こば</rt></ruby>むのか、それとも <ruby>銀行<rt>ぎんこう</rt></ruby>・会社・<ruby>鉄道<rt>てつどう</rt></ruby>の しくみを 学ぶのか。ふところには、自分の ものでは ない 金が ある。',
+      lead: 'パリで きみは、外国を 追いはらえと 思って きた 目で それを <ruby>拒<rt>こば</rt></ruby>むのか、それとも <ruby>銀行<rt>ぎんこう</rt></ruby>・会社・<ruby>鉄道<rt>てつどう</rt></ruby>の しくみを 学ぶのか。ふところには、自分の ものでは ない 金が ある。',
       start: '3-a',
       teaser: '<ruby>幕府<rt>ばくふ</rt></ruby>が 消えた。きみは <ruby>帰国<rt>きこく</rt></ruby>し、やがて 明治<ruby>政府<rt>せいふ</rt></ruby>に 引き入れられる。',
       scenes: {
