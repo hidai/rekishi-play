@@ -36,7 +36,7 @@ const BASELINE: Record<string, number> = {
   'ieyasu:ch1': 10, 'ieyasu:ch2': 8, 'ieyasu:ch3': 8, 'ieyasu:ch4': 15, 'ieyasu:ch5': 5,
   'ieyasu:ch6': 10, 'ieyasu:ch7': 4, 'ieyasu:card': 94, 'ieyasu:clue': 1, 'ieyasu:timeline': 40,
   // davinci: 126 件
-  'davinci:ch1': 8, 'davinci:ch2': 11, 'davinci:ch3': 12, 'davinci:ch4': 15,
+  'davinci:ch1': 8, 'davinci:ch2': 11, 'davinci:ch3': 11, 'davinci:ch4': 15,
   'davinci:ch5': 11, 'davinci:ch6': 11, 'davinci:card': 27, 'davinci:clue': 3,
   'davinci:hidden': 1, 'davinci:star': 4, 'davinci:timeline': 23,
   // masako: 197 件

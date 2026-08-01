@@ -44,8 +44,8 @@ const BASELINE: Record<string, number> = {
   // katsu: 全章 棚卸し済み（幕府は入口から降ろして 1-a へ／主家・主君→あるじに統一／蘭学は ALLOWED）
   // ieyasu: 全章 棚卸し済み（家臣→家来・侍→武士・主家/主君→「仕えた 家」「あるじ」に統一／
   //   兵糧→米・百姓・天下人は主線から降ろす／人質・大名・幕府・牢人は ALLOWED）
-  'davinci:ch1': 3,
-  'davinci:ch5': 1,
+  // davinci: 全章 棚卸し済み（公証人・宮廷・教皇はその場で言い換え／将軍→「いくさの 大将」に降ろす／
+  //   私生児・工房は ALLOWED。教皇・宮廷は この棚卸しで INSTITUTION_TERMS に追加）
   'masako:entry': 1,
   'masako:ch1': 1,
   'masako:ch3': 3,

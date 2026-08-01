@@ -12,7 +12,7 @@ export const STORY: Story = {
   chapters: [
     {
       id: 1, num: '一', title: 'ヴィンチ村の 私生児', years: '1452〜',
-      lead: 'すべては、学校にも 行けない ひとりの 子どもが、川と 岩と 鳥を じっと 見つめる ところから はじまった。',
+      lead: 'けっこんして いない 親の あいだに 生まれ、学校にも 行けない ひとりの 子ども。すべては その 子が、川と 岩と 鳥を じっと 見つめる ところから はじまった。',
       start: '1-a',
       teaser: 'フィレンツェの <ruby>工房<rt>こうぼう</rt></ruby>に 弟子入りする。師の 絵を、きみは こえて しまうのか？',
       // First WRITTEN chapter to use the 4th main-visual kind = 習作ページ (Scene.study → work.studies).
@@ -27,7 +27,7 @@ export const STORY: Story = {
       scenes: {
         '1-a': { place: 'トスカーナ・ヴィンチ村',
           monologue: '（学校には 入れない。でも、川も 鳥も 光も、みんな おれの 先生だ。）',
-          text: `<p>1452年、きみは トスカーナの ヴィンチ村で 生まれた。父は 町の <ruby>公証人<rt>こうしょうにん</rt></ruby>。だが 母とは 結ばれて おらず、きみは <ruby>私生児<rt>しせいじ</rt></ruby>だった。</p>
+          text: `<p>1452年、きみは トスカーナの ヴィンチ村で 生まれた。父は 町の <ruby>公証人<rt>こうしょうにん</rt></ruby>（人と 人の やくそくを 紙に 残す 仕事）。だが 母とは 結ばれて おらず、きみは <ruby>私生児<rt>しせいじ</rt></ruby>だった。</p>
             <p>そのため 父の 仕事は つげず、<ruby>学者<rt>がくしゃ</rt></ruby>に なる ための ラテン語の 学校にも 入れない。かわりに きみは、丘を かけまわる。川の <ruby>流<rt>なが</rt></ruby>れ、鳥の <ruby>羽<rt>はね</rt></ruby>、光の 当たり方——本には ない ものを、この 目で 見つめた。</p>`,
           onEnter: { card: 'w-shiseiji' },
           next: '1-b' },
@@ -71,7 +71,7 @@ export const STORY: Story = {
 
         '1-d': { place: '第1章 むすび',
           text: `<p>本を 持たない ひとりの 子どもが、世界を 先生に して、見て、写しはじめた。</p>
-            <p>この「よく 見る 目」を たずさえて、きみは いま、フィレンツェの 大きな <ruby>工房<rt>こうぼう</rt></ruby>の 戸を たたく。すべては、ここから 動きはじめた。</p>`,
+            <p>この「よく 見る 目」を たずさえて、きみは いま、フィレンツェの 大きな <ruby>工房<rt>こうぼう</rt></ruby>の 戸を たたく。<ruby>親方<rt>おやかた</rt></ruby>と <ruby>弟子<rt>でし</rt></ruby>たちが、絵や <ruby>像<rt>ぞう</rt></ruby>を つくる ところだ。すべては、ここから 動きはじめた。</p>`,
           creed: { line: '「おれは 本で 習わなかった。だから、世界を まるごと 先生に した。」',
             act: '——工房の 戸を たたく その 手は、もう まよって いない。' },
           onEnter: { clues: ['clue-1'] },
@@ -155,7 +155,7 @@ export const STORY: Story = {
       // Riddle facet clue-3「手がけたものが仕上がる前に世の中が変わる」lands via the giant horse
       // (研究 §3-8): destroyed before it was ever cast in bronze.
       id: 3, num: '三', title: 'ミラノ 売り込み', years: '1482〜1494',
-      lead: '「絵が うまい」より 先に「戦の 道具が 作れる」と 売り込んで、ミラノの あるじの 宮廷に 入る。',
+      lead: '「絵が うまい」より 先に「戦の 道具が 作れる」と 売り込んで、ミラノの あるじに やとわれる。',
       start: '3-a',
       teaser: '壁に『<ruby>最後<rt>さいご</rt></ruby>の <ruby>晩餐<rt>ばんさん</rt></ruby>』を 描く。<ruby>安全<rt>あんぜん</rt></ruby>な やり方か、新しい やり方か？',
       scenes: {
@@ -169,7 +169,7 @@ export const STORY: Story = {
 
         '3-b': { place: 'ミラノ・スフォルツァ<ruby>城<rt>じょう</rt></ruby>',
           monologue: '（おれの ほんとうの 得意は、絵だ。だが、この あるじが いま いちばん ほしいのは——）',
-          text: `<p>ミラノに 着いた きみは、あるじに わたす <ruby>手紙<rt>てがみ</rt></ruby>を 書こうと して いた。自分に 何が できるかを 並べ、<ruby>宮廷<rt>きゅうてい</rt></ruby>に 入れて くれと たのむ「売り込みの 手紙」だ。</p>
+          text: `<p>ミラノに 着いた きみは、あるじに わたす <ruby>手紙<rt>てがみ</rt></ruby>を 書こうと して いた。自分に 何が できるかを 並べ、<ruby>宮廷<rt>きゅうてい</rt></ruby>（あるじの そばで 働く 人たちの 集まり）に 入れて くれと たのむ「売り込みの 手紙」だ。</p>
             <p><ruby>羽<rt>は</rt></ruby>ペンを 前に、きみは 迷う。まっさきに 何と 名のるか——それで、あるじの 目の 色が 変わる。</p>`,
           q: 'きみは、この あるじに 自分を どう 売り込む？',
           // Fork rebalanced (eval round1: A2 below-3 — もしも was an all-downside 罰リスト, canon a pure
@@ -304,7 +304,7 @@ export const STORY: Story = {
         '5-a': { place: 'ロマーニャ・イモラ',
           monologue: '（ミラノは 落ちた。ミラノ<ruby>公<rt>こう</rt></ruby>は とらわれ、おれには もう、絵を たのむ <ruby>主<rt>あるじ</rt></ruby>が いない。）',
           text: `<p>ミラノが フランス<ruby>軍<rt>ぐん</rt></ruby>に 落ちて、きみは <ruby>主<rt>あるじ</rt></ruby>を なくした。<ruby>戦乱<rt>せんらん</rt></ruby>の イタリアを、あても なく さまよう。</p>
-            <p>そんな きみに、声が かかった。——イタリアで もっとも <ruby>恐<rt>おそ</rt></ruby>れられた 男、<face pid="p-cesare">チェーザレ・ボルジア</face>。<ruby>教皇<rt>きょうこう</rt></ruby>の 子で、力で 次々と 街を したがえる 若い <ruby>将軍<rt>しょうぐん</rt></ruby>だ。ほしいのは 絵ではない。城を <ruby>攻<rt>せ</rt></ruby>め、守る ための「<ruby>軍事技師<rt>ぐんじぎし</rt></ruby>」。</p>
+            <p>そんな きみに、声が かかった。——イタリアで もっとも <ruby>恐<rt>おそ</rt></ruby>れられた 男、<face pid="p-cesare">チェーザレ・ボルジア</face>。<ruby>教皇<rt>きょうこう</rt></ruby>（キリスト<ruby>教<rt>きょう</rt></ruby>の いちばん えらい 人）の 子で、軍を ひきいて 次々と 街を したがえる、若い <ruby>大将<rt>たいしょう</rt></ruby>だ。ほしいのは 絵ではない。城を <ruby>攻<rt>せ</rt></ruby>め、守る ための「<ruby>軍事技師<rt>ぐんじぎし</rt></ruby>」。</p>
             <p>きみは、その <ruby>陣<rt>じん</rt></ruby>を たずねた。冷たい 目が、まっすぐ きみを 見た。</p>
             <p class="speak">「<ruby>天使<rt>てんし</rt></ruby>は いらぬ。おれに 要るのは、この 土地の すみずみを 知る 目だ」</p>`,
           onEnter: { card: 'p-cesare' },
@@ -432,7 +432,7 @@ export const STORY: Story = {
         // ——「注文が 来ない 三年」に 手記が いちばん ぶあつく なった (research §4-4 の 研究へ沈む). 庇護者に
         // 声を (WRITING 原則4). Ends by picking up あの一枚, handing ch7 the Alps crossing.
         '6-c2': { place: 'ローマ・<ruby>宮殿<rt>きゅうでん</rt></ruby>',
-          text: `<p>やがて、ローマに 招かれた。いちばん えらい <ruby>教皇<rt>きょうこう</rt></ruby>の 弟 <face pid="p-giuliano">ジュリアーノ</face>が、部屋と 毎月の お金を くれた。</p>
+          text: `<p>やがて、ローマに 招かれた。<ruby>教皇<rt>きょうこう</rt></ruby>の 弟 <face pid="p-giuliano">ジュリアーノ</face>が、部屋と 毎月の お金を くれた。</p>
             <p>だが、大きな 絵の 注文は 来ない。「あの 男は 死んだ 人の 体を 切って いる」と 言いつけられ、<ruby>解剖<rt>かいぼう</rt></ruby>も 止まった。</p>
             <p class="speak">「急がなくて よい。好きな ものを 見て いなさい」</p>
             <p><ruby>鏡<rt>かがみ</rt></ruby>が 光を どう 曲げるか を しらべ、<ruby>沼<rt>ぬま</rt></ruby>の 水を ぬく 道を 考えた。注文の ない 三年。きみは 手を 止めなかった。</p>
