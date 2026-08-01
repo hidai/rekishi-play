@@ -28,7 +28,7 @@
   - **★ここまでの仕事は全部「摩擦を減らす」側だった**（用量・理解）。**最初の指摘＝「その人を読む動機が無い」への直接の答えは〈入口〉だけ**で、しかも shibusawa 1作にしか入っていない。**摩擦を減らしても引きは生まれない**——次の優先順位はここから決まる。
   - **★次の作業＝型で直す**（根拠は engagement.md **§14**＝全7作の第一章に読み通し検査をかけた結果。**上から1サイクル1件**。個別の画面でなく型を直す＝CLAUDE.md「課題は型で直す」）:
     1. [x] **型1 入口＝完了**（5f0ab26・逐語は engagement.md **§15**）: 顔ならべ装置を engine ごと撤去し、`titleHook` を必須化して7作へ／謎を行為の並置型へ（6作）／入口ゲート新設。**副産物＝ルビゲートが入口面を一度も見ていなかった穴を塞いだ**（`'entry'` 面・7作 0 件）。
-    2. [x] **型3 規律と計器＝完了**（1369711・逐語は engagement.md **§16**）: WRITING 書法13 ＋ `scripts/institution-audit.ts` ＋ `tests/institution-gloss.test.ts`（作品×章のラチェット・実測 71件）＋ **hidenaga（入口＋章一）棚卸し済み**。⏳ **残り3作は1サイクル1作**（**次は davinci 4**・masako 10・shibusawa 7。現物は `npx vite-node scripts/institution-audit.ts <slug>`・直したら BASELINE を下げる）。**kiyomori 10→0＝61c22d2 ／ katsu 12→0＝29bcfe6 ／ ieyasu 15→0＝1015448 完了**（言い換えを足すと体験予算が反対から押す＝**同じサイクルで刈る所を探す**／**制度語は言い換えより「1語に統一」で消えることがある**／**統一を選んだら story 以外の面〔cards・relations・timeline・meters・map・meta〕も同じサイクルで走査する**。逐語は JOURNAL）。
+    2. [x] **型3 規律と計器＝完了**（1369711・逐語は engagement.md **§16**）: WRITING 書法13 ＋ `scripts/institution-audit.ts` ＋ `tests/institution-gloss.test.ts`（作品×章のラチェット）。**棚卸し済み＝hidenaga・kiyomori 61c22d2・katsu 29bcfe6・ieyasu 1015448・davinci b63d7de**。⏳ **残り2作は1サイクル1作**（**次は masako 10**・shibusawa 7。現物は `npx vite-node scripts/institution-audit.ts <slug>`・直したら BASELINE を下げる）。手順の学び＝**言い換えは足し算でなく置換**（同じサイクルで刈る所を探す）／**「1語に統一」で消えることがある＋選んだら story 以外の面〔cards・relations・timeline・meters・map・meta〕も同サイクルで走査**／**その作品を開いたら先に INSTITUTION_TERMS にその時代の語が入っているか見る**（厳格化＝自律で可）／**跡地は語でなく一文として読み直す**（逐語は JOURNAL）。
     3. **型5 因果の一文抜け**（7/7作）: WRITING に「**因果を省略しない**」を追加（現行の規律は「感情は要約しない」だけで因果の穴を禁じていない）＋ §14 の該当箇所を直す。
     4. **型4 改名の同定不能**（hidenaga・ieyasu）: 改名の場面で、その場に対応を書く。**新証拠**（2026-08-01 の読み通し）＝hidenaga は本文が「小竹／藤吉郎」、**hist パネルだけが「秀長／秀吉」**と呼び替え、対応は入口の titleNote 1か所にしかない（＋一字違いで取り違える）。**面をまたぐ呼び替えが本体**なので、章一の hist から見る。
     5. **型6・型7 spark**（6/7作）: **知識ゼロの読者に裏返す期待は無い**＝装置の前提の問題。§13 前提4「史料批判を注釈から遊びへ」として**単独で設計する**（いちばん深い）。
@@ -80,7 +80,7 @@
 - **★ルビは「振り漏れ」も「振りすぎ」も機械では見えない**（逐語は BACKLOG-done 2026-07-28 退避節）: **ゲートは床・ペルソナはサンプリング**。線は「教育漢字か」でなく「**その読みを習っているか**」。訓読み＋送り仮名は熟語ルビにしない。棚卸しでは**必ず小5ペルソナ1本**。
 - **QuizPane で章タイトルのルビが 6.5px に潰れる（engine 横断）**: `.quiz-opt-cht`（`src/app.css:1154`・12.5px）と `.quiz-result-line`（16px）が章タイトルを再掲するため `rt{font-size:.52em}` が判読不能＝**ルビが要る唯一の読者（小5・furigana ON）にだけ読めない字が出る**。修正＝小さい文脈の rt に下限。ついでに `Chapter` 型に doc コメントが無い（`{@html}`＝ruby 可否と「クイズで縮む」制約が型から読めない）／`.chapter-num` 系の `margin-top` は inline span ゆえデッドコード。
 - **closeup が「対面」に読めない（engine 横断・4度目）**: busts が常に正面（`art/closeup.ts` の `centers`）。**ミラー案は棄却済み**（顔が左右対称＝実験で無効。engagement.md §5）。残る手は**遠近**と、重い**斜め・横顔の頭部**。表情は 2026-08-01 に `CloseupCast.expr` で入った。**名前ラベルにふりがなが無い**（SVG text）も同じ面の別件。
-- **★shibusawa 章跨ぎパス 2本目**（累積通し読み 2026-07-26・章一〜六の漂流）: ①反転定型が章1回超（章2:3回・章3:3回＋RIDDLE/titleHeroTease/CHAPTER_CAPTIONS[1]）②主人公 speak が章別 1/1/2/3/1/3＝パイロット章五が最少 ③独白15本中14本が「（……」開始・spark 11本すべて「え！？」・hist 全12枚が太字で閉じる ④もしも hist の論法が 1-c/2-b/3-c/5-b で同型。逐語は git の eval ログ。
+- **★shibusawa 章跨ぎパス 2本目**（累積通し読み 2026-07-26・章一〜六の漂流）: 反転定型の章内多用／主人公 speak の章別ムラ（パイロット章五が最少）／独白・spark・hist の書き出しと閉じが定型／もしも hist の論法が4章で同型。逐語は git の eval ログ。
 
 **park（観察待ち＝当面 子どもの観察は来ない前提。逐語は git ／ BACKLOG-done ／ JOURNAL-archive）**
 
