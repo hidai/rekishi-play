@@ -46,11 +46,9 @@ const BASELINE: Record<string, number> = {
   //   兵糧→米・百姓・天下人は主線から降ろす／人質・大名・幕府・牢人は ALLOWED）
   // davinci: 全章 棚卸し済み（公証人・宮廷・教皇はその場で言い換え／将軍→「いくさの 大将」に降ろす／
   //   私生児・工房は ALLOWED。教皇・宮廷は この棚卸しで INSTITUTION_TERMS に追加）
-  'masako:entry': 1,
-  'masako:ch1': 1,
-  'masako:ch3': 3,
-  'masako:ch5': 3,
-  'masako:ch6': 2,
+  // masako: 全章 棚卸し済み（武士・将軍・幕府・上皇・朝敵は その場で言い換え／鎌倉殿→将軍に統一・
+  //   貴族・朝廷は主線から降ろす／御台所・御家人・乳母・執権は ALLOWED。鎌倉殿・乳母は
+  //   この棚卸しで INSTITUTION_TERMS に追加）
   'shibusawa:entry': 2,
   'shibusawa:ch1': 1,
   'shibusawa:ch2': 2,

@@ -7,7 +7,7 @@ export const RELATIONS: WorkRelations = {
   cats: [
     { key: 'hojo', label: '北条の 家', color: '#31608c' }, // 藍
     { key: 'genji', label: '源氏（夫と 子ら）', color: '#b23a2e' }, // 朱
-    { key: 'kyo', label: '京・朝廷', color: '#8a5a86' }, // 紫
+    { key: 'kyo', label: '京の 側', color: '#8a5a86' }, // 紫
     { key: 'gokenin', label: '鎌倉の 御家人', color: '#5b5346' }, // 灰
   ],
   edges: [

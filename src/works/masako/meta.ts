@@ -13,7 +13,7 @@ export const PROTAGONIST_ID = 'p-masako';
  * carried in the main line; B = whose brush kept her voice, carried by the clues.
  */
 export const RIDDLE =
-  'きみの 家は、都から 流された 男を <ruby>見張<rt>みは</rt></ruby>る 役だった。その 男を、きみは えらんだ。<ruby>夫<rt>おっと</rt></ruby>が 死に、4人の 子を つぎつぎ 見おくった。ばらばらだった 東の <ruby>武士<rt>ぶし</rt></ruby>たちを ひとつに して、都から 来た 軍を しりぞけた。——ぜんぶ、同じ 人だ。<br>それでも この 人は、父と 弟の 家と ならんで <ruby>鎌倉<rt>かまくら</rt></ruby>を 守りつづけた。なぜ？ そして その <ruby>声<rt>こえ</rt></ruby>は、だれの <ruby>筆<rt>ふで</rt></ruby>で のこったのだろう。';
+  'きみの 家は、都から 流された 男を <ruby>見張<rt>みは</rt></ruby>る 役だった。その 男を、きみは えらんだ。<ruby>夫<rt>おっと</rt></ruby>が 死に、4人の 子を つぎつぎ 見おくった。ばらばらだった 東の <ruby>武士<rt>ぶし</rt></ruby>（いくさを 仕事に する 者）たちを ひとつに して、都から 来た 軍を しりぞけた。——ぜんぶ、同じ 人だ。<br>それでも この 人は、父と 弟の 家と ならんで <ruby>鎌倉<rt>かまくら</rt></ruby>を 守りつづけた。なぜ？ そして その <ruby>声<rt>こえ</rt></ruby>は、だれの <ruby>筆<rt>ふで</rt></ruby>で のこったのだろう。';
 
 /** Person id → short label used on the map / figures. */
 export const SHORT_NAMES: Record<string, string> = {
@@ -57,7 +57,7 @@ export const CHAPTER_CAPTIONS: Record<string, string> = {
   2: '鎌倉。武士の 都が でき、きみは その 御台所に なる。',
   3: '鎌倉。長男・頼家を 将軍の 座から おろす。',
   4: '鎌倉。父・時政が 伊豆へ 去る。残るのは 弟・義時。',
-  5: '京。次の 鎌倉殿を、女と 女が 話し合って 決める。',
+  5: '京。次の 将軍を、女と 女が 話し合って 決める。',
   6: '鎌倉から 京へ。東の 武士が、西へ 攻めのぼった。',
   7: '鎌倉。政子の 死の あと、武士の 世は 続いていく。',
 };

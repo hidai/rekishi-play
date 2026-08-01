@@ -83,6 +83,6 @@ export const PROTAGONIST_STAGES: Record<string, { title: string; caption: string
   },
   'p-masako': {
     title: '<ruby>髪<rt>かみ</rt></ruby>を おろした 政子',
-    caption: '夫が 死に、きみは <ruby>尼<rt>あま</rt></ruby>に なった。だが 手を 引いたのでは ない。ここから 26年、きみは 子を <ruby>廃<rt>はい</rt></ruby>し、父を <ruby>伊豆<rt>いず</rt></ruby>へ 返し、次の <ruby>鎌倉殿<rt>かまくらどの</rt></ruby>を 京から 迎える。母で ありながら、家を 続ける 人でも ある——その 二つを、きみは 一人で かかえて いく。',
+    caption: '夫が 死に、きみは <ruby>尼<rt>あま</rt></ruby>に なった。だが 手を 引いたのでは ない。ここから 26年、きみは 子を <ruby>廃<rt>はい</rt></ruby>し、父を <ruby>伊豆<rt>いず</rt></ruby>へ 返し、次の <ruby>将軍<rt>しょうぐん</rt></ruby>に なる 子を 京から 迎える。母で ありながら、家を 続ける 人でも ある——その 二つを、きみは 一人で かかえて いく。',
   },
 };
