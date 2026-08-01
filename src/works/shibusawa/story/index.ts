@@ -24,50 +24,60 @@ export const STORY: Story = {
       lead: '<ruby>血洗島<rt>ちあらいじま</rt></ruby>の <ruby>藍<rt>あい</rt></ruby>の 家の 子・<ruby>栄一<rt>えいいち</rt></ruby>は、<ruby>横浜<rt>よこはま</rt></ruby>の 外国人を 焼き討ちしようと している。決行するのか、<ruby>従兄<rt>いとこ</rt></ruby>・<ruby>長七郎<rt>ちょうしちろう</rt></ruby>の 説得に 従うのか。',
       start: '1-a',
       teaser: '<ruby>京<rt>きょう</rt></ruby>へ 出た きみは、思いがけず 一橋家の <ruby>殿<rt>との</rt></ruby>・<ruby>慶喜<rt>よしのぶ</rt></ruby>に つかえる ことに なる。',
+      // ★ 用量の試作（docs/design/engagement.md §10）。この章だけ「1画面の読む量を半分・
+      //   新規の人名を最小・岐路を2画面に1回」で書き直してある。第二章以降は従来のままで、
+      //   同じ子が続けて遊んだときの落差が観察の材料になる（章の境目で速度が変わるか）。
+      //   知識の層は 手帳（w-amayogatari）へ出した＝赤枠と「もっと深く」を章から抜いてある。
       scenes: {
-        '1-a': { place: '<ruby>血洗島<rt>ちあらいじま</rt></ruby>・<ruby>渋沢<rt>しぶさわ</rt></ruby>の 家',
+        '1-a': { place: '<ruby>代官所<rt>だいかんしょ</rt></ruby>——十七の 年',
           monologue: '（……<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子。それが、そんなに いけない ことか。）',
           closeup: { tone: 'solemn', cast: [{ face: 'p-ichiroemon', name: '父・市郎右衛門' }] },
-          text: `<p>十七の とき、<ruby>代官所<rt>だいかんしょ</rt></ruby>に 呼ばれた。「五百<ruby>両<rt>りょう</rt></ruby> 出せ」。父の かわりに 出た きみが「持ち帰って 相談します」と 答えると、<ruby>役人<rt>やくにん</rt></ruby>は 笑った。「<ruby>百姓<rt>ひゃくしょう</rt></ruby>の くせに、返事も できぬのか」</p>
-            <p>きみの 家は <ruby>藍<rt>あい</rt></ruby>の 家だ。<ruby>藍玉<rt>あいだま</rt></ruby>——布を あおく <ruby>染<rt>そ</rt></ruby>める もとを つくって 売る。十四の 年から 一人で 村々を まわり、<ruby>葉<rt>は</rt></ruby>を 手に とっては「これは よい」「これは 高すぎる」と 見わけて きた。朝は <ruby>従兄<rt>いとこ</rt></ruby>・<ruby>尾高惇忠<rt>おだかじゅんちゅう</rt></ruby>の 家で『<ruby>論語<rt>ろんご</rt></ruby>』を 読み、<ruby>昼<rt>ひる</rt></ruby>は そろばんを はじく。</p>
-            <p>その きみが、返事の しかたで 笑われた。帰り道、父は しばらく だまって いた。</p>
-            <p class="speak">「くやしいだろう。だが、それが 世の しくみだ。」</p>`,
-          spark: 'え！？ いま きみが 見た この 場面、たどれる 出どころは <b>きみ 自身が 30年 あとに 語った 思い出</b>しか ない。',
-          deep: { q: 'この 話は、だれが 語った？', confidence: '△',
-            body: `<ruby>代官所<rt>だいかんしょ</rt></ruby>の この 場面が いま たどれるのは、きみ 自身の 語りだけだ。47さいごろ、<ruby>弟子<rt>でし</rt></ruby>たちに せがまれて 五つの 夜に わたって 話した 思い出——『<ruby>雨夜譚<rt>あまよがたり</rt></ruby>』に 出て くる。<ruby>役人<rt>やくにん</rt></ruby>の 言葉を その場で 書きとめた 紙は、見つかって いない。金も 五百両か もっとか、本に よって ちがう。<br>だから たしかさマークは △（出どころが 一つだけ）。◎＝たしか、○＝だいたい、△＝説が わかれる、☆＝あとの 世の 話。`,
-            cite: '※ この 人は 自分の 一生を たくさん 語り残した。だから いつも 問う——だれが、いつ、なぜ そう 語ったか。' },
-          onEnter: { cards: ['p-eiichi', 'p-ichiroemon'] },
-          next: '1-b' },
+          text: `<p>十七の とき、<ruby>代官所<rt>だいかんしょ</rt></ruby>に 呼ばれた。「五百<ruby>両<rt>りょう</rt></ruby> 出せ」。父の かわりに 出た きみが「持ち帰って 相談します」と 答えると、<ruby>役人<rt>やくにん</rt></ruby>は 笑った。</p>
+            <p class="speak">「<ruby>百姓<rt>ひゃくしょう</rt></ruby>の くせに、返事も できぬのか」</p>
+            <p>きみの 家は <ruby>藍<rt>あい</rt></ruby>の 家だ。十四の 年から 一人で 村々を まわり、<ruby>葉<rt>は</rt></ruby>を 手に とっては「これは よい」「これは 高すぎる」と 見わけて きた。その きみが、返事の しかたで 笑われた。</p>`,
+          q: 'きみは どう する？',
+          choices: [
+            { label: '言い返す。「その 金は、何に 使うのですか」', to: '1-b', effect: { rongo: 2 },
+              hist: { verdict: 'もしもルート', moshimo: true, match: 'もし あの 場で 言い返して いたら……',
+                body: `<p>ここは 村の 上に 立つ 役所だ。言い返した <ruby>百姓<rt>ひゃくしょう</rt></ruby>の 家に、その あと 何が 来るかは わからない。<b>史実の きみは、だまって 帰った。</b></p>` } },
+            { label: 'だまって 帰る。金は 家が のみこむ', to: '1-b', canon: true, effect: { soroban: 1 },
+              hist: { verdict: '史実では', match: '<ruby>栄一<rt>えいいち</rt></ruby>は のみこんだ。そして 忘れなかった',
+                body: `<p>帰り道、父は しばらく だまって いた。それから 一言。</p><p class="speak">「くやしいだろう。だが、それが 世の しくみだ。」</p><p><b>のみこむ 側の 顔を、きみは 見て しまった。</b></p>`,
+                source: { grade: 'later', name: '『<ruby>雨夜譚<rt>あまよがたり</rt></ruby>』',
+                  note: 'この 場面が たどれるのは、きみ 自身が 30年 ほど あとに 語った 思い出だけ。' } } },
+          ],
+          onEnter: { cards: ['p-eiichi', 'p-ichiroemon'] } },
 
-        '1-b': { place: '<ruby>尾高<rt>おだか</rt></ruby>の 家の 二階',
-          text: `<p>1863年。<ruby>黒船<rt>くろふね</rt></ruby>が 来て から 十年。<ruby>港<rt>みなと</rt></ruby>が ひらかれ、<ruby>生糸<rt>きいと</rt></ruby>も 米も <ruby>値<rt>ね</rt></ruby>が はねあがって いた。「外国を 追いはらえ」——その 声は、こんな 村にまで <ruby>届<rt>とど</rt></ruby>いて いる。</p>
-            <p><ruby>惇忠<rt>じゅんちゅう</rt></ruby>の 家の 二階に、<ruby>刀<rt>かたな</rt></ruby>と <ruby>鎧<rt>よろい</rt></ruby>が 積まれて いく。<ruby>藍<rt>あい</rt></ruby>を 売った 金で 買い集めた ものだ。</p>
+        '1-b': { place: '<ruby>従兄<rt>いとこ</rt></ruby>の 家の 二階',
+          text: `<p>1863年。<ruby>港<rt>みなと</rt></ruby>が ひらかれ、<ruby>生糸<rt>きいと</rt></ruby>も 米も <ruby>値<rt>ね</rt></ruby>が はねあがって いた。「外国を 追いはらえ」——その 声は、こんな 村にまで <ruby>届<rt>とど</rt></ruby>いて いる。</p>
+            <p>二階に、<ruby>刀<rt>かたな</rt></ruby>と <ruby>鎧<rt>よろい</rt></ruby>が 積まれて いく。<ruby>藍<rt>あい</rt></ruby>を 売った 金で 買い集めた ものだ。</p>
             <p class="speak">「<ruby>高崎<rt>たかさき</rt></ruby>の 城を のっとって 武器を 取る。それから <ruby>街道<rt>かいどう</rt></ruby>を 下って、<ruby>横浜<rt>よこはま</rt></ruby>を 焼く。」</p>
-            <p>『論語』を 教えて くれた その 人が、そう 言った。集まった 仲間は およそ 69人。<ruby>決行<rt>けっこう</rt></ruby>は 冬の 夜——あと ひと月。</p>`,
+            <p>朝ごとに『<ruby>論語<rt>ろんご</rt></ruby>』を 教えて くれた <ruby>従兄<rt>いとこ</rt></ruby>の <ruby>兄<rt>あに</rt></ruby>が、そう 言った。仲間は およそ 69人。<ruby>決行<rt>けっこう</rt></ruby>は 冬の 夜——あと ひと月。</p>`,
           spark: 'え！？ のちに 一万円札の 顔に なる 人の <ruby>出発点<rt>しゅっぱつてん</rt></ruby>は、<b>外国人を 焼き、<ruby>斬<rt>き</rt></ruby>る 計画</b>だった。',
-          deep: { q: 'なぜ 外国人を 焼こうと したの？', confidence: '◎',
-            body: `<ruby>港<rt>みなと</rt></ruby>が ひらかれて 外国との <ruby>商<rt>あきな</rt></ruby>いが 始まると、<ruby>生糸<rt>きいと</rt></ruby>が どんどん 外へ 出て いき、国の 中の <ruby>値段<rt>ねだん</rt></ruby>が はね上がった。くらしが 苦しく なる。「<ruby>幕府<rt>ばくふ</rt></ruby>が 弱いから こうなる。外国を 追い出せ」——この 考えを <ruby>攘夷<rt>じょうい</rt></ruby>と いう。若い 者ほど 熱く なった。<br>計画が あった ことは たしか（◎）。ただし <ruby>決行<rt>けっこう</rt></ruby>の 日づけも 仲間の 数も、もとは やはり きみ 自身の 語りだ（△）。` },
-          onEnter: { card: 'p-junchu' },
+          onEnter: { card: 'w-amayogatari' },
           next: '1-c' },
 
-        '1-c': { place: '<ruby>尾高<rt>おだか</rt></ruby>の 家の 二階——<ruby>決行<rt>けっこう</rt></ruby>の 前',
+        '1-c': { place: '二階——<ruby>決行<rt>けっこう</rt></ruby>の 前',
           closeup: { tone: 'tense', cast: [{ face: 'p-choshichiro', name: '尾高長七郎' }, { face: 'p-eiichi@young', name: '栄一（きみ）' }] },
-          text: `<p><ruby>京<rt>きょう</rt></ruby>から、男が 帰って きた。<ruby>惇忠<rt>じゅんちゅう</rt></ruby>の 弟・<ruby>長七郎<rt>ちょうしちろう</rt></ruby>。<ruby>剣<rt>けん</rt></ruby>の うでは 仲間の 中で いちばんだ。</p>
-            <p>京では、同じ ことを 考えた 若者たちが、次から 次へと <ruby>斬<rt>き</rt></ruby>られて いた。長七郎は それを 見て きた。</p>
-            <p class="speak">「やめろ。<ruby>犬死<rt>いぬじ</rt></ruby>にだ。……どうしても 行くと 言うなら、おれが ここで お前を <ruby>斬<rt>き</rt></ruby>る。」</p>
-            <p>きみも 引かなかった。</p>
+          text: `<p><ruby>京<rt>きょう</rt></ruby>から 男が 帰って きた。<ruby>長七郎<rt>ちょうしちろう</rt></ruby>。<ruby>剣<rt>けん</rt></ruby>の うでは 仲間の 中で いちばんだ。</p>
+            <p>京では、同じ ことを 考えた 若者が 次から 次へと <ruby>斬<rt>き</rt></ruby>られて いた。その 男が、二階の 刀を 見て 言った。</p>
+            <p class="speak">「やめろ。<ruby>犬死<rt>いぬじ</rt></ruby>にだ。」</p>`,
+          onEnter: { card: 'p-choshichiro' },
+          next: '1-c2' },
+
+        '1-c2': { place: '二階——夜どおしの 言い争い',
+          monologue: '（……ここで 引いたら、おれは 何者にも なれない。）',
+          text: `<p class="speak">「どうしても 行くと 言うなら、おれが ここで お前を <ruby>斬<rt>き</rt></ruby>る。」</p>
             <p class="speak">「——なら、<ruby>斬<rt>き</rt></ruby>れ。おれは お前を <ruby>刺<rt>さ</rt></ruby>しても 行く。」</p>
-            <p>言い争いは 夜どおし 続いた。買い集めた 刀は もう <ruby>蔵<rt>くら</rt></ruby>に ある。仲間は 待って いる。</p>`,
+            <p>刀は もう <ruby>蔵<rt>くら</rt></ruby>に ある。仲間は 待って いる。</p>`,
           q: 'きみは どう する？',
           choices: [
             { label: '<ruby>決行<rt>けっこう</rt></ruby>する。ここで 引いては 仲間に 顔むけ できない', to: '1-d', effect: { rongo: 1, gappon: 1 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし あの 夜、刀を 取って いたら……',
-                body: `<p>69人で 小さな 城を おさえるだけなら、できた かも しれない。だが その 先が ある。<ruby>幕府<rt>ばくふ</rt></ruby>の 兵が 出て くる。同じ 年、同じ ことを 考えた 若者の <ruby>一団<rt>いちだん</rt></ruby>は、山の 中で ほろんで いる。</p><p>焼く つもりの 港にも、そこで <ruby>眠<rt>ねむ</rt></ruby>って いる 人が いる。外国の 船も だまって いない。村に 残した 父も 母も ただでは すまない。——きみの 話は、その 冬で 終わる。<b>史実の きみは、刀を おろした。</b></p>` } },
-            { label: '長七郎に したがう。刀を おろす', to: '1-d', canon: true, effect: { rongo: 2 },
+                body: `<p>69人で 小さな 城を おさえる ところまでは できた かも しれない。だが <ruby>幕府<rt>ばくふ</rt></ruby>の 兵が 出て くる。同じ 年、同じ ことを 考えた 若者の <ruby>一団<rt>いちだん</rt></ruby>は、山の 中で ほろんで いる。</p><p>——きみの 話は、その 冬で 終わる。<b>史実の きみは、刀を おろした。</b></p>` } },
+            { label: '<ruby>長七郎<rt>ちょうしちろう</rt></ruby>に したがう。刀を おろす', to: '1-d', canon: true, effect: { rongo: 2 },
               hist: { verdict: '史実では', match: '<ruby>栄一<rt>えいいち</rt></ruby>は 折れ、計画は 消えた',
-                body: `<p>言い争いの 末、きみは 折れた。買い集めた 武器は 売りはらわれ、69人は ちりぢりに なる。</p><p>——じつは その ひと月半ほど 前、きみは 父に 願い出て いた。「<ruby>勘当<rt>かんどう</rt></ruby>して ください」。国の ために 死ぬ かもしれない 者に、家は つげない から。父の 答えは こうだった。「出て しまってから、<ruby>勘当<rt>かんどう</rt></ruby>した ことに しよう」。<b>計画は 消えた。それでも、その 話だけが 残った。</b></p><p>村に いる ことも できなかった。<ruby>幕府<rt>ばくふ</rt></ruby>の 役人が、もう 動きを かぎつけて いた。</p><p>（この 夜の やりとりの もとに あるのも、やはり きみ 自身の 語りだ。）</p>`,
-                source: { grade: 'later', name: '『<ruby>雨夜譚<rt>あまよがたり</rt></ruby>』',
-                  note: '栄一が 47さいごろ、<ruby>弟子<rt>でし</rt></ruby>たちに 語った 若い日の 思い出を、弟子が 書きとめた 本。出来ごとから 20年 以上 あとの <ruby>回想<rt>かいそう</rt></ruby>だ。' } } },
+                body: `<p>買い集めた 武器は 売りはらわれ、69人は ちりぢりに なる。だが 村に いる ことも できなかった。<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>役人<rt>やくにん</rt></ruby>が、もう 動きを かぎつけて いた。</p><p><b>計画は 消えた。それでも、その 話だけが 残った。</b></p>` } },
           ] },
 
         '1-d': { place: '第1章 むすび',
@@ -75,11 +85,10 @@ export const STORY: Story = {
           closeup: { tone: 'grief', cast: [{ face: 'p-eiichi@young', name: '栄一（きみ）' }, { face: 'p-ichiroemon', name: '父・市郎右衛門' }] },
           text: `<p>父は 長い あいだ だまって いた。それから 一言。</p>
             <p class="speak">「もう、お前の 心は 決まって いるのだろう。<ruby>好<rt>す</rt></ruby>きに しなさい。」</p>
-            <p>その 冬、きみは 刀を いっしょに 買い集めた 二つ 年上の <ruby>従兄<rt>いとこ</rt></ruby>・<ruby>喜作<rt>きさく</rt></ruby>と 二人で 村を 出た。<ruby>藍<rt>あい</rt></ruby>の 家の 子でも なく、<ruby>侍<rt>さむらい</rt></ruby>でも なく、<ruby>何者<rt>なにもの</rt></ruby>でも ない まま、<ruby>京<rt>きょう</rt></ruby>へ 向かう。</p>
-            <p>——外国人を 焼こうと して いた この 男が、十年 のち、その 外国から 来た しくみを 日本に 建てる ことに なる。この 夜は、まだ だれも 知らない。</p>`,
+            <p>その 冬、きみは 刀を いっしょに 買い集めた <ruby>従兄<rt>いとこ</rt></ruby>と 二人で 村を 出た。<ruby>藍<rt>あい</rt></ruby>の 家の 子でも なく、<ruby>侍<rt>さむらい</rt></ruby>でも なく、<ruby>何者<rt>なにもの</rt></ruby>でも ない まま、<ruby>京<rt>きょう</rt></ruby>へ 向かう。</p>`,
           creed: { line: '「<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子で 何が わるい。——だが、この 世の しくみは 変えて みせる。」',
-            act: '——<ruby>従兄<rt>いとこ</rt></ruby>と <ruby>刺<rt>さ</rt></ruby>しちがえる 一歩 手前まで 行って、刀を おろした。父に 願って 家を 出された ことに して もらい、村にも 帰らない 道を えらんだ。' },
-          onEnter: { card: 'p-choshichiro', clue: 'clue-1' },
+            act: '——<ruby>従兄<rt>いとこ</rt></ruby>と <ruby>刺<rt>さ</rt></ruby>しちがえる 一歩 手前まで 行って、刀を おろした。それでも 村へは 帰らない 道を えらんだ。' },
+          onEnter: { clue: 'clue-1' },
           end: true },
       },
     },
@@ -268,6 +277,8 @@ export const STORY: Story = {
           deep: { q: 'なぜ <ruby>工女<rt>こうじょ</rt></ruby>は 来なかったの？', confidence: '☆',
             body: `「あの 工場では フランス人が 生き血を 飲む」——赤い ぶどう酒を 見た 人の 話が うわさに なり、<ruby>娘<rt>むすめ</rt></ruby>を 出す 家が なかった。そこで <ruby>惇忠<rt>じゅんちゅう</rt></ruby>は 自分の 娘を 最初の 工女に した——と 語りつがれて いる。<br>ただし、この 話を その ころの 紙で たしかめる ことは、まだ できて いない。☆＝あとの 世の 語り。工場が 建ち、その 娘が そこで 働いた ことは たしかだ。`,
             cite: '※ たしかなのは、この 工場を まかされたのが 惇忠だった ことまで。二人の やりとりは、どちらの 側にも 書き残されて いない。' },
+          // 章一で「従兄の 兄」として 流した 人に、ここで 名前を 渡す（engagement.md §10）。
+          onEnter: { card: 'p-junchu' },
           next: '4-d' },
 
         // ★ 場面の 並びは 年代順（1871年8月 → 1872年正月 → 1873年夏）。大久保との 予算論争を 1873年春に

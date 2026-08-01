@@ -1070,6 +1070,13 @@ export interface WorkStrings {
    */
   titleHeroTease?: string;
   /**
+   * 入口のフック（ruby 可・改行 <br> 可）。**その人を知らない読者が、読む理由を持つための一行**。
+   * 謎（riddle）は「なぜ〜なのか」＝すでにその人を知っている読者への問いになりやすく、初見の
+   * 小5には遠い（docs/design/engagement.md §2）。ここには通説でも評価でもなく、**知識ゼロで
+   * 刺さる具体的な行為**を置く（例「十七で『百姓のくせに』と笑われた」）。未定義なら出さない。
+   */
+  titleHook?: string;
+  /**
    * ★K 信条まわりの見出しで使う主人公名（ruby 可。例「<ruby>秀長<rt>ひでなが</rt></ruby>」）。
    * 未定義なら shortNames[protagonistId] のプレーン表記で代用する。
    */

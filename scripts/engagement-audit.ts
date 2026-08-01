@@ -67,7 +67,9 @@ function audit(w: Work): Row {
     id: w.id, scenes, body, appar, choicePts, diverge, blocks, hands, closeups,
     // 場面ごとの表情指定は engine にまだ無い（closeup は人物固定のスペックを描く）。
     exprScenes: 0,
-    toFirstText: 3, // 作品えらび → タイトル → 年代記（engine 固定の導線）
+    // 作品えらび → タイトル →（はじめる）→ 第1章。初見は年代記（7章の目次）を通らない
+    // （engagement.md §2 A-3 で外した。再訪は年代記のまま）。engine 固定なので定数。
+    toFirstText: 2,
     toFirstChoice,
   };
 }

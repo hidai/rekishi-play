@@ -13,8 +13,13 @@ export const PROTAGONIST_ID = 'p-eiichi';
  * — what stayed the same?), carried in the main line; B = why he never built his own zaibatsu,
  * carried by the clues. The two knot together on 論語＝道徳 (design §1).
  */
+/**
+ * ★ 行為の並置型に書き換え（docs/design/engagement.md §2 A-1）。もとは「なぜ〜なのに〜？」
+ * ＝評判の逆説型で、その人を既に知っている読者への問いだった。初見の小5には、まず**行為**を
+ * 三つ並べて「ぜんぶ同じ人だ」と示してから問う。制度語（財閥）は主線から外し card / clue へ。
+ */
 export const RIDDLE =
-  '<ruby>百姓<rt>ひゃくしょう</rt></ruby>に 生まれ、<ruby>外国人<rt>がいこくじん</rt></ruby>を 焼こうと し、<ruby>将軍<rt>しょうぐん</rt></ruby>に つかえ、その 将軍を たおした 国に つかえ——なんども <ruby>立場<rt>たちば</rt></ruby>を 変えた この 男が、変えなかった ものは 何だろう？——そして、<ruby>日本一<rt>にっぽんいち</rt></ruby>の <ruby>金持<rt>かねも</rt></ruby>ちに なれた はずの この 人は、なぜ 自分の <ruby>財閥<rt>ざいばつ</rt></ruby>を つくらなかったのだろう。';
+  '<ruby>横浜<rt>よこはま</rt></ruby>の <ruby>外国人<rt>がいこくじん</rt></ruby>を 焼こうと した。<ruby>将軍<rt>しょうぐん</rt></ruby>に つかえた。その 将軍を たおした 国の <ruby>役人<rt>やくにん</rt></ruby>に なった。——ぜんぶ、同じ 人だ。<br>なんども <ruby>立場<rt>たちば</rt></ruby>を 変えた この 人が、変えなかった ものは 何だろう？ そして この 人は、<ruby>日本一<rt>にっぽんいち</rt></ruby>の <ruby>金持<rt>かねも</rt></ruby>ちに なれた はずなのに、そう しなかった。なぜ？';
 
 /**
  * ★6 Title "show, then ask": known faces → protagonist (design §1).
@@ -77,8 +82,13 @@ export const STRINGS: WorkStrings = {
   titleSub: '一万円札に なった 男',
   years: '1840〜1931',
   riddleLead: '物語をつらぬく謎',
+  // ★ 入口のフック（engagement.md §2 A-2）。いちばん強い具体が顔タップのトーストに
+  //   埋まっていたので、タイトル画面の主役に引き上げた。
+  titleHook:
+    // 年齢は「十七」だけにする（代官所は数え、1863年は満＝二つ並べると数え方が混ざる）。
+    '十七の とき、「<ruby>百姓<rt>ひゃくしょう</rt></ruby>の くせに」と 笑われた。<br>やがて、<ruby>横浜<rt>よこはま</rt></ruby>を 焼く 計画を 立てた。<br>——その 顔が いま、一万円札に なっている。',
   titleHeroTease:
-    'そう、渋沢栄一。2024年から、一万円札の 顔に なった 人。でも この 男は、若い ころ、外国人を 焼こうと した ことが ある → はじめて みよう',
+    'そう、渋沢栄一。いまの 一万円札の 顔だ。この 人の 十七さいから はじめよう → はじめて みよう',
   protagonistRuby: '<ruby>渋沢栄一<rt>しぶさわ えいいち</rt></ruby>',
   riddleHeart:
     '—— 立場は 何度も 変わった。芯は、変わらなかったのか。<br>この 人が どんな 人だったかは、きみが 決める しかない。',

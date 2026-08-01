@@ -12,7 +12,9 @@ export const CARDS: Record<string, Card> = {
   // ---- People ----
   'p-eiichi': { type: 'person', ch: 1, tone: 'ai', name: '渋沢栄一', read: 'しぶさわ えいいち',
     text: 'きみ 自身。<ruby>武蔵<rt>むさし</rt></ruby>の <ruby>血洗島<rt>ちあらいじま</rt></ruby>（今の <ruby>埼玉<rt>さいたま</rt></ruby>・<ruby>深谷<rt>ふかや</rt></ruby>）の <ruby>藍<rt>あい</rt></ruby>の 家に 生まれた。外国人を 焼こうと した <ruby>志士<rt>しし</rt></ruby>から、将軍の 家来、明治の <ruby>役人<rt>やくにん</rt></ruby>、そして 日本で 最初の <ruby>銀行<rt>ぎんこう</rt></ruby>を つくる <ruby>実業家<rt>じつぎょうか</rt></ruby>へと、なんども 立場を 変えた。——<ruby>約<rt>やく</rt></ruby>500の 会社に 関わりながら、自分の <ruby>財閥<rt>ざいばつ</rt></ruby>は つくらなかった。2024年、一万円札の 顔に なった 人。' },
-  'p-junchu': { type: 'person', ch: 1, tone: 'ai', name: '尾高惇忠', read: 'おだか じゅんちゅう',
+  // ★ 章一の用量を下げるため、名前を渡すのは「その名が効く場面」＝4-c（富岡の かしらに
+  //   なる 場面）へ移した。章一では 役割語（従兄の 兄）で 流す（engagement.md §10）。
+  'p-junchu': { type: 'person', ch: 4, tone: 'ai', name: '尾高惇忠', read: 'おだか じゅんちゅう',
     text: 'きみの <ruby>従兄<rt>いとこ</rt></ruby>で、いちばん はじめの 先生。朝ごとに 『<ruby>論語<rt>ろんご</rt></ruby>』を 教えた 人であり、<ruby>横浜<rt>よこはま</rt></ruby>の <ruby>焼<rt>や</rt></ruby>き討ちを 言い出した 人でも ある。後に 明治政府の <ruby>富岡製糸場<rt>とみおかせいしじょう</rt></ruby>の <ruby>初代場長<rt>しょだいじょうちょう</rt></ruby>に なった。' },
   'p-choshichiro': { type: 'person', ch: 1, tone: 'ai', name: '尾高長七郎', read: 'おだか ちょうしちろう',
     text: 'きみの <ruby>従兄<rt>いとこ</rt></ruby>で、<ruby>剣<rt>けん</rt></ruby>の 使い手。<ruby>京<rt>きょう</rt></ruby>で 同じ こころざしの 若者たちが <ruby>斬<rt>き</rt></ruby>られて いくのを 見て きた 人。1863年、<ruby>横浜<rt>よこはま</rt></ruby>の <ruby>焼<rt>や</rt></ruby>き<ruby>討<rt>う</rt></ruby>ちを 命がけで <ruby>止<rt>と</rt></ruby>めた。——その 次の 年、長七郎は 人を あやめて とらえられ、何年も <ruby>牢<rt>ろう</rt></ruby>で すごす ことに なる。止めた 側の 一生も、まっすぐでは なかった。' },
@@ -37,6 +39,10 @@ export const CARDS: Record<string, Card> = {
 
   // ---- Words ---- (a word card earns its place only when a scene needs it; ch3 = パリで 見た
   // しくみ / ch5 = 合本 の岐路). 制度語は 本文に出さず ここと deep へ（design §0-5）。
+  // ★ 章一の「もっと深く」2枚を畳んで ここへ移した（engagement.md §10＝知識の層を 本編から
+  //   手帳へ）。たしかさマークの凡例も、作品内での唯一の説明なので いっしょに連れて きた。
+  'w-amayogatari': { type: 'word', ch: 1, tone: 'ai', name: '雨夜譚', read: 'あまよがたり',
+    text: 'きみが 47さいごろ、<ruby>弟子<rt>でし</rt></ruby>たちに せがまれ、五つの 夜に わたって 話した 若い日の 思い出。<ruby>出来<rt>でき</rt></ruby>ごとから 20年 以上 あとの <ruby>語<rt>かた</rt></ruby>りだ。<br><b>第一章と 第二章で きみが 見た 場面は、たどれる 紙が ほとんど この 本しか ない</b>。<ruby>代官所<rt>だいかんしょ</rt></ruby>で 言われた 言葉も、その場で 書きとめた 紙は 見つかって いない。金も 五百<ruby>両<rt>りょう</rt></ruby>か もっとか、本に よって ちがう。<br>——だから いつも 問う。だれが、いつ、なぜ そう 語ったか。<br><br>◎＝たしか、○＝だいたい、△＝説が わかれる、☆＝あとの 世の 話。' },
   'w-ginko': { type: 'word', ch: 3, tone: 'midori', name: '銀行', read: 'ぎんこう',
     text: 'お金を あずかり、それを 必要な 人へ 貸す 家。あずけた 人には <ruby>利<rt>り</rt></ruby>が つき、借りた 人は 大きな ことが できる。——きみが パリで 見た とき、日本には まだ 一つも なかった。やがて きみは、日本で 最初の 銀行を つくる ことに なる。' },
   'w-koden': { type: 'word', ch: 6, tone: 'seal', name: '徳川慶喜公伝', read: 'とくがわ よしのぶ こうでん',
