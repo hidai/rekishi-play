@@ -14,7 +14,7 @@ export const PROTAGONIST_ID = 'p-kiyomori';
  * who had never heard him called anything.
  */
 export const RIDDLE =
-  '海の むこうと 船で 品を やりとりして、家を 豊かに した。<ruby>都<rt>みやこ</rt></ruby>の いくさに 二度 勝ち、<ruby>武士<rt>ぶし</rt></ruby>で はじめて 国の いちばん 上に 立った。その 都を まるごと 海の そばへ 動かそうと して、半年で あきらめた。——ぜんぶ、同じ 人だ。<br>それなのに この 人は、あとの 世で ずっと「おごれる 悪人」として 語りつがれた。なぜ？';
+  '海の むこうと 船で 品を やりとりして、家を 豊かに した。<ruby>都<rt>みやこ</rt></ruby>の いくさに 二度 勝ち、<ruby>武士<rt>ぶし</rt></ruby>（いくさを 仕事に する 者）で はじめて 国の いちばん 上に 立った。その 都を まるごと 海の そばへ 動かそうと して、半年で あきらめた。——ぜんぶ、同じ 人だ。<br>それなのに この 人は、あとの 世で ずっと「おごれる 悪人」として 語りつがれた。なぜ？';
 
 /** Person id → short label used on the map. */
 export const SHORT_NAMES: Record<string, string> = {
