@@ -282,9 +282,6 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // precedent: label only, no note). The riddle's question — a 律儀者 who destroys his lord's house,
   // 250 years of 神君 image — is the body's job; a map that voiced it would be showing an ending
   // (the 2-a failure codified 2026-07-14).
-  '1-riddle': { markers: [
-    { at: 'sunpu', cur: 1, kind: 'town', label: '駿府' },
-  ] },
   // 1-b: the eleven years. 駿府 is a town, not a cage — the scene peels the 「悲惨な人質」 image, so
   // the map shows the bigger town (body verbatim) with 義元 standing in it (his card is granted here;
   // katsu 4-a's 龍馬 precedent = the person the scene turns on keeps his face on the map). 岡崎 is on

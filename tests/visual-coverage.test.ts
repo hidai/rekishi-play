@@ -31,10 +31,10 @@ describe('visual coverage: 分類の較正', () => {
     expect(classifyScene(hidenaga, 'no-such-scene').kind).toBe('map-fallback');
   });
 
-  it('label 付きマーカー1つの静かなアンカー地図（hidenaga 1-riddle）は執筆済み扱い', () => {
+  it('label 付きマーカーの静かなアンカー地図（hidenaga 1-a）は執筆済み扱い', () => {
     // The engine fallback marker has no label — one *labeled* marker is a deliberate
     // authored choice in the calibration corpus, not a placeholder.
-    expect(classifyScene(hidenaga, '1-riddle').kind).toBe('map');
+    expect(classifyScene(hidenaga, '1-a').kind).toBe('map');
   });
 
   it('label も note も route も contested も無いエントリは map-bare', () => {

@@ -25,14 +25,14 @@ const BASELINE: Record<string, number> = {
   // 下の UNCLOSED のぶんだけ実数より少なく見えている——閉じ忘れを直すと数が出てくる）
   'hidenaga:ch4': 39, 'hidenaga:ch5': 39, 'hidenaga:ch6': 34, 'hidenaga:ch7': 46,
   // kiyomori: 144 件
-  'kiyomori:ch1': 3, 'kiyomori:ch2': 3, 'kiyomori:ch3': 11, 'kiyomori:ch4': 1,
+  'kiyomori:ch1': 2, 'kiyomori:ch2': 3, 'kiyomori:ch3': 11, 'kiyomori:ch4': 1,
   'kiyomori:ch5': 6, 'kiyomori:ch6': 3, 'kiyomori:ch7': 8, 'kiyomori:card': 73,
   'kiyomori:clue': 2, 'kiyomori:hidden': 5, 'kiyomori:timeline': 29,
   // katsu: 184 件
-  'katsu:ch1': 11, 'katsu:ch3': 22, 'katsu:ch4': 3, 'katsu:ch5': 3, 'katsu:ch6': 3,
+  'katsu:ch1': 10, 'katsu:ch3': 22, 'katsu:ch4': 3, 'katsu:ch5': 3, 'katsu:ch6': 3,
   'katsu:ch7': 2, 'katsu:card': 100, 'katsu:clue': 3, 'katsu:hidden': 3, 'katsu:timeline': 34,
   // ieyasu: 198 件
-  'ieyasu:ch1': 11, 'ieyasu:ch2': 8, 'ieyasu:ch3': 9, 'ieyasu:ch4': 15, 'ieyasu:ch5': 5,
+  'ieyasu:ch1': 10, 'ieyasu:ch2': 8, 'ieyasu:ch3': 9, 'ieyasu:ch4': 15, 'ieyasu:ch5': 5,
   'ieyasu:ch6': 10, 'ieyasu:ch7': 4, 'ieyasu:card': 94, 'ieyasu:clue': 1, 'ieyasu:timeline': 40,
   // davinci: 126 件
   'davinci:ch1': 8, 'davinci:ch2': 11, 'davinci:ch3': 12, 'davinci:ch4': 15,

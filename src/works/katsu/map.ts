@@ -116,9 +116,6 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // あずけた？」) on the map; a 小5 image-only read it as a past event and was jarred by the
   // jump from 1-a's birth — the very 2-a failure (a map must not show the ending) codified
   // last cycle. The riddle question stays in the body; the map just says きみは江戸にいる.
-  '1-riddle': { markers: [
-    { at: 'honjo', cur: 1, kind: 'town', label: '江戸' },
-  ] },
   // 1-b: the choice — きみ in 江戸 (a top swordsman) as foreign ships appear across the eastern
   // sea. No 蘭学 pole yet (長崎 is ch2); the off-map east arrow is the work's signature grammar
   // (sea opening to the world, ch3) showing the outside world pressing in — what tips the choice

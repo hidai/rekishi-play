@@ -32,13 +32,6 @@ export const STORY: Story = {
             <p><ruby>松平<rt>まつだいら</rt></ruby>の 家は 小さい。東に 今川、西に <ruby>織田<rt>おだ</rt></ruby>。にらみ合う 大きな 二つに はさまれ、どちらかに 子を さし出さねば 生きて いけない。</p>
             <p>ところが 道中、味方の はずの 者に うらぎられ、きみは 西の 織田の 手に 落ちた。二年 後、父が 死ぬ。やがて 今川と 織田が <ruby>人質<rt>ひとじち</rt></ruby>を 取りかえ、きみは こんどこそ 東の <ruby>駿府<rt>すんぷ</rt></ruby>へ。</p>`,
           onEnter: { card: 'w-hitojichi' },
-          next: '1-riddle' },
-
-        '1-riddle': { place: '物語をつらぬく謎',
-          text: `<p>ここで、この <ruby>旅<rt>たび</rt></ruby>を つらぬく <ruby>謎<rt>なぞ</rt></ruby>を、きみに あずけよう。</p>
-            <p>いまの きみは「<ruby>約束<rt>やくそく</rt></ruby>の しるし」。大人に なった きみを、世の 人は こう 呼ぶ——<ruby>約束<rt>やくそく</rt></ruby>を まもる 男、「<ruby>律儀者<rt>りちぎもの</rt></ruby>」。</p>
-            <p class="speak">なぜ その 男が、いちばん 長く 仕えた <ruby>主家<rt>しゅけ</rt></ruby>を、自分の 手で ほろぼしたのか？</p>
-            <p>しかも きみは、死んだ あと「<ruby>神<rt>かみ</rt></ruby>さま」に される。その「<ruby>神君<rt>しんくん</rt></ruby>さま」の <ruby>話<rt>はなし</rt></ruby>は、<ruby>勝<rt>か</rt></ruby>った 側が 積み上げた もの。どこまでが ほんとうの 家康か——<ruby>手<rt>て</rt></ruby>がかりは 各章に ひとつ。最後の 章で、きみ 自身の 答えを。</p>`,
           next: '1-b' },
 
         '1-b': { place: '<ruby>駿河<rt>するが</rt></ruby>・<ruby>駿府<rt>すんぷ</rt></ruby>',

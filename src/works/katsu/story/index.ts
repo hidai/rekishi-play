@@ -19,12 +19,6 @@ export const STORY: Story = {
           text: `<p>きみは <ruby>勝麟太郎<rt>かつ りんたろう</rt></ruby>、のちの <ruby>海舟<rt>かいしゅう</rt></ruby>。<ruby>将軍<rt>しょうぐん</rt></ruby>に お<ruby>目見<rt>めみ</rt></ruby>えできる <ruby>家<rt>いえ</rt></ruby>がらでも、<ruby>暮<rt>く</rt></ruby>らしは かつかつ——<ruby>幕府<rt>ばくふ</rt></ruby>の 中でも ずっと <ruby>下<rt>した</rt></ruby>の、<ruby>貧乏旗本<rt>びんぼうはたもと</rt></ruby>の 子だ。</p>
             <p><ruby>父<rt>ちち</rt></ruby>・<face pid="p-kokichi"><ruby>小吉<rt>こきち</rt></ruby></face>は、けんかと <ruby>道楽<rt>どうらく</rt></ruby>ばかりの、とんでもない 男。<ruby>出世<rt>しゅっせ</rt></ruby>とは まるで <ruby>縁<rt>えん</rt></ruby>が なかった。——なのに この <ruby>父<rt>ちち</rt></ruby>、のちに 自分の しくじりだらけの <ruby>一生<rt>いっしょう</rt></ruby>を、自分で <ruby>一冊<rt>いっさつ</rt></ruby>の <ruby>本<rt>ほん</rt></ruby>に 書いて しまう。<b>人が、自分で 自分を <ruby>語<rt>かた</rt></ruby>る</b>。この <ruby>物語<rt>ものがたり</rt></ruby>は、そういう <ruby>話<rt>はなし</rt></ruby>から <ruby>始<rt>はじ</rt></ruby>まる。</p>`,
           onEnter: { cards: ['p-kokichi', 'w-hatamoto'] },
-          next: '1-riddle' },
-
-        '1-riddle': { place: '物語をつらぬく謎',
-          text: `<p>ここで、この <ruby>旅<rt>たび</rt></ruby>を つらぬく ひとつの <ruby>謎<rt>なぞ</rt></ruby>を、きみに あずけよう。</p>
-            <p class="speak">なぜ、<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>家来<rt>けらい</rt></ruby>だった 男が、その <ruby>幕府<rt>ばくふ</rt></ruby>を <ruby>終<rt>お</rt></ruby>わらせ、せめのぼる <ruby>敵<rt>てき</rt></ruby>の <ruby>大将<rt>たいしょう</rt></ruby>に、<ruby>江戸<rt>えど</rt></ruby>の <ruby>町<rt>まち</rt></ruby>ぜんぶを あずけて しまったのか？</p>
-            <p><ruby>世間<rt>せけん</rt></ruby>は この 人を「<ruby>江戸<rt>えど</rt></ruby>を <ruby>救<rt>すく</rt></ruby>った <ruby>英雄<rt>えいゆう</rt></ruby>」と <ruby>呼<rt>よ</rt></ruby>ぶ。——でも、その <ruby>手<rt>て</rt></ruby>がら<ruby>話<rt>ばなし</rt></ruby>の 多くは、じつは <ruby>晩年<rt>ばんねん</rt></ruby>、<ruby>本人<rt>ほんにん</rt></ruby>が <ruby>語<rt>かた</rt></ruby>った もの。ほんとうの <ruby>海舟<rt>かいしゅう</rt></ruby>は、きみが 一つずつ <ruby>確<rt>たし</rt></ruby>かめて いく。<ruby>手<rt>て</rt></ruby>がかりは <ruby>各章<rt>かくしょう</rt></ruby>に ひとつ。<ruby>最後<rt>さいご</rt></ruby>の <ruby>章<rt>しょう</rt></ruby>で、きみ <ruby>自身<rt>じしん</rt></ruby>の <ruby>答<rt>こた</rt></ruby>えを。</p>`,
           next: '1-b' },
 
         '1-b': { place: '<ruby>剣<rt>けん</rt></ruby>か、<ruby>蘭学<rt>らんがく</rt></ruby>か',

@@ -76,7 +76,6 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     { at: 'heiankyo', kind: 'town', label: '京' },
   ] },
   // 1-riddle: quiet anchor while the riddle takes the stage (hidenaga 1-riddle precedent).
-  '1-riddle': { markers: [{ at: 'ise', cur: 1, kind: 'town', label: '伊勢' }] },
   // 1-b: the view flips — now you stand in the capital, looked down on; Ise is home behind you.
   '1-b': { markers: [
     { at: 'heiankyo', cur: 1, kind: 'town', label: '京', note: '成り上がり、と 見くだされる' },

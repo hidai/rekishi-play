@@ -68,7 +68,6 @@ export const GAZ: Record<string, GazPoint>={
 
 export const SCENE_MAPS: Record<string, SceneMapDef>={
   '1-a':{markers:[{at:'nakamura',cur:1,kind:'village',label:'尾張 中村',note:'きみが 生まれた 村',people:['p-naka']}]},
-  '1-riddle':{markers:[{at:'nakamura',cur:1,kind:'village',label:'尾張 中村'}]},
   '1-b':{markers:[
     {at:'nakamura',cur:1,kind:'village',lpos:'left',label:'中村',note:'兄が 帰って きた',people:['p-hideyoshi']},
     {at:'kiyosu',kind:'castle',lpos:'right',label:'清洲城',note:'兄が 仕える 織田家'}]},
