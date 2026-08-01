@@ -10,7 +10,7 @@
 //     render-scene.ts の単体書き出しでもそのまま見える）。
 //   - グラデーションの id は `cu-<sceneId>-` で接頭し、シーン間で衝突しない
 //     （シーン切替は {#key} で DOM ごと再生成される前提。faceArt 自体は id を含まない）。
-import type { SceneCloseup, Work } from '../types';
+import type { FaceExpr, FaceSpec, SceneCloseup, Work } from '../types';
 import { faceArt } from './face';
 import { esc } from '../util';
 
@@ -113,6 +113,22 @@ export function closeupPid(faceKey: string): string {
   return faceKey.split('@')[0];
 }
 
+/**
+ * Faces map for one cast member, with this scene's expression applied on top of the
+ * person's own spec (SceneCloseup cast[].expr). Only brow/eye/mouth move — everything
+ * that carries identity stays put. Returns the original map when there is no override,
+ * so unaffected works render byte-identical output.
+ */
+export function facesWithExpr(
+  faces: Record<string, FaceSpec>,
+  key: string,
+  expr: FaceExpr | undefined,
+): Record<string, FaceSpec> {
+  const base = faces[key];
+  if (!expr || !base) return faces;
+  return { ...faces, [key]: { ...base, ...expr } };
+}
+
 export function buildCloseup(work: Work, sceneId: string, cu: SceneCloseup): string {
   const uid = `cu-${sceneId}`;
   const pal = PALETTES[cu.tone] || PALETTES.solemn;
@@ -135,7 +151,7 @@ export function buildCloseup(work: Work, sceneId: string, cu: SceneCloseup): str
       const you = pid === work.protagonistId;
       const cx = centers[i];
       const size = 100 * scale;
-      const inner = faceArt(c.face, work.faces)
+      const inner = faceArt(c.face, facesWithExpr(work.faces, c.face, c.expr))
         .replace(/^<svg[^>]*>/, '')
         .replace(/<\/svg>\s*$/, '');
       let g = `<g transform="translate(${cx - size / 2},${H - size}) scale(${scale})">${inner}</g>`;

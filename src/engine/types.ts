@@ -200,9 +200,32 @@ export interface Choice {
  * pid は face の '@' より前から導出し、カードがある人物はタップでカードが開く。
  * name 省略時はカード名（cards[pid].name）→ peopleExtra の順で解決する。
  */
+/**
+ * この場面だけの表情。`FaceSpec` の brow / eye / mouth を一時的に差し替える（人物の同一性を
+ * 決める他のチャネル——輪郭・髪・鼻・ひげ——は動かさない）。
+ *
+ * 顔スペックは人物ごとに固定なので、同じ人はどの場面でも同じ顔をしている＝**絵が運べる感情が
+ * 背景のトーンだけ**になっていた（docs/design/engagement.md §5）。語彙は face.ts の既存のもので
+ * 足りる（怒り／恐れ／悲しみ／喜び／決意／おどろき／疑い／耐える が既に描ける・実験済み）。
+ *
+ * ⚠️ brow/eye/mouth は `tests/face-distinct.ts` の**別人の見分け**にも使われているチャネル。
+ * 2人の closeup で両方を同じ表情に寄せると、別人が同じ顔に見えることがある——
+ * `tests/closeup.test.ts` が、表情を当てた cast の見分けが立つことを機械で確かめる。
+ */
+export interface FaceExpr {
+  /** stern|calm|soft|angry|worried */
+  brow?: string;
+  /** calm|sharp|gentle|closed|narrow|lively|cry|wide */
+  eye?: string;
+  /** smile|grin|flat|frown|soft|laugh */
+  mouth?: string;
+}
+
 export interface CloseupCast {
   face: string;
   name?: string;
+  /** この場面だけの表情（省略＝人物の既定の顔）。 */
+  expr?: FaceExpr;
 }
 
 /**
