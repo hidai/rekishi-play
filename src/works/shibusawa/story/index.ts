@@ -276,7 +276,7 @@ export const STORY: Story = {
       id: 4, num: '四', title: '<ruby>椅子<rt>いす</rt></ruby>を おりる', years: '1869〜1873',
       // 言い換えは choice 節の中でなく先頭に置く（挿入すると「役所・大蔵省・役人」が三つ続いて
       // 小5が息切れした＝2026-08-02 eval）。エリートは戻す——残る側の誘惑を一語で運ぶ。
-      lead: '<ruby>大蔵省<rt>おおくらしょう</rt></ruby>——国じゅうの お金が 集まる <ruby>役所<rt>やくしょ</rt></ruby>。その エリートの <ruby>役人<rt>やくにん</rt></ruby>と して 残るか、そこを 出て 日本で 最初の <ruby>銀行<rt>ぎんこう</rt></ruby>を つくるか。上から 命じる 側の <ruby>椅子<rt>いす</rt></ruby>を、自分で おりるのか。',
+      lead: '<ruby>大蔵省<rt>おおくらしょう</rt></ruby>——国じゅうの お金が 集まる <ruby>役所<rt>やくしょ</rt></ruby>。その エリートの <ruby>役人<rt>やくにん</rt></ruby>として 残るか、そこを 出て 日本で 最初の <ruby>銀行<rt>ぎんこう</rt></ruby>を つくるか。上から 命じる 側の <ruby>椅子<rt>いす</rt></ruby>を、自分で おりるのか。',
       start: '4-a',
       teaser: '<ruby>民間<rt>みんかん</rt></ruby>の <ruby>実業家<rt>じつぎょうか</rt></ruby>に なった きみに、<ruby>三菱<rt>みつびし</rt></ruby>の <ruby>岩崎<rt>いわさき</rt></ruby>が 声を かけて くる。',
       scenes: {
