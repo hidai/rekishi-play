@@ -131,7 +131,7 @@ describe('campaignStaticSvg: bakes the legend colour keys (raster self-check rea
     expect(svg).toContain('class="map-legend-band"');
     expect(svg).toContain('織田方の 領地（本能寺の 前）');
     expect(svg).toContain('豊臣（羽柴）方の 領地');
-    expect(svg).toContain('秀長 自身の 領国');
+    expect(svg).toContain('秀長 自身の 国');
     expect(svg).toContain('中国大返し 備中高松→山崎（約230km）'); // <b> stripped, no tags in SVG text
     expect(svg).not.toContain('<b>');
   });
@@ -172,7 +172,7 @@ describe('campaignLegendHtml: faction / route / point text from data', () => {
   it('early chapters show only the first faction phase (no toyo, no route)', () => {
     const h = campaignLegendHtml(hidenaga, 1);
     expect(h).toContain('織田方の 領地');
-    expect(h).toContain('秀長 自身の 領国');
+    expect(h).toContain('秀長 自身の 国');
     expect(h).toContain('中村'); // ch1 map point
     expect(h).not.toContain('豊臣');
     expect(h).not.toContain('中国大返し');
@@ -221,10 +221,10 @@ describe('ieyasu: lon/lat footprints on a work-owned stage', () => {
     expect(X).toBeGreaterThan(400); // 九州 (x≈200) is context that runs off the west edge
   });
 
-  it('prints no 領国 key, because a footprints-only map gold-borders nothing', () => {
+  it('prints no domain key, because a footprints-only map gold-borders nothing', () => {
     const h = campaignLegendHtml(ieyasu, 7);
     expect(map.protagonistDomains).toEqual({});
-    expect(h).not.toContain('自身の 領国');
+    expect(h).not.toContain('自身の 国');
     expect(h).toContain('日光'); // ch7 footprint
   });
 

@@ -96,10 +96,11 @@ export function campaignLegendKeys(work: Work, vc: number): LegendKey[] {
   if (vc < 1) return [];
   const keys: LegendKey[] = [];
   for (const ph of map.factionPhases) if (ph.fromCh <= vc) keys.push({ color: ph.color, label: ph.legend, kind: 'area' });
-  // The gold-bordered 領国 line only if this work actually gold-borders something: a work whose map
-  // is footprints-only (ieyasu) would otherwise print a key for a color the map never draws.
+  // The gold-bordered domain line only if this work actually gold-borders something: a work whose
+  // map is footprints-only (ieyasu) would otherwise print a key for a color the map never draws.
+  // Plain wording, not 領国: this label has no room for a gloss (WRITING 13).
   if (Object.keys(map.protagonistDomains).length) {
-    keys.push({ color: 'var(--gold)', label: `${esc(heroName(work))} 自身の 領国`, kind: 'domain' });
+    keys.push({ color: 'var(--gold)', label: `${esc(heroName(work))} 自身の 国`, kind: 'domain' });
   }
   for (const r of map.campaignRoutes) {
     if (r.legend && vc >= r.revealCh) keys.push({ color: r.color, label: r.legend, kind: 'route' });

@@ -23,7 +23,7 @@ import { KYOIKU_KANJI_BY_GRADE, kanjiGrade } from '../scripts/lib/kanji-grades';
 const BASELINE: Record<string, number> = {
   // hidenaga: 177 件（第1作。非章面と ch1〜ch3 は棚卸し済み＝0 要求。ch4〜ch7 は
   // 下の UNCLOSED のぶんだけ実数より少なく見えている——閉じ忘れを直すと数が出てくる）
-  'hidenaga:ch4': 39, 'hidenaga:ch5': 39, 'hidenaga:ch6': 33, 'hidenaga:ch7': 46,
+  'hidenaga:ch4': 39, 'hidenaga:ch5': 39, 'hidenaga:ch6': 33, 'hidenaga:ch7': 45,
   // kiyomori: 144 件
   'kiyomori:ch1': 2, 'kiyomori:ch2': 3, 'kiyomori:ch3': 11, 'kiyomori:ch4': 1,
   'kiyomori:ch5': 5, 'kiyomori:ch6': 3, 'kiyomori:ch7': 8, 'kiyomori:card': 72,

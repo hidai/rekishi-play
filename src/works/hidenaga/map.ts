@@ -37,7 +37,7 @@ export const MAPLABELS: Record<string, string>={owari:"尾張",21:"美濃",25:"�
 export const MAPPOINTS: MapPoint[]=[
   {n:1,ch:1,id:"nakamura",lon:136.874,lat:35.174,label:"中村",sub:"誕生の地",lpos:"right"},
   {n:2,ch:2,id:"sunomata",lon:136.669,lat:35.365,label:"墨俣",sub:"一夜城"},
-  {n:3,ch:3,id:"takeda",lon:134.829,lat:35.301,label:"竹田・出石",sub:"初の領国"},
+  {n:3,ch:3,id:"takeda",lon:134.829,lat:35.301,label:"竹田・出石",sub:"初の 土地"},
   {n:4,ch:4,id:"takamatsu",lon:133.822,lat:34.693,label:"備中高松",sub:"大返し 起点",lpos:"below"},
   {n:5,ch:4,id:"yamazaki",lon:135.685,lat:34.901,label:"山崎",sub:"大返し 終点"},
   {n:6,ch:4,id:"shizugatake",lon:136.193,lat:35.506,label:"賤ヶ岳",sub:"対 柴田勝家"},
@@ -96,10 +96,10 @@ export const SCENE_MAPS: Record<string, SceneMapDef>={
     {at:'takeda',cur:1,kind:'castle',label:'竹田城'},
     {at:'himeji',kind:'village',label:'播磨',note:'民・商人を 治める'}]},
   '3-c':{markers:[
-    {at:'takeda',cur:1,kind:'castle',label:'竹田城',note:'家臣に 高虎',people:['p-takatora']},
+    {at:'takeda',cur:1,kind:'castle',label:'竹田城',note:'家来に 高虎',people:['p-takatora']},
     {at:'izushi',kind:'battle',enemy:1,label:'出石（有子山城）',note:'山名氏 開城'}]},
   '3-d':{markers:[
-    {at:'takeda',cur:1,kind:'castle',label:'但馬',note:'はじめての 領国',people:['p-takatora']},
+    {at:'takeda',cur:1,kind:'castle',label:'但馬',note:'はじめて 治める 土地',people:['p-takatora']},
     {at:'ikuno',kind:'mine',label:'生野銀山'},
     {at:'izushi',kind:'castle',label:'出石'}]},
 
@@ -164,7 +164,7 @@ export const SCENE_MAPS: Record<string, SceneMapDef>={
     {at:'odawara',off:1,kind:'battle',label:'小田原',note:'病で 参陣できず'}]},
   '7-a2':{markers:[
     {at:'koriyama',cur:1,kind:'castle',label:'郡山城',note:'兄が 見舞いに 来た',people:['p-hideyoshi']},
-    {at:'osaka',kind:'castle',lpos:'left',label:'大坂城',note:'天下人の 居城から'}]},
+    {at:'osaka',kind:'castle',lpos:'left',label:'大坂城',note:'兄・秀吉の 城から'}]},
   '7-b':{markers:[
     {at:'koriyama',cur:1,kind:'death',label:'郡山'},
     {at:'kyoto',kind:'crisis',lpos:'above',label:'京都',note:'利休 切腹・秀次 切腹',people:['p-hidetsugu']}]},

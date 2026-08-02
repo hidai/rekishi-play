@@ -426,7 +426,7 @@ export function buildSceneMap(work: Work, chId: number, sceneId: string): string
     wat.rivers.map((d) => `<path class="mriver" d="${d}" stroke-width="${2.2 * sc}"/>`).join('');
 
 
-  // 秀長 自身の 領国は「きみの 国」と はっきり 示す（塗りの上に 金のふちを 重ねる）。
+  // The protagonist's own provinces read as 「きみの 国」: a gold border laid over the faction fill.
   const domain = Object.entries(geo.pref)
     .filter(([pid]) => hset.has(pid))
     .map(

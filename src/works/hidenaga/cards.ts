@@ -9,11 +9,11 @@ import { HIDENAGA, HIDEYOSHI, RIKYU } from './photos';
 export const CARDS: Record<string, Card> = {
   // 人物
   'p-hideyoshi':{ type:'person', ch:1, tone:'gold', name:'羽柴秀吉', read:'はしば ひでよし',
-    text:'<ruby>秀長<rt>ひでなが</rt></ruby>の 兄。<ruby>針<rt>はり</rt></ruby>売りから 身を おこし、ついには <ruby>天下人<rt>てんかびと</rt></ruby>に。明るく 人たらしで、大きな 夢を 語る。弟に「<ruby>侍<rt>さむらい</rt></ruby>に なれ」と 声を かけた <ruby>張本人<rt>ちょうほんにん</rt></ruby>。' , photo: HIDEYOSHI },
+    text:'<ruby>秀長<rt>ひでなが</rt></ruby>の 兄。<ruby>針<rt>はり</rt></ruby>売りから 身を おこし、ついには <ruby>天下<rt>てんか</rt></ruby>を とった。明るく 人たらしで、大きな 夢を 語る。弟に「<ruby>侍<rt>さむらい</rt></ruby>に なれ」と 声を かけた <ruby>張本人<rt>ちょうほんにん</rt></ruby>。' , photo: HIDEYOSHI },
   'p-naka':{ type:'person', ch:1, tone:'midori', name:'なか（大政所）', read:'—— おおまんどころ',
     text:'<ruby>秀吉<rt>ひでよし</rt></ruby>と <ruby>秀長<rt>ひでなが</rt></ruby>の 母。<ruby>尾張中村<rt>おわりなかむら</rt></ruby>の ひと。<ruby>息子<rt>むすこ</rt></ruby>ふたりが 天下を とるとは、この ころ <ruby>誰<rt>だれ</rt></ruby>が 思っただろう。' },
   'p-nobunaga':{ type:'person', ch:2, tone:'seal', name:'織田信長', read:'おだ のぶなが',
-    text:'<ruby>秀吉<rt>ひでよし</rt></ruby>が 仕えた <ruby>主君<rt>しゅくん</rt></ruby>。「<ruby>天下布武<rt>てんかふぶ</rt></ruby>」を かかげ、古い しきたりを 次々に こわした <ruby>革命児<rt>かくめいじ</rt></ruby>。<ruby>秀長<rt>ひでなが</rt></ruby>の <ruby>諱<rt>いみな</rt></ruby>「<ruby>長秀<rt>ながひで</rt></ruby>」の「長」は、信長から もらった 一字とも いわれる。' },
+    text:'<ruby>秀吉<rt>ひでよし</rt></ruby>が 仕えた あるじ。「<ruby>天下布武<rt>てんかふぶ</rt></ruby>」を かかげ、古い しきたりを 次々に こわした <ruby>革命児<rt>かくめいじ</rt></ruby>。<ruby>秀長<rt>ひでなが</rt></ruby>の <ruby>諱<rt>いみな</rt></ruby>「<ruby>長秀<rt>ながひで</rt></ruby>」の「長」は、信長から もらった 一字とも いわれる。' },
   'p-takatora':{ type:'person', ch:3, tone:'ai', name:'藤堂高虎', read:'とうどう たかとら',
     text:'<ruby>秀長<rt>ひでなが</rt></ruby>に 仕えた <ruby>名臣<rt>めいしん</rt></ruby>。のちに <ruby>築城<rt>ちくじょう</rt></ruby>の 名人として 知られる。秀長の <ruby>家中<rt>かちゅう</rt></ruby>で 力を つけ、その 死後は 各地を わたり歩いた。' },
   'p-motochika':{ type:'person', ch:5, tone:'ink', name:'長宗我部元親', read:'ちょうそかべ もとちか',
