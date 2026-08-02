@@ -154,7 +154,7 @@ export const MAPLABELS: Record<string, string> = {
 export const GAZ: Record<string, GazPoint> = {
   // 三河・尾張 — birth, hostage years, the break with 今川 (ch1).
   okazaki: { lon: 137.1594, lat: 34.9575 },      // 岡崎城 = 生誕地／桶狭間の後に入った城
-  atsuta: { lon: 136.9075, lat: 35.1275 },       // 熱田(尾張) = うばわれて 過ごした 二年
+  atsuta: { lon: 136.9075, lat: 35.1275 },       // 熱田(尾張) = the two years spent in 織田 hands
   odaka: { lon: 136.9247, lat: 35.0631 },        // 大高城 = 桶狭間の日、きみが 兵糧を 入れて いた 場所
   okehazama: { lon: 136.9736, lat: 35.0578 },    // 桶狭間 = 義元 討死（きみは 本戦に いない）
   kiyosu: { lon: 136.8419, lat: 35.2003 },       // 清洲城 = 信長との 同盟の 名の 由来
@@ -233,7 +233,7 @@ export const GAZ: Record<string, GazPoint> = {
  */
 export const MAPPOINTS: MapPoint[] = [
   { n: 1, ch: 1, id: 'okazaki', ...GAZ.okazaki, label: '岡崎', sub: '生まれた 城' },
-  // 「六さい」は岡崎を出た年（1-a）で、駿府に着いたのは織田に二年うばわれた後＝八さい。この点の
+  // 「六さい」は岡崎を出た年（1-a）で、駿府に着いたのは織田のもとで二年すごした後＝八さい。この点の
   // sub に 六さい＋十一年 を並べると引き算が合わない（/eval-work factcheck 2026-07-23）。
   { n: 2, ch: 1, id: 'sunpu', ...GAZ.sunpu, label: '駿府', sub: '八さいから 十九さいまで 人質' },
   { n: 3, ch: 2, id: 'mikatagahara', ...GAZ.mikatagahara, label: '三方ヶ原', sub: '生涯 最大の 大敗' },
@@ -258,7 +258,7 @@ export const MAPPOINTS: MapPoint[] = [
 // Opening-anchor principle (codified 2026-07-14): a scene map is an establishing shot read with the
 // body, so it anchors to the scene's OPENING situation, never its ending (exception: riddle / reveal
 // / むすび may voice the forward pull). So 1-a does NOT draw the 往還 as a route line — that the boy
-// is seized on the road and goes WEST first is the scene's twist. Notes/labels stay ruby-free-readable
+// ends up WEST instead (how is disputed — 1-a deep) is the scene's twist. Notes/labels stay ruby-free-readable
 // (the map has no ruby): 兵糧・人質・城代 are delivered by the body with ruby, so the notes take the
 // readable half of the same line (codified across katsu ch1「旗本→侍」/ ch2「格式→身分」/ ch4).
 export const SCENE_MAPS: Record<string, SceneMapDef> = {
@@ -293,15 +293,23 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     { at: 'sunpu', cur: 1, kind: 'town', label: '駿河・駿府', note: '岡崎より ずっと 大きな 町', people: ['p-yoshimoto'] },
     { at: 'okazaki', enemy: 1, kind: 'castle', label: '三河・岡崎', note: '今川の 家来が 使って いる' },
   ] },
-  // 1-c: the fork's stake triangle, all three points true at the scene's OPENING (no resolution:
-  // 桶狭間 itself and the empty castle are the scene's ending, so neither is drawn — 2-b/3-b/4-b/5-b
-  // precedent). きみ is at 大高 doing the most dangerous job; the castle he cannot enter is held by
-  // 今川; his wife and son are at the far end of the map. That is the choice, drawn: 城 or 妻子 —
-  // and it is the price tag the canon hist body puts on independence (「二年、妻子を 敵地に 残す」).
+  // 1-c / 1-c2: one map grown across the split (story 1-c comment). The third point arrives with
+  // the fork — 駿府 is the price tag on independence (「二年、妻子を 敵地に 残す」), so it lands on the
+  // screen that asks the question, not on the one that only carries the news. Both entries hold
+  // only what is true at their scene's OPENING: 桶狭間 itself and the empty castle are endings, so
+  // neither is ever drawn (2-b/3-b/4-b/5-b precedent).
   // 大高's label goes 'above' (over the face): 大高 and 岡崎 are ~25 units apart, so its default
   // below-icon note would run straight through 岡崎's label. Note keeps the body's readable half
   // (「いちばん 危ない 役だ」) — 兵糧 needs ruby, which a map cannot give.
   '1-c': { markers: [
+    { at: 'odaka', cur: 1, kind: 'castle', label: '大高城', note: 'いちばん 危ない 役', lpos: 'above' },
+    { at: 'okazaki', enemy: 1, kind: 'castle', label: '岡崎', note: '今川の 兵が いる' },
+  ] },
+  // 1-c2 keeps 1-c's 岡崎 note deliberately. The screen's retainer no longer claims the castle is
+  // already empty (it wasn't, that night), so 「今川の 兵が いる」 contradicts nothing — it is the only
+  // surface that shows what choosing 城 actually costs, which is what the canon hist then pays off
+  // (「今川の 兵が 出て いくのを 待って」). Dropping it left the fork looking free (eval 2026-08-02).
+  '1-c2': { markers: [
     { at: 'odaka', cur: 1, kind: 'castle', label: '大高城', note: 'いちばん 危ない 役', lpos: 'above' },
     { at: 'okazaki', enemy: 1, kind: 'castle', label: '岡崎', note: '今川の 兵が いる' },
     { at: 'sunpu', enemy: 1, kind: 'town', label: '駿府', note: '妻と 子が いる' },

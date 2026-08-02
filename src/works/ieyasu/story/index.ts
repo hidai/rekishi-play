@@ -30,7 +30,22 @@ export const STORY: Story = {
           text: `<p>きみは <ruby>竹千代<rt>たけちよ</rt></ruby>——のちの <ruby>家康<rt>いえやす</rt></ruby>。<ruby>三河<rt>みかわ</rt></ruby>・<ruby>岡崎<rt>おかざき</rt></ruby>の <ruby>城主<rt>じょうしゅ</rt></ruby>の 子だ。六さい。</p>
             <p>三さいの とき、母が 家から 出された。そして いま、きみが 家を 出る。「<ruby>約束<rt>やくそく</rt></ruby>の しるし」——東の <ruby>今川<rt>いまがわ</rt></ruby>に あずける 子と して。</p>
             <p><ruby>松平<rt>まつだいら</rt></ruby>の 家は 小さい。東に 今川、西に <ruby>織田<rt>おだ</rt></ruby>。にらみ合う 大きな 二つに はさまれ、どちらかに 子を さし出さねば 生きて いけない。</p>
-            <p>ところが 道中、味方の はずの 者に うらぎられ、きみは 西の 織田の 手に 落ちた。二年 後、父が 死ぬ。やがて 今川が いくさで 織田の 一族の 一人を 生けどりに し、その 男と きみを 取りかえた。きみは こんどこそ 東の <ruby>駿府<rt>すんぷ</rt></ruby>へ。</p>`,
+            <p>ところが、きみが ついた 先は 東の 今川では なかった。西の 織田だ。二年 後、父が 死ぬ。</p>
+            <p>やがて 今川が いくさで 織田の 一族の 者を 生けどりに し、きみと 取りかえた。こんどこそ、東の <ruby>駿府<rt>すんぷ</rt></ruby>へ。</p>`,
+          // 「味方の はずの 者に うらぎられ」 was a bare assertion of the 戸田康光 betrayal — an Edo-period
+          // 徳川方 tale (三河物語・松平記) that 村岡幹生 2015 and 柴裕之 read instead as 広忠 surrendering
+          // his son. 1-b peels the 人質 image on the strength of that same scholarship, so asserting the
+          // tale three paragraphs earlier split the chapter's own style (G6). The dispute is the hook,
+          // not the loss: it goes to a deep, which costs no main-line budget.
+          // The main line must not keep the tale's ROUTE either (「道中」): the second reading has no
+          // journey to be seized on, so an unmarked 道中 would contradict the panel below it (three eval
+          // axes said so independently). It states only what both readings agree on — where he ended up.
+          // No confidence mark: 1-b's cite is where the marks are introduced, and its 「この 先…も 出て
+          // くる」 would become a lie if △ appeared first (書法12). The body's last line is the △ blurb in
+          // words, on purpose — do not "fix" this as a missing mark.
+          deep: { q: 'だれが、きみを 織田へ わたした？',
+            body: `<ruby>江戸時代<rt>えどじだい</rt></ruby>の 本は、こう 伝える——味方の はずの 者が、金と ひきかえに きみを 売った。<br>ところが 近ごろ、当時の 手紙を 読み直した 研究から、その 年に <ruby>岡崎城<rt>おかざきじょう</rt></ruby>が 織田に せめ落とされて いた らしい と 分かって きた。そこから「父が 負けて、<ruby>降参<rt>こうさん</rt></ruby>の しるしに きみを さし出したのでは」と 見る 研究者も いる。<br>どちらが ほんとうか、まだ 決まって いない。`,
+          },
           onEnter: { card: 'w-hitojichi' },
           next: '1-b' },
 
@@ -55,28 +70,46 @@ export const STORY: Story = {
           onEnter: { card: 'p-yoshimoto' },
           next: '1-c' },
 
-        '1-c': { place: '<ruby>桶狭間<rt>おけはざま</rt></ruby>の 日',
-          monologue: '（<ruby>十三年<rt>じゅうさんねん</rt></ruby>。……あの 城に、帰れる。——だが <ruby>駿府<rt>すんぷ</rt></ruby>には、まだ。）',
+        // Split from a single 528-load scene (docs/WRITING.md 予算表 maxSceneLoad ≤ 420, 2026-08-02).
+        // The cut is not a trim: 1-c held two beats — the rice run into 大高城 and the news of 義元's
+        // death — before the fork's two voices, i.e. two 絵 and two 感情 on one screen (書法1). The
+        // page turn now falls on the news, which is the beat that earns one. Nothing was deleted;
+        // the causality filled in 52a8566 is intact and the load is now 166 / 360.
+        // Both halves are headed 大高城 on purpose: 「桶狭間の 日」→「大高城——その 夜」 read as a trip
+        // from the battle to the castle, which is the very misreading w-okehazama exists to kill
+        // (「じつは きみは この 本戦に いない」). Same place, day then night.
+        '1-c': { place: '<ruby>大高城<rt>おおだかじょう</rt></ruby>——<ruby>桶狭間<rt>おけはざま</rt></ruby>の 日',
           text: `<p>1560年5月。<ruby>義元<rt>よしもと</rt></ruby>が 大軍を ひきいて 西へ。きみの 役目は、敵の とりでに かこまれた <ruby>大高城<rt>おおだかじょう</rt></ruby>へ 米を 運びこむ こと。いちばん 危ない 役だ。やりとげた ところに、しらせが 来る。</p>
-            <p>——義元、<ruby>討<rt>う</rt></ruby>ち死に。大軍は とりでを せめ、味方の 城を まもり、あちこちに 分かれて いた。義元の まわりに のこったのは、その 一部。<ruby>桶狭間<rt>おけはざま</rt></ruby>で 休んで いた そこへ、<face pid="p-nobunaga"><ruby>織田信長<rt>おだ のぶなが</rt></ruby></face>の 兵が とびこんだ。</p>
-            <p><ruby>家来<rt>けらい</rt></ruby>たちが いっせいに かけよった。</p>
-            <p class="speak">「<ruby>殿<rt>との</rt></ruby>。今川の 兵は 岡崎から 逃げ去りました。——十三年 待った 城が、いま 目の 前に あいて おります」</p>
+            <p>——義元、<ruby>討<rt>う</rt></ruby>ち死に。大軍は とりでを せめ、味方の 城を まもり、あちこちに 分かれて いた。義元の まわりに のこったのは、その 一部。<ruby>桶狭間<rt>おけはざま</rt></ruby>で 休んで いた そこへ、<face pid="p-nobunaga"><ruby>織田信長<rt>おだ のぶなが</rt></ruby></face>の 兵が とびこんだ。</p>`,
+          onEnter: { cards: ['w-okehazama', 'p-nobunaga'] },
+          next: '1-c2' },
+
+        // The retainer used to report 岡崎 as already empty (「逃げ去りました…目の 前に あいて おります」).
+        // At 大高城 on the night the news arrives that is false — 今川's men still held 岡崎, which is
+        // exactly why 元康 waited days before walking in. Naming the place in the split made the claim
+        // checkable, and it failed (opus 反証 2026-08-02). The urging is now what the sources support
+        // (the lord is dead, the road home is open); the waiting moved into the canon hist, where it
+        // reads as the restraint it was. It also answers what the readthrough had to guess — why the
+        // 今川 grip loosened at all.
+        '1-c2': { place: '<ruby>大高城<rt>おおだかじょう</rt></ruby>——その 夜',
+          monologue: '（<ruby>十三年<rt>じゅうさんねん</rt></ruby>。……あの 城に、帰れる。——だが <ruby>駿府<rt>すんぷ</rt></ruby>には、まだ。）',
+          text: `<p><ruby>家来<rt>けらい</rt></ruby>たちが いっせいに かけよった。</p>
+            <p class="speak">「<ruby>殿<rt>との</rt></ruby>。今川は あるじを 失いました。——十三年 待った 城へ、いま なら 帰れます」</p>
             <p>わく 声の 中、年かさの <ruby>家来<rt>けらい</rt></ruby>が ひとり うつむいて いた。</p>
             <p class="speak">「……なりませぬ。今川は まだ 大国です。それに <ruby>奥方<rt>おくがた</rt></ruby>さまと <ruby>若君<rt>わかぎみ</rt></ruby>は、いまも 駿府に おいでです」</p>`,
-          q: '<ruby>空<rt>あ</rt></ruby>いた 岡崎城を、きみは どうする？',
+          q: '<ruby>岡崎城<rt>おかざきじょう</rt></ruby>へ、きみは 帰るか？',
           choices: [
             { label: '<ruby>城<rt>しろ</rt></ruby>へ 入り、今川から はなれる', to: '1-d', canon: true, effect: { yuzuranu: 2 },
               hist: { verdict: '史実では', match: '入った。そして 二年、妻子を 敵地に 残す ことに なる',
-                body: `<p>きみは 岡崎城へ 入り、二度と 駿府へ もどらなかった。まもなく 今川に そむき、<ruby>義元<rt>よしもと</rt></ruby>を 討った <ruby>信長<rt>のぶなが</rt></ruby>と 手を 組む。——<ruby>仇<rt>かたき</rt></ruby>と 手を 組む。東を 敵に まわした 上に 西も 敵では、六さいの あの ときと 同じ、二つの 大きな 家に はさまれる。</p><p>妻と 子を 取りもどせたのは、二年 のち。今川方の 城を せめ落とし、そこで 生けどった 者たちと 取りかえたのだ。——<ruby>独立<rt>どくりつ</rt></ruby>とは、そういう ものだった。</p>` } },
+                body: `<p>きみは 今川の 兵が 出て いくのを 待って 岡崎城へ 入り、二度と 駿府へ もどらなかった。まもなく 今川に そむき、<ruby>義元<rt>よしもと</rt></ruby>を 討った <ruby>信長<rt>のぶなが</rt></ruby>と 手を 組む。——<ruby>仇<rt>かたき</rt></ruby>と 手を 組む。東を 敵に まわした 上に 西も 敵では、六さいの あの ときと 同じ、二つの 大きな 家に はさまれる。</p><p>妻と 子を 取りもどせたのは、二年 のち。今川方の 城を せめ落とし、そこで 生けどった 者たちと 取りかえたのだ。——<ruby>独立<rt>どくりつ</rt></ruby>とは、そういう ものだった。</p>` } },
             { label: '今川に したがい、妻子を まもる', to: '1-d', effect: { matsu: 1 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし 今川に ついて いたら……',
                 body: `<p>妻と 子は、すぐに 帰って きた だろう。だが 今川は、いちばん 大事な <ruby>義元<rt>よしもと</rt></ruby>を 失って いた。あとを ついだ 子の 代で 家来は はなれ、九年後、今川の 家は 国ごと 消える。</p><p>その とき <ruby>松平<rt>まつだいら</rt></ruby>の 家も、いっしょに 沈んで いたかも しれない。——だが その 先は、いまの きみには 見えない。<ruby>史実<rt>じじつ</rt></ruby>の きみは、城へ 入った。</p>` } },
-          ],
-          onEnter: { cards: ['w-okehazama', 'p-nobunaga'] } },
+          ] },
 
         '1-d': { place: '第1章 むすび',
           text: `<p>きみは 生まれた 城に、十三年ぶりに 帰った。</p>
-            <p>あずけられ、うばわれ、また あずけられた 子ども。行き先は いつも、だれかが 決めて いた。——その きみが はじめて 自分で 決めたのは、世話に なった 家に そむく ことだった。</p>
+            <p>あずけられ、わたされ、また あずけられた 子ども。行き先は いつも、だれかが 決めて いた。——その きみが はじめて 自分で 決めたのは、世話に なった 家に そむく ことだった。</p>
             <p>「かわいそうな 人質の 子が、たえに たえて <ruby>天下<rt>てんか</rt></ruby>（国 ぜんたい）を とった」。そう 語る 本は 多い。だが <ruby>記録<rt>きろく</rt></ruby>の 中の きみは、<b>かわいそうでも、りっぱでも ない</b>。大きな 家の やり方を 十一年 見て きた 十九さいだ。はじめての <ruby>手<rt>て</rt></ruby>がかりを 手に 入れた。<ruby>手帳<rt>てちょう</rt></ruby>を のぞいて みよう。</p>`,
           // 1-b explains both glyphs of 元康 (元←義元 / 康←祖父・清康), then the creed drops 「元」——
           // leaving the NEW glyph 家 unexplained on the surface that renames him. The honest answer is

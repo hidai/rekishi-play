@@ -45,8 +45,8 @@ const LOAD_LEDGER: Record<string, number> = {
   // kiyomori: 全7章（最重 5-b 571）
   'kiyomori:1': 483, 'kiyomori:2': 466, 'kiyomori:3': 454, 'kiyomori:4': 431,
   'kiyomori:5': 571, 'kiyomori:6': 445, 'kiyomori:7': 489,
-  // ieyasu: 5章（最重 4-c 562）
-  'ieyasu:1': 528, 'ieyasu:3': 465, 'ieyasu:4': 562, 'ieyasu:5': 541, 'ieyasu:6': 510,
+  // ieyasu: 4章（最重 4-b 562）。ch1 は 528→363 で削除（1-c を分割・2026-08-02）。
+  'ieyasu:3': 465, 'ieyasu:4': 562, 'ieyasu:5': 541, 'ieyasu:6': 510,
   // masako: 4章
   'masako:3': 468, 'masako:4': 426, 'masako:5': 481, 'masako:6': 472,
   // shibusawa: 4章
