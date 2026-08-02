@@ -35,10 +35,10 @@ export const STORY: Story = {
           next: '1-b' },
 
         '1-b': { place: '<ruby>駿河<rt>するが</rt></ruby>・<ruby>駿府<rt>すんぷ</rt></ruby>',
-          text: `<p><ruby>駿府<rt>すんぷ</rt></ruby>は、岡崎より ずっと 大きな 町だった。きみは ここで 十一年を すごす。</p>
+          text: `<p><ruby>駿府<rt>すんぷ</rt></ruby>は、岡崎より ずっと 大きな 町だった。きみは ここで 十一年を すごす。<ruby>留守<rt>るす</rt></ruby>の <ruby>岡崎城<rt>おかざきじょう</rt></ruby>には 今川の 者が 入り、三河の 家来は 今川の いくさに かり出されて いた。</p>
             <p>今川の <ruby>当主<rt>とうしゅ</rt></ruby> <face pid="p-yoshimoto"><ruby>今川義元<rt>いまがわ よしもと</rt></ruby></face>は、きみを 学問の 師に あずけた。大人の 仲間入りを する 日、あの 人は こう 言った——気が した。</p>
             <p class="speak">「わしの 名を 一字 やろう。……三河へ 帰りたいか。帰りたければ、ここで 学べ」</p>
-            <p>その 日、<ruby>竹千代<rt>たけちよ</rt></ruby>の 名は すてた。もらった 一字は「<ruby>元<rt>もと</rt></ruby>」。やがて 今川の <ruby>一族<rt>いちぞく</rt></ruby>の 娘を 妻に むかえ、名は <ruby>松平元康<rt>まつだいら もとやす</rt></ruby>と なる。「<ruby>元<rt>もと</rt></ruby>」は <ruby>義元<rt>よしもと</rt></ruby>から もらった 字。「<ruby>康<rt>やす</rt></ruby>」は、生まれる 前に なくなった おじいさま・<ruby>清康<rt>きよやす</rt></ruby>の 名から とった 字だ。</p>`,
+            <p>その 日、<ruby>竹千代<rt>たけちよ</rt></ruby>の 名は すてた。もらった 一字は「<ruby>元<rt>もと</rt></ruby>」——<ruby>義元<rt>よしもと</rt></ruby>の 一字だ。やがて 今川の <ruby>一族<rt>いちぞく</rt></ruby>の 娘を 妻に むかえ、名は <ruby>松平元康<rt>まつだいら もとやす</rt></ruby>。「<ruby>康<rt>やす</rt></ruby>」は、生まれる 前に なくなった おじいさま・<ruby>清康<rt>きよやす</rt></ruby>の 名から とった 字だ。</p>`,
           // ★A型 spark の仕分け（design/known-premise.md §4）。旧文は「家康と いえば 出て くる、あの
           // かわいそうな 話」＝読者がまだ持っていない通説を spark 自身が教えてから壊していた。裏返す
           // 相手を、読者が作中で持たされた前提へ移す——1-a が「人質として あずける」と着せた「人質」の
@@ -49,7 +49,7 @@ export const STORY: Story = {
           // spark で初めて明かし、いま読んだ待遇とぶつける。
           spark: 'え！？ 「<ruby>約束<rt>やくそく</rt></ruby>の しるし」——<ruby>約束<rt>やくそく</rt></ruby>が <ruby>破<rt>やぶ</rt></ruby>れれば、まっ先に 命が あぶない。その きみに、<ruby>義元<rt>よしもと</rt></ruby>は 自分の 名を 一字 わけ、一族の 娘を くれた？',
           deep: { q: 'これで「<ruby>人質<rt>ひとじち</rt></ruby>」なの？',
-            body: `「<ruby>悲惨<rt>ひさん</rt></ruby>な 人質」の 家康は、<ruby>昭和<rt>しょうわ</rt></ruby>の <ruby>小説<rt>しょうせつ</rt></ruby>や テレビが 広めた 姿だ。当時の 記録が 見せるのは、学問の 師に つき、<ruby>主<rt>あるじ</rt></ruby>の 名を もらい、今川の 一族の 娘を 妻に した 少年——いまの 研究者の 多くは「人質と いうより、<ruby>政治<rt>せいじ</rt></ruby>の 見習いに 出された」と 見る。たしかさマークは ○（だいたい たしか）。<br>もちろん 自由では ない。帰る 城は 今川の 者が 使い、三河の 家来は 遠い <ruby>主<rt>あるじ</rt></ruby>を 待つ ばかり。楽では ないが、かわいそうでも ない。`,
+            body: `「<ruby>悲惨<rt>ひさん</rt></ruby>な 人質」の 家康は、<ruby>昭和<rt>しょうわ</rt></ruby>の <ruby>小説<rt>しょうせつ</rt></ruby>や テレビが 広めた 姿だ。当時の 記録が 見せるのは、学問の 師に つき、<ruby>主<rt>あるじ</rt></ruby>の 名を もらい、今川の 一族の 娘を 妻に した 少年——いまの 研究者の 多くは「人質と いうより、<ruby>政治<rt>せいじ</rt></ruby>の 見習いに 出された」と 見る。たしかさマークは ○（だいたい たしか）。<br>もちろん 自由では ない。三河の 家来は 今川の ために 戦いながら、遠い <ruby>主<rt>あるじ</rt></ruby>の 帰りを 待つ ほか なかった。楽では ないが、かわいそうでも ない。`,
             cite: '※ ○＝だいたい たしか。この 先、△（<ruby>説<rt>せつ</rt></ruby>が わかれる）や ☆（たしかめられない）も 出て くる。',
             confidence: '○' },
           onEnter: { card: 'p-yoshimoto' },
@@ -57,8 +57,8 @@ export const STORY: Story = {
 
         '1-c': { place: '<ruby>桶狭間<rt>おけはざま</rt></ruby>の 日',
           monologue: '（<ruby>十三年<rt>じゅうさんねん</rt></ruby>。……あの 城に、帰れる。——だが <ruby>駿府<rt>すんぷ</rt></ruby>には、まだ。）',
-          text: `<p>1560年5月。<ruby>義元<rt>よしもと</rt></ruby>が 大軍を ひきいて 西へ。きみの 役目は、敵の 目の 前の <ruby>大高城<rt>おおだかじょう</rt></ruby>へ 米を 運びこむ こと。いちばん 危ない 役だ。やりとげた ところに、しらせが 来る。</p>
-            <p>——義元、<ruby>討<rt>う</rt></ruby>ち死に。<face pid="p-nobunaga"><ruby>織田信長<rt>おだ のぶなが</rt></ruby></face>の 手勢が、<ruby>本陣<rt>ほんじん</rt></ruby>を 突いた。</p>
+          text: `<p>1560年5月。<ruby>義元<rt>よしもと</rt></ruby>が 大軍を ひきいて 西へ。きみの 役目は、敵の とりでに かこまれた <ruby>大高城<rt>おおだかじょう</rt></ruby>へ 米を 運びこむ こと。いちばん 危ない 役だ。やりとげた ところに、しらせが 来る。</p>
+            <p>——義元、<ruby>討<rt>う</rt></ruby>ち死に。大軍は とりでを せめ、味方の 城を まもり、あちこちに 分かれて いた。義元の まわりに のこったのは、その 一部。<ruby>桶狭間<rt>おけはざま</rt></ruby>で 休んで いた そこへ、<face pid="p-nobunaga"><ruby>織田信長<rt>おだ のぶなが</rt></ruby></face>の 兵が とびこんだ。</p>
             <p><ruby>家来<rt>けらい</rt></ruby>たちが いっせいに かけよった。</p>
             <p class="speak">「<ruby>殿<rt>との</rt></ruby>。今川の 兵は 岡崎から 逃げ去りました。——十三年 待った 城が、いま 目の 前に あいて おります」</p>
             <p>わく 声の 中、年かさの <ruby>家来<rt>けらい</rt></ruby>が ひとり うつむいて いた。</p>
@@ -67,7 +67,7 @@ export const STORY: Story = {
           choices: [
             { label: '<ruby>城<rt>しろ</rt></ruby>へ 入り、今川から はなれる', to: '1-d', canon: true, effect: { yuzuranu: 2 },
               hist: { verdict: '史実では', match: '入った。そして 二年、妻子を 敵地に 残す ことに なる',
-                body: `<p>きみは 岡崎城へ 入り、二度と 駿府へ もどらなかった。まもなく 今川に そむき、<ruby>義元<rt>よしもと</rt></ruby>を 討った <ruby>信長<rt>のぶなが</rt></ruby>と 手を 組む。</p><p>妻と 子を 取りもどせたのは、二年 のち。今川方の 城を せめ落とし、そこで 生けどった 者たちと 取りかえたのだ。——<ruby>独立<rt>どくりつ</rt></ruby>とは、そういう ものだった。</p>` } },
+                body: `<p>きみは 岡崎城へ 入り、二度と 駿府へ もどらなかった。まもなく 今川に そむき、<ruby>義元<rt>よしもと</rt></ruby>を 討った <ruby>信長<rt>のぶなが</rt></ruby>と 手を 組む。——<ruby>仇<rt>かたき</rt></ruby>と 手を 組む。東を 敵に まわした 上に 西も 敵では、六さいの あの ときと 同じ、二つの 大きな 家に はさまれる。</p><p>妻と 子を 取りもどせたのは、二年 のち。今川方の 城を せめ落とし、そこで 生けどった 者たちと 取りかえたのだ。——<ruby>独立<rt>どくりつ</rt></ruby>とは、そういう ものだった。</p>` } },
             { label: '今川に したがい、妻子を まもる', to: '1-d', effect: { matsu: 1 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし 今川に ついて いたら……',
                 body: `<p>妻と 子は、すぐに 帰って きた だろう。だが 今川は、いちばん 大事な <ruby>義元<rt>よしもと</rt></ruby>を 失って いた。あとを ついだ 子の 代で 家来は はなれ、九年後、今川の 家は 国ごと 消える。</p><p>その とき <ruby>松平<rt>まつだいら</rt></ruby>の 家も、いっしょに 沈んで いたかも しれない。——だが その 先は、いまの きみには 見えない。<ruby>史実<rt>じじつ</rt></ruby>の きみは、城へ 入った。</p>` } },
@@ -78,6 +78,15 @@ export const STORY: Story = {
           text: `<p>きみは 生まれた 城に、十三年ぶりに 帰った。</p>
             <p>あずけられ、うばわれ、また あずけられた 子ども。行き先は いつも、だれかが 決めて いた。——その きみが はじめて 自分で 決めたのは、世話に なった 家に そむく ことだった。</p>
             <p>「かわいそうな 人質の 子が、たえに たえて <ruby>天下<rt>てんか</rt></ruby>（国 ぜんたい）を とった」。そう 語る 本は 多い。だが <ruby>記録<rt>きろく</rt></ruby>の 中の きみは、<b>かわいそうでも、りっぱでも ない</b>。大きな 家の やり方を 十一年 見て きた 十九さいだ。はじめての <ruby>手<rt>て</rt></ruby>がかりを 手に 入れた。<ruby>手帳<rt>てちょう</rt></ruby>を のぞいて みよう。</p>`,
+          // 1-b explains both glyphs of 元康 (元←義元 / 康←祖父・清康), then the creed drops 「元」——
+          // leaving the NEW glyph 家 unexplained on the surface that renames him. The honest answer is
+          // that the sources do not say, so it goes to deep (VISION 原則6: not-knowing is the hook).
+          // ☆ not △: only one 説 is well-sourced, and what the body actually reports is that the
+          // reason cannot be verified. The body must not name 「元」 as already discarded — the creed
+          // below it is where the reader first learns he drops it (書法12).
+          deep: { q: 'その「<ruby>家<rt>いえ</rt></ruby>」は、どこから 来た？',
+            body: `「<ruby>康<rt>やす</rt></ruby>」は おじいさまの 字。では、のちに 上に つく「家」は？ ——じつは、よく わかって いない。東の <ruby>武士<rt>ぶし</rt></ruby>たちが 長く したって きた むかしの 武士・<ruby>源義家<rt>みなもとの よしいえ</rt></ruby>から 一字 とった、と いう 話は ある。だが そう 書いた 当時の 記録は 見つかって いない。`,
+            confidence: '☆' },
           creed: { line: '「<ruby>行<rt>い</rt></ruby>き先を 決められて 生きて きた。——ここから 先は、おれが 決める。」',
             act: '——今川から もらった 一字「元」も、やがて すてる。きみは 名を <ruby>家康<rt>いえやす</rt></ruby>と あらため、この 城へ 入った 六年後には、姓も <ruby>松平<rt>まつだいら</rt></ruby>から <ruby>徳川<rt>とくがわ</rt></ruby>へ 変える。' },
           onEnter: { clues: ['clue-1'] },

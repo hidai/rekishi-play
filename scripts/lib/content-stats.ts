@@ -40,6 +40,16 @@ export interface ChapterStats {
   maxDeepBody: number;
   /** Highest number of person cards granted by a single scene's onEnter. */
   maxPersonGrants: number;
+  /**
+   * Longest run of prose one reader takes to get through a single scene: everything the
+   * scene screen always renders (text + monologue + spark + q + creed) plus the ONE hist
+   * (match + body) the branch they picked opens — hence a max over choices, not a sum.
+   * Spans two surfaces (SceneScreen and the HistOverlay it opens), which is the point: the
+   * reader crosses both without a break. Excludes deep (opt-in, has its own budget) and
+   * minigame copy. Diagnostic only — no budget yet. textTotal/maxSceneText count `text`
+   * alone, so a scene can grow its hist past the main line unmeasured.
+   */
+  maxSceneLoad: number;
 }
 
 export function chapterStats(work: Work): ChapterStats[] {
@@ -52,9 +62,20 @@ export function chapterStats(work: Work): ChapterStats[] {
       hedges: 0,
       maxDeepBody: 0,
       maxPersonGrants: 0,
+      maxSceneLoad: 0,
     };
     for (const sc of Object.values(ch.scenes)) {
       const t = plainText(sc.text ?? '');
+      const histLengths = (sc.choices ?? []).map(
+        (c) => plainText(c.hist?.match ?? '').length + plainText(c.hist?.body ?? '').length,
+      );
+      const always = [sc.monologue, sc.spark, sc.q, sc.creed?.line, sc.creed?.act];
+      st.maxSceneLoad = Math.max(
+        st.maxSceneLoad,
+        t.length +
+          always.reduce((n, s) => n + plainText(s ?? '').length, 0) +
+          Math.max(0, ...histLengths),
+      );
       st.textTotal += t.length;
       st.maxSceneText = Math.max(st.maxSceneText, t.length);
       st.glosses += (t.match(/（/g) ?? []).length;
