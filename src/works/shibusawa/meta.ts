@@ -59,13 +59,20 @@ export const CHAPTER_POINTS: Record<string, string> = {
   7: 'tokyo',
 };
 
-/** Chapter → notebook map caption. */
+/**
+ * Chapter → notebook map caption. Plain text: the engine writes it with textContent, so a
+ * <ruby> here reaches the child as raw tags (tests/ruby-render.test.ts guards the whole field).
+ * Words the mainline glosses with ruby are spelled in kana here instead — the caption is a recap
+ * of a chapter already played, so 「あい」「ひとりじめ」 land on words the reader already met.
+ * Proper nouns whose reading cannot be guessed carry it in parentheses: a 10-year-old reported
+ * 血洗島 as unreadable (「血を洗う島?」) with no ruby to fall back on.
+ */
 export const CHAPTER_CAPTIONS: Record<string, string> = {
-  1: '<ruby>血洗島<rt>ちあらいじま</rt></ruby>。<ruby>藍<rt>あい</rt></ruby>の 家の 子が、横浜を 焼こうと している。',
-  2: '<ruby>京<rt>きょう</rt></ruby>。<ruby>攘夷<rt>じょうい</rt></ruby>の 志士が、一橋の <ruby>殿<rt>との</rt></ruby>に つかえる ことに なる。',
-  3: 'パリ。<ruby>銀行<rt>ぎんこう</rt></ruby>と <ruby>鉄道<rt>てつどう</rt></ruby>を 見て いる あいだに、帰る 国が 消える。',
-  4: '<ruby>東京<rt>とうきょう</rt></ruby>。<ruby>役人<rt>やくにん</rt></ruby>の 椅子を、自分で おりる。',
-  5: '<ruby>隅田川<rt>すみだがわ</rt></ruby>の 舟の 上。<ruby>独占<rt>どくせん</rt></ruby>か、みんなでか。',
+  1: '血洗島（ちあらいじま）。あいを 売り歩く 家の 子が、横浜を 焼こうと している。',
+  2: '京。外国を 追いはらえと さけんで いた わかい 人が、一橋（ひとつばし）の 家に つかえる。',
+  3: 'パリ。銀行と 鉄道を 見て いる あいだに、帰る 国が 消える。',
+  4: '東京。役人の いすを、自分で おりる。',
+  5: 'すみだ川の 船の 上。ひとりじめか、みんなでか。',
   6: '東京。二十年 だまって いた 人が、やっと 口を ひらく。',
   7: '東京。この 人の 顔が、一万円札に なる。',
 };

@@ -51,7 +51,7 @@ const LOAD_LEDGER: Record<string, number> = {
   // masako: 4章
   'masako:3': 468, 'masako:4': 426, 'masako:5': 481, 'masako:6': 472,
   // shibusawa: 4章
-  'shibusawa:2': 441, 'shibusawa:3': 430, 'shibusawa:5': 459, 'shibusawa:7': 441,
+  'shibusawa:2': 439, 'shibusawa:3': 430, 'shibusawa:5': 459, 'shibusawa:7': 441,
   // davinci: 1章
   'davinci:4': 449,
   // hidenaga（較正元）・katsu は登録なし＝予算内。

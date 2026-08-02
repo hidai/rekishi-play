@@ -1059,7 +1059,10 @@ export interface WorkMap {
   sceneMaps: Record<string, SceneMapDef>;
   /** 章 → 既定の現在地（GAZ キー）。旧 CH_PT。 */
   chapterPoints: Record<string, string>;
-  /** 章 → 手帳地図キャプション。旧 capText。 */
+  /**
+   * 章 → 手帳地図キャプション（旧 capText）。**プレーンテキスト**——campaignMap.ts が
+   * textContent で書くので <ruby> はタグのまま画面に出る（tests/ruby-render.test.ts が見る）。
+   */
   chapterCaptions: Record<string, string>;
   /** Territory-coloring phases (ordered by fromCh). Empty = no territory coloring. */
   factionPhases: FactionPhase[];

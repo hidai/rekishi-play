@@ -61,6 +61,18 @@ describe('ruby 契約: エンジンがテキストで描く作品データ欄に
         }
       }
     });
+
+    // 手帳「進軍の地図」の2欄は campaignMap.ts が textContent で書く＝タグのまま出る。
+    // shibusawa は7章ぜんぶ ruby 入りで書かれていた（この作品は campaign-map 層が空なので
+    // タブ自体が出ず、画面に露見しないまま残った）。タグは `[<>]` で見る——<b> も同じく出る。
+    it(`${work.id}: 地図キャプション と runnerLabel（campaignMap が textContent で描画）`, () => {
+      for (const [ch, cap] of Object.entries(work.map.chapterCaptions)) {
+        expect(cap, `chapterCaptions ${ch}`).not.toMatch(/[<>]/);
+      }
+      for (const r of work.map.campaignRoutes) {
+        expect(r.runnerLabel ?? '', `campaignRoute ${r.key} runnerLabel`).not.toMatch(/[<>]/);
+      }
+    });
   }
 });
 
@@ -187,5 +199,48 @@ describe('ruby 契約: エンジンは ruby を持つ欄を {@html} で描く', 
       return !srcs.some(([b, s]) => b === base && s.includes(expr));
     });
     expect(stale, 'EXEMPT の登録がもう存在しない').toEqual([]);
+  });
+});
+
+/* --- (3) 描画側その2: .svelte の外の DOM 直書き（textContent） --- */
+
+/**
+ * (2) は `.svelte` の補間しか見ない。だが地図は DOM を手で組み立てる `.ts` で、
+ * `el.textContent = <作品データ>` は「タグのまま出る」面をもう一つ作る——shibusawa の章
+ * キャプションは7章ぶん ruby を持ったまま残っていた（この作品は campaign-map 層が空で
+ * タブが出ないため、画面にも露見しなかった）。sink を黙って増やせないよう登録制にする。
+ * 新しい sink を足すときは、その欄のデータ側検査を (1) に足してからここへ登録する。
+ */
+const TEXT_SINKS: Record<string, string> = {
+  'campaignMap.ts:cap': 'work.map.chapterCaptions —— (1) がプレーンを強制',
+  'campaignMap.ts:rl': 'CampaignRoute.runnerLabel —— (1) がプレーンを強制',
+};
+
+function tsFiles(dir: string): string[] {
+  const out: string[] = [];
+  for (const e of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, e.name);
+    if (e.isDirectory()) out.push(...tsFiles(p));
+    else if (e.name.endsWith('.ts')) out.push(p);
+  }
+  return out;
+}
+
+describe('ruby 契約: textContent の sink は登録制', () => {
+  it('未登録の textContent sink が無い', () => {
+    const found = new Set<string>();
+    for (const file of tsFiles('src/engine')) {
+      const src = readFileSync(file, 'utf8');
+      const base = file.split('/').pop()!;
+      for (const m of src.matchAll(/([A-Za-z_$][\w$]*)\.textContent\s*=/g)) found.add(`${base}:${m[1]}`);
+    }
+    expect(
+      [...found].filter((k) => !(k in TEXT_SINKS)).sort(),
+      'textContent は HTML を描かない。作品データを流すなら (1) にプレーン検査を足して TEXT_SINKS へ登録する',
+    ).toEqual([]);
+    expect(
+      Object.keys(TEXT_SINKS).filter((k) => !found.has(k)).sort(),
+      'TEXT_SINKS の登録がもう存在しない',
+    ).toEqual([]);
   });
 });
