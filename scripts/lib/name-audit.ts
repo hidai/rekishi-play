@@ -11,7 +11,9 @@
 //
 // 判定（1つだけ）: **名の初出の面に、すでに結ばれた名が、言葉をはさんで同じ面にあること**。
 //   ・面は読者が出会う順（scripts/lib/ruby-audit.ts の workSurfaces）に歩く。
-//   ・最初に出た名（ふつうは入口の titleMain）が種で、そこから共起で鎖をのばす。
+//   ・**入口（entry）は種にしない**——タイトル画面の一行で結んでも、物語のほうは一度も結ばずに
+//     済んでしまう（読者は入口を数秒で通りすぎる）。物語・カード・年表の側で自立して結ぶ。
+//   ・最初に名が出た**物語の**面が種で、そこから共起で鎖をのばす。
 //   ・鎖が切れた面＝読者が「別人かもしれない」と思う面。そこが hit。
 //   ・「言葉をはさんで」＝二つの名のあいだに漢字以外の字が要る。**名を並べただけは結びでは
 //     ない**——「木下小一郎長秀」は 小一郎 と 長秀 が地続きで、読者は一つの長い名を読んだだけ
@@ -24,22 +26,27 @@
 //
 // ⚠️ 名は**手で選ぶリスト**（INSTITUTION_TERMS・PREMISE_MARKERS と同じ）。改名しない主人公は
 // 空配列＝その作品は素通りする。新作品の主人公が改名するなら、ここに足してから書く。
+//
+// **家の名（姓）も同じ型**: 木下→羽柴→豊臣、松平→徳川。読者は家が変われば別の家だと思う。
+// ただし家の名は一族が共有するので、共起の相手が本人とは限らない（兄・甥の名でも鎖はつながる）
+// ＝この検査が見るのは「**家の名が変わったと読者に告げる面があったか**」まで。
 import type { Work } from '../../src/engine/types';
 import { plainText } from './content-stats';
 import { isKanji } from './kanji-grades';
 import { workSurfaces, type Surface } from './ruby-audit';
 
 /**
- * 作中で名が変わる人ごとに、呼ばれる名の形をひと組。姓は入れない（姓は家の名で、同名の一族が
- * 本文に出る）。部分文字列で探すので、長い形に含まれる短い形（豊臣秀長→秀長・木下小一郎→
- * 小一郎）は短いほうだけを書く。主人公に限らない——**兄の名が本文と hist で違う**のも同じ型。
+ * 作中で変わる名ごとに、呼ばれる形をひと組（人の名も、家の名も）。部分文字列で探すので、長い形に
+ * 含まれる短い形（豊臣秀長→秀長・木下小一郎→小一郎）は短いほうだけを書く。主人公に限らない
+ * ——**兄の名が本文と hist で違う**のも同じ型。
  */
-export const RENAMED_PEOPLE: Record<string, string[][]> = {
+export const RENAMED_NAMES: Record<string, string[][]> = {
   hidenaga: [
     ['小竹', '小一郎', '長秀', '秀長'],
+    ['木下', '羽柴', '豊臣'], // 家の名。村で こしらえた 名 → 大名の 名 → 天皇から もらった 名
     ['藤吉郎', '秀吉'], // 兄。本文は「藤吉郎」、hist は「秀吉」で呼んでいた
   ],
-  ieyasu: [['竹千代', '元康', '家康']],
+  ieyasu: [['竹千代', '元康', '家康'], ['松平', '徳川']],
   katsu: [['麟太郎', '海舟']],
   // 作中で名が変わる人がいない作品。
   kiyomori: [],
@@ -83,11 +90,11 @@ function linked(text: string, a: string, b: string): boolean {
  * 一つの面で複数の名が同時に初出したときは互いに結ばれたと見る（種の面がこれ）。
  */
 export function auditWork(work: Work): NameBreak[] {
-  const surfaces = workSurfaces(work);
-  return (RENAMED_PEOPLE[work.id] ?? []).flatMap((names) => auditPerson(work, surfaces, names));
+  const surfaces = workSurfaces(work).filter((s) => s.id !== 'entry');
+  return (RENAMED_NAMES[work.id] ?? []).flatMap((names) => auditName(work, surfaces, names));
 }
 
-function auditPerson(work: Work, surfaces: Surface[], names: string[]): NameBreak[] {
+function auditName(work: Work, surfaces: Surface[], names: string[]): NameBreak[] {
   const bound = new Set<string>();
   const breaks: NameBreak[] = [];
   for (const surface of surfaces) {

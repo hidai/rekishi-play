@@ -39,7 +39,7 @@ export const STORY: Story = { chapters: [
       ] },
 
     '1-c':{ art:'village', place:'<ruby>侍<rt>さむらい</rt></ruby>への 第一歩', monologue:'（田んぼしか 知らなかった おれが、刀を さす。こわい。でも——兄さの となりなら、行ける 気が する。）',
-      text:`<p>兄は <ruby>木下<rt>きのした</rt></ruby>と 名のって いた。きみも 同じ 名を もらい、<ruby>小一郎<rt>こいちろう</rt></ruby>と 名のった。兄は 気さくで <ruby>大胆<rt>だいたん</rt></ruby>、人の 心を つかむのが うまい。だが——大きな 仕事を まわすには、こまかな <ruby>段<rt>だん</rt></ruby><ruby>取<rt>ど</rt></ruby>りを する 者が いる。</p>
+      text:`<p>兄は <ruby>木下<rt>きのした</rt></ruby>と 名のって いた。きみも 同じ 名を もらう。きょうから <ruby>小竹<rt>こちく</rt></ruby>では なく、<ruby>木下小一郎<rt>きのしたこいちろう</rt></ruby>だ。兄は 気さくで <ruby>大胆<rt>だいたん</rt></ruby>、人の 心を つかむのが うまい。だが——大きな 仕事を まわすには、こまかな <ruby>段<rt>だん</rt></ruby><ruby>取<rt>ど</rt></ruby>りを する 者が いる。</p>
         <p>兄が 前に 出て <ruby>手柄<rt>てがら</rt></ruby>を たてる かげで、きみは 何を する <ruby>侍<rt>さむらい</rt></ruby>に なる？</p>`,
       choices:[
         { label:'自分も 前線で、<ruby>槍<rt>やり</rt></ruby>で 手柄を あげたい', to:'1-d', effect:{ kizuna:2 },
@@ -52,7 +52,7 @@ export const STORY: Story = { chapters: [
       closeup:{ tone:'warm', cast:[ { face:'p-naka', name:'母・なか' }, { face:'p-hidenaga@child', name:'小竹（きみ）' } ] },
       text:`<p>旅立ちの 朝。母・なかは きみの 手を にぎって、ぽつりと 言った。</p>
         <p class="speak">「小竹や。兄さは 先へ 先へと 走る 子だ。……そばに いて やって おくれ。<ruby>頼<rt>たの</rt></ruby>んだよ」</p>
-        <p><ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子・小竹は、こうして <ruby>侍<rt>さむらい</rt></ruby>・<ruby>木下小一郎<rt>きのしたこいちろう</rt></ruby>に なった。まだ <ruby>誰<rt>だれ</rt></ruby>も、この 弟が いずれ 100万<ruby>石<rt>ごく</rt></ruby>を 治めるとは 知らない。</p>
+        <p><ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子・小竹は、こうして <ruby>侍<rt>さむらい</rt></ruby>に なった。まだ <ruby>誰<rt>だれ</rt></ruby>も、この 弟が いずれ 100万<ruby>石<rt>ごく</rt></ruby>を 治めるとは 知らない。</p>
         <p>手がかりを ひとつ 手に 入れた。手帳を のぞいて みよう。</p>`,
       creed:{ line:'「前に 出て かがやくのは、兄さで いい。おれは 後ろで、みんなを 支える。」',
         act:'——<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子は、そう 心を 決めた。以来 <ruby>生涯<rt>しょうがい</rt></ruby>、その 役を 選びつづける。' },      end:true },
@@ -106,6 +106,7 @@ export const STORY: Story = { chapters: [
 
     '2-d':{ art:'night_castle', place:'第2章 むすび', onEnter:{ cards:['p-nobunaga','w-ichiya'], clues:['clue-2'] },
       text:`<p>前に 出る 兄と、後ろを かためる 弟。ふたりの 役わりは、この ころ すでに はっきりして きた。目立たない。でも、なくては ならない。</p>
+        <p>やがて 兄は、<ruby>琵琶湖<rt>びわこ</rt></ruby>の ほとりに 城と 土地を もらい、はじめて 城の あるじに なった。名も <ruby>木下<rt>きのした</rt></ruby>から <ruby>羽柴<rt>はしば</rt></ruby>に 変える。きみは まだ <ruby>木下小一郎<rt>きのしたこいちろう</rt></ruby>の ままだ。兄が その 新しい 名を 弟にも わけて くれるのは、二年 ほど あとに なる。</p>
         <p>手がかりを もうひとつ。「<ruby>裏方<rt>うらかた</rt></ruby>の 働きは、記録に 残りにくい」——これは、あの <ruby>謎<rt>なぞ</rt></ruby>の 答えに つながって いく。</p>`,
       spark:'え！？ ゆうべの あの 一晩——書き のこして いるのは、じつは ずっと 後の 世の 読み物だけ——？',
       deep:{ q:'<ruby>墨俣<rt>すのまた</rt></ruby>の 城は、本当に 一晩で 建った？', body:`信長の 一生を 書いた 『<ruby>信長公記<rt>しんちょうこうき</rt></ruby>』に、一夜で 城が 建った 話は 出て こない。「すでに あった とりでを 修理させた」と ある だけだ。<br>「一夜城」の 名場面が くわしく 語られるのは、<b><ruby>江戸時代<rt>えどじだい</rt></ruby>に 書かれた 読み物から</b>。だれかが あとから ふくらませた 話かも しれない。`, cite:'※ それでも「<ruby>段<rt>だん</rt></ruby><ruby>取<rt>ど</rt></ruby>りと <ruby>裏方<rt>うらかた</rt></ruby>の 力」を あらわす 物語として、今も 語りつがれている。' },
@@ -302,7 +303,7 @@ export const STORY: Story = { chapters: [
   start:'6-a',
   teaser:'天下の かなめと なった きみを、病の 影が おそう。そして、あの 謎の 答え合わせ。',
   scenes:{
-    '6-a':{ art:'castle_town', place:'大和 郡山', monologue:'（100万石。百姓の 子だった この おれが。……でも いちばん 大事なのは 石高じゃ ない。兄さと この 天下を、静かに 支える ことだ。）',
+    '6-a':{ art:'castle_town', place:'大和 郡山', monologue:'（100万石。<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子だった この おれが。……名も 木下から <ruby>羽柴<rt>はしば</rt></ruby>、いまは 天皇から いただいた <ruby>豊臣<rt>とよとみ</rt></ruby>。でも いちばん 大事なのは 石高じゃ ない。兄さと この 天下を、静かに 支える ことだ。）',
       text:`<p>数々の 功により、きみは <ruby>大和<rt>やまと</rt>・<ruby>紀伊<rt>きい</rt>・<ruby>和泉<rt>いずみ</rt>あわせて <em>約100万石</em>を 領する 大大名と なった。居城は <ruby>郡山城<rt>こおりやまじょう</rt>。官位は 権大納言——人は きみを「<ruby>大和大納言<rt>やまとだいなごん</rt>」と 呼ぶ。</p>
         <p>きみは 城下に 商人を 集め、町を つくり、国を ゆたかに して いった。</p>`,
       spark:'え！？「100万石」は 名目で、じっさいは 約73万石ほど。しかも 秀長、けっこう したたか——？',

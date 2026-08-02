@@ -79,7 +79,7 @@ export const STRINGS: WorkStrings = {
   riddleHeart:
     '—— こんなに 兄を 支えた 弟のこと、ちゃんと 分かって もらえるのかな？<br>その 答えは、きみが いちばん 近くで 見つけて いく。',
   titleNote:
-    'きみは <ruby>羽柴<rt>はしば</rt></ruby><ruby>小一郎<rt>こいちろう</rt></ruby>——のちの <ruby>豊臣秀長<rt>とよとみ ひでなが</rt></ruby>。<br>人生の 分かれ道で、きみなら どうする？',
+    'きみは <ruby>木下<rt>きのした</rt></ruby><ruby>小一郎<rt>こいちろう</rt></ruby>——のちの <ruby>豊臣秀長<rt>とよとみ ひでなが</rt></ruby>。<br>人生の 分かれ道で、きみなら どうする？',
   homeTitle: 'ひでなが 年代記',
   notebookName: 'ひでなが手帳',
   notebookLead: 'あつめた ことば・人物、年表、進軍の地図。',
