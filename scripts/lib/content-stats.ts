@@ -15,16 +15,14 @@ export function plainText(html: string): string {
 // Hedge phrases that belong in spark/deep/cite/hist, not the main scene line
 // (WRITING.md rule 4). Matched against whitespace-stripped text. The G7 fiction
 // marker 「——気がした」 is deliberately NOT in this list.
-export const HEDGE_PHRASES = [
-  'と伝わる',
-  'と伝えられ',
-  'とされる',
-  'といわれ',
-  'とも語られ',
-  'のちの世',
-  '後の世',
-  '後世',
-];
+//
+// A binding particle may sit between と and the stem (「とも いわれる」); the earlier
+// literal list missed those. The stems stay narrow on purpose — 「と語られて」「と言われて」
+// 「とされて」 also occur as plain narration or quoted speech (「ずっと 語られにくい」・
+// 「『金が 無い』と 言われて」), and a false positive here demands a rewrite of good prose
+// because the budget has no per-work escape hatch.
+export const HEDGE_PATTERN =
+  /と(?:も)?(?:伝わる|伝えられ|される|いわれ|語られる|みられ|見られ|考えられ)|のちの世|後の世|後世/g;
 
 export interface ChapterStats {
   chapterId: number;
@@ -46,10 +44,12 @@ export interface ChapterStats {
    * (match + body) the branch they picked opens — hence a max over choices, not a sum.
    * Spans two surfaces (SceneScreen and the HistOverlay it opens), which is the point: the
    * reader crosses both without a break. Excludes deep (opt-in, has its own budget) and
-   * minigame copy. Diagnostic only — no budget yet. textTotal/maxSceneText count `text`
-   * alone, so a scene can grow its hist past the main line unmeasured.
+   * minigame copy. textTotal/maxSceneText count `text` alone, so a scene can grow its hist
+   * past the main line unmeasured — this is the metric that sees it.
    */
   maxSceneLoad: number;
+  /** Scene id that set `maxSceneLoad` (where to cut when a chapter is over budget). */
+  maxSceneLoadId: string;
 }
 
 export function chapterStats(work: Work): ChapterStats[] {
@@ -63,23 +63,26 @@ export function chapterStats(work: Work): ChapterStats[] {
       maxDeepBody: 0,
       maxPersonGrants: 0,
       maxSceneLoad: 0,
+      maxSceneLoadId: '',
     };
-    for (const sc of Object.values(ch.scenes)) {
+    for (const [id, sc] of Object.entries(ch.scenes)) {
       const t = plainText(sc.text ?? '');
       const histLengths = (sc.choices ?? []).map(
         (c) => plainText(c.hist?.match ?? '').length + plainText(c.hist?.body ?? '').length,
       );
       const always = [sc.monologue, sc.spark, sc.q, sc.creed?.line, sc.creed?.act];
-      st.maxSceneLoad = Math.max(
-        st.maxSceneLoad,
+      const load =
         t.length +
-          always.reduce((n, s) => n + plainText(s ?? '').length, 0) +
-          Math.max(0, ...histLengths),
-      );
+        always.reduce((n, s) => n + plainText(s ?? '').length, 0) +
+        Math.max(0, ...histLengths);
+      if (load > st.maxSceneLoad) {
+        st.maxSceneLoad = load;
+        st.maxSceneLoadId = id;
+      }
       st.textTotal += t.length;
       st.maxSceneText = Math.max(st.maxSceneText, t.length);
       st.glosses += (t.match(/（/g) ?? []).length;
-      for (const h of HEDGE_PHRASES) st.hedges += t.split(h).length - 1;
+      st.hedges += (t.match(HEDGE_PATTERN) ?? []).length;
       if (sc.deep) st.maxDeepBody = Math.max(st.maxDeepBody, plainText(sc.deep.body ?? '').length);
       const grants = [
         ...(sc.onEnter?.cards ?? []),

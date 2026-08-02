@@ -11,10 +11,10 @@ for (const w of slug ? [resolveWork(slug)] : ALL_WORKS) {
   console.log('  ch | text | maxScene | glosses | hedges | maxDeep | maxGrants | maxLoad*');
   for (const st of chapterStats(w)) {
     console.log(
-      `  ${String(st.chapterId).padStart(2)} | ${String(st.textTotal).padStart(4)} | ${String(st.maxSceneText).padStart(8)} | ${String(st.glosses).padStart(7)} | ${String(st.hedges).padStart(6)} | ${String(st.maxDeepBody).padStart(7)} | ${String(st.maxPersonGrants).padStart(9)} | ${st.maxSceneLoad}`,
+      `  ${String(st.chapterId).padStart(2)} | ${String(st.textTotal).padStart(4)} | ${String(st.maxSceneText).padStart(8)} | ${String(st.glosses).padStart(7)} | ${String(st.hedges).padStart(6)} | ${String(st.maxDeepBody).padStart(7)} | ${String(st.maxPersonGrants).padStart(9)} | ${String(st.maxSceneLoad).padStart(7)} (${st.maxSceneLoadId})`,
     );
   }
   console.log(
-    '  * maxLoad = 1シーンを抜けるのに読む最大量（本文＋内語＋spark＋問い＋信条＋選んだ枝の hist）。診断のみ・予算なし',
+    '  * maxLoad = 1シーンを抜けるのに読む最大量（本文＋内語＋spark＋問い＋信条＋選んだ枝の hist）。括弧内は最重シーン',
   );
 }
