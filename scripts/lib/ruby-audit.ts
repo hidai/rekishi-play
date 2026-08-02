@@ -14,8 +14,10 @@
 // 対象外（silent cap にしないため明記する）: SVG `<text>` で描く面——地図ラベル・note・相関図の
 // rel・席の図・習作ページ——は `<ruby>` を持てない契約なので検査しない（その面の守りは
 // tests/ruby-render.test.ts と tests/svg-text-fields.test.ts）。同じ理由で **titleSub・topbarName・
-// meters・カードの name** も対象外＝プレーン文字列として描かれ ruby を置けない面（だからこそ
-// **その面は語をやさしくするしか手が無い**）。
+// meters・カードの name・手帳の進軍地図キャプション（map.chapterCaptions＝`textContent` で描く）**
+// も対象外＝プレーン文字列として描かれ ruby を置けない面（だからこそ**その面は語をやさしく
+// するしか手が無い**）。ただしそれは「ふりがなが置けない」だけで**読者面ではある**——語の意味を
+// 見る計器（institution / known-premise）は下の `plainSurfaces` 経由でここも走査する。
 // ただし**入口（タイトル画面）の本文は対象**——riddle / titleHook / riddleHeart / titleNote は
 // `{@html}` で描く作品の本文で、しかも読者が最初に読む面なのに、2026-08-01 まで一度も走査されて
 // いなかった（型1 の eval が発見。'entry' 面として追加した）。
@@ -144,6 +146,16 @@ export function workSurfaces(work: Work): Surface[] {
   for (const n of work.graph?.nodes ?? []) out.push({ id: `star:${n.id}`, parts: [n.caption] });
   out.push({ id: 'hidden', parts: [work.hidden.lockedText, work.hidden.body, work.hidden.completeText] });
   return out;
+}
+
+/**
+ * Reader-facing prose the engine draws as a plain string, so no `<ruby>` can live there.
+ * Out of scope for this audit by construction, but in scope for the audits that read
+ * meaning rather than readings — they take these on top of `workSurfaces`.
+ */
+export function plainSurfaces(work: Work): Surface[] {
+  const caps = Object.entries(work.map?.chapterCaptions ?? {});
+  return caps.length ? [{ id: 'notebook:map', parts: caps.map(([, c]) => c) }] : [];
 }
 
 export function auditWork(work: Work): RubyMiss[] {

@@ -34,26 +34,42 @@ import { bucketOf } from '../scripts/lib/ruby-audit';
  * 1サイクル1作の棚卸しで減らす（engagement.md §14 型3）。
  */
 const BASELINE: Record<string, number> = {
+  // ★2026-08-03 に走査面を3つ足した（hist・reveal・手帳の地図キャプション）。それまで
+  // 「棚卸し済み」だった章に 10件 出てきたぶんが下の帳簿——**面が欠けている計器は、直した章を
+  // 0件と報告し続ける**。棚卸しは1サイクル1作で減らす（現物は CLI）。
   // hidenaga: entry・ch1 は棚卸し済み（天下＝入口で言い換え／武士→侍に統一／侍・百姓は ALLOWED）
+  //   ＝ただし ch1 は hist 2件（太閤・兵糧）が新しく見えた
+  'hidenaga:ch1': 2,
   'hidenaga:ch2': 1,
   'hidenaga:ch3': 2,
   'hidenaga:ch5': 1,
   'hidenaga:ch6': 2,
-  'hidenaga:ch7': 3, // 「天下人」の初出が ch1 から ここへ移った（ch1 は「天下を とる 兄弟」へ）
+  'hidenaga:ch7': 4, // 「天下人」の初出が ch1 から ここへ移った（ch1 は「天下を とる 兄弟」へ）＋hist の 幕府
   // kiyomori: 全章 棚卸し済み（一門/棟梁→一族・院政は主線から降ろす／貴族・太政大臣は ALLOWED。
   //   退位した天皇の呼び名は「院」に統一して 2-a で言い換え＝上皇・法皇は主線から消えた〔2026-08-03〕）
+  //   ＝主線から降ろした語が hist に残っていた（一門・院政）。ch6 は reveal の「令旨」
+  //   （小5が「いちばん盛り上がる画面でつまずいた」と報告した当の語＝この回 INSTITUTION_TERMS に追加）
+  'kiyomori:ch1': 1,
+  'kiyomori:ch5': 1,
+  'kiyomori:ch6': 1,
   // katsu: 全章 棚卸し済み（幕府は入口から降ろして 1-a へ／主家・主君→あるじに統一／蘭学は ALLOWED）
   // ieyasu: 全章 棚卸し済み（家臣→家来・侍→武士・主家/主君→「仕えた 家」「あるじ」に統一／
   //   兵糧→米・百姓・天下人は主線から降ろす／人質・大名・幕府・牢人は ALLOWED）
+  //   ＝ch7 は reveal「東照大権現」の caption に 朝廷 が裸で出ていた
+  'ieyasu:ch7': 1,
   // davinci: 全章 棚卸し済み（公証人・宮廷・教皇・修道院はその場で言い換え／将軍→「いくさの 大将」に降ろす／
   //   私生児・工房は ALLOWED。教皇・宮廷は この棚卸しで INSTITUTION_TERMS に追加）
   // masako: 全章 棚卸し済み（武士・将軍・幕府・上皇・朝敵は その場で言い換え／鎌倉殿→将軍に統一・
   //   貴族・朝廷は主線から降ろす／御台所・御家人・乳母・執権は ALLOWED。鎌倉殿・乳母は
-  //   この棚卸しで INSTITUTION_TERMS に追加）
+  //   この棚卸しで INSTITUTION_TERMS に追加）＝ch3 は もしも枝の hist に 出家 が裸で残っていた
+  'masako:ch3': 1,
   // shibusawa: 全章 棚卸し済み（幕府・将軍・大蔵省はその場で言い換え／将軍は入口の謎から・藩と
   //   頭取と「官」は主線から降ろす〔徳川の 家／かしら／役人〕・武士→侍に統一／百姓・代官・幕臣・
   //   侍・朝敵・株は ALLOWED。代官・大蔵省・頭取・株は この棚卸しで INSTITUTION_TERMS に追加）
-  //   ＝これで7作すべての棚卸しが終わった（engagement.md §14 型3）。
+  //   ＝ch2 は hist の 浪人（主線では「牢人」に統一した語の片割れ）、notebook は手帳の地図
+  //   キャプションの 攘夷（この面は ruby も置けない＝語をやさしくするしか手が無い面）
+  'shibusawa:ch2': 1,
+  'shibusawa:notebook': 1,
 };
 
 describe('institution-gloss: 制度語は その場で 一句で 言い換える', () => {
@@ -102,7 +118,12 @@ describe('institution-gloss: 制度語は その場で 一句で 言い換える
   // 入口の面が走査に載っていることを直に確かめる。
   it('注入した制度語を検出する（裸／言い換え／ルビ越し／初出主義）', () => {
     const scene = (parts: string[]) => ({ id: 'ch9/9-z', parts });
-    const bare = { ...ALL_WORKS[0], id: 'x', story: { chapters: [] } };
+    const bare = {
+      ...ALL_WORKS[0],
+      id: 'x',
+      map: { ...ALL_WORKS[0].map, chapterCaptions: {} },
+      story: { chapters: [] },
+    };
     const hitsOf = (parts: string[]) => {
       const w = {
         ...bare,
@@ -128,6 +149,56 @@ describe('institution-gloss: 制度語は その場で 一句で 言い換える
       const entry = mainSurfaces(work)[0];
       expect(entry.id).toBe('entry');
       expect(entry.parts.join('').length, `${work.id} の入口が空`).toBeGreaterThan(20);
+    }
+  });
+
+  // 「読者が開かずに読む面」を数え落とすと、直した章を 0 件と報告し続ける（2026-08-03 の穴）。
+  // reveal は本文より先（シーンに入った瞬間の全画面）、hist は選択の直後に自動で開く強制読み面、
+  // 手帳の地図キャプションは ruby を置けない読者面。3つとも走査に載っていることを直に確かめる。
+  it('reveal・hist・手帳の地図キャプションが走査に載っている', () => {
+    const bare = ALL_WORKS[0];
+    const w = {
+      ...bare,
+      id: 'x',
+      strings: { ...bare.strings, titleMain: '', titleSub: '', titleHook: '', titleNote: '' },
+      riddle: '',
+      map: { ...bare.map, chapterCaptions: { 1: '<ruby>攘夷<rt>じょうい</rt></ruby>の 志士たち' } },
+      story: {
+        chapters: [
+          {
+            id: 9,
+            num: '',
+            title: '',
+            lead: '',
+            start: '9-z',
+            scenes: {
+              '9-z': {
+                text: 'きみは 走った',
+                reveal: { title: '急報', caption: '<ruby>令旨<rt>りょうじ</rt></ruby>が かけめぐる' },
+                choices: [{ label: '行く', to: '9-z', hist: { verdict: '', match: '', body: '<ruby>院政<rt>いんせい</rt></ruby>は 止まった' } }],
+              },
+            },
+          },
+        ],
+      },
+    } as unknown as (typeof ALL_WORKS)[number];
+    expect(mainSurfaces(w).map((s) => s.id)).toEqual([
+      'entry',
+      'ch9',
+      'ch9/9-z#reveal', // シーンに入った瞬間＝本文より先に読む
+      'ch9/9-z',
+      'ch9/9-z#hist0',
+      'notebook:map', // 章を読み終えた読者が手帳で読む＝初出を横取りしない末尾
+    ]);
+    expect(auditWork(w).map((h) => `${h.surface} ${h.term}`)).toEqual([
+      'ch9/9-z#reveal 令旨',
+      'ch9/9-z#hist0 院政',
+      'notebook:map 攘夷',
+    ]);
+    // 実データでも空でないこと（面はあるのに中身を渡していない、を防ぐ）
+    for (const work of ALL_WORKS) {
+      const notebook = mainSurfaces(work).find((s) => s.id === 'notebook:map');
+      expect(notebook?.parts.join('').length, `${work.id} の手帳キャプションが空`).toBeGreaterThan(20);
     }
   });
 });

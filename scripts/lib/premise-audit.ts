@@ -20,7 +20,7 @@
 // premise does the most damage: it is the first thing read and it frames all 7 chapters.
 import type { Work } from '../../src/engine/types';
 import { plainText } from './content-stats';
-import { workSurfaces, bucketOf, type Surface } from './ruby-audit';
+import { workSurfaces, plainSurfaces, bucketOf, type Surface } from './ruby-audit';
 
 /** Phrases that hand the reader a received story instead of building one. */
 export const PREMISE_MARKERS = [
@@ -94,7 +94,9 @@ export function spineSurface(work: Work): Surface {
 }
 
 export function premiseSurfaces(work: Work): Surface[] {
-  return [spineSurface(work), ...workSurfaces(work)];
+  // plainSurfaces = prose that cannot hold furigana (notebook map captions). A received
+  // story leans on the reader just the same there, so this audit reads them.
+  return [spineSurface(work), ...workSurfaces(work), ...plainSurfaces(work)];
 }
 
 export function auditSurface(surface: Surface): PremiseHit[] {

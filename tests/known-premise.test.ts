@@ -24,6 +24,7 @@ import {
   auditBuckets,
   auditSurface,
   auditWork,
+  premiseSurfaces,
   spineSurface,
 } from '../scripts/lib/premise-audit';
 import { bucketOf } from '../scripts/lib/ruby-audit';
@@ -103,5 +104,10 @@ describe('known-premise: 通説は作品の中で着せてから裏返す', () =
     for (const work of ALL_WORKS)
       expect(spineSurface(work).parts.join('').length, `${work.id} の背骨が空`).toBeGreaterThan(20);
     expect(bucketOf(spineSurface(ALL_WORKS[0]).id)).toBe('spine');
+    // ruby を置けない面（手帳の地図キャプション）も読者面＝2026-08-03 に走査へ入れた
+    for (const work of ALL_WORKS) {
+      const notebook = premiseSurfaces(work).find((s) => s.id === 'notebook:map');
+      expect(notebook?.parts.join('').length, `${work.id} の手帳キャプションが空`).toBeGreaterThan(20);
+    }
   });
 });

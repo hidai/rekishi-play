@@ -18,15 +18,20 @@
 //     済ませたものは ALLOWED_INSTITUTION へ理由1行つきで移す＝**審査した記録が残る**。
 //   ・説明が後の面（deep・カード）に有るかは見ない。**読者はそれを開かない**のが型3 の中身。
 //
-// 対象の面（silent cap にしないため明記する）: 入口（タイトル画面）＋各シーンの画面本体
-// （place・本文・内語・え！？・問い・選択肢のラベル・ミニゲーム）。**deep・hist・creed・カード・
-// 手がかりは対象外**——そこは説明の置き場だから（WRITING 3・4）。その面の天井は /eval-work の
-// 読み通しペルソナが見る。⚠️ WRITING 13 の後半「**同じものを2つの語で呼ばない**（侍／武士）」は
+// 対象の面（silent cap にしないため明記する）: 入口（タイトル画面）＋各シーンの **reveal**（山場の
+// 全画面インタースティシャル）＋画面本体（place・本文・内語・え！？・問い・選択肢のラベル・
+// ミニゲーム）＋**hist**（判定パネル）＋手帳の進軍地図キャプション。**deep・creed・カード・手がかり
+// は対象外**——そこは読者が自分で開く説明の置き場だから（WRITING 3・4）。その面の天井は
+// /eval-work の読み通しペルソナが見る。
+// ⚠️ hist と reveal は 2026-08-03 まで走査外だった＝**読者が「開かずに」読む面なのに非読者面として
+// 扱う二重帳簿**（hist は選択直後に自動で開き、閉じないと進めない。reveal は章の山場で全画面に出る。
+// しかも体験予算は hist を「1シーンの読む量」に算入していた）。実例＝読者が最初に会う「院」は
+// kiyomori 1-b の hist、kiyomori 6-c の reveal「令旨」は小5が「いちばん盛り上がる画面でつまずいた」。⚠️ WRITING 13 の後半「**同じものを2つの語で呼ばない**（侍／武士）」は
 // 面を限定しない規律だが、機械が数えるのは主線の初出だけ＝**言い換えの有無しか見ない**
 //（同義語の混在は初出1回ずつで通る）。そこは書き手と eval の仕事。
 import type { Work } from '../../src/engine/types';
 import { plainText } from './content-stats';
-import { bucketOf, type Surface } from './ruby-audit';
+import { bucketOf, plainSurfaces, type Surface } from './ruby-audit';
 
 /**
  * 制度・身分・役職・仕組みを名ざす語。**読める（ルビが振ってある）が、初見の小5には
@@ -40,6 +45,7 @@ export const INSTITUTION_TERMS: string[] = [
   '人質', '領国', '年貢', '兵糧', '石高', '天下人', '天下', '身分', '百姓', '牢人', '浪人',
   // 朝廷（kiyomori・masako）
   '朝廷', '上皇', '法皇', '院', '院政', '公家', '貴族', '関白', '太政大臣', '太閤', '摂政', '朝敵', '官位',
+  '令旨',
   // 近代（katsu・shibusawa）
   '攘夷', '開国', '蘭学', '藩', '老中', '旗本', '御用金', '尊王', '討幕', '士族', '株式会社', '合本',
   '代官', '大蔵省', '頭取', '株',
@@ -121,6 +127,9 @@ export function mainSurfaces(work: Work): Surface[] {
   for (const ch of work.story.chapters) {
     out.push({ id: `ch${ch.id}`, parts: [ch.title, ch.lead, ch.teaser ?? ''] });
     for (const [sid, sc] of Object.entries(ch.scenes)) {
+      const at = `ch${ch.id}/${sid}`;
+      // The interstitial fires on entering the scene, so it is read before the body.
+      if (sc.reveal) out.push({ id: `${at}#reveal`, parts: [sc.reveal.title, sc.reveal.caption] });
       const parts = [
         sc.place,
         sc.text,
@@ -136,9 +145,25 @@ export function mainSurfaces(work: Work): Surface[] {
           ...sc.minigame.items,
           sc.minigame.outro,
         );
-      out.push({ id: `ch${ch.id}/${sid}`, parts: parts.filter(Boolean) as string[] });
+      out.push({ id: at, parts: parts.filter(Boolean) as string[] });
+      // 判定パネルは選択の直後に自動で開く＝読者は開く/開かないを選べない。
+      // ⚠️ 枝ごとに1面だが読者が読むのは1つ。初出主義は読む順（枝の並び順）で数えるので、
+      // 「A枝で言い換えた語が B枝では裸」は緑になる——そこは /eval-work の仕事。
+      (sc.choices ?? []).forEach((c, i) => {
+        if (!c.hist) return;
+        const h = c.hist;
+        out.push({
+          id: `${at}#hist${i}`,
+          parts: [h.verdict, h.match, h.body, h.source?.name ?? '', h.source?.note ?? ''].filter(
+            Boolean,
+          ) as string[],
+        });
+      });
     }
   }
+  // 手帳の進軍地図キャプション＝ruby を置けない面（textContent 描画）だが、制度語は語そのものの
+  // 問題なので対象。読む順の最後に置く＝章で言い換え済みの語をここが「初出」に横取りしない。
+  out.push(...plainSurfaces(work));
   return out;
 }
 
