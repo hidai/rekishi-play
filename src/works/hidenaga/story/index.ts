@@ -10,12 +10,12 @@ export const STORY: Story = { chapters: [
 /* ========================= 第1章 ========================= */
 {
   id:1, num:'其の一', title:'<ruby>尾張<rt>おわり</rt></ruby>中村・<ruby>百姓<rt>ひゃくしょう</rt></ruby>の子 <ruby>小竹<rt>こちく</rt></ruby>', years:'1540〜1564',
-  lead:'すべては、尾張の 小さな 村から はじまった。',
+  lead:'すべては、尾張の 小さな 村から はじまった。のちに <ruby>秀長<rt>ひでなが</rt></ruby>と 名のる 子は、まだ <ruby>小竹<rt>こちく</rt></ruby>と 呼ばれて いる。',
   start:'1-a',
   teaser:'兄弟に くだる 無茶な 命令——敵の 目の 前に、一晩で 城を 建てられるか？',
   scenes:{
     '1-a':{ art:'village', place:'<ruby>尾張国<rt>おわりのくに</rt></ruby> <ruby>愛知郡<rt>あいちぐん</rt></ruby> 中村',
-      text:`<p>きみの 名は <ruby>小竹<rt>こちく</rt></ruby>。<ruby>尾張<rt>おわり</rt></ruby>の <ruby>中村<rt>なかむら</rt></ruby>という 小さな 村で 生まれた、<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子だ。</p>
+      text:`<p>きみの 名は <ruby>小竹<rt>こちく</rt></ruby>——のちの <ruby>秀長<rt>ひでなが</rt></ruby>。<ruby>尾張<rt>おわり</rt></ruby>の <ruby>中村<rt>なかむら</rt></ruby>という 小さな 村で 生まれた、<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子だ。</p>
         <p>年は <ruby>天文<rt>てんぶん</rt></ruby>9年——<em>1540年ごろ</em>と いわれて いる。田を たがやし、母の <b>なか</b>を 手つだう 毎日。空の 下、きみは まだ ただの 村の 子どもだった。</p>`,
       spark:'え！？ のちに <ruby>天下<rt>てんか</rt></ruby>を とる 兄弟なのに、ふたりの「父が だれか」さえ、じつは わかっていない——？',
       deep:{ q:'そもそも、<ruby>秀長<rt>ひでなが</rt></ruby>は いつ どこで 生まれた？', body:`生まれた 年は <b>1540年が 有力</b>だけれど、じつは 「はっきり 書いた 当時の 記録」は ない。1541年 という 説も ある。さらに おどろく ことに、<b><ruby>秀吉<rt>ひでよし</rt></ruby>と 秀長の 「父が だれか」さえ 定かでは ない</b>。ふたりは 父ちがいの 兄弟（<ruby>異父弟<rt>いふてい</rt></ruby>）だったとも、同じ 父の 兄弟だったとも いわれ、今も 決着が ついていない。`, cite:'※ 秀吉・秀長 自身が 父について 語った 記録は 一つも 残っていない。' },
@@ -23,7 +23,7 @@ export const STORY: Story = { chapters: [
       next: '1-b' },
 
     '1-b':{ art:'village', place:'ある日の 中村',
-      text:`<p>ある日、村に ひとりの 若者が 帰って きた。きみの 兄・<ruby>藤吉郎<rt>とうきちろう</rt></ruby>だ。針売りから 身を おこし、いまは <ruby>織田<rt>おだ</rt></ruby>家（この あたりを 治める 家）に 仕えて いるという。</p>
+      text:`<p>ある日、村に ひとりの 若者が 帰って きた。きみの 兄・<ruby>藤吉郎<rt>とうきちろう</rt></ruby>——のちの <ruby>秀吉<rt>ひでよし</rt></ruby>だ。針売りから 身を おこし、いまは <ruby>織田<rt>おだ</rt></ruby>家（この あたりを 治める 家）に 仕えて いるという。</p>
         <p>兄は きみの <ruby>肩<rt>かた</rt></ruby>を つかんで、目を かがやかせて 言った。</p>
         <p class="speak">「小竹、<em><ruby>侍<rt>さむらい</rt></ruby></em>に ならんか。お前も おれと 来い。この 世は これから、大きく 変わるぞ」</p>`,
       choices:[
@@ -39,7 +39,7 @@ export const STORY: Story = { chapters: [
       ] },
 
     '1-c':{ art:'village', place:'<ruby>侍<rt>さむらい</rt></ruby>への 第一歩', monologue:'（田んぼしか 知らなかった おれが、刀を さす。こわい。でも——兄さの となりなら、行ける 気が する。）',
-      text:`<p>きみは <ruby>木下<rt>きのした</rt></ruby><ruby>小一郎<rt>こいちろう</rt></ruby>と 名のった。兄は 気さくで <ruby>大胆<rt>だいたん</rt></ruby>、人の 心を つかむのが うまい。だが——大きな 仕事を まわすには、こまかな <ruby>段<rt>だん</rt></ruby><ruby>取<rt>ど</rt></ruby>りを する 者が いる。</p>
+      text:`<p>兄は <ruby>木下<rt>きのした</rt></ruby>と 名のって いた。きみも 同じ 名を もらい、<ruby>小一郎<rt>こいちろう</rt></ruby>と 名のった。兄は 気さくで <ruby>大胆<rt>だいたん</rt></ruby>、人の 心を つかむのが うまい。だが——大きな 仕事を まわすには、こまかな <ruby>段<rt>だん</rt></ruby><ruby>取<rt>ど</rt></ruby>りを する 者が いる。</p>
         <p>兄が 前に 出て <ruby>手柄<rt>てがら</rt></ruby>を たてる かげで、きみは 何を する <ruby>侍<rt>さむらい</rt></ruby>に なる？</p>`,
       choices:[
         { label:'自分も 前線で、<ruby>槍<rt>やり</rt></ruby>で 手柄を あげたい', to:'1-d', effect:{ kizuna:2 },
@@ -67,7 +67,7 @@ export const STORY: Story = { chapters: [
   teaser:'はじめて 土地と 民を まかされる きみ。<ruby>攻<rt>せ</rt></ruby>め落とした あとの 国を、どう 治める？',
   scenes:{
     '2-a':{ art:'night_castle', place:'<ruby>美濃<rt>みの</rt></ruby> <ruby>墨俣<rt>すのまた</rt></ruby>',
-      text:`<p>兄・<ruby>藤吉郎<rt>とうきちろう</rt></ruby>は、<ruby>主君<rt>しゅくん</rt></ruby> <face pid="p-nobunaga"><ruby>織田信長<rt>おだのぶなが</rt></ruby></face>のもとで めきめきと <ruby>頭角<rt>とうかく</rt></ruby>を あらわして いた。きみも「<ruby>木下<rt>きのした</rt></ruby><ruby>小一郎<rt>こいちろう</rt></ruby><ruby>長秀<rt>ながひで</rt></ruby>」として、その 右うでを つとめる。</p>
+      text:`<p>兄・<ruby>藤吉郎<rt>とうきちろう</rt></ruby>は、<ruby>主君<rt>しゅくん</rt></ruby> <face pid="p-nobunaga"><ruby>織田信長<rt>おだのぶなが</rt></ruby></face>のもとで めきめきと <ruby>頭角<rt>とうかく</rt></ruby>を あらわして いた。きみも「<ruby>木下<rt>きのした</rt></ruby><ruby>小一郎<rt>こいちろう</rt></ruby>」として、その 右うでを つとめる。</p>
         <p>ある日、川の ほとりの <em><ruby>墨俣<rt>すのまた</rt></ruby></em>に 城を きずけ、という 命令が くだる。そこは 敵の 目と 鼻の 先。ふつうに 建てて いては、できあがる 前に つぶされる。</p>
         <p>——建てるなら、一晩で。<ruby>段<rt>だん</rt></ruby><ruby>取<rt>ど</rt></ruby>りを 組むのは、きみだ。</p>`,
       minigame:{ type:'sort', title:'城づくりの 段取り',
@@ -97,7 +97,7 @@ export const STORY: Story = { chapters: [
 
     '2-c':{ art:'night_castle', place:'<ruby>主君<rt>しゅくん</rt></ruby>・信長', monologue:'（信長さまは、まぶしくて、こわい。前に 出て かがやく 兄さの かげで、おれは おれに できる ことを <ruby>黙<rt>だま</rt></ruby>って やろう。）',
       closeup:{ tone:'tense', cast:[ { face:'p-nobunaga' } ] },
-      text:`<p>主君 信長は、古い しきたりを 次々に こわす、おそろしくも まぶしい 男だった。きみの 名「<ruby>長秀<rt>ながひで</rt></ruby>」の「長」は、この 信長から もらった 一字とも いわれる。<ruby>信頼<rt>しんらい</rt></ruby>の あかしだ。</p>
+      text:`<p>主君 信長は、古い しきたりを 次々に こわす、おそろしくも まぶしい 男だった。ふだんは <ruby>小一郎<rt>こいちろう</rt></ruby>と 呼ばれる きみに、もう ひとつ 名が ある——「<ruby>長秀<rt>ながひで</rt></ruby>」。二字を 入れかえれば、<ruby>秀長<rt>ひでなが</rt></ruby>。ずっと 先に、きみが 名のる 名だ。その「長」は、この 信長から もらった 一字とも いわれる。目を かけた 者にだけ、自分の 名の 字を わける。<ruby>信頼<rt>しんらい</rt></ruby>の あかしだ。</p>
         <p class="speak">「<ruby>猿<rt>さる</rt></ruby>の 弟、か。……ふん。物の 順番が 見える 目を して おる」</p>
         <p>すれちがいざま、信長が そう つぶやいた——気が した。だが 信長は、家来にも 敵にも <ruby>容赦<rt>ようしゃ</rt></ruby>が ない。その 強さと こわさを、きみは まぢかで 見つめて いた。</p>`,
       deep:{ q:'なぜ「<ruby>裏方<rt>うらかた</rt></ruby>」は 記録に 残りにくい？', body:`合戦の <ruby>手柄<rt>てがら</rt></ruby>は、<b>敵の 大将を <ruby>討<rt>う</rt></ruby>った、一番に <ruby>攻<rt>せ</rt></ruby>め<ruby>込<rt>こ</rt></ruby>んだ——といった「目立つ 出来事」</b>として 記録される。<br>いっぽう、食料を 切らさず 運んだ、けんかを 仲裁して まとめた、といった 働きは、うまく いくほど「何ごとも なかった」ように 見えて、記録にも 物語にも 残りにくい。`, cite:'' },
