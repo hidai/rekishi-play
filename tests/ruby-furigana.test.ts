@@ -26,7 +26,7 @@ const BASELINE: Record<string, number> = {
   'hidenaga:ch4': 39, 'hidenaga:ch5': 39, 'hidenaga:ch6': 33, 'hidenaga:ch7': 46,
   // kiyomori: 144 件
   'kiyomori:ch1': 2, 'kiyomori:ch2': 3, 'kiyomori:ch3': 11, 'kiyomori:ch4': 1,
-  'kiyomori:ch5': 5, 'kiyomori:ch6': 3, 'kiyomori:ch7': 8, 'kiyomori:card': 73,
+  'kiyomori:ch5': 5, 'kiyomori:ch6': 3, 'kiyomori:ch7': 8, 'kiyomori:card': 72,
   'kiyomori:clue': 2, 'kiyomori:hidden': 5, 'kiyomori:timeline': 29,
   // katsu: 184 件
   // ch4 は制度語の棚卸し（型3）で lead の「幕臣・諸藩士・脱藩浪士」ごと消えて 0 になった

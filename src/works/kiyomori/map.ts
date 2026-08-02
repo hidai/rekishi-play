@@ -81,7 +81,7 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     { at: 'heiankyo', cur: 1, kind: 'town', label: '京', note: '成り上がり、と 見くだされる' },
     { at: 'ise', kind: 'town', label: '伊勢' },
   ] },
-  // 2-a: the Hōgen rebellion. The reader ENTERS on the capital splitting in two — 崇徳上皇 vs
+  // 2-a: the Hōgen rebellion. The reader ENTERS on the capital splitting in two — 崇徳院 vs
   // 後白河天皇, you fighting on 後白河's side. Anchor the map to that opening standoff, NOT the
   // exile aftermath. 崇徳's 讃岐 exile is the text's closing beat and belongs to 2-d's payoff;
   // showing it here (map seen before the text) jumped ahead of the reader and jarred against the

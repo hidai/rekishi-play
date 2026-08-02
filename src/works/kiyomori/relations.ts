@@ -20,7 +20,7 @@ export const RELATIONS: WorkRelations = {
     { pid: 'p-tokuko', rel: '娘', cat: 'ichimon' },
     { pid: 'p-tomomori', rel: '子（水軍の 将）', cat: 'ichimon' },
     { pid: 'p-goshirakawa', rel: '生涯の 好敵手', cat: 'choutei' },
-    { pid: 'p-sutoku', rel: '破った 上皇（保元）', cat: 'choutei' },
+    { pid: 'p-sutoku', rel: '破った もとの 天皇（保元）', cat: 'choutei' },
     { pid: 'p-takakura', rel: '娘婿の 天皇', cat: 'choutei' },
     { pid: 'p-antoku', rel: '孫（幼帝）', cat: 'choutei' },
     { pid: 'p-mochihito', rel: '挙兵した 皇子', cat: 'choutei' },
