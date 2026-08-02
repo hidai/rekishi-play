@@ -276,14 +276,21 @@ export const STORY: Story = {
           onEnter: { cards: ['w-shishigatani', 'p-shunkan'] },
           next: '5-c' },
 
-        '5-c': { place: '<ruby>鳥羽殿<rt>とばどの</rt></ruby>',
-          monologue: '（<ruby>重盛<rt>しげもり</rt></ruby>が おれば、こうは ならなんだ。……あれは、おれと <ruby>院<rt>いん</rt></ruby>の あいだに かかった、たった 一本の <ruby>橋<rt>はし</rt></ruby>だった。）',
-          closeup: { tone: 'tense', cast: [ { face: 'p-goshirakawa', name: '後白河法皇' }, { face: 'p-kiyomori@elder', name: '清盛（きみ）' } ] },
-          text: `<p><ruby>治承<rt>じしょう</rt></ruby>三年（1179年）、<ruby>平家<rt>へいけ</rt></ruby>に 大きな 不幸が おとずれる。<ruby>嫡男<rt>ちゃくなん</rt></ruby>・<face pid="p-shigemori"><ruby>重盛<rt>しげもり</rt></ruby></face>が、<ruby>病<rt>やまい</rt></ruby>で 世を 去った。まだ <ruby>四十二<rt>よんじゅうに</rt></ruby>。父と 法皇の あいだを つないで きた、ただ 一人の 男が、いなく なった。</p>
-            <p><ruby>歯止<rt>はど</rt></ruby>めを 失った <ruby>対立<rt>たいりつ</rt></ruby>は、一気に かたむく。法皇の 側は、この すきに 平家の 力を そごうと 動いた。きみを 見すえる 法皇の、ふてぶてしい 声が、聞こえた 気が した——</p>
-            <p class="speak">「<ruby>武士<rt>ぶし</rt></ruby>ふぜいが、この <ruby>院<rt>いん</rt></ruby>の 上に 立とうと いうのか。……よかろう。高く 昇った 者ほど、落ちる ときは 深いぞ、清盛」</p>
-            <p>その 声に、清盛の 胸で、腹の 底からの <ruby>怒<rt>いか</rt></ruby>りが 燃えあがった——気が した。</p>
-            <p>法皇と にらみ合う 清盛。きみ（清盛）なら、この <ruby>後白河<rt>ごしらかわ</rt></ruby>法皇を どう する？</p>`,
+        '5-c': { place: '<ruby>小松殿<rt>こまつどの</rt></ruby>',
+          monologue: '（<ruby>重盛<rt>しげもり</rt></ruby>……。あれは、おれと <ruby>法皇<rt>ほうおう</rt></ruby>の あいだに かかった、たった 一本の <ruby>橋<rt>はし</rt></ruby>だった。）',
+          closeup: { tone: 'grief', cast: [ { face: 'p-shigemori', name: '息子・重盛', expr: { brow: 'calm', eye: 'closed', mouth: 'flat' } } ] },
+          text: `<p><ruby>治承<rt>じしょう</rt></ruby>三年（1179年）、<ruby>嫡男<rt>ちゃくなん</rt></ruby>・<face pid="p-shigemori"><ruby>重盛<rt>しげもり</rt></ruby></face>が <ruby>病<rt>やまい</rt></ruby>で 世を 去った。まだ <ruby>四十二<rt>よんじゅうに</rt></ruby>。</p>
+            <p class="speak">「父上、ここで <ruby>敵<rt>てき</rt></ruby>を 作っては、平家の ためには なりませぬ」——父と 法皇の あいだに 立ちつづけた 声が、もう しない。</p>
+            <p class="speak">「……<ruby>重盛<rt>しげもり</rt></ruby>か」<br>それきり、きみは 何も 言えなかった——気が した。</p>`,
+          next: '5-c2' },
+
+        '5-c2': { place: '<ruby>法皇<rt>ほうおう</rt></ruby>と、<ruby>向<rt>む</rt></ruby>かい合う',
+          closeup: { tone: 'tense', cast: [
+            { face: 'p-goshirakawa', name: '後白河法皇', expr: { brow: 'stern', eye: 'sharp', mouth: 'grin' } },
+            { face: 'p-kiyomori@elder', name: '清盛（きみ）', expr: { brow: 'angry', eye: 'narrow', mouth: 'frown' } } ] },
+          text: `<p><ruby>橋<rt>はし</rt></ruby>が 落ちた。国を だれに まかせるか——それを 決めるのは 法皇だ。法皇は この すきに、重盛の 国を とりあげた。きみを 見すえる 法皇の、ふてぶてしい 声が、聞こえた 気が した——</p>
+            <p class="speak">「<ruby>武士<rt>ぶし</rt></ruby>ふぜいが、この <ruby>院<rt>いん</rt></ruby>の 上に 立とうと いうのか。……よかろう。高く <ruby>昇<rt>のぼ</rt></ruby>った 者ほど、落ちる ときは 深いぞ、清盛」</p>
+            <p>きみ（清盛）なら、この <ruby>後白河<rt>ごしらかわ</rt></ruby>法皇を どう する？</p>`,
           deep: { q: '清盛を <ruby>憎<rt>にく</rt></ruby>んだ <ruby>貴族<rt>きぞく</rt></ruby>も、その 死を おそれた？',
             body: `清盛と 同じ ころを 生きた <ruby>貴族<rt>きぞく</rt></ruby>・<ruby>九条兼実<rt>くじょうの かねざね</rt></ruby>は、日記『<ruby>玉葉<rt>ぎょくよう</rt></ruby>』に、清盛の やり方を「<ruby>罰<rt>ばつ</rt></ruby>を あたえて ばかりで、思いやりが すたれた」と きびしく 書いた。<ruby>兼実<rt>かねざね</rt></ruby>は 清盛と <ruby>対立<rt>たいりつ</rt></ruby>した 側の 人だ。<br>ところが その 兼実が、清盛が 死んだ あとには「これで かえって 世が 乱れる のでは」と 心配 して いる。ただの <ruby>悪人<rt>あくにん</rt></ruby>なら、死ねば せいせいする はず。なのに、その 死を おそれる——。<br>いちばん 近くで 憎んだ 相手の <ruby>記録<rt>きろく</rt></ruby>でさえ、清盛は「ただの 悪人」では 片づいて いない。`,
             cite: '※ 憎んだ 相手の <ruby>筆<rt>ふで</rt></ruby>でも、清盛は「悪人」ひと色には ならなかった。' },
@@ -291,13 +298,13 @@ export const STORY: Story = {
           choices: [
             { label: 'たかぶる 心を おさえ、法皇と <ruby>和解<rt>わかい</rt></ruby>の 道を さぐる', to: '5-d', effect: { nasake: 2 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし 歩みよって いたら……',
-                body: `<p>力で ねじ<ruby>伏<rt>ふ</rt></ruby>せる かわりに、たがいに 一歩ずつ 引く——もし <ruby>重盛<rt>しげもり</rt></ruby>が 生きて いたら、そんな 道も さがせた かも しれない。げんに 重盛は、いつも その <ruby>橋<rt>はし</rt></ruby>を かけようと して いた。</p><p>もし 清盛が 法皇と 手を にぎり直して いたら、平家に「法皇を とじこめた <ruby>悪人<rt>あくにん</rt></ruby>」の 悪評は つかず、<ruby>翌年<rt>よくねん</rt></ruby>、<ruby>諸国<rt>しょこく</rt></ruby>の <ruby>源氏<rt>げんじ</rt></ruby>が いっせいに 立ち上がる <ruby>口実<rt>こうじつ</rt></ruby>（もっともらしい 理由）も、生まれなかったかも しれない。海に ひらく 都は、もっと 長く 続いた だろうか——。</p><p>だが <ruby>史実<rt>じじつ</rt></ruby>の 清盛は、<ruby>和解<rt>わかい</rt></ruby>を えらばなかった。<ruby>橋<rt>はし</rt></ruby>を 失った <ruby>怒<rt>いか</rt></ruby>りは、法皇を 力で おさえこむ ほうへ かたむいたのだ。</p>` } },
+                body: `<p>力で ねじ<ruby>伏<rt>ふ</rt></ruby>せる かわりに、たがいに 一歩ずつ 引く。——ただし、<ruby>頭<rt>あたま</rt></ruby>を 下げても、とりあげられた 国は もどらない。<ruby>鹿<rt>しし</rt></ruby>ヶ<ruby>谷<rt>たに</rt></ruby>で 見た とおり、法皇の まわりの 者は、次の <ruby>機会<rt>きかい</rt></ruby>を 待つ ことも できる。</p><p>もし 清盛が 法皇と 手を にぎり直して いたら、平家に「法皇を とじこめた <ruby>悪人<rt>あくにん</rt></ruby>」の 悪評は つかず、<ruby>翌年<rt>よくねん</rt></ruby>、<ruby>諸国<rt>しょこく</rt></ruby>の <ruby>源氏<rt>げんじ</rt></ruby>が いっせいに 立ち上がる <ruby>口実<rt>こうじつ</rt></ruby>（もっともらしい 理由）も、生まれなかったかも しれない。海に ひらく 都は、もっと 長く 続いた だろうか——。</p><p>だが <ruby>史実<rt>じじつ</rt></ruby>の 清盛は、<ruby>和解<rt>わかい</rt></ruby>を えらばなかった。<ruby>橋<rt>はし</rt></ruby>を 失った あと えらんだのは、法皇を 力で おさえこむ 道だった。</p>` } },
             { label: '<ruby>兵<rt>へい</rt></ruby>を 都に 入れ、法皇を <ruby>幽閉<rt>ゆうへい</rt></ruby>し、国を 動かす 力を とりあげる', to: '5-d', canon: true, effect: { miyako: 2 },
               hist: { verdict: '史実では', match: 'それが、平家 <ruby>独裁<rt>どくさい</rt></ruby>の 頂——そして <ruby>破局<rt>はきょく</rt></ruby>の 入口',
                 body: `<p>清盛は <ruby>兵<rt>へい</rt></ruby>を 率いて 京を おさえた。反平家の <ruby>貴族<rt>きぞく</rt></ruby> 四十人 ほどから <ruby>官職<rt>かんしょく</rt></ruby>を うばい、<ruby>後白河<rt>ごしらかわ</rt></ruby>法皇を <ruby>鳥羽殿<rt>とばどの</rt></ruby>に とじこめる。これが『<ruby>治承<rt>じしょう</rt></ruby>三年の <ruby>政変<rt>せいへん</rt></ruby>』（1179年）だ。<ruby>院政<rt>いんせい</rt></ruby>は 止まり、平家に <ruby>逆<rt>さか</rt></ruby>らえる 者は、もう だれも いなく なった。平家の <ruby>独裁<rt>どくさい</rt></ruby>は、ここに 頂を きわめる。</p><p>だが、<ruby>天皇<rt>てんのう</rt></ruby>でも <ruby>上皇<rt>じょうこう</rt></ruby>でも ない <ruby>武士<rt>ぶし</rt></ruby>が、法皇を とじこめて <ruby>政治<rt>せいじ</rt></ruby>を にぎる——これは あまりに <ruby>前代未聞<rt>ぜんだいみもん</rt></ruby>だった。この 一手が、<ruby>翌年<rt>よくねん</rt></ruby>の「平家を <ruby>討<rt>う</rt></ruby>て」という 声を、全国から 呼びおこす ことに なる。頂は、そのまま くだり坂の はじまりでも あった。</p>`,
-                source: { grade: 'later',
-                  name: '『<ruby>玉葉<rt>ぎょくよう</rt></ruby>』・『<ruby>平家物語<rt>へいけものがたり</rt></ruby>』',
-                  note: '<ruby>幽閉<rt>ゆうへい</rt></ruby>と <ruby>官職<rt>かんしょく</rt></ruby>とり上げは、同時代の <ruby>記録<rt>きろく</rt></ruby>も 伝える 事実。ただし その 場の 清盛と 法皇の やりとりは、後の 物語の いろどり。' } } },
+                source: { grade: 'contemporary',
+                  name: '『<ruby>玉葉<rt>ぎょくよう</rt></ruby>』',
+                  note: '<ruby>幽閉<rt>ゆうへい</rt></ruby>と <ruby>官職<rt>かんしょく</rt></ruby>とり上げは、この 日記が 書きとめた 事実。ただし その 場の 清盛と 法皇の やりとりは、後の 物語の いろどり。' } } },
           ] },
 
         '5-d': { place: '第5章 むすび',

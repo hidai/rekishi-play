@@ -42,9 +42,9 @@ const EXEMPT = new Set<string>([]);
  * その原因のほうを追認してしまう。
  */
 const LOAD_LEDGER: Record<string, number> = {
-  // kiyomori: 全7章（最重 5-b 571）
+  // kiyomori: 6章（最重 7-a2 489）。ch5 は 571→405 で削除（5-c を分割・2026-08-02）。
   'kiyomori:1': 483, 'kiyomori:2': 466, 'kiyomori:3': 454, 'kiyomori:4': 431,
-  'kiyomori:5': 571, 'kiyomori:6': 445, 'kiyomori:7': 489,
+  'kiyomori:6': 445, 'kiyomori:7': 489,
   // ieyasu: 4章（最重 4-b 562）。ch1 は 528→363 で削除（1-c を分割・2026-08-02）。
   'ieyasu:3': 465, 'ieyasu:4': 562, 'ieyasu:5': 541, 'ieyasu:6': 510,
   // masako: 4章

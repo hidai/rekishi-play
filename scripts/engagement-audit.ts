@@ -30,6 +30,7 @@ interface Row {
 
 function audit(w: Work): Row {
   let scenes = 0, body = 0, appar = 0, choicePts = 0, diverge = 0, blocks = 0, hands = 0, closeups = 0;
+  let exprScenes = 0;
   for (const ch of w.story.chapters) {
     for (const id of Object.keys(ch.scenes)) {
       const s = ch.scenes[id] as Record<string, any>;
@@ -41,7 +42,11 @@ function audit(w: Work): Row {
       if (s.spark) b++;
       if (s.deep) b++;
       if (s.creed) b++;
-      if (s.closeup) { b++; closeups++; }
+      if (s.closeup) {
+        b++;
+        closeups++;
+        if (s.closeup.cast?.some((c: any) => c.expr)) exprScenes++;
+      }
       if (s.minigame || s.observe) hands++;
       if (s.choices) {
         b++;
@@ -64,9 +69,7 @@ function audit(w: Work): Row {
     id = s.next;
   }
   return {
-    id: w.id, scenes, body, appar, choicePts, diverge, blocks, hands, closeups,
-    // 場面ごとの表情指定は engine にまだ無い（closeup は人物固定のスペックを描く）。
-    exprScenes: 0,
+    id: w.id, scenes, body, appar, choicePts, diverge, blocks, hands, closeups, exprScenes,
     // 作品えらび → タイトル →（はじめる）→ 第1章。初見は年代記（7章の目次）を通らない
     // （engagement.md §2 A-3 で外した。再訪は年代記のまま）。engine 固定なので定数。
     toFirstText: 2,
