@@ -35,7 +35,7 @@ export const CARDS: Record<string, Card> = {
   'p-okubo': { type: 'person', ch: 4, tone: 'gold', name: '大久保利通', read: 'おおくぼ としみち',
     text: '明治政府の <ruby>中心<rt>ちゅうしん</rt></ruby>に いた 人。<ruby>薩摩<rt>さつま</rt></ruby>の 出で、冷たく 見えるほど 強い <ruby>意志<rt>いし</rt></ruby>の 政治家。大蔵省で きみと <ruby>予算<rt>よさん</rt></ruby>の 方針が 合わず、対立した。だれが 正しかったかは、かんたんには 言えない。' },
   'p-yataro': { type: 'person', ch: 5, tone: 'midori', name: '岩崎弥太郎', read: 'いわさき やたろう',
-    text: '<ruby>三菱<rt>みつびし</rt></ruby>を 一代で <ruby>築<rt>きず</rt></ruby>いた 男。<ruby>土佐<rt>とさ</rt></ruby>の <ruby>武士<rt>ぶし</rt></ruby>の 中で いちばん 下に 近い 家に 生まれ、先ぞが 手ばなした 武士の <ruby>身分<rt>みぶん</rt></ruby>を、お金を つくって 買いもどした。きみが「みんなで <ruby>株<rt>かぶ</rt></ruby>を 出し合う（<ruby>合本<rt>がっぽん</rt></ruby>）」を 説いたのに 対し、この人は「一つの 家が <ruby>独占<rt>どくせん</rt></ruby>して 強く なる」を 選んだ。——ただの 敵では ない。<b>その 独占が、<ruby>海運<rt>かいうん</rt></ruby>で 国の 力を 守った 面も ある</b>。もう 一つの 正解を 生きた 人。1885年、きみとの 争いの まん中で <ruby>病<rt>やまい</rt></ruby>に たおれ、50さいで 世を さった。' },
+    text: '<ruby>三菱<rt>みつびし</rt></ruby>を 一代で <ruby>築<rt>きず</rt></ruby>いた 男。<ruby>土佐<rt>とさ</rt></ruby>の <ruby>侍<rt>さむらい</rt></ruby>の 中で いちばん 下に 近い 家に 生まれ、先ぞが 手ばなした 侍の <ruby>身分<rt>みぶん</rt></ruby>を、お金を つくって 買いもどした。きみが「みんなで <ruby>株<rt>かぶ</rt></ruby>を 出し合う（<ruby>合本<rt>がっぽん</rt></ruby>）」を 説いたのに 対し、この人は「一つの 家が <ruby>独占<rt>どくせん</rt></ruby>して 強く なる」を 選んだ。——ただの 敵では ない。<b>その 独占が、<ruby>海運<rt>かいうん</rt></ruby>で 国の 力を 守った 面も ある</b>。もう 一つの 正解を 生きた 人。1885年、きみとの 争いの まん中で <ruby>病<rt>やまい</rt></ruby>に たおれ、50さいで 世を さった。' },
 
   // ---- Words ---- (a word card earns its place only when a scene needs it; ch3 = パリで 見た
   // しくみ / ch5 = 合本 の岐路). 制度語は 本文に出さず ここと deep へ（design §0-5）。

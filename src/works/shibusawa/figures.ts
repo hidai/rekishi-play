@@ -47,7 +47,7 @@ export const FIGURES: Record<string, Figure> = {
   // ★P 章四の 装置＝seat の 対句（別キー。figures.ts 冒頭の 申し送りどおり 図は 増やさず 起こす）。
   // 章二の caption は「上の 人が うごくと、下の 座も うごく」——章四は その 逆を 一枚で 言う: 上座
   // （政府）は 動かず、動いたのは きみの ほう。だから 席は 章二と 同じ 高さの 一列で 右へ 進み、
-  // 五つめだけが 列を 外れて 下がる（＝官を すてる。章題そのもの）。
+  // 五つめだけが 列を 外れて 下がる（＝椅子を おりる。章題そのもの）。
   // 一列は 幕臣（章二の 最後の 座）から 継ぐ——四つ 全部を 並べ直すと 8席に なり、この 図の 主張
   // 「いま 下りた」より「これまで 動いた」が 前に 出る。
   seatDown: {
@@ -65,7 +65,7 @@ export const FIGURES: Record<string, Figure> = {
     dais: { x: 500, y: 46, label: '政府', faction: 'gold' },
     seats: [
       { id: 'baku', x: 150, y: 150, role: '幕臣' },
-      { id: 'shizu', x: 400, y: 150, role: '静岡の 藩' },
+      { id: 'shizu', x: 400, y: 150, role: '静岡の 家来' },
       { id: 'kan', x: 650, y: 150, role: '国の 役人' },
       { id: 'min', x: 820, y: 245, role: '一人の 商人' },
     ],
@@ -103,7 +103,7 @@ export const FIGURES: Record<string, Figure> = {
       { id: 's2', x: 220, y: 70, role: '攘夷の 浪士' },
       { id: 's3', x: 360, y: 70, role: '一橋の 家来' },
       { id: 's4', x: 500, y: 70, role: '幕臣' },
-      { id: 's5', x: 640, y: 70, role: '静岡の 藩' },
+      { id: 's5', x: 640, y: 70, role: '静岡の 家来' },
       { id: 's6', x: 780, y: 70, role: '国の 役人' },
       { id: 's7', x: 920, y: 70, role: '一人の 商人' },
     ],

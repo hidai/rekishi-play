@@ -49,10 +49,10 @@ const BASELINE: Record<string, number> = {
   // masako: 全章 棚卸し済み（武士・将軍・幕府・上皇・朝敵は その場で言い換え／鎌倉殿→将軍に統一・
   //   貴族・朝廷は主線から降ろす／御台所・御家人・乳母・執権は ALLOWED。鎌倉殿・乳母は
   //   この棚卸しで INSTITUTION_TERMS に追加）
-  'shibusawa:entry': 2,
-  'shibusawa:ch1': 1,
-  'shibusawa:ch2': 2,
-  'shibusawa:ch3': 2,
+  // shibusawa: 全章 棚卸し済み（幕府・将軍・大蔵省はその場で言い換え／将軍は入口の謎から・藩と
+  //   頭取と「官」は主線から降ろす〔徳川の 家／かしら／役人〕・武士→侍に統一／百姓・代官・幕臣・
+  //   侍・朝敵・株は ALLOWED。代官・大蔵省・頭取・株は この棚卸しで INSTITUTION_TERMS に追加）
+  //   ＝これで7作すべての棚卸しが終わった（engagement.md §14 型3）。
 };
 
 describe('institution-gloss: 制度語は その場で 一句で 言い換える', () => {

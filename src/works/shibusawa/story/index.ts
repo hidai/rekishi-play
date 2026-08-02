@@ -57,7 +57,7 @@ export const STORY: Story = {
           onEnter: { cards: ['p-eiichi', 'p-ichiroemon'] } },
 
         '1-b': { place: '<ruby>従兄<rt>いとこ</rt></ruby>の 家の 二階',
-          text: `<p>1863年。<ruby>幕府<rt>ばくふ</rt></ruby>が <ruby>港<rt>みなと</rt></ruby>を ひらき、外国の 商人が 日本に 入って きた。<ruby>生糸<rt>きいと</rt></ruby>も 米も <ruby>値<rt>ね</rt></ruby>が はねあがる。「外国人を 追い出せ」——その 声は、こんな 村にまで <ruby>届<rt>とど</rt></ruby>いて いた。</p>
+          text: `<p>1863年。日本を おさめる <ruby>幕府<rt>ばくふ</rt></ruby>が <ruby>港<rt>みなと</rt></ruby>を ひらき、外国の 商人が 日本に 入って きた。<ruby>生糸<rt>きいと</rt></ruby>も 米も <ruby>値<rt>ね</rt></ruby>が はねあがる。「外国人を 追い出せ」——その 声は、こんな 村にまで <ruby>届<rt>とど</rt></ruby>いて いた。</p>
             <p>朝ごとに『<ruby>論語<rt>ろんご</rt></ruby>』を 教えて くれた <ruby>従兄<rt>いとこ</rt></ruby>の <ruby>兄<rt>あに</rt></ruby>。その 家の 二階に、<ruby>刀<rt>かたな</rt></ruby>と <ruby>鎧<rt>よろい</rt></ruby>が 積まれて いく。<ruby>藍<rt>あい</rt></ruby>を 売った 金で 買い集めた ものだ。</p>
             <p class="speak">「<ruby>高崎<rt>たかさき</rt></ruby>の 城を のっとって 武器を 取る。<ruby>街道<rt>かいどう</rt></ruby>を 下って <ruby>横浜<rt>よこはま</rt></ruby>へ 行き、<b>外国人の 町を 焼き、外国人を <ruby>斬<rt>き</rt></ruby>る</b>。」</p>
             <p>仲間は およそ 69人。<ruby>決行<rt>けっこう</rt></ruby>は 冬の 夜——あと ひと月。</p>`,
@@ -248,7 +248,7 @@ export const STORY: Story = {
         '3-d': { place: 'パリ——1868年',
           monologue: '（……帰る ところが、ひとつずつ 消えて いく。）',
           closeup: { tone: 'grief', cast: [{ face: 'p-eiichi@prime', name: '栄一（きみ）' }, { face: 'p-akitake@paris', name: '徳川昭武' }] },
-          text: `<p>日本からの <ruby>便<rt>たよ</rt></ruby>りは、来るたびに わるく なった。<ruby>将軍<rt>しょうぐん</rt></ruby>は <ruby>政<rt>まつりごと</rt></ruby>を 返した。<ruby>鳥羽<rt>とば</rt></ruby>・<ruby>伏見<rt>ふしみ</rt></ruby>で <ruby>幕府<rt>ばくふ</rt></ruby>がわが 負けた。</p>
+          text: `<p>日本からの <ruby>便<rt>たよ</rt></ruby>りは、来るたびに わるく なった。<ruby>将軍<rt>しょうぐん</rt></ruby>は、国を おさめる 力を <ruby>天皇<rt>てんのう</rt></ruby>に 返した。<ruby>鳥羽<rt>とば</rt></ruby>・<ruby>伏見<rt>ふしみ</rt></ruby>で <ruby>幕府<rt>ばくふ</rt></ruby>がわが 負けた。</p>
             <p>そして 新しい <ruby>政府<rt>せいふ</rt></ruby>から <ruby>命令<rt>めいれい</rt></ruby>が 来る。——帰れ。</p>
             <p><ruby>殿<rt>との</rt></ruby>が、小さな 声で 言った。</p>
             <p class="speak">「——まだ、なにも 学んで いない。」</p>
@@ -264,8 +264,8 @@ export const STORY: Story = {
           monologue: '（……あの 人は、もう <ruby>殿<rt>との</rt></ruby>では ない。）',
           closeup: { tone: 'solemn', cast: [{ face: 'p-yoshinobu', name: '徳川慶喜' }, { face: 'p-eiichi@prime', name: '栄一（きみ）' }] },
           text: `<p>1868年の <ruby>暮<rt>く</rt></ruby>れ、<ruby>横浜<rt>よこはま</rt></ruby>に 着いた。二年ぶりの 国は、みやこの 名も、上に 立つ 人も 変わって いた。<ruby>江戸<rt>えど</rt></ruby>は <ruby>東京<rt>とうきょう</rt></ruby>に なって いた。</p>
-            <p><ruby>慶喜<rt>よしのぶ</rt></ruby>は <ruby>静岡<rt>しずおか</rt></ruby>の 寺に いた。<ruby>将軍<rt>しょうぐん</rt></ruby>でも なく、<ruby>朝敵<rt>ちょうてき</rt></ruby>と <ruby>呼<rt>よ</rt></ruby>ばれ、人に 会わずに <ruby>暮<rt>く</rt></ruby>らして いる。きみは <ruby>洋服<rt>ようふく</rt></ruby>の まま その 前に すわり、あずかった 金の <ruby>帳<rt>ちょう</rt></ruby>を 出して、二年ぶんの <ruby>報告<rt>ほうこく</rt></ruby>を した。</p>
-            <p>その 冬、きみは 静岡に <ruby>残<rt>のこ</rt></ruby>る。<ruby>藩<rt>はん</rt></ruby>の お金と、土地の <ruby>商人<rt>しょうにん</rt></ruby>たちの お金を 出し合わせて、米や お茶を 動かし、<ruby>貸<rt>か</rt></ruby>し付けも する ——<ruby>商法会所<rt>しょうほうかいしょ</rt></ruby>。パリで 見た あの しくみの、いちばん 小さな ものだ。</p>`,
+            <p><ruby>慶喜<rt>よしのぶ</rt></ruby>は <ruby>静岡<rt>しずおか</rt></ruby>の 寺に いた。<ruby>将軍<rt>しょうぐん</rt></ruby>でも なく、<ruby>天皇<rt>てんのう</rt></ruby>の 敵——<ruby>朝敵<rt>ちょうてき</rt></ruby>と <ruby>呼<rt>よ</rt></ruby>ばれ、人に 会わずに <ruby>暮<rt>く</rt></ruby>らして いる。きみは <ruby>洋服<rt>ようふく</rt></ruby>の まま その 前に すわり、あずかった 金の <ruby>帳<rt>ちょう</rt></ruby>を 出して、二年ぶんの <ruby>報告<rt>ほうこく</rt></ruby>を した。</p>
+            <p>その 冬、きみは 静岡に <ruby>残<rt>のこ</rt></ruby>る。<ruby>徳川<rt>とくがわ</rt></ruby>の 家が 新しい 政府から 借りた お金と、土地の <ruby>商人<rt>しょうにん</rt></ruby>たちの お金を 出し合わせて、米や お茶を 動かし、<ruby>貸<rt>か</rt></ruby>し付けも する ——<ruby>商法会所<rt>しょうほうかいしょ</rt></ruby>。パリで 見た あの しくみの、いちばん 小さな ものだ。</p>`,
           creed: { line: '「<ruby>焼<rt>や</rt></ruby>こうと した 国に、答えが あった。——見て しまった からには、<ruby>持<rt>も</rt></ruby>ち帰る。」',
             act: '——<ruby>髷<rt>まげ</rt></ruby>を 落とし、人から あずかった 金を 見たばかりの <ruby>紙<rt>かみ</rt></ruby>に <ruby>換<rt>か</rt></ruby>えた。<ruby>刀<rt>かたな</rt></ruby>を 買う ために 集めた 金で 始まった 道が、いまは 紙を 買う 手で 続いて いる。' },
           onEnter: { clue: 'clue-3' },
@@ -273,8 +273,10 @@ export const STORY: Story = {
       },
     },
     {
-      id: 4, num: '四', title: '官を すてる', years: '1869〜1873',
-      lead: 'エリートの <ruby>役人<rt>やくにん</rt></ruby>として <ruby>大蔵省<rt>おおくらしょう</rt></ruby>に 残るか、<ruby>民<rt>みん</rt></ruby>に 下って 日本で 最初の <ruby>銀行<rt>ぎんこう</rt></ruby>を つくるか。上から 命じる 側の <ruby>椅子<rt>いす</rt></ruby>を、自分で おりるのか。',
+      id: 4, num: '四', title: '<ruby>椅子<rt>いす</rt></ruby>を おりる', years: '1869〜1873',
+      // 言い換えは choice 節の中でなく先頭に置く（挿入すると「役所・大蔵省・役人」が三つ続いて
+      // 小5が息切れした＝2026-08-02 eval）。エリートは戻す——残る側の誘惑を一語で運ぶ。
+      lead: '<ruby>大蔵省<rt>おおくらしょう</rt></ruby>——国じゅうの お金が 集まる <ruby>役所<rt>やくしょ</rt></ruby>。その エリートの <ruby>役人<rt>やくにん</rt></ruby>と して 残るか、そこを 出て 日本で 最初の <ruby>銀行<rt>ぎんこう</rt></ruby>を つくるか。上から 命じる 側の <ruby>椅子<rt>いす</rt></ruby>を、自分で おりるのか。',
       start: '4-a',
       teaser: '<ruby>民間<rt>みんかん</rt></ruby>の <ruby>実業家<rt>じつぎょうか</rt></ruby>に なった きみに、<ruby>三菱<rt>みつびし</rt></ruby>の <ruby>岩崎<rt>いわさき</rt></ruby>が 声を かけて くる。',
       scenes: {
@@ -331,8 +333,8 @@ export const STORY: Story = {
           choices: [
             { label: '<ruby>役人<rt>やくにん</rt></ruby>で 残る。国じゅうの お金を 動かせる 席を 手ばなさない', to: '4-e', effect: { rongo: 1, soroban: 1 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし あの 席に すわり つづけて いたら……',
-                body: `<p>残れば、きみの 手には 国じゅうの お金が ある。ますも <ruby>税<rt>ぜい</rt></ruby>も <ruby>鉄道<rt>てつどう</rt></ruby>も、上から 決められる。位も 上がる。</p><p>二年 のちの 秋、<ruby>政府<rt>せいふ</rt></ruby>は <ruby>朝鮮<rt>ちょうせん</rt></ruby>を めぐって まっぷたつに 割れる。役所の 中に いる かぎり、きみも どちらかの 側に 数えられる。やがて <ruby>兜町<rt>かぶとちょう</rt></ruby>では <ruby>三井<rt>みつい</rt></ruby>と <ruby>小野<rt>おの</rt></ruby>の 二つの <ruby>商家<rt>しょうか</rt></ruby>が <ruby>銀行<rt>ぎんこう</rt></ruby>を 始める——あいだに 立つ 者が いなければ、それは 二つの 家の <ruby>金蔵<rt>かなぐら</rt></ruby>の ままだ。</p><p>——そして その 銀行に、きみの 名は 無い。</p>` } },
-            { label: '<ruby>官<rt>かん</rt></ruby>を すてる。下から、みんなの お金で 会社を つくる', to: '4-e', canon: true, effect: { rongo: 1, gappon: 2 },
+                body: `<p>残れば、きみの 手には 国じゅうの お金が ある。ますも <ruby>税<rt>ぜい</rt></ruby>も <ruby>鉄道<rt>てつどう</rt></ruby>も、上から 決められる。位も 上がる。</p><p>二年 のちの 秋、<ruby>政府<rt>せいふ</rt></ruby>は <ruby>朝鮮<rt>ちょうせん</rt></ruby>を めぐって まっぷたつに 割れる。役所の 中に いる かぎり、きみも どちらかの 側に 数えられる。やがて <ruby>兜町<rt>かぶとちょう</rt></ruby>では <ruby>三井<rt>みつい</rt></ruby>と <ruby>小野<rt>おの</rt></ruby>の 二つの <ruby>商家<rt>しょうか</rt></ruby>が <ruby>銀行<rt>ぎんこう</rt></ruby>を 始める——あいだに 立つ 者が いなければ、それは 二つの 家の <ruby>金蔵<rt>かなぐら</rt></ruby>の ままだ。</p><p>——そして その 銀行に、きみの 名は 無い。</p><p>この ころ、<ruby>役所<rt>やくしょ</rt></ruby>を 出て <ruby>商<rt>あきな</rt></ruby>いを する ことは「下がる」ことだった。残るのは、この 世で いちばん まっとうな 選びかたでも あった。</p>` } },
+            { label: '<ruby>役人<rt>やくにん</rt></ruby>を やめる。下から、みんなの お金で 会社を つくる', to: '4-e', canon: true, effect: { rongo: 1, gappon: 2 },
               hist: { verdict: '史実では', match: '——二人の <ruby>辞表<rt>じひょう</rt></ruby>と、新聞に 出た 国の <ruby>数字<rt>すうじ</rt></ruby>',
                 body: `<p>きみは その 場で「やめます」と 言った。<ruby>井上<rt>いのうえ</rt></ruby>に 止められ、二年 ちかく 残る。</p><p>そして 1873年の 5月、こんどは 二人 そろって 辞表を 出した。入る 金と 出る 金を ならべた 文を 書き、<ruby>新聞<rt>しんぶん</rt></ruby>に のせる。国の <ruby>台所<rt>だいどころ</rt></ruby>の 中身が、はじめて 世間の 目に さらされた。</p><p><ruby>政府<rt>せいふ</rt></ruby>は <ruby>怒<rt>おこ</rt></ruby>った。<ruby>役人<rt>やくにん</rt></ruby>が 中の ことを 外へ 出すのは 決まり<ruby>破<rt>やぶ</rt></ruby>りだ——きみには <ruby>罰金<rt>ばっきん</rt></ruby>が 科された。</p><p>この ころ、<ruby>官<rt>かん</rt></ruby>を 出る ことは「下がる」ことだった。上に 立つ 者が 役人で、<ruby>商<rt>あきな</rt></ruby>いを する 者は その 下。<b>きみは 自分から 下りた。</b></p>`,
                 source: { grade: 'contemporary', name: '新聞に のった <ruby>建言書<rt>けんげんしょ</rt></ruby>（1873年5月）',
@@ -356,10 +358,10 @@ export const STORY: Story = {
           monologue: '（……ここから 先は、だれの <ruby>命令<rt>めいれい</rt></ruby>でも ない。）',
           figure: 'seatDown',
           text: `<p>1873年の 夏、<ruby>兜町<rt>かぶとちょう</rt></ruby>に 銀行が ひらいた。<ruby>第一国立銀行<rt>だいいちこくりつぎんこう</rt></ruby>——国の 決まりで つくられた、日本で 最初の 銀行だ。</p>
-            <p>お金を 出したのは 国では ない。<ruby>三井<rt>みつい</rt></ruby>と <ruby>小野<rt>おの</rt></ruby>——<ruby>江戸<rt>えど</rt></ruby>の 昔から つづく 二つの <ruby>商家<rt>しょうか</rt></ruby>だ。<ruby>頭取<rt>とうどり</rt></ruby>は その 二つの 家から 一人ずつ。きみは <ruby>総監役<rt>そうかんやく</rt></ruby>、あいだに 立つ 役だ。</p>
+            <p>お金を 出したのは 国では ない。<ruby>三井<rt>みつい</rt></ruby>と <ruby>小野<rt>おの</rt></ruby>——<ruby>江戸<rt>えど</rt></ruby>の 昔から つづく 二つの <ruby>商家<rt>しょうか</rt></ruby>だ。上に 立つ 人は その 二つの 家から 一人ずつ。きみは <ruby>総監役<rt>そうかんやく</rt></ruby>、あいだに 立つ 役だ。</p>
             <p>役所の <ruby>椅子<rt>いす</rt></ruby>には、命じる 力が あった。この 椅子に あるのは、人に 頭を 下げて お金を 出して もらう 手だけだ。</p>
             <p>やがて <ruby>喜作<rt>きさく</rt></ruby>も 役所を 出た。</p>`,
-          creed: { line: '「<ruby>官<rt>かん</rt></ruby>が 上で、<ruby>商<rt>あきな</rt></ruby>いが 下か。——ならば わたしは、下から やる。」',
+          creed: { line: '「<ruby>役人<rt>やくにん</rt></ruby>が 上で、<ruby>商<rt>あきな</rt></ruby>いが 下か。——ならば わたしは、下から やる。」',
             act: '——<ruby>殿<rt>との</rt></ruby>に 呼ばれて 入った 役所を、こんどは 自分の 足で 出た。<ruby>静岡<rt>しずおか</rt></ruby>で ためした いちばん 小さな しくみを、いま 日本の まん中に 立てて いる。' },
           onEnter: { clue: 'clue-4' },
           end: true },
@@ -374,7 +376,7 @@ export const STORY: Story = {
         '5-a': { place: '東京・<ruby>兜町<rt>かぶとちょう</rt></ruby>',
           monologue: '（会社を ふやすのは、たのしい。……ただ、海の 上だけは、どうにも ならぬ。）',
           closeup: { tone: 'tense', cast: [{ face: 'p-yataro', name: '岩崎弥太郎' }] },
-          text: `<p><ruby>役人<rt>やくにん</rt></ruby>を やめて 五年。きみは 自分の 店を 太らせる かわりに、よその 人の 会社を 次から 次へと 起こす 手つだいを して いる。紙。よその 町の <ruby>銀行<rt>ぎんこう</rt></ruby>。<ruby>株<rt>かぶ</rt></ruby>を 売り買いする 所。船が しずんでも お金が もどる <ruby>保険<rt>ほけん</rt></ruby>。お金を 出す 人を 何十人も あつめ、みんなの 会社に する。</p>
+          text: `<p><ruby>役人<rt>やくにん</rt></ruby>を やめて 五年。きみは 自分の 店を 太らせる かわりに、よその 人の 会社を 次から 次へと 起こす 手つだいを して いる。紙。よその 町の <ruby>銀行<rt>ぎんこう</rt></ruby>。会社に お金を 出した しるし（<ruby>株<rt>かぶ</rt></ruby>）を 売り買いする 所。船が しずんでも お金が もどる <ruby>保険<rt>ほけん</rt></ruby>。お金を 出す 人を 何十人も あつめ、みんなの 会社に する。</p>
             <p>ただ、海の 上だけは ちがった。船の 道は、<ruby>土佐<rt>とさ</rt></ruby>から 出て きた 男・<ruby>岩崎弥太郎<rt>いわさきやたろう</rt></ruby>の <ruby>三菱<rt>みつびし</rt></ruby>が ほとんど にぎって いる。運ぶ <ruby>値段<rt>ねだん</rt></ruby>も、岩崎の 一言で 動く。</p>
             <p>その 岩崎から、<ruby>使<rt>つか</rt></ruby>いが 来た。——<ruby>隅田川<rt>すみだがわ</rt></ruby>で <ruby>舟遊<rt>ふなあそ</rt></ruby>びを しよう、と。</p>`,
           deep: { q: '<ruby>三菱<rt>みつびし</rt></ruby>は なぜ そんなに 強い？', confidence: '◎',
@@ -628,7 +630,7 @@ export const STORY: Story = {
           figure: 'seatAll',
           text: `<p><ruby>葬<rt>そう</rt></ruby>れつは <ruby>飛鳥山<rt>あすかやま</rt></ruby>の 家から <ruby>青山<rt>あおやま</rt></ruby>まで つづき、道の 両がわを 人が うめた。</p>
             <p><ruby>旅<rt>たび</rt></ruby>の はじめに あずけた 謎を、もう 一度。</p>
-            <p class="speak"><ruby>百姓<rt>ひゃくしょう</rt></ruby>に 生まれ、外国人を 焼こうと し、<ruby>将軍<rt>しょうぐん</rt></ruby>に つかえ、その 将軍を たおした 国に つかえた 男。——変えなかった ものは、何だろう。そして なぜ、この 人は 自分の <ruby>財閥<rt>ざいばつ</rt></ruby>を つくらなかったのだろう。</p>
+            <p class="speak"><ruby>百姓<rt>ひゃくしょう</rt></ruby>に 生まれ、外国人を 焼こうと し、その 外国に 港を ひらいた <ruby>将軍<rt>しょうぐん</rt></ruby>に つかえ、その 将軍を たおした 国に つかえた 男。——変えなかった ものは、何だろう。そして なぜ、この 人は 自分の <ruby>財閥<rt>ざいばつ</rt></ruby>を つくらなかったのだろう。</p>
             <p>七つの <ruby>手<rt>て</rt></ruby>がかりと、七つの <ruby>座<rt>ざ</rt></ruby>を 見わたして——<br><em>きみは、どう 考える？</em></p>`,
           deep: { q: 'その 日、どれだけの 人が 見送ったの？', confidence: '△',
             body: `<ruby>沿道<rt>えんどう</rt></ruby>を「三万人が 見送った」という 数字が、いまも あちこちに 書かれて いる。だが その もとに ある はずの、その日の 新聞そのものを たしかめる ことは まだ できて いない。<br>——この 一生で きみが 何度も 見た ことが、最後にも 起きて いる。<b>だれかが 語り、数字が つき、それが くりかえされる。</b>`,
