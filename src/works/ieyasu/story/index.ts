@@ -617,7 +617,7 @@ export const STORY: Story = {
             <p class="speak">「『<ruby>明神<rt>みょうじん</rt></ruby>』は いけませぬ。<ruby>豊国大明神<rt>ほうこく だいみょうじん</rt></ruby>——<ruby>秀吉<rt>ひでよし</rt></ruby>どのの 神の 名を、ごらんなさい。あの ように まつられた <ruby>豊臣<rt>とよとみ</rt></ruby>の 家は、げんに ほろびました」</p>
             <p><ruby>勝<rt>か</rt></ruby>った 側が、ほろぼした 側の <ruby>前例<rt>ぜんれい</rt></ruby>を 見て、自分の 神の 形を えらぶ。決まった 名は「<ruby>東照大権現<rt>とうしょう だいごんげん</rt></ruby>」。</p>`,
           reveal: { title: '「<ruby>東照大権現<rt>とうしょう だいごんげん</rt></ruby>」',
-            caption: '1617年、<ruby>朝廷<rt>ちょうてい</rt></ruby>から おくられた <ruby>神<rt>かみ</rt></ruby>の 名。<ruby>人質<rt>ひとじち</rt></ruby>の 子が、<ruby>神<rt>かみ</rt></ruby>に なった。' },
+            caption: '1617年——<ruby>人質<rt>ひとじち</rt></ruby>の 子が、<ruby>神<rt>かみ</rt></ruby>に なった。' },
           onEnter: { cards: ['p-tenkai', 'w-toshogu'] },
           next: '7-c' },
 
