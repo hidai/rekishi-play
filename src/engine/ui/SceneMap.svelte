@@ -33,6 +33,13 @@
   // 「同じ気づきの上をなで続けても解像音を鳴らし直さない」ための縁の記憶（描画に出ない＝非リアクティブ）。
   let sparkId: string | null = null;
 
+  // 絵は幅 100% で敷かれるので、地図単位が何 CSS px になるかはこの幅でしか分からない。
+  // 測って session に返し、次の描画で文字・印の大きさが端末非依存に決まる（map/sceneMap の f）。
+  let visualW = $state(0);
+  $effect(() => {
+    session.setVisualW(visualW);
+  });
+
   const frame = $derived(observe ? parseFrame(svg) : null);
   const overlay = $derived(
     observe && frame && session.scene
@@ -125,6 +132,7 @@
   class="scene-visual"
   class:ob-active={!!observe}
   bind:this={visual}
+  bind:clientWidth={visualW}
   onclick={onClick}
   onkeydown={onKey}
   onpointerdown={onPointerDown}

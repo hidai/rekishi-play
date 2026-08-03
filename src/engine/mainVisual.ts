@@ -9,10 +9,17 @@ import { buildCloseup } from './art/closeup';
 import { buildFigure } from './map/figure';
 import { buildStudyPage } from './art/study';
 
-export function buildMainVisual(work: Work, ch: number, sceneId: string, sc: Scene): string {
+export function buildMainVisual(
+  work: Work,
+  ch: number,
+  sceneId: string,
+  sc: Scene,
+  /** Width the visual is laid out in, in CSS px (see DISPLAY_REF_W). Omit for the reference width. */
+  displayW?: number,
+): string {
   if (sc.closeup) return buildCloseup(work, sceneId, sc.closeup);
   if (sc.figure) return buildFigure(work, sc.figure, ch);
   const study = sc.study ? work.studies?.[sc.study] : undefined;
   if (study) return buildStudyPage(sc.study!, study);
-  return buildSceneMap(work, ch, sceneId);
+  return buildSceneMap(work, ch, sceneId, displayW);
 }

@@ -198,7 +198,7 @@ export function buildLocator(
     ih = iw * (LH / LW),
     inner = iw / LW;
   const boxW = iw + 2 * pad,
-    boxH = ih + 2 * pad + 15 * sc; // 下に「いまここ」ラベルぶん
+    boxH = ih + 2 * pad + 21 * sc; // 下に「いまここ」ラベルぶん
   const avoid = onmap.map((m) => ({ x: (m as any).x, y: (m as any).y }));
   offPts.forEach((p) => avoid.push(p));
   const corners = [
@@ -249,7 +249,7 @@ export function buildLocator(
     <g clip-path="url(#${cid})"><g transform="translate(${mx(0)},${my(0)}) scale(${inner})">${geoFlat(geo)}</g>
     <rect x="${mx(x0)}" y="${my(y0)}" width="${bw * inner}" height="${bh * inner}" fill="var(--seal)" fill-opacity="0.14" stroke="var(--seal)" stroke-width="${2.4 * sc}"/></g>
     ${curDot}
-    <text x="${px + boxW / 2}" y="${gy + ih + 12 * sc}" text-anchor="middle" font-size="${11 * sc}" font-family="var(--serif)" font-weight="700" fill="var(--ink)">いま ここ</text>
+    <text class="loc-cap" x="${px + boxW / 2}" y="${gy + ih + 17 * sc}" text-anchor="middle" font-size="${16 * sc}" font-family="var(--serif)" font-weight="700" fill="var(--ink)">いま ここ</text>
   </g>`;
 }
 
@@ -283,7 +283,19 @@ interface PlacedMarker extends Marker {
   y: number;
 }
 
-export function buildSceneMap(work: Work, chId: number, sceneId: string): string {
+/**
+ * Reference display width of the visual, in CSS px (`.wrap` max-width 720 − its 2×20 padding).
+ * The design sizes below (type, faces, frame padding) are stated at this width; `displayW`
+ * restates them at whatever width the visual is actually laid out in.
+ */
+export const DISPLAY_REF_W = 680;
+
+export function buildSceneMap(
+  work: Work,
+  chId: number,
+  sceneId: string,
+  displayW: number = DISPLAY_REF_W,
+): string {
   const map = work.map;
   const geo = sceneGeo(work, sceneId);
   const [VW, VH] = geo.vb;
@@ -336,19 +348,21 @@ export function buildSceneMap(work: Work, chId: number, sceneId: string): string
   // ---- 自動ズーム：マーカー群に合わせて表示範囲を決める ----
   let pts = onmap.map((m) => ({ x: m.x, y: m.y }));
   if (def.allDots) pts = pts.concat(map.mapPoints.map((p) => gazXY(geo, p)));
-  let x0 = 0,
-    y0 = 0,
-    bw = VW,
-    bh = VH;
-  if (pts.length) {
+
+  /**
+   * Frame for a given window scale: markers + padding, widened to the zoom floor, then to the geo
+   * aspect. `k` is how much of the reference window this screen can show (1 = the reference width).
+   * The marker bbox is geography and never scales — only the room around it does.
+   */
+  function framed(k: number): [number, number, number, number] {
     // ★F 顔を大きくした分、見切れないよう余白も広げる（顔・文字の画面上サイズはズーム非依存）。
-    let minX = Math.min(...pts.map((p) => p.x)) - 92,
-      maxX = Math.max(...pts.map((p) => p.x)) + 92;
-    let minY = Math.min(...pts.map((p) => p.y)) - 150,
-      maxY = Math.max(...pts.map((p) => p.y)) + 78; // 上に顔＋名前ぶんの余白
-    bw = maxX - minX;
-    bh = maxY - minY;
-    const minW = geo.minFrameW ?? 392;
+    let minX = Math.min(...pts.map((p) => p.x)) - 92 * k,
+      maxX = Math.max(...pts.map((p) => p.x)) + 92 * k;
+    let minY = Math.min(...pts.map((p) => p.y)) - 150 * k,
+      maxY = Math.max(...pts.map((p) => p.y)) + 78 * k; // 上に顔＋名前ぶんの余白
+    let bw = maxX - minX;
+    let bh = maxY - minY;
+    const minW = (geo.minFrameW ?? 392) * k;
     if (bw < minW) {
       const c = (minX + maxX) / 2;
       minX = c - minW / 2;
@@ -365,31 +379,51 @@ export function buildSceneMap(work: Work, chId: number, sceneId: string): string
       minY -= (nb - bh) / 2;
       bh = nb;
     }
-    x0 = minX;
-    y0 = minY;
-
-    // A clipped stage (an overseas asset baked from a bbox) has no coastline past its cut: a frame
-    // that crosses one draws the cut as a dead-straight coast. The frame is derived from markers +
-    // padding, so a marker near the corner of the bake (davinci ch7 = アンボワーズ) pushes it out
-    // without anything else noticing. Slide it back inside the cut — shrinking, keeping the aspect,
-    // only if the frame is larger than the bake itself.
-    if (geo.bounds) {
-      const [W, E, S, N] = geo.bounds;
-      const [bx0, by0, bx1, by1] = [
-        projX(geo.proj, W), projY(geo.proj, N), projX(geo.proj, E), projY(geo.proj, S),
-      ];
-      const k = Math.min(1, (bx1 - bx0) / bw, (by1 - by0) / bh);
-      if (k < 1) {
-        x0 += (bw - bw * k) / 2;
-        y0 += (bh - bh * k) / 2;
-        bw *= k;
-        bh *= k;
-      }
-      x0 = Math.min(Math.max(x0, bx0), bx1 - bw);
-      y0 = Math.min(Math.max(y0, by0), by1 - bh);
-    }
+    return inBake([minX, minY, bw, bh]);
   }
-  const sc = bw / VW; // 表示スケール（画面上の見た目サイズをほぼ一定に保つ）
+
+  /**
+   * A clipped stage (an overseas asset baked from a bbox) has no coastline past its cut: a frame that
+   * crosses one draws the cut as a dead-straight coast. The frame is derived from markers + padding,
+   * so a marker near the corner of the bake (davinci ch7 = アンボワーズ) pushes it out without
+   * anything else noticing — as does growing the window to hold a label. Slide it back inside the
+   * cut — shrinking, keeping the aspect, only if the frame is larger than the bake itself.
+   */
+  function inBake([x0, y0, bw, bh]: [number, number, number, number]): [number, number, number, number] {
+    if (!geo.bounds) return [x0, y0, bw, bh];
+    const [W, E, S, N] = geo.bounds;
+    const [bx0, by0, bx1, by1] = [
+      projX(geo.proj, W), projY(geo.proj, N), projX(geo.proj, E), projY(geo.proj, S),
+    ];
+    const k = Math.min(1, (bx1 - bx0) / bw, (by1 - by0) / bh);
+    if (k < 1) {
+      x0 += (bw - bw * k) / 2;
+      y0 += (bh - bh * k) / 2;
+      bw *= k;
+      bh *= k;
+    }
+    return [Math.min(Math.max(x0, bx0), bx1 - bw), Math.min(Math.max(y0, by0), by1 - bh), bw, bh];
+  }
+
+  // The SVG is laid out at `width:100%`, so a map unit is `displayW / bw` CSS px: sizing marks
+  // against bw alone ties them to the viewport while the body text stays fixed px, and a label tuned
+  // to 17.7px on the 680px reference column lands at 9.3px on a 358px phone next to 17.5px prose
+  // (family note 2026-08-03「地図の文字が非常に小さくて読めない」).
+  //
+  // So a narrow screen CROPS rather than shrinks — the same physical scale through a smaller window,
+  // as the body keeps its size and takes fewer characters per line. The window's own parts (zoom
+  // floor, the room around the markers) scale with the screen; the markers' geographic spread cannot,
+  // so a scene covering more land than the window holds falls back to shrinking and `sc` follows.
+  //
+  // Type never grows PAST its reference size: lpos and the face dodge are authored at that size and
+  // two towns a morning's walk apart have no room to spare (enlarging it collided in 5 of 7 works;
+  // tests/map-labels.test.ts now runs 328px too). And an edge arrow (`off`) is drawn ON the frame
+  // edge, so cropping walks it into the on-map labels — those 8 scenes keep the reference window.
+  const f = offmk.length ? 1 : DISPLAY_REF_W / Math.max(1, displayW);
+  const [x0, y0, bw, bh] = pts.length ? framed(1 / f) : [0, 0, VW, VH];
+  // 設計単位 → 地図単位。D*sc の印は、余白が許すかぎり、どの端末でも同じ CSS px に着地する。
+  // 印の無いシーンは窓が geo ぜんぶ＝切る余地が定義できないので、基準の見た目のまま置く。
+  const sc = pts.length ? Math.min(f === 1 ? bw : framed(1)[2], bw * f) / VW : 1;
   const R = 34; // ★F 似顔絵の基準半径（実機で加齢・表情が読めるよう拡大。旧24）
   const NAME_FS = 18; // 顔の上の名前（pre-scale。行の間隔を名前幅から決めるので定数にする）
 
@@ -448,14 +482,42 @@ export function buildSceneMap(work: Work, chId: number, sceneId: string): string
       .map((p) =>
         here.has(p.id)
           ? ''
-          : `<circle cx="${p.x}" cy="${p.y}" r="${9 * sc}" fill="var(--panel)" stroke="var(--seal)" stroke-width="${2 * sc}"/>` +
-            `<text x="${p.x}" y="${p.y + 4 * sc}" text-anchor="middle" font-size="${12 * sc}" font-weight="700" font-family="var(--serif)" fill="var(--seal)">${p.n}</text>`,
+          : // The badge is a 1–2 digit ordinal inside its own disc: it reads small (≈8px) by design,
+            // because a disc big enough to hold body-size digits would cover the coast it sits on.
+            `<circle cx="${p.x}" cy="${p.y}" r="${9 * sc}" fill="var(--panel)" stroke="var(--seal)" stroke-width="${2 * sc}"/>` +
+            `<text class="smk-seq" x="${p.x}" y="${p.y + 4 * sc}" text-anchor="middle" font-size="${12 * sc}" font-weight="700" font-family="var(--serif)" fill="var(--seal)">${p.n}</text>`,
       )
       .join('');
     dots = `<path d="${jd}" class="sjourney" pathLength="1" style="stroke-width:${5 * sc}"/>${stops}`;
   }
   const SHORT = work.shortNames;
   const you = work.protagonistId;
+
+  // A label is drawn at a fixed CSS px size, so on a narrow screen it takes a bigger share of the
+  // map than the frame's padding was tuned for — and the frame is what it is anchored in. Every
+  // on-map label reports its ink box through here, and the window is grown to hold them all before
+  // it is written (the viewBox is emitted last, and every coordinate is absolute, so nothing moves).
+  // Off-map arrows are deliberately NOT counted: they are placed FROM the frame edge.
+  const ink = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
+  const ASCENT = 0.88,
+    DESCENT = 0.22; // serif CJK sits almost entirely above the baseline
+  const txt = (
+    cls: string,
+    x: number,
+    y: number,
+    anchor: 'middle' | 'start' | 'end',
+    fs: number,
+    sw: number,
+    t: string,
+  ): string => {
+    const w = textW(t, fs);
+    const lx = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x;
+    ink.x0 = Math.min(ink.x0, lx);
+    ink.x1 = Math.max(ink.x1, lx + w);
+    ink.y0 = Math.min(ink.y0, y - fs * ASCENT);
+    ink.y1 = Math.max(ink.y1, y + fs * DESCENT);
+    return `<text class="${cls}" x="${x}" y="${y}" text-anchor="${anchor}" font-size="${fs}" stroke-width="${sw}">${esc(t)}</text>`;
+  };
 
   // Ink box of every marker's icon, so a face disc can be kept off a NEIGHBOUR's icon. Two places
   // a morning's walk apart land a few pixels apart while the faces keep one on-screen size, and the
@@ -536,7 +598,7 @@ export function buildSceneMap(work: Work, chId: number, sceneId: string): string
           `<circle class="smk-face" cx="${cx}" cy="${cy}" r="${rr}" fill="var(--panel)" stroke="${isYou ? 'var(--gold)' : '#fff'}" stroke-width="${(isYou ? 3.2 : 2.2) * sc}"/>` +
           faceSvg(faceKey, cx - rr, cy - rr, rr * 2, cid, work.faces);
         if (nm)
-          fg += `<text class="smk-name${isYou ? ' you' : ''}" x="${cx}" y="${cy - rr - 5 * sc}" text-anchor="middle" font-size="${nameFs}" stroke-width="${3.2 * sc}">${esc(nm)}</text>`;
+          fg += txt(`smk-name${isYou ? ' you' : ''}`, cx, cy - rr - 5 * sc, 'middle', nameFs, 3.2 * sc, nm);
         s += `<g${tap}>${fg}</g>`;
         facesTopY = Math.min(facesTopY, cy - rr - (nm ? 23 * sc : 2 * sc));
       });
@@ -548,30 +610,22 @@ export function buildSceneMap(work: Work, chId: number, sceneId: string): string
         const lx = m.x + dir * 26 * sc;
         const anchor = m.lpos === 'left' ? 'end' : 'start';
         const ly = m.y + 4 * sc;
-        if (m.label) {
-          s += `<text class="smk-lb" x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="${26 * sc}" stroke-width="${5 * sc}">${esc(m.label)}</text>`;
-        }
-        if (m.note) {
-          s += `<text class="smk-note" x="${lx}" y="${ly + 21 * sc}" text-anchor="${anchor}" font-size="${19.5 * sc}" stroke-width="${4 * sc}">${esc(m.note)}</text>`;
-        }
+        if (m.label) s += txt('smk-lb', lx, ly, anchor, 26 * sc, 5 * sc, m.label);
+        if (m.note) s += txt('smk-note', lx, ly + 21 * sc, anchor, 19.5 * sc, 4 * sc, m.note);
       } else if (m.lpos === 'above') {
         let ly = facesTopY - 6 * sc;
         if (m.note) {
-          s += `<text class="smk-note" x="${m.x}" y="${ly}" text-anchor="middle" font-size="${19.5 * sc}" stroke-width="${4 * sc}">${esc(m.note)}</text>`;
+          s += txt('smk-note', m.x, ly, 'middle', 19.5 * sc, 4 * sc, m.note);
           ly -= 21 * sc;
         }
-        if (m.label) {
-          s += `<text class="smk-lb" x="${m.x}" y="${ly}" text-anchor="middle" font-size="${26 * sc}" stroke-width="${5 * sc}">${esc(m.label)}</text>`;
-        }
+        if (m.label) s += txt('smk-lb', m.x, ly, 'middle', 26 * sc, 5 * sc, m.label);
       } else {
         let ly = m.y;
         if (m.label) {
-          s += `<text class="smk-lb" x="${m.x}" y="${m.y + 24 * sc}" text-anchor="middle" font-size="${26 * sc}" stroke-width="${5 * sc}">${esc(m.label)}</text>`;
+          s += txt('smk-lb', m.x, m.y + 24 * sc, 'middle', 26 * sc, 5 * sc, m.label);
           ly = m.y + 24 * sc;
         }
-        if (m.note) {
-          s += `<text class="smk-note" x="${m.x}" y="${ly + 21 * sc}" text-anchor="middle" font-size="${19.5 * sc}" stroke-width="${4 * sc}">${esc(m.note)}</text>`;
-        }
+        if (m.note) s += txt('smk-note', m.x, ly + 21 * sc, 'middle', 19.5 * sc, 4 * sc, m.note);
       }
       return s;
     })
@@ -615,8 +669,36 @@ export function buildSceneMap(work: Work, chId: number, sceneId: string): string
     })
     .join('');
 
-  const locator = buildLocator(work, geo, x0, y0, bw, bh, sc, onmap, offPts);
-  return `<svg class="scene-map" viewBox="${x0} ${y0} ${bw} ${bh}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="いまの 場所・登場人物・できごとの 地図">
-    <rect class="msea" x="${x0 - 40}" y="${y0 - 40}" width="${bw + 80}" height="${bh + 80}"/>
+  // Grow the window to hold every label (see `ink`), keeping the geo's aspect. At the reference
+  // width the frame's own padding already covers them and this is a no-op; a cropped narrow window
+  // is where a label reaches the edge, and it gives back exactly the room that one label needs.
+  let [vx, vy, vw, vh] = [x0, y0, bw, bh];
+  if (isFinite(ink.x0)) {
+    // Only a side that would actually CUT a label gives way, and it gives that label a hair of
+    // clearance rather than landing it exactly on the edge. A frame that already holds its labels —
+    // every scene at the reference width — is left untouched.
+    const m = 2 * sc;
+    const [nx0, ny0] = [ink.x0 < vx ? ink.x0 - m : vx, ink.y0 < vy ? ink.y0 - m : vy];
+    const [nx1, ny1] = [
+      ink.x1 > vx + vw ? ink.x1 + m : vx + vw,
+      ink.y1 > vy + vh ? ink.y1 + m : vy + vh,
+    ];
+    [vx, vy, vw, vh] = [nx0, ny0, nx1 - nx0, ny1 - ny0];
+    const ratio = VW / VH;
+    if (vw / vh < ratio) {
+      const nb = vh * ratio;
+      vx -= (nb - vw) / 2;
+      vw = nb;
+    } else {
+      const nb = vw / ratio;
+      vy -= (nb - vh) / 2;
+      vh = nb;
+    }
+    [vx, vy, vw, vh] = inBake([vx, vy, vw, vh]);
+  }
+
+  const locator = buildLocator(work, geo, vx, vy, vw, vh, sc, onmap, offPts);
+  return `<svg class="scene-map" viewBox="${vx} ${vy} ${vw} ${vh}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="いまの 場所・登場人物・できごとの 地図">
+    <rect class="msea" x="${vx - 40}" y="${vy - 40}" width="${vw + 80}" height="${vh + 80}"/>
     <g class="mland-base">${base}</g><g class="mland">${prefs}</g><g class="mwater">${water}</g>${domain}${route}${dots}${body}${offs}${locator}</svg>`;
 }

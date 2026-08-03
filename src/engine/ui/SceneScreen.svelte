@@ -27,7 +27,7 @@
   // 対面の場（人物のクローズアップ）、それ以外は読み解き地図。顔タップの委譲は共通。
   const svg = $derived(
     session.ch != null && session.scene && sc
-      ? buildMainVisual(work, session.ch, session.scene, sc)
+      ? buildMainVisual(work, session.ch, session.scene, sc, session.visualW || undefined)
       : '',
   );
   // 選択肢の表示順（シーン入場ごとにシャッフル）。「正解が同じ位置に並ぶ」パターンを消し、

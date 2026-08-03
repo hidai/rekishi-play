@@ -58,11 +58,17 @@ function authoredScenes(work: (typeof WORKS)[number]) {
   );
 }
 
+// Labels hold one CSS px size on every screen, so a narrow phone draws them LARGER relative to the
+// map than the reference width does, while two towns stay exactly as far apart. Collisions are
+// therefore a phone-first failure: the gate has to run at the narrow end too (a 360px Android minus
+// the 16px .wrap padding), or it only guards the widest screen anybody plays on.
+const WIDTHS = [undefined, 328] as const;
+
 describe("シーン地図のラベル配置（全作品）", () => {
   for (const work of WORKS) {
     it(`${work.id}: マーカーのラベルが重ならない`, () => {
-      for (const { ch, id } of authoredScenes(work)) {
-        const boxes = labelBoxes(buildSceneMap(work, ch, id));
+      for (const { ch, id } of authoredScenes(work)) for (const dw of WIDTHS) {
+        const boxes = labelBoxes(buildSceneMap(work, ch, id, dw));
         for (let i = 0; i < boxes.length; i++) {
           for (let j = i + 1; j < boxes.length; j++) {
             const a = boxes[i],
@@ -71,7 +77,7 @@ describe("シーン地図のラベル配置（全作品）", () => {
             const oy = Math.min(a.y1, b.y1) - Math.max(a.y0, b.y0);
             expect(
               ox <= 2 || oy <= BLEED * Math.min(a.fs, b.fs),
-              `${work.id} ${id}: 「${a.s}」と「${b.s}」が重なる（${ox.toFixed(1)}x${oy.toFixed(1)}）— lpos で逃がす`,
+              `${work.id} ${id}（表示幅 ${dw ?? '既定'}）: 「${a.s}」と「${b.s}」が重なる（${ox.toFixed(1)}x${oy.toFixed(1)}）— lpos で逃がす`,
             ).toBe(true);
           }
         }
@@ -111,8 +117,8 @@ describe("シーン地図のラベル配置（全作品）", () => {
     });
 
     it(`${work.id}: ラベルが枠からはみ出さない`, () => {
-      for (const { ch, id } of authoredScenes(work)) {
-        const svg = buildSceneMap(work, ch, id);
+      for (const { ch, id } of authoredScenes(work)) for (const dw of WIDTHS) {
+        const svg = buildSceneMap(work, ch, id, dw);
         const [vx, vy, vw, vh] = svg
           .match(/viewBox="([-\d.]+) ([-\d.]+) ([-\d.]+) ([-\d.]+)"/)!
           .slice(1)
@@ -120,7 +126,7 @@ describe("シーン地図のラベル配置（全作品）", () => {
         for (const b of labelBoxes(svg)) {
           expect(
             b.x0 >= vx && b.x1 <= vx + vw && b.y0 >= vy && b.y1 <= vy + vh,
-            `${work.id} ${id}: 「${b.s}」が枠外`,
+            `${work.id} ${id}（表示幅 ${dw ?? '既定'}）: 「${b.s}」が枠外`,
           ).toBe(true);
         }
       }

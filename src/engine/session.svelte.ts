@@ -33,6 +33,17 @@ export class Session {
   notebookFrom = $state<{ ch: number; scene: string } | null>(null);
   /** 開いている人物/ことばカードモーダルの id（旧 openCardModal/closeModal）。 */
   cardModalId = $state<string | null>(null);
+  /** 主ビジュアルが実際に敷かれている幅（CSS px）。0 = 未計測＝設計幅で描く。 */
+  visualW = $state(0);
+
+  /**
+   * Report the measured width of the main visual. Quantized: the built SVG depends on this, so a
+   * per-pixel report would rebuild (and restart the map's animations) on every drag of a window edge.
+   */
+  setVisualW(w: number): void {
+    const q = Math.round(w / 16) * 16;
+    if (q > 0 && q !== this.visualW) this.visualW = q;
+  }
 
   openCard(id: string): void {
     this.cardModalId = id;

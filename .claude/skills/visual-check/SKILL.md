@@ -13,8 +13,9 @@ SVG 生成コードの変更は実際に描画しないと破綻に気づけな�
   `npx vite-node scripts/render-faces.ts <出力ディレクトリ>`
   全人物のコンタクトシートが出力される。各人物は「大170px円（鑑賞品質）／52px円／52px正方形（カード実寸の判別性）」の3態で並ぶ。大きい表示だけでなく**カード実寸での判別性**も確認する。
 - **シーンビジュアルを変更した場合**（`src/engine/map/sceneMap.ts`・`src/engine/art/closeup.ts`・`src/works/<作品>/map.ts`・story の `closeup`/`figure` 指定）:
-  `npx vite-node scripts/render-scene.ts <出力.svg> [章] [シーンid] [work-slug=hidenaga]`
+  `npx vite-node scripts/render-scene.ts <出力.svg> [章] [シーンid] [work-slug=hidenaga] [--w=px]`
   例: `npx vite-node scripts/render-scene.ts /tmp/scene.svg 7 7-a2`
+  **`--w=` は絵が敷かれる幅**（既定＝設計幅 680）。読み解き地図はこの幅で窓の切り取り量が変わるので、**携帯（`--w=358`）でも1枚見る**（ラスタも同じ幅で `rsvg-convert -w 358`）。文字の実 px は `npx vite-node scripts/text-scale-audit.ts [slug] [幅]` が面ごとに出す（床 11px）。
   シーンが `closeup` を持てば対面の場、`figure` なら人の図、なければ読み解き地図が出力される（SceneScreen と同じ選択規則）。変更が複数シーンに影響する場合は、影響するシーンをすべてレンダリングする。
   **出力は自己完結 SVG**（`scripts/lib/static-css.ts` が var()/color-mix() をライトテーマの literal に解決し `.scene-map` スタイルを埋め込む）なので、**`rsvg-convert -w 900 <svg> -o <png>` でそのままラスタ化して自分の目で確認できる**（旧「rsvg では地図の色・ルート線が落ちる」制約は 2026-07-13 に解消）。未確認のまま残るのはアニメの動き・ダークテーマ・DOM の hover/tap のみ。ブラウザ向けと同一のエンジン出力を見たいときは `--raw`。
 
