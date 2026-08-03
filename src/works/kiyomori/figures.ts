@@ -53,7 +53,8 @@ export const FIGURES: Record<string, Figure> = {
       { seat: 'R5', fromCh: 5, faction: 'heike' },
     ],
   },
-  // 装置2：血の縁の図。平家（左）が皇統（右）へ、徳子入内(ch3)で婚姻線、外孫・安徳の即位(ch6)で接ぐ。
+  // 装置2：血の縁の図。平家（左）が皇統（右）へ、徳子入内で婚姻線、外孫・安徳の即位(ch6)で接ぐ。
+  // 婚姻線は ch4 から＝この図が出る 3-b は「嫁がせるか」を選ぶ画面で、線を先に描くと絵が答えを漏らす。
   bloodline: {
     kind: 'lineage',
     title: '血の 縁の 図',
@@ -82,7 +83,7 @@ export const FIGURES: Record<string, Figure> = {
       { from: 'shigeko', to: 'goshirakawa', kind: 'marriage', fromCh: 1 },
       { from: 'kiyomori', from2: 'tokiko', to: 'tokuko', kind: 'descent', fromCh: 1 },
       { from: 'goshirakawa', from2: 'shigeko', to: 'takakura', kind: 'descent', fromCh: 1 },
-      { from: 'tokuko', to: 'takakura', kind: 'marriage', fromCh: 3 },
+      { from: 'tokuko', to: 'takakura', kind: 'marriage', fromCh: 4 },
       { from: 'tokuko', from2: 'takakura', to: 'antoku', kind: 'descent', fromCh: 6 },
     ],
   },

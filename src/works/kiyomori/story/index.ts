@@ -142,7 +142,7 @@ export const STORY: Story = {
         '3-a': { place: '<ruby>六波羅<rt>ろくはら</rt></ruby>',
           monologue: '（刀で 天下は とれても、刀だけでは 天下は <ruby>治<rt>おさ</rt></ruby>まらぬ。……ならば、<ruby>貴族<rt>きぞく</rt></ruby>の 世界の 内へ、もっと 深く 入りこむ までよ。）',
           text: `<p><ruby>永暦<rt>えいりゃく</rt></ruby>元年（1160年）、きみ（清盛）は <ruby>武士<rt>ぶし</rt></ruby>として <b>はじめて <ruby>公卿<rt>くぎょう</rt></ruby></b>に くわわった。公卿とは、<ruby>朝廷<rt>ちょうてい</rt></ruby>を 動かす いちばん 上の <ruby>貴族<rt>きぞく</rt></ruby>の こと。<ruby>絹<rt>きぬ</rt></ruby>の <ruby>装束<rt>しょうぞく</rt></ruby>が ならぶ 中に、刀だこの ある 手が 一つ 混じった。</p>
-            <p>ずらりと ならんだ 貴族たちが、いっせいに きみを 見た。その 目は つめたい。「<ruby>戦<rt>いくさ</rt></ruby>しか <ruby>能<rt>のう</rt></ruby>の ない 男が、なぜ われらと 同じ <ruby>席<rt>せき</rt></ruby>に」——声には 出さぬ ささやきが、はだで わかる。武士が 貴族の 中に 入るなど、だれも 見た ことの ない ことだった。</p>
+            <p>ずらりと ならんだ 貴族たちが、いっせいに きみを 見た。その 目は つめたい。「<ruby>戦<rt>いくさ</rt></ruby>しか <ruby>能<rt>のう</rt></ruby>の ない 男が、なぜ われらと 同じ <ruby>席<rt>せき</rt></ruby>に」——声には 出さぬ ささやきが、はだで わかる。</p>
             <p class="speak">「父上、ここで <ruby>敵<rt>てき</rt></ruby>を 作っては、平家の ためには なりませぬ」——そっと ささやくのは、きみの <ruby>嫡男<rt>ちゃくなん</rt></ruby>・<face pid="p-shigemori"><ruby>平重盛<rt>たいらの しげもり</rt></ruby></face>。父の 荒い 気性を、いつも 静かに おさえる 子だった。</p>`,
           spark: 'え！？ 見くだされるのは、平氏が「<ruby>成<rt>な</rt></ruby>り上がり」だから——と 思って いた？ それだけでは ない。<ruby>貴族<rt>きぞく</rt></ruby>に とって <ruby>戦<rt>いくさ</rt></ruby>や 人<ruby>斬<rt>ぎ</rt></ruby>りは「けがれ」——ふれると 身が よごれる もの。武士は その けがれを 引き受ける <ruby>下働<rt>したばたら</rt></ruby>き——そう 見る 目が、貴族の あいだには あった。きみは いま、その 目の 前に すわって いる。',
           deep: { q: '<ruby>公卿<rt>くぎょう</rt></ruby>って、そんなに すごいの？',
@@ -151,10 +151,10 @@ export const STORY: Story = {
           onEnter: { card: 'p-shigemori' },
           next: '3-b' },
 
-        '3-b': { place: '娘を、<ruby>帝<rt>みかど</rt></ruby>に', figure: 'bloodline',
-          text: `<p><ruby>公卿<rt>くぎょう</rt></ruby>に なった とて、まだ <ruby>頂上<rt>ちょうじょう</rt></ruby>では ない。平家を、だれにも くつがえせない ところまで——きみ（清盛）は、その ための 一手を <ruby>思<rt>おも</rt></ruby>い えがいて いた。</p>
-            <p>刀では なく、<b>血の <ruby>縁<rt>えん</rt></ruby></b>で <ruby>皇室<rt>こうしつ</rt></ruby>と むすぶ。きみと <ruby>妻<rt>つま</rt></ruby>・<face pid="p-tokiko"><ruby>時子<rt>ときこ</rt></ruby></face>の 娘・<face pid="p-tokuko"><ruby>徳子<rt>とくこ</rt></ruby></face>を、<ruby>帝<rt>みかど</rt></ruby>・<face pid="p-takakura"><ruby>高倉<rt>たかくら</rt></ruby></face>天皇に <ruby>嫁<rt>とつ</rt></ruby>がせる。もし 男の子が 生まれ、その 子が 次の 帝に なれば——きみは <b>天皇の おじいさん</b>に なるのだ。</p>
-            <p>まだ <ruby>幼<rt>おさな</rt></ruby>い 徳子の 顔が うかぶ。わが子を、<ruby>天下<rt>てんか</rt></ruby>を とる ための <ruby>駒<rt>こま</rt></ruby>に する のか。——だが これは、<ruby>藤原氏<rt>ふじわらし</rt></ruby>ら <ruby>大貴族<rt>だいきぞく</rt></ruby>が 何百年も 使って きた、みやこの 勝ち方でも あった。</p>
+        '3-b': { place: '<ruby>娘<rt>むすめ</rt></ruby>を、<ruby>帝<rt>みかど</rt></ruby>に', figure: 'bloodline',
+          text: `<p><ruby>公卿<rt>くぎょう</rt></ruby>に なった とて、まだ <ruby>頂上<rt>ちょうじょう</rt></ruby>では ない。平家を だれにも くつがえせない ところまで——きみ（清盛）は、その 一手を <ruby>思<rt>おも</rt></ruby>い えがいて いた。</p>
+            <p>刀では なく、<b>血の <ruby>縁<rt>えん</rt></ruby></b>で <ruby>皇室<rt>こうしつ</rt></ruby>と むすぶ。きみと <ruby>妻<rt>つま</rt></ruby>・<face pid="p-tokiko"><ruby>時子<rt>ときこ</rt></ruby></face>の 娘・<face pid="p-tokuko"><ruby>徳子<rt>とくこ</rt></ruby></face>を、<ruby>帝<rt>みかど</rt></ruby>・<face pid="p-takakura"><ruby>高倉<rt>たかくら</rt></ruby></face>天皇に <ruby>嫁<rt>とつ</rt></ruby>がせる。生まれた 子が 次の 帝に なれば——きみは <b>天皇の おじいさん</b>だ。</p>
+            <p>まだ <ruby>幼<rt>おさな</rt></ruby>い 徳子の 顔が うかぶ。わが子を、<ruby>天下<rt>てんか</rt></ruby>を とる ための <ruby>駒<rt>こま</rt></ruby>に する のか。</p>
             <p>さて。きみなら、どう 動く？</p>`,
           deep: { q: '<ruby>外戚<rt>がいせき</rt></ruby>って、なに？',
             body: `<b><ruby>外戚<rt>がいせき</rt></ruby></b>とは、<ruby>天皇<rt>てんのう</rt></ruby>の <ruby>母方<rt>ははかた</rt></ruby>の 親せき——とくに、天皇の <ruby>母方<rt>ははかた</rt></ruby>の おじいさん（<ruby>外祖父<rt>がいそふ</rt></ruby>）の こと。<br>むかしから 大きな <ruby>貴族<rt>きぞく</rt></ruby>は、娘を <ruby>帝<rt>みかど</rt></ruby>に 嫁がせた。生まれた 孫が 次の 帝に なると、その おじいさんは <ruby>摂政<rt>せっしょう</rt></ruby>・<ruby>関白<rt>かんぱく</rt></ruby>と なって、<b>帝の 後ろで 力を にぎった</b>。これを『<ruby>摂関政治<rt>せっかんせいじ</rt></ruby>』と いい、<ruby>藤原氏<rt>ふじわらし</rt></ruby>が <ruby>何百年<rt>なんびゃくねん</rt></ruby>も 続けて きた「みやこの 勝ち方」だった。<br>娘を <ruby>政略<rt>せいりゃく</rt></ruby>に 使うのは、この 世では 家の ため あたりまえの こと だった（今の わたしたちの 感じ方とは、ずいぶん ちがう）。清盛は、武士なのに この 貴族の やり方を 使いこなした。`,
@@ -163,16 +163,16 @@ export const STORY: Story = {
           choices: [
             { label: '娘を <ruby>政略<rt>せいりゃく</rt></ruby>には 使わず、武の 力で 平家の 世を 守る', to: '3-c', effect: { nasake: 1 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし <ruby>縁<rt>えん</rt></ruby>を むすばずに いたら……',
-                body: `<p>わが娘を <ruby>政略<rt>せいりゃく</rt></ruby>の <ruby>具<rt>ぐ</rt></ruby>（道具）には したくない——その 気もちは、今の きみには よく わかる かもしれない。もし 武の 力だけで 平家を 守れば、<ruby>院<rt>いん</rt></ruby>に 飼いならされず、平家は 平家の ままで いられた かもしれない。</p><p>だが 武士が 刀の 力だけで にらみを きかせれば、都の <ruby>貴族<rt>きぞく</rt></ruby>は ますます こわがり、<ruby>憎<rt>にく</rt></ruby>んだ かもしれない。そして 平家は、<ruby>皇室<rt>こうしつ</rt></ruby>と 固く むすばれる ことも なかった。——<ruby>史実<rt>じじつ</rt></ruby>の 清盛は、刀では なく 血の <ruby>縁<rt>えん</rt></ruby>を えらんだ。それが、平家を いちばん 高い ところへ 押し上げる。</p>` } },
+                body: `<p>わが娘を <ruby>政略<rt>せいりゃく</rt></ruby>の <ruby>具<rt>ぐ</rt></ruby>（道具）には したくない——その 気もちは、今の きみには よく わかる かもしれない。もし 武の 力だけで 平家を 守れば、<ruby>院<rt>いん</rt></ruby>に 飼いならされず、平家は 平家の ままで いられた かもしれない。</p><p>だが 武士が 刀の 力だけで にらみを きかせれば、都の <ruby>貴族<rt>きぞく</rt></ruby>は ますます こわがり、<ruby>憎<rt>にく</rt></ruby>んだ かもしれない。そして 平家は、<ruby>皇室<rt>こうしつ</rt></ruby>と 固く むすばれる ことも なかった。——<ruby>史実<rt>じじつ</rt></ruby>の 清盛は、刀では なく 血の <ruby>縁<rt>えん</rt></ruby>を えらんだ。それが、平家を いちばん 高い ところへ 押し上げる。物語は、その 道を 進もう。</p>` } },
             { label: '娘・<ruby>徳子<rt>とくこ</rt></ruby>を <ruby>帝<rt>みかど</rt></ruby>に 嫁がせ、血の <ruby>縁<rt>えん</rt></ruby>で <ruby>皇室<rt>こうしつ</rt></ruby>と むすぶ', to: '3-c', canon: true, effect: { miyako: 2 },
               hist: { verdict: '史実では', match: 'それが、平家を <ruby>頂上<rt>ちょうじょう</rt></ruby>へ 押し上げる',
-                body: `<p><ruby>承安<rt>じょうあん</rt></ruby>元年（1171年）、清盛は 娘・<ruby>徳子<rt>とくこ</rt></ruby>を <ruby>高倉<rt>たかくら</rt></ruby>天皇に <ruby>嫁<rt>とつ</rt></ruby>がせ、<ruby>翌年<rt>よくねん</rt></ruby>には <ruby>中宮<rt>ちゅうぐう</rt></ruby>（帝の <ruby>后<rt>きさき</rt></ruby>）に 立てた。のちに 二人の あいだに 生まれた 男の子が、<ruby>幼<rt>おさな</rt></ruby>くして <ruby>安徳<rt>あんとく</rt></ruby>天皇と なる（1180年）。こうして 清盛は、ねらいどおり <b>天皇の おじいさん（<ruby>外祖父<rt>がいそふ</rt></ruby>）</b>と なり、平家は <ruby>頂上<rt>ちょうじょう</rt></ruby>に 立つ。</p><p>刀では なく、<ruby>位<rt>くらい</rt></ruby>と <ruby>縁<rt>えん</rt></ruby>で 天下を にぎる。この やり方が、平家を いちばん 高い ところへ 押し上げた。——だが、高く のぼるほど、下から 見上げる 目の ねたみも、また 大きく なって いった。</p>` } },
+                body: `<p>きみは 刀では なく、血の <ruby>縁<rt>えん</rt></ruby>を えらんだ。やがて <ruby>娘<rt>むすめ</rt></ruby>・<ruby>徳子<rt>とくこ</rt></ruby>は <ruby>帝<rt>みかど</rt></ruby>の きさきと なり、その <ruby>翌年<rt>よくねん</rt></ruby>には <b><ruby>中宮<rt>ちゅうぐう</rt></ruby></b>——きさきの 中で いちばん 上に 立つ。刀を もつ 家の 娘が、そこに すわった。</p><p>だが、その 日は まだ 先だ。娘を 送り出す 前に、きみは もう ひとつの <ruby>頂<rt>いただき</rt></ruby>へ のぼる。</p>` } },
           ] },
 
         '3-c': { place: '<ruby>頂<rt>いただき</rt></ruby>に 立つ',
           monologue: '（<ruby>地方<rt>ちほう</rt></ruby>の <ruby>役人<rt>やくにん</rt></ruby>の 家に 生まれた この おれが、ここまで 来た。……だが、まだだ。まだ 止まらぬ。）',
-          text: `<p><ruby>仁安<rt>にんあん</rt></ruby>二年（1167年）、きみ（清盛）は ついに <b><ruby>太政大臣<rt>だいじょうだいじん</rt></ruby></b>——<ruby>朝廷<rt>ちょうてい</rt></ruby>で いちばん 高い 役に つく。もう だれも、平家の 力を <ruby>無視<rt>むし</rt></ruby>できない。</p>
-            <p>その <ruby>頂<rt>いただき</rt></ruby>で、きみは <ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>院<rt>いん</rt></ruby>と 向かい合う。<ruby>位<rt>くらい</rt></ruby>を さずける 側の 院と、のぼった きみ。にこやかな 言葉の 下で、二人は たがいの <ruby>本心<rt>ほんしん</rt></ruby>を、そっと さぐって いた。</p>
+          text: `<p><ruby>仁安<rt>にんあん</rt></ruby>二年（1167年）、きみ（清盛）は ついに <b><ruby>太政大臣<rt>だいじょうだいじん</rt></ruby></b>——<ruby>朝廷<rt>ちょうてい</rt></ruby>で いちばん 高い 役に つく。</p>
+            <p>その <ruby>頂<rt>いただき</rt></ruby>で、きみは <ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>院<rt>いん</rt></ruby>と 向かい合う。<ruby>位<rt>くらい</rt></ruby>を さずける 側の 院と、のぼった きみ。</p>
             <p class="speak">「よくぞ ここまで <ruby>昇<rt>のぼ</rt></ruby>った、清盛。……高く <ruby>昇<rt>のぼ</rt></ruby>った 者は、いつか 落ちる もの。それまでは、せいぜい 使わせて もらおう」——にこやかな 院の まなざしの <ruby>奥<rt>おく</rt></ruby>から、そんな 声が 聞こえた 気が した。</p>
             <p>——こちらも、使える うちは 使わせて もらう。<ruby>笑顔<rt>えがお</rt></ruby>の <ruby>裏<rt>うら</rt></ruby>で、きみの 目も また、笑っては いなかった。</p>`,
           deep: { q: 'なぜ、<ruby>武士<rt>ぶし</rt></ruby>が <ruby>太政大臣<rt>だいじょうだいじん</rt></ruby>で 大さわぎに？',
@@ -180,15 +180,31 @@ export const STORY: Story = {
           },
           onEnter: { cards: ['w-daijodaijin', 'p-tokiko'] },
           closeup: { tone: 'tense', cast: [ { face: 'p-goshirakawa', name: '後白河院' }, { face: 'p-kiyomori@elder', name: '清盛（きみ）' } ] },
+          next: '3-c2' },
+
+        '3-c2': { place: '<ruby>娘<rt>むすめ</rt></ruby>を 送る 日',
+          monologue: '（この 子を 手ばなす。それで <ruby>一族<rt>いちぞく</rt></ruby>が 生きるなら、安い ものだ。……安い ものの はずだ。）',
+          closeup: { tone: 'solemn', cast: [
+            { face: 'p-tokuko', name: '娘・徳子（17さい）', expr: { brow: 'worried', eye: 'gentle', mouth: 'flat' } },
+            { face: 'p-kiyomori@elder', name: '清盛（きみ）', expr: { brow: 'worried', eye: 'narrow', mouth: 'flat' } } ] },
+          text: `<p><ruby>承安<rt>じょうあん</rt></ruby>元年（1171年）の 冬。きみは <ruby>娘<rt>むすめ</rt></ruby>・<ruby>徳子<rt>とくこ</rt></ruby>を <ruby>帝<rt>みかど</rt></ruby>に <ruby>嫁<rt>とつ</rt></ruby>がせる。<ruby>牛車<rt>ぎっしゃ</rt></ruby>に 乗る 前、娘は きみの 前で 足を 止めた。</p>
+            <p>きみは その 手を とった。小さかった はずの 手が、大人の 手に なって いた。徳子は 17さい。むこうで 待つ 帝・<ruby>高倉<rt>たかくら</rt></ruby>は、まだ 11さいの 子どもだ。</p>
+            <p>娘は、こう 言った——気が した。</p>
+            <p class="speak">「父上。……行って まいります」</p>
+            <p>きみは 何か 言おうとして、言えなかった。車は 動きだす。きみは、見えなく なるまで そこに 立って いた。</p>`,
+          spark: 'え！？ 11さいで 帝？ この ころ、帝は 幼い うちに 位に つく ことが 多かった。まわりの 大人が 後ろで 力を にぎるには、その ほうが 都合が よかったのだ。——きみが いま しようと して いるのも、それと 同じ ことだ。',
+          deep: { q: '<ruby>徳子<rt>とくこ</rt></ruby>は、どうやって <ruby>帝<rt>みかど</rt></ruby>の きさきに なれたの？', confidence: '○',
+            body: `<ruby>武士<rt>ぶし</rt></ruby>の <ruby>娘<rt>むすめ</rt></ruby>が、そのまま <ruby>帝<rt>みかど</rt></ruby>の <ruby>后<rt>きさき</rt></ruby>（帝の <ruby>妻<rt>つま</rt></ruby>）に なるのは むずかしい。<ruby>身分<rt>みぶん</rt></ruby>の 高さが すべての 世だからだ。<br>そこで 徳子は、<ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>院<rt>いん</rt></ruby>の <b>もらい子</b>という 形を とり、兄・<ruby>重盛<rt>しげもり</rt></ruby>の 子にも なって から、帝の もとへ 入った。<br>この 話を 後おししたのは、院の きさき——じつは きみの 妻・<ruby>時子<rt>ときこ</rt></ruby>の 妹だ。旅立ちの 日、徳子の <ruby>帯<rt>おび</rt></ruby>を むすんで 送り出したのも、その 人だった。`,
+            cite: '※ この 日、父と 娘が 何を 言いかわしたかを 書きとめた 紙は 無い。二人の 場面は 想像だ。' },
           next: '3-d' },
 
         '3-d': { place: '第3章 むすび', figure: 'court',
           onEnter: { clues: ['clue-3'] },
-          text: `<p>こうして きみ（清盛）は、<ruby>武士<rt>ぶし</rt></ruby>で ありながら、<ruby>貴族<rt>きぞく</rt></ruby>の <ruby>頂<rt>いただき</rt></ruby>——<ruby>朝廷<rt>ちょうてい</rt></ruby>の いちばん 上まで のぼりつめた。だれも 歩いた ことの ない 道だった。</p>
-            <p>だが、<ruby>前例<rt>ぜんれい</rt></ruby>の ない ことを した 者を、人は じっと 見る。「<ruby>戦<rt>いくさ</rt></ruby>しか <ruby>能<rt>のう</rt></ruby>の ない <ruby>武士<rt>ぶし</rt></ruby>が、なぜ われらの 上に すわるのだ」——古い <ruby>貴族<rt>きぞく</rt></ruby>たちの うらやみと <ruby>憎<rt>にく</rt></ruby>しみが、<ruby>都<rt>みやこ</rt></ruby>の あちこちで、静かに ふくらんで いった。</p>
+          text: `<p>こうして きみ（清盛）は <ruby>朝廷<rt>ちょうてい</rt></ruby>の いちばん 上に すわり、<ruby>娘<rt>むすめ</rt></ruby>は <ruby>帝<rt>みかど</rt></ruby>の もとへ 行った。<ruby>武士<rt>ぶし</rt></ruby>の 家が、だれも 歩いた ことの ない 道を 歩いて いる。</p>
+            <p>「<ruby>戦<rt>いくさ</rt></ruby>しか <ruby>能<rt>のう</rt></ruby>の ない 武士が、なぜ われらの 上に すわるのだ」——古い <ruby>貴族<rt>きぞく</rt></ruby>たちの うらやみと <ruby>憎<rt>にく</rt></ruby>しみが、<ruby>都<rt>みやこ</rt></ruby>の あちこちで、静かに ふくらんで いった。</p>
             <p>その ねたみは、やがて どんな 形に なって いくのだろう。——その 手がかりは、きみの 手帳の 中に。</p>`,
           creed: { line: '「刀では、この 国は <ruby>治<rt>おさ</rt></ruby>まらぬ。<ruby>位<rt>くらい</rt></ruby>と <ruby>縁<rt>えん</rt></ruby>で、<ruby>天下<rt>てんか</rt></ruby>の ふところに 入る。」',
-            act: '——<ruby>武<rt>ぶ</rt></ruby>で のぼり、みやこの <ruby>作法<rt>さほう</rt></ruby>で てっぺんに 立つ。<ruby>刀<rt>かたな</rt></ruby>を 一度も 抜かずに。' },
+            act: '——<ruby>武<rt>ぶ</rt></ruby>で のぼり、みやこの <ruby>作法<rt>さほう</rt></ruby>で てっぺんに 立つ。この <ruby>頂<rt>いただき</rt></ruby>へは、<ruby>刀<rt>かたな</rt></ruby>を <ruby>抜<rt>ぬ</rt></ruby>かずに のぼった。' },
           end: true },
       },
     },
