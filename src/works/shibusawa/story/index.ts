@@ -207,7 +207,7 @@ export const STORY: Story = {
         '3-a': { place: '<ruby>横浜<rt>よこはま</rt></ruby>の <ruby>沖<rt>おき</rt></ruby>——フランスの 船',
           monologue: '（……四年前、この <ruby>港<rt>みなと</rt></ruby>を <ruby>焼<rt>や</rt></ruby>く つもりで いた。）',
           closeup: { tone: 'warm', cast: [{ face: 'p-akitake', name: '徳川昭武' }, { face: 'p-eiichi@young', name: '栄一（きみ）' }] },
-          text: `<p>1867年。<ruby>将軍<rt>しょうぐん</rt></ruby>の 弟・<ruby>徳川昭武<rt>とくがわあきたけ</rt></ruby>が、将軍の <ruby>名代<rt>みょうだい</rt></ruby>として パリの <ruby>万国博覧会<rt>ばんこくはくらんかい</rt></ruby>へ 行く。きみより 十三も 年下の、まだ 少年の <ruby>殿<rt>との</rt></ruby>だ。その お<ruby>供<rt>とも</rt></ruby>の 一人に、きみが えらばれた。</p>
+          text: `<p>1867年。<ruby>将軍<rt>しょうぐん</rt></ruby>の 弟・<ruby>徳川昭武<rt>とくがわあきたけ</rt></ruby>が、将軍の かわりに パリの <ruby>万国博覧会<rt>ばんこくはくらんかい</rt></ruby>へ 行く。きみより 十三も 年下の、まだ 少年の <ruby>殿<rt>との</rt></ruby>だ。その お<ruby>供<rt>とも</rt></ruby>の 一人に、きみが えらばれた。</p>
             <p>役目は <ruby>刀<rt>かたな</rt></ruby>では ない。<ruby>一行<rt>いっこう</rt></ruby>の お金の 出し入れ——<ruby>勘定<rt>かんじょう</rt></ruby>だ。</p>
             <p><ruby>上海<rt>シャンハイ</rt></ruby>。<ruby>香港<rt>ホンコン</rt></ruby>。サイゴン。船は 西へ 進み、エジプトで 一行は いったん 陸に 上がった。<ruby>砂<rt>すな</rt></ruby>の 中を、二本の <ruby>鉄<rt>てつ</rt></ruby>が まっすぐに のびて いる。</p>
             <p>きみが 生まれて 初めて 見た、<ruby>鉄道<rt>てつどう</rt></ruby>だった。</p>`,
@@ -217,7 +217,7 @@ export const STORY: Story = {
         '3-b': { place: 'パリ——<ruby>万国博覧会<rt>ばんこくはくらんかい</rt></ruby>の <ruby>会場<rt>かいじょう</rt></ruby>',
           text: `<p>春。パリ。石の 家が どこまでも ならび、大通りは 夜に なっても ガスの 火で 明るい。会場には 世界じゅうの <ruby>品<rt>しな</rt></ruby>と 人が あつまって いた。</p>
             <p>その 中に、日本の 店が あった。——二つ。</p>
-            <p>一つは <ruby>幕府<rt>ばくふ</rt></ruby>の 店。もう 一つは <ruby>薩摩<rt>さつま</rt></ruby>の 店で、こちらは 幕府に ことわりも なく、べつの 国の 名を かかげて いた。フランスの 人の 目には、日本に <ruby>王<rt>おう</rt></ruby>が 二人 いるように 見えて いる——そんな 気が した。</p>`,
+            <p>一つは <ruby>幕府<rt>ばくふ</rt></ruby>の 店。もう 一つは <ruby>薩摩<rt>さつま</rt></ruby>の 店だ。<ruby>九州<rt>きゅうしゅう</rt></ruby>の 南に あって、幕府に したがわない 大きな 家。ことわりも なく、べつの 国の 名を かかげて いた。フランスの 人の 目には、日本に <ruby>王<rt>おう</rt></ruby>が 二人 いるように 見えて いる——そんな 気が した。</p>`,
           deep: { q: 'なぜ 日本の 店が 二つ？', confidence: '◎',
             body: `<ruby>薩摩<rt>さつま</rt></ruby>は <ruby>幕府<rt>ばくふ</rt></ruby>とは べつに <ruby>品<rt>しな</rt></ruby>を 出し、「日本 薩摩 <ruby>琉球国<rt>りゅうきゅうこく</rt></ruby> <ruby>太守政府<rt>たいしゅせいふ</rt></ruby>」と 名のった。幕府の <ruby>使<rt>つか</rt></ruby>いは 強く <ruby>抗議<rt>こうぎ</rt></ruby>したが、<ruby>会場<rt>かいじょう</rt></ruby>には 二つの「日本」が ならんだ ままだった。<br>——外国から 見れば、どちらが 日本の <ruby>代表<rt>だいひょう</rt></ruby>かは わからない。きみが 海の むこうで 見たのは、しくみだけでは なかった。<b>自分の 国が くずれかけて いる ところ</b>を、外から 見て いたのだ。` },
           next: '3-c' },
@@ -248,7 +248,7 @@ export const STORY: Story = {
         '3-d': { place: 'パリ——1868年',
           monologue: '（……帰る ところが、ひとつずつ 消えて いく。）',
           closeup: { tone: 'grief', cast: [{ face: 'p-eiichi@prime', name: '栄一（きみ）' }, { face: 'p-akitake@paris', name: '徳川昭武' }] },
-          text: `<p>日本からの <ruby>便<rt>たよ</rt></ruby>りは、来るたびに わるく なった。<ruby>将軍<rt>しょうぐん</rt></ruby>は、国を おさめる 力を <ruby>天皇<rt>てんのう</rt></ruby>に 返した。<ruby>鳥羽<rt>とば</rt></ruby>・<ruby>伏見<rt>ふしみ</rt></ruby>で <ruby>幕府<rt>ばくふ</rt></ruby>がわが 負けた。</p>
+          text: `<p>日本からの <ruby>便<rt>たよ</rt></ruby>りは、来るたびに わるく なった。<ruby>将軍<rt>しょうぐん</rt></ruby>は、国を おさめる 力を、<ruby>京<rt>きょう</rt></ruby>に いる <ruby>天皇<rt>てんのう</rt></ruby>——代々の 将軍を 将軍に して きた 人に 返した。<ruby>鳥羽<rt>とば</rt></ruby>・<ruby>伏見<rt>ふしみ</rt></ruby>で <ruby>幕府<rt>ばくふ</rt></ruby>がわが 負けた。</p>
             <p>そして 新しい <ruby>政府<rt>せいふ</rt></ruby>から <ruby>命令<rt>めいれい</rt></ruby>が 来る。——帰れ。</p>
             <p><ruby>殿<rt>との</rt></ruby>が、小さな 声で 言った。</p>
             <p class="speak">「——まだ、なにも 学んで いない。」</p>
@@ -563,7 +563,7 @@ export const STORY: Story = {
         // 「終章の 総覧の 仕事」（map.ts 4-a の 注記）を ここで 果たす。
         '7-a': { place: '東京・<ruby>飛鳥山<rt>あすかやま</rt></ruby>——1920年',
           monologue: '（……この 点の 一つひとつに、だれかの 一生が ある。）',
-          text: `<p>1920年。きみは 80さい。国から <ruby>子爵<rt>ししゃく</rt></ruby>の <ruby>位<rt>くらい</rt></ruby>を さずけられた。</p>
+          text: `<p>1920年。きみは 80さい。十七の 年に「<ruby>百姓<rt>ひゃくしょう</rt></ruby>の くせに」と 笑われた その きみに、国から <ruby>子爵<rt>ししゃく</rt></ruby>の <ruby>位<rt>くらい</rt></ruby>が さずけられた。</p>
             <p>この 地図の 点は、みな きみが 起こす 手つだいを した 会社だ。大阪では <ruby>綿<rt>わた</rt></ruby>を つむぎ、<ruby>札幌<rt>さっぽろ</rt></ruby>では ビールを つくって いる。</p>
             <p><ruby>血洗島<rt>ちあらいじま</rt></ruby>の 点は、生まれた 村だ。その となりの 村で、田の まん中に <ruby>煙突<rt>えんとつ</rt></ruby>が 立ち、赤い <ruby>煉瓦<rt>れんが</rt></ruby>を 焼いて いる。</p>
             <p>点は 日本じゅうに ちらばった。そして どの 会社も、<ruby>渋沢<rt>しぶさわ</rt></ruby>の 家の ものには しなかった。</p>`,
@@ -614,8 +614,8 @@ export const STORY: Story = {
           q: 'のこりの 力を、何に つかう？',
           choices: [
             { label: '出て いく。<ruby>大臣<rt>だいじん</rt></ruby>に 会いに', to: '7-d', canon: true, effect: { rongo: 2, gappon: 1 },
-              hist: { verdict: '史実では', match: '——きみは 病を おして、<ruby>内務大臣<rt>ないむだいじん</rt></ruby>の ところへ 出て いった',
-                body: `<p>あくる 年の 二月、<ruby>方面委員<rt>ほうめんいん</rt></ruby>たち 1,116人が 名を つらねた 紙が 上へ さし出され、お金を あずかる 大臣と <ruby>内務大臣<rt>ないむだいじん</rt></ruby>の あいだで <ruby>実施<rt>じっし</rt></ruby>が 決まる。</p><p>十一月十一日、きみは 死ぬ。数えで 九十二。</p><p><b>きまりが 始まったのは、その 二か月 あと。</b></p>`,
+              hist: { verdict: '史実では', match: '——きみは 病を おして、<ruby>大臣<rt>だいじん</rt></ruby>の ところへ 出て いった',
+                body: `<p>あくる 年の 二月、<ruby>方面委員<rt>ほうめんいん</rt></ruby>たち 1,116人が 名を つらねた 紙が 上へ さし出され、お金の 大臣と くらしの 大臣の あいだで <ruby>実施<rt>じっし</rt></ruby>が 決まる。</p><p>十一月十一日、きみは 死ぬ。数えで 九十二。</p><p><b>きまりが 始まったのは、その 二か月 あと。</b></p>`,
                 source: { grade: 'later', name: '<ruby>渋沢栄一伝記資料<rt>しぶさわえいいちでんきしりょう</rt></ruby>と その <ruby>年譜<rt>ねんぷ</rt></ruby>',
                   note: 'この 日の ことは 巻と <ruby>頁<rt>ページ</rt></ruby>まで たどれる。ただし 集めて 並べたのは、この 人を たたえる 側の 人たちだ。' } } },
             { label: '<ruby>筆<rt>ふで</rt></ruby>を とる。自分の 一生を、自分の 手で 書き残す', to: '7-d', effect: { soroban: 1, rongo: 1 },
