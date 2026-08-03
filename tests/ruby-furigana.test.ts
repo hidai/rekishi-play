@@ -12,7 +12,14 @@
 // しきい値の緩和ではなく帳簿なので、下げるのは自律で可・上げるのは「書いたものを直す」まで不可。
 import { describe, it, expect } from 'vitest';
 import { ALL_WORKS } from './helpers/all-works';
-import { auditBuckets, auditWork, bucketOf, unclosedRuby, type RubyMiss } from '../scripts/lib/ruby-audit';
+import {
+  auditBuckets,
+  auditSurface,
+  auditWork,
+  bucketOf,
+  unclosedRuby,
+  type RubyMiss,
+} from '../scripts/lib/ruby-audit';
 import { KYOIKU_KANJI_BY_GRADE, kanjiGrade } from '../scripts/lib/kanji-grades';
 
 /**
@@ -40,7 +47,7 @@ const BASELINE: Record<string, number> = {
   'davinci:ch5': 11, 'davinci:ch6': 11, 'davinci:card': 27, 'davinci:clue': 3,
   'davinci:hidden': 1, 'davinci:star': 4, 'davinci:timeline': 23,
   // masako: 180 件
-  'masako:ch1': 23, 'masako:ch2': 11, 'masako:ch3': 25, 'masako:ch4': 14, 'masako:ch5': 14,
+  'masako:ch1': 23, 'masako:ch2': 11, 'masako:ch3': 25, 'masako:ch4': 12, 'masako:ch5': 14,
   'masako:ch6': 23, 'masako:ch7': 13, 'masako:card': 20, 'masako:clue': 3, 'masako:timeline': 34,
   // shibusawa: 棚卸し済み（0 件。2026-07-27）＝以後この作品は新章と同じ「登録なし＝0 要求」で守られる。
 };
@@ -65,6 +72,34 @@ describe('学年別漢字配当表（同梱データの検算）', () => {
     expect(kanjiGrade('城')).toBe(4); // 都道府県の20字を含む 2020 施行版であること
     expect(kanjiGrade('攘')).toBe(0); // 表外
     expect(kanjiGrade('慶')).toBe(0); // 中学配当
+  });
+});
+
+// 表外読みの検査（館＝やかた）。字の学年では捕まらない＝配当表の中の字でも読みが壁になる。
+// 誤検出・見逃しの両方を注入で確かめる（ゲートは自分の欠陥を報告しない）。
+describe('ruby-furigana: 表外読みの語（HARD_READINGS）', () => {
+  const chars = (s: RubyMiss[]) => s.map((m) => m.char);
+
+  it('裸で初出したら落ちる', () => {
+    expect(chars(auditSurface({ id: 't', parts: ['父の 館へ 行く'] }))).toContain('館（やかた）');
+  });
+
+  it('ルビが振ってあれば通る（同じ面の2回目以降は裸でよい＝初出主義）', () => {
+    const s = { id: 't', parts: ['<ruby>館<rt>やかた</rt></ruby>の 門', '父の 館に いる'] };
+    expect(chars(auditSurface(s))).not.toContain('館（やかた）');
+  });
+
+  it('複合語（かん・だて）は数えない＝誤検出しない', () => {
+    for (const w of ['美術館', '箱館', '旅館へ 行く']) {
+      expect(chars(auditSurface({ id: 't', parts: [w] }))).not.toContain('館（やかた）');
+    }
+  });
+
+  it('欄の境目を複合語と読みちがえない（面は place・本文…を区切り無しに連ねる）', () => {
+    // 「〜の 館」で終わる place の次に漢字始まりの本文が来ても、それは複合語ではない。
+    expect(chars(auditSurface({ id: 't', parts: ['北条の 館', '国じゅうの 武士が'] }))).toContain(
+      '館（やかた）',
+    );
   });
 });
 

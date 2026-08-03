@@ -34,11 +34,22 @@ export interface Surface {
 
 export interface RubyMiss {
   surface: string;
-  /** ルビ無しで初出した漢字。 */
+  /** ルビ無しで初出した漢字（表外読みの語のときは語そのもの）。 */
   char: string;
   /** その字を含む前後の抜粋（作者が現物を探せるように）。 */
   excerpt: string;
 }
+
+/**
+ * 習っていないのは字だけではない——**読み**も同じ壁になる。館 は3年配当なので上の
+ * 「配当表の外か」検査は素通りするが、小5 は「かん」としか読めず「やかた」で止まる
+ * （2026-08-04 の読み通しで小5が実際に止まった。davinci だけが `館<rt>やかた` と振っていた）。
+ * ここは字でなく**語**で持つ小さな表で、ペルソナが止まるたびに育てる＝床の広さは自分で決めている。
+ * `standalone` ＝前後に漢字が続くときは別の読み（美術館・箱館・旅館＝かん・だて）なので数えない。
+ */
+const HARD_READINGS: { word: string; reading: string; standalone: boolean }[] = [
+  { word: '館', reading: 'やかた', standalone: true },
+];
 
 const ruby = (s?: string): string => (s ? `<ruby>${s}</ruby>` : '');
 
@@ -73,7 +84,8 @@ function readChars(html: string): { ch: string; covered: boolean }[] {
 
 /** Characters of a surface, in reading order, with an excerpt for each position. */
 export function auditSurface(surface: Surface): RubyMiss[] {
-  const chars = surface.parts.flatMap((p) => readChars(p));
+  const partChars = surface.parts.map((p) => readChars(p));
+  const chars = partChars.flat();
   const misses: RubyMiss[] = [];
   const seen = new Set<string>();
   chars.forEach(({ ch, covered }, idx) => {
@@ -86,6 +98,29 @@ export function auditSurface(surface: Surface): RubyMiss[] {
       .join('');
     misses.push({ surface: surface.id, char: ch, excerpt: around });
   });
+  for (const { word, reading, standalone } of HARD_READINGS) {
+    // 初出主義は字と同じ——その面で最初に この読みで出る位置だけを見る。
+    // ⚠️ 隣接漢字は**同じ欄の中だけ**で見る: 面は place・本文・内語…を区切り無しに連ねた配列なので、
+    // 連結後の添字で前後を見ると、次の欄の1文字目を「複合語の続き」と誤読して見逃す。
+    let hit: { covered: boolean; excerpt: string } | undefined;
+    for (const cs of partChars) {
+      const at = cs.findIndex(({ ch }, i) => {
+        if (ch !== word) return false;
+        return !standalone || !(isKanji(cs[i - 1]?.ch ?? '') || isKanji(cs[i + 1]?.ch ?? ''));
+      });
+      if (at < 0) continue;
+      hit = {
+        covered: cs[at].covered,
+        excerpt: cs
+          .slice(Math.max(0, at - 8), at + 9)
+          .map((c) => c.ch)
+          .join(''),
+      };
+      break;
+    }
+    if (!hit || hit.covered) continue;
+    misses.push({ surface: surface.id, char: `${word}（${reading}）`, excerpt: hit.excerpt });
+  }
   return misses;
 }
 
