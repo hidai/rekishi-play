@@ -7,3 +7,5 @@ dist/
 # Local render/visual-check outputs (scripts take an explicit output path; these are the common defaults)
 /out.svg
 /out/
+# Scratch dir for probe scripts and one-off renders (auto-dev cycles)
+/.tmp/
