@@ -51,8 +51,8 @@ const LOAD_LEDGER: Record<string, number> = {
   'ieyasu:3': 465, 'ieyasu:4': 562, 'ieyasu:5': 541, 'ieyasu:6': 510,
   // masako: 4章
   'masako:3': 468, 'masako:4': 426, 'masako:5': 481, 'masako:6': 472,
-  // shibusawa: 4章
-  'shibusawa:2': 439, 'shibusawa:3': 430, 'shibusawa:5': 459, 'shibusawa:7': 441,
+  // shibusawa: 3章（ch2 は 439→411 で削除＝2-b の答えの先出しを刈り、因果を平岡の声へ移した）。
+  'shibusawa:3': 430, 'shibusawa:5': 459, 'shibusawa:7': 441,
   // davinci: 1章
   'davinci:4': 449,
   // hidenaga（較正元）・katsu は登録なし＝予算内。
