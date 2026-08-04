@@ -27,18 +27,22 @@ function meterChips(work: Work, effect: Choice['effect']): string[] {
 
 /** シーンに入ったときの副作用（旧 playScene 前半）。再開位置保存＋onEnter 付与＋トースト。 */
 export function applySceneEnter(
-  stores: Pick<AppStores, 'work' | 'save' | 'toast'>,
+  stores: Pick<AppStores, 'work' | 'save' | 'toast' | 'session'>,
   chId: number,
   sceneId: string,
 ): void {
-  const { work, save, toast } = stores;
+  const { work, save, toast, session } = stores;
   const ch = chapterById(stores, chId);
   const sc = ch?.scenes[sceneId];
   if (!sc) return;
 
   // 再開位置の保存（クリア済みの章では保存しない）。旧: S があれば必ず saveDB。
+  // 読み返しで戻った場面は再開位置にしない——「どこまで読んだか」は進みぐあいで、
+  // 「いま何を読んでいるか」とは別物（戻って抜けたら、続きは いちばん先から）。
   if (save.active) {
-    if (save.active.progress[chId] !== 'done') save.active.scene = { ch: chId, scene: sceneId };
+    if (save.active.progress[chId] !== 'done' && !session.rewound) {
+      save.active.scene = { ch: chId, scene: sceneId };
+    }
     save.persist();
   }
 
@@ -79,7 +83,9 @@ export async function chooseNext(
   if (!c) return;
 
   sfx.choice(); // ★H 選択を決めた手ざわり
-  save.recordChoice(chId, sceneId, i); // ★L 分かれ道の記録（きみの読み・分かれ道図鑑）
+  // ★L 分かれ道の記録（きみの読み・分かれ道図鑑）。戻って選び直した同じ枝は false ＝
+  // メーターは二度加算しない（読み返しでも章の遊び直しでも「きみの人物像」は歪まない）。
+  const fresh = save.recordChoice(chId, sceneId, i);
 
   if (c.hist) {
     const h = c.hist;
@@ -88,20 +94,21 @@ export async function chooseNext(
     const newClue = !!h.clue && !!save.active && !save.active.clues.includes(h.clue);
     if (newCard) gains.push(`<span class="reward-chip card">🎴 カード「${work.cards[h.card!].name}」</span>`);
     if (newClue) gains.push(`<span class="reward-chip clue">🔑 手がかり を 発見</span>`);
-    gains.push(...meterChips(work, c.effect));
+    if (fresh) gains.push(...meterChips(work, c.effect));
     sfx.stamp(); // ★H 「史実では」朱印スタンプの一撃
     // 選択で得たカード/手がかりは applySceneEnter を通らないので、ここで報酬音を重ねる。
     if (newCard) setTimeout(() => sfx.card(), 280);
     else if (newClue) setTimeout(() => sfx.clue(), 280);
     await hist.show(h, gains);
   }
-  afterChoice(stores, chId, c);
+  afterChoice(stores, chId, c, fresh);
 }
 
 function afterChoice(
   stores: Pick<AppStores, 'work' | 'save' | 'session'>,
   chId: number,
   c: Choice,
+  fresh: boolean,
 ): void {
   const { save, session } = stores;
   const h = c.hist;
@@ -109,9 +116,9 @@ function afterChoice(
   const clue = c.clue || h?.clue;
   if (card) save.grant('card', card);
   if (clue) save.grant('clue', clue);
-  save.bumpMeters(c.effect); // ★1: 選択のメーター増減を適用（ローカルのみ）
+  if (fresh) save.bumpMeters(c.effect); // ★1: 選択のメーター増減を適用（ローカルのみ）
   // ★I 選択の"手ざわり": HUD のバーが伸び「＋N」が弾む＋上行ブリップ音。
-  if (c.effect && Object.values(c.effect).some((v) => v)) {
+  if (fresh && c.effect && Object.values(c.effect).some((v) => v)) {
     meterFx.pulse(c.effect);
     sfx.meter();
   }
@@ -120,12 +127,12 @@ function afterChoice(
     save.persist();
   }
   // 選択肢に end はない（章末は end シーンで扱う）が、旧構造を踏襲し to へ遷移。
-  if (c.to) session.scene = c.to;
+  if (c.to) session.advance(c.to);
 }
 
 /** 次のシーンへ（旧 to-next）。 */
 export function gotoScene(session: AppStores['session'], sceneId: string): void {
-  session.scene = sceneId;
+  session.advance(sceneId);
 }
 
 /** 章を終える（旧 finishChapter）。進捗を done にして章クリア画面へ。 */

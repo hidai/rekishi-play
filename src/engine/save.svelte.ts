@@ -343,10 +343,13 @@ export class SaveStore {
     this.persist();
   }
 
-  /** ★L: 分かれ道で選んだ選択肢を記録（ローカル保存のみ）。 */
-  recordChoice(chId: number, sceneId: string, idx: number): void {
+  /**
+   * ★L: 分かれ道で選んだ選択肢を記録（ローカル保存のみ）。初めての枝なら true
+   * （grant と同じ契約＝呼び手は戻り値で「二度目は数えない」を決める）。
+   */
+  recordChoice(chId: number, sceneId: string, idx: number): boolean {
     const w = this.slice();
-    if (!w) return;
+    if (!w) return false;
     const key = chId + ':' + sceneId;
     // ⚠️ `(obj[key] ??= [])` は代入した"生"配列を式の値として返すが、$state プロキシは
     // 別のラップ済み配列を格納するため、生配列への push は状態に反映されない
@@ -354,10 +357,10 @@ export class SaveStore {
     // 必ず代入後にプロキシから読み直して変更する。
     if (!w.choices[key]) w.choices[key] = [];
     const arr = w.choices[key];
-    if (!arr.includes(idx)) {
-      arr.push(idx);
-      this.persist();
-    }
+    if (arr.includes(idx)) return false;
+    arr.push(idx);
+    this.persist();
+    return true;
   }
 
   /**

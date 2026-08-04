@@ -33,6 +33,13 @@ export class Session {
   notebookFrom = $state<{ ch: number; scene: string } | null>(null);
   /** 開いている人物/ことばカードモーダルの id（旧 openCardModal/closeModal）。 */
   cardModalId = $state<string | null>(null);
+  /**
+   * 読み返しの足あと＝進むたびに積む「さっきまで居た場所」。章に入り直すと消える
+   * ＝セーブには載せない（進みぐあいではなく、いま読んでいる最中の状態）。
+   */
+  backTrail = $state<{ ch: number; scene: string }[]>([]);
+  /** 直前の移動が「戻る」だったか。読み返しで再開位置を巻き戻さないための印。 */
+  rewound = $state(false);
   /** 主ビジュアルが実際に敷かれている幅（CSS px）。0 = 未計測＝設計幅で描く。 */
   visualW = $state(0);
 
@@ -77,6 +84,33 @@ export class Session {
     this.ch = ch;
     this.scene = scene;
     this.show('scene');
+  }
+
+  /** 章の頭（または再開位置）から入る。読み返しの足あとはここで まっさらにする。 */
+  enterChapter(ch: number, scene: string): void {
+    this.backTrail = [];
+    this.rewound = false;
+    this.goScene(ch, scene);
+  }
+
+  /** 物語を1つ先へ。いまの場所を足あとに積む（つづき・選択の両方がここを通る）。 */
+  advance(scene: string): void {
+    if (this.ch != null && this.scene) this.backTrail.push({ ch: this.ch, scene: this.scene });
+    this.rewound = false;
+    this.scene = scene;
+  }
+
+  get canGoBack(): boolean {
+    return this.backTrail.length > 0;
+  }
+
+  /** さっき読んでいた場面へ1つ戻る。 */
+  goBack(): void {
+    const prev = this.backTrail.pop();
+    if (!prev) return;
+    this.rewound = true;
+    this.ch = prev.ch;
+    this.scene = prev.scene;
   }
 
   /** 画面遷移（旧 show）。スクロールを先頭へ戻す。 */

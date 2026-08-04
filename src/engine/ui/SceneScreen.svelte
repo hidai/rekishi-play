@@ -187,6 +187,19 @@
         <MeterBar variant="hud" />
       {/if}
       {#if sc && session.ch != null && session.scene}
+        {#if session.canGoBack}
+          <!-- 読み返しの導線。進んだ直後に読者が立つ位置＝絵の上に置く（下端の「つづき」まで
+               スクロールし直さずに戻れる）。{#key} の外＝シーンをまたいでも消えない。 -->
+          <div class="scene-back">
+            <button
+              class="linklike"
+              title="さっき 読んでいた ところへ もどる"
+              onclick={() => {
+                sfx.page();
+                session.goBack();
+              }}>← まえの ページ</button>
+          </div>
+        {/if}
         <!-- シーン切替は {#key} で DOM を完全再生成し、clipPath id 衝突を防ぐ。 -->
         {#key session.scene}
           <div class="scene-artwrap">

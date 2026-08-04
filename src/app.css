@@ -609,6 +609,11 @@ button.crumb:hover{ color:var(--accent); background:var(--panel); }
 
 /* 次へ */
 .scene-next{ margin:28px 0 0; display:flex; justify-content:flex-end; }
+/* 前へ。読み返しは静かな導線＝進む金のボタンと張り合わせない。 */
+.scene-back{ display:flex; margin:0 0 6px; }
+.scene-back .linklike{ font-family:var(--gothic); font-size:12.5px; font-weight:700;
+  letter-spacing:.06em; color:var(--ink-faint); padding:4px 2px; }
+.scene-back .linklike:hover{ color:var(--accent); }
 
 /* ============ 史実パネル（朱印）============ */
 .hist-overlay{ position:fixed; inset:0; z-index:60; display:flex; align-items:flex-end;
