@@ -129,7 +129,7 @@ export const STORY: Story = {
       id: 2, num: '二', title: '敵の 家に つかえる', years: '1864〜1866',
       lead: '外国を 追いはらう <ruby>志<rt>こころざし</rt></ruby>を <ruby>貫<rt>つらぬ</rt></ruby>くか、その 外国に 港を ひらいた <ruby>将軍<rt>しょうぐん</rt></ruby>の 家・<ruby>一橋<rt>ひとつばし</rt></ruby>（<ruby>慶喜<rt>よしのぶ</rt></ruby>）に 仕えるか。村を <ruby>捨<rt>す</rt></ruby>てて <ruby>京<rt>きょう</rt></ruby>へ 出た 二人を 待って いたのは、金の 切れ目と、<ruby>追<rt>お</rt></ruby>われる 身の 知らせだった。',
       start: '2-a',
-      teaser: '<ruby>慶喜<rt>よしのぶ</rt></ruby>が <ruby>将軍<rt>しょうぐん</rt></ruby>に なり、きみは <ruby>図<rt>はか</rt></ruby>らずも <ruby>幕臣<rt>ばくしん</rt></ruby>に。そして パリへ わたる ことに なる。',
+      teaser: '<ruby>慶喜<rt>よしのぶ</rt></ruby>が <ruby>徳川<rt>とくがわ</rt></ruby>の 家を つぎ、きみは <ruby>図<rt>はか</rt></ruby>らずも <ruby>幕臣<rt>ばくしん</rt></ruby>に。そして パリへ わたる ことに なる。',
       scenes: {
         '2-a': { place: '<ruby>京<rt>きょう</rt></ruby>・<ruby>三条<rt>さんじょう</rt></ruby>の <ruby>宿<rt>やど</rt></ruby>',
           monologue: '（……村には 帰れない。帰らない ことに して、出て きたのだから。）',
@@ -188,10 +188,11 @@ export const STORY: Story = {
 
         '2-e': { place: '第2章 むすび',
           monologue: '（……たおす はずだった 家の、いちばん 内がわに いる。）',
-          closeup: { tone: 'solemn', cast: [{ face: 'p-eiichi@young', name: '栄一（きみ）', expr: { brow: 'worried', eye: 'narrow', mouth: 'flat' } }] },
-          text: `<p>1866年。<ruby>将軍<rt>しょうぐん</rt></ruby>が <ruby>亡<rt>な</rt></ruby>くなった。あとを つぐ 人が いない。まわりは <ruby>慶喜<rt>よしのぶ</rt></ruby>を <ruby>押<rt>お</rt></ruby>した。慶喜は なんども ことわり、それでも その 年の <ruby>暮<rt>く</rt></ruby>れ、15代 将軍に なる。</p>
-            <p>きみは よろこばなかった。一橋の <ruby>家来<rt>けらい</rt></ruby>だった きみは、その日から <ruby>幕臣<rt>ばくしん</rt></ruby>——将軍の 家来だ。<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子に 生まれ、外国人を 焼こうと して、いま きみは 日本で いちばん 古い 家の 中に すわって いる。</p>
-            <p>きみは 一歩も 動いて いない。上の 人が 動いた。それだけで、きみの <ruby>座<rt>ざ</rt></ruby>も 動いた。</p>`,
+          figure: 'seat',
+          text: `<p>1866年の 夏、<ruby>将軍<rt>しょうぐん</rt></ruby>が <ruby>亡<rt>な</rt></ruby>くなった。子が いない。秋、<ruby>慶喜<rt>よしのぶ</rt></ruby>が <ruby>徳川<rt>とくがわ</rt></ruby>の 家を つぐ——一橋の 家を 出て、将軍を 出す 家の あるじに なった。ただし 将軍の 座には、まだ つかない。</p>
+            <p><ruby>殿<rt>との</rt></ruby>が 家を 移れば、<ruby>家来<rt>けらい</rt></ruby>も つれて 移される。まもなく きみは <ruby>幕臣<rt>ばくしん</rt></ruby>に なった。<ruby>幕府<rt>ばくふ</rt></ruby>——きみの 名を 追って いた 側の、その 家来だ。</p>
+            <p>きみは よろこばなかった。<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子に 生まれ、外国人を 焼こうと して、いま その 中に すわって いる。殿が 15代 将軍に なるのは、その 年の <ruby>暮<rt>く</rt></ruby>れだ。</p>
+            <p>きみは 何ひとつ えらんで いない。動いたのは 上の 人だ。それだけで、きみの <ruby>座<rt>ざ</rt></ruby>も 動いた。</p>`,
           creed: { line: '「<ruby>敵<rt>てき</rt></ruby>の 家でも、中に 入って ものを 言う。——外から さけんで いる かぎり、何も 変わらぬ。」',
             act: '——ただ 使われる だけには なるまいと、口を きく ゆるしを もぎ取った。だが 言った さきから 返って きたのは「聞いて おく」の 一言だけ。中へ 入れて くれた 人は、もう いない。' },
           onEnter: { clue: 'clue-2' },

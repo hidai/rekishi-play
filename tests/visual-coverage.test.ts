@@ -7,7 +7,7 @@
 // When a work's chapters are all written and its visuals inventoried, add it to COMPLETED.
 import { describe, it, expect } from 'vitest';
 import { WORKS } from '../src/works/index';
-import { visualCoverage, classifyScene } from '../scripts/lib/visual-coverage';
+import { visualCoverage, classifyScene, unreachableVisuals } from '../scripts/lib/visual-coverage';
 
 const COMPLETED = ['hidenaga', 'kiyomori'];
 
@@ -22,6 +22,40 @@ describe('visual coverage: 完成作品の全シーンに執筆済み主ビジ�
       expect(unwritten, 'フォールバック地図のままのシーン').toEqual([]);
     });
   }
+});
+
+// No ledger and no exemption: an unreferenced figure is invisible to readers in every
+// work, finished or not. All works are at 0 as of 2026-08-04 (shibusawa's `seat` was the
+// only one, and it is now placed at 2-e).
+describe('visual coverage: 書いたのに読者に届かない主ビジュアルが無い', () => {
+  for (const work of WORKS) {
+    it(`${work.id}: 参照されない図・参照先の無い鍵・シーンの無い地図エントリが無い`, () => {
+      const u = unreachableVisuals(work);
+      expect(u.orphans, 'どのシーンも参照しない figure / study').toEqual([]);
+      expect(u.dangling, 'シーンが名ざすのに未定義の鍵').toEqual([]);
+      expect(u.orphanMaps, 'シーンの無い sceneMaps エントリ').toEqual([]);
+    });
+  }
+});
+
+describe('visual coverage: 到達性ゲートの較正（注入して赤くなることを確かめる）', () => {
+  const shibusawa = WORKS.find((w) => w.id === 'shibusawa')!;
+
+  it('どのシーンも参照しない figure を足すと orphan に出る', () => {
+    const fake = { ...shibusawa, figures: { ...shibusawa.figures, ghost: shibusawa.figures!.seat } };
+    expect(unreachableVisuals(fake).orphans).toEqual(['figure:ghost']);
+  });
+
+  it('figure レジストリから鍵を抜くと dangling に出る', () => {
+    const figures = { ...shibusawa.figures };
+    delete figures.seat;
+    expect(unreachableVisuals({ ...shibusawa, figures }).dangling).toEqual(['figure:seat']);
+  });
+
+  it('シーンの無い sceneMaps エントリは orphanMaps に出る', () => {
+    const sceneMaps = { ...shibusawa.map.sceneMaps, 'x-z': { markers: [] } };
+    expect(unreachableVisuals({ ...shibusawa, map: { ...shibusawa.map, sceneMaps } }).orphanMaps).toEqual(['x-z']);
+  });
 });
 
 describe('visual coverage: 分類の較正', () => {

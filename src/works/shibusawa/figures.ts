@@ -2,9 +2,14 @@
 // 動く）」。この 作品の 主題 A（立場は 何度も 変わった。芯は？）は、本文で 説明するより
 // **座が 横へ ずれて いく 一枚**の ほうが 早い。
 //
-// 図の 芯は むすび（2-e）の 一行——「きみは 一歩も 動いて いない。上の 人が 動いた」。だから 上座
+// 図の 芯は むすび（2-e）の 一行——「きみは 何ひとつ えらんで いない。動いたのは 上の 人だ」。だから 上座
 // （dais）に 将軍を 据える: 動いたのは 慶喜が すわった 席の ほうで、栄一は 同じ 場所に いたまま
-// 幕臣に なった。座の 色は 血洗島（藍）→ 浪士（灰）→ 徳川（朱）。
+// 幕臣に なった。座の 色は 血洗島（藍）→ どこにも つかない（灰）→ 徳川（朱）。
+// ただし 上座の 移動そのものは この 図では 描けない（dais は 1つの 静止した 円）。だから caption は
+// 「動いた」を 主張せず、**四つめの 座を えらんだのは きみでは ない**とだけ 言う——四席を 数え上げる
+// caption は「三年で 四段の 出世」と 読まれ、大目標2（英雄化しない）に 逆らう（2026-08-04 の VISION 監査）。
+// 席の ラベルに 制度語を 置かない: SVG text は ルビが 置けないので、「攘夷」「浪士」は 小5に 読めないまま
+// 本文より 先に 目に 入る（ここは ruby-audit の 網の 外）。本文が 教えた 語だけを 置く。
 //
 // 顔は「いまの 座」だけに 置く（4つ 並べると 同じ 顔が 4回 出て 時間が 読めない）。過去の 座は
 // 色と role ラベルだけ——通って きた 席が 残る ことが、この 図の 語る ことだから。
@@ -13,7 +18,7 @@
 import type { Figure } from '../../engine/types';
 
 const AI = '#31608c'; // 血洗島・渋沢の 家（relations.ts と同じ literal）
-const RONIN = '#6b6f76'; // 攘夷の 浪士＝どこにも 属さない 灰
+const RONIN = '#6b6f76'; // 村を 出た あと＝どこにも 属さない 灰
 const SEAL = '#b23a2e'; // 徳川（一橋も 幕府も 同じ 家）
 const GOLD = '#a67c1a'; // 明治政府（relations.ts と同じ literal）
 const MIDORI = '#4a7a5a'; // 実業・民の 側
@@ -22,17 +27,17 @@ export const FIGURES: Record<string, Figure> = {
   seat: {
     kind: 'assembly',
     title: 'きみの 座',
-    caption: '三年で、四つめ。上の 人が うごくと、下の 座も うごく',
+    caption: '四つめの 座を えらんだのは、きみでは ない',
     vb: [1000, 250],
     factions: [
       { key: 'ai', label: '血洗島の 家', color: AI },
-      { key: 'ronin', label: '攘夷の 浪士', color: RONIN },
+      { key: 'ronin', label: 'どこにも つかない', color: RONIN },
       { key: 'seal', label: '徳川の 家', color: SEAL },
     ],
     dais: { x: 500, y: 46, label: '将軍', faction: 'seal' },
     seats: [
       { id: 'mura', x: 145, y: 170, role: '百姓の 子' },
-      { id: 'roshi', x: 385, y: 170, role: '攘夷の 浪士' },
+      { id: 'roshi', x: 385, y: 170, role: '村を 出た 者' },
       { id: 'hito', x: 625, y: 170, role: '一橋の 家来' },
       { id: 'baku', x: 865, y: 170, role: '幕臣' },
     ],
@@ -45,7 +50,7 @@ export const FIGURES: Record<string, Figure> = {
   },
 
   // ★P 章四の 装置＝seat の 対句（別キー。figures.ts 冒頭の 申し送りどおり 図は 増やさず 起こす）。
-  // 章二の caption は「上の 人が うごくと、下の 座も うごく」——章四は その 逆を 一枚で 言う: 上座
+  // 章二の caption は「四つめの 座を えらんだのは、きみでは ない」——章四は その 逆を 一枚で 言う: 上座
   // （政府）は 動かず、動いたのは きみの ほう。だから 席は 章二と 同じ 高さの 一列で 右へ 進み、
   // 五つめだけが 列を 外れて 下がる（＝椅子を おりる。章題そのもの）。
   // 一列は 幕臣（章二の 最後の 座）から 継ぐ——四つ 全部を 並べ直すと 8席に なり、この 図の 主張
@@ -53,8 +58,8 @@ export const FIGURES: Record<string, Figure> = {
   seatDown: {
     kind: 'assembly',
     title: 'きみの 座（つづき）',
-    // 章二の caption「上の 人が うごくと、下の 座も うごく」への 返し。数は 言わない——この 図は
-    // 幕臣から 継ぐので「五つめ」と 書くと 読者が 数える 席（4つ）と 合わない。
+    // 章二の caption「えらんだのは きみでは ない」への 返し（今度は きみが えらんだ）。数は 言わない
+    // ——この 図は 幕臣から 継ぐので「五つめ」と 書くと 読者が 数える 席（4つ）と 合わない。
     caption: '今度 うごいたのは、上の 人では なく きみ',
     vb: [1000, 300],
     factions: [
@@ -93,14 +98,14 @@ export const FIGURES: Record<string, Figure> = {
     vb: [1000, 140],
     factions: [
       { key: 'ai', label: '血洗島', color: AI },
-      { key: 'ronin', label: '攘夷の 浪士', color: RONIN },
+      { key: 'ronin', label: 'どこにも つかない', color: RONIN },
       { key: 'seal', label: '徳川の 家', color: SEAL },
       { key: 'gold', label: '明治の 政府', color: GOLD },
       { key: 'min', label: '民の 側', color: MIDORI },
     ],
     seats: [
       { id: 's1', x: 80, y: 70, role: '百姓の 子' },
-      { id: 's2', x: 220, y: 70, role: '攘夷の 浪士' },
+      { id: 's2', x: 220, y: 70, role: '村を 出た 者' },
       { id: 's3', x: 360, y: 70, role: '一橋の 家来' },
       { id: 's4', x: 500, y: 70, role: '幕臣' },
       { id: 's5', x: 640, y: 70, role: '静岡の 家来' },

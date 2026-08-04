@@ -8,7 +8,7 @@
 // ALL_WORKS, not WORKS: an unregistered skeleton is exactly when this report is worth reading —
 // it is authoring that fills the visuals in, and authoring happens before registration.
 import { ALL_WORKS, resolveWork } from './lib/works';
-import { summarize } from './lib/visual-coverage';
+import { summarize, unreachableVisuals } from './lib/visual-coverage';
 
 const slug = process.argv[2];
 const works = slug ? [resolveWork(slug)] : ALL_WORKS;
@@ -20,13 +20,16 @@ for (const work of works) {
     `${s.workId}: ${authored}/${s.total} シーンに執筆済み主ビジュアル` +
       `（closeup ${s.closeup}・figure ${s.figure}・study ${s.study}・地図 ${s.map}）`,
   );
-  if (s.unwritten.length === 0) {
-    console.log('  未執筆なし');
-    continue;
+  if (s.unwritten.length === 0) console.log('  未執筆なし');
+  else {
+    console.log(`  ★未執筆（フォールバック地図のまま）${s.unwritten.length} シーン:`);
+    for (const r of s.unwritten) {
+      const why = r.kind === 'map-fallback' ? 'SCENE_MAPS なし' : `マーカー${r.markers}・note なし`;
+      console.log(`    ch${r.ch} ${r.sceneId} — ${why}`);
+    }
   }
-  console.log(`  ★未執筆（フォールバック地図のまま）${s.unwritten.length} シーン:`);
-  for (const r of s.unwritten) {
-    const why = r.kind === 'map-fallback' ? 'SCENE_MAPS なし' : `マーカー${r.markers}・note なし`;
-    console.log(`    ch${r.ch} ${r.sceneId} — ${why}`);
-  }
+  const u = unreachableVisuals(work);
+  if (u.orphans.length) console.log(`  ★読者に届かない（どのシーンも参照しない）: ${u.orphans.join('・')}`);
+  if (u.dangling.length) console.log(`  ★参照先が無い（シーンが名ざす鍵が未定義）: ${u.dangling.join('・')}`);
+  if (u.orphanMaps.length) console.log(`  ★シーンの無い地図エントリ: ${u.orphanMaps.join('・')}`);
 }

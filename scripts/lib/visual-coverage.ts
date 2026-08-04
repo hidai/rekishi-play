@@ -58,6 +58,49 @@ export function visualCoverage(work: Work): SceneVisual[] {
   return rows;
 }
 
+/**
+ * Authored visuals no reader can reach, and scene references that resolve to nothing.
+ *
+ * `visualCoverage` walks scenes and asks "does this scene have a visual?" — it can never
+ * see an asset that no scene points at. shibusawa's `seat`「きみの 座」shipped that way:
+ * written, commented, and never placed, so ch4's「きみの 座（つづき）」was a reply to a
+ * picture no one had seen (playtest note 2026-08-04). The mirror case is a scene naming a
+ * key that isn't there — `buildFigure` returns '' and the screen falls back in silence.
+ */
+export interface Unreachable {
+  /** `figures` / `studies` keys no scene references */
+  orphans: string[];
+  /** `sc.figure` / `sc.study` values with no entry in the work */
+  dangling: string[];
+  /** `sceneMaps` keys that match no scene id */
+  orphanMaps: string[];
+}
+
+export function unreachableVisuals(work: Work): Unreachable {
+  const usedFigures = new Set<string>();
+  const usedStudies = new Set<string>();
+  const sceneIds = new Set<string>();
+  for (const ch of work.story.chapters)
+    for (const [sceneId, sc] of Object.entries(ch.scenes)) {
+      sceneIds.add(sceneId);
+      if (sc.figure) usedFigures.add(sc.figure);
+      if (sc.study) usedStudies.add(sc.study);
+    }
+  const figures = work.figures ?? {};
+  const studies = work.studies ?? {};
+  return {
+    orphans: [
+      ...Object.keys(figures).filter((k) => !usedFigures.has(k)).map((k) => `figure:${k}`),
+      ...Object.keys(studies).filter((k) => !usedStudies.has(k)).map((k) => `study:${k}`),
+    ],
+    dangling: [
+      ...[...usedFigures].filter((k) => !figures[k]).map((k) => `figure:${k}`),
+      ...[...usedStudies].filter((k) => !studies[k]).map((k) => `study:${k}`),
+    ],
+    orphanMaps: Object.keys(work.map.sceneMaps).filter((k) => !sceneIds.has(k)),
+  };
+}
+
 export interface CoverageSummary {
   workId: string;
   total: number;
