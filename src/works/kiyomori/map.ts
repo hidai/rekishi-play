@@ -127,7 +127,9 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // 博多's note goes above the icon: below it would cross 宋's off-arrow text block
   // (the arrow text sits above the arrow in this bottom-left corner).
   '4-b': { route: 'sea-road', markers: [
-    { at: 'owada', cur: 1, kind: 'town', label: '大輪田泊', note: '畿内の 玄関' },
+    // The note must not name 畿内 here: choice B *is* "bring them to 畿内", and the map is read
+    // before the choice (2026-08-04「岐路の答えを先に見せる面」).
+    { at: 'owada', cur: 1, kind: 'town', label: '大輪田泊', note: '造りかけの 港' },
     { at: 'itsukushima', kind: 'flag', label: '厳島' },
     { at: 'hakata', kind: 'town', label: '博多', note: 'これまでの 玄関口', lpos: 'above' },
     { at: 'song', off: 1, label: '宋', note: '海の むこう' },
@@ -136,6 +138,14 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   '4-c': { markers: [
     { at: 'owada', cur: 1, kind: 'town', label: '大輪田泊', note: '経ヶ島を 築く' },
     { at: 'itsukushima', kind: 'flag', label: '厳島', note: '海の上の 社' },
+  ] },
+  // 4-c2: the retired emperor crosses the hills to the port. No closeup here — the two faces
+  // together would show the meeting the reader has not chosen yet.
+  // 福原 is only 3km from 大輪田泊 — inside the cur ring, so the two cannot both be marked
+  // (WRITING 地図4). 京 carries the distance the 院 crossed instead.
+  '4-c2': { markers: [
+    { at: 'heiankyo', kind: 'town', label: '京', note: '院は ここから', lpos: 'above' },
+    { at: 'owada', cur: 1, kind: 'town', label: '大輪田泊', note: '宋の 船が 入る 港' },
   ] },
   // 4-d: the road opened, recap toward 宋.
   '4-d': { route: 'sea-road', markers: [
