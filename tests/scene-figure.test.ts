@@ -6,7 +6,16 @@
 // instead of only in a manual visual-check.
 import { describe, it, expect } from 'vitest';
 import { WORKS } from '../src/works/index';
-import { buildFigure, FIG_FS, SEAT, DAIS_R, NODE_R, BLOCK, daisFontSize } from '../src/engine/map/figure';
+import {
+  buildFigure,
+  FIG_FS,
+  SEAT,
+  DAIS_R,
+  NODE_R,
+  BLOCK,
+  CUT_MARK_R,
+  daisFontSize,
+} from '../src/engine/map/figure';
 import { textW } from '../src/engine/util';
 
 // Estimated ink box of a <text>, in the coordinate space it is emitted in. Serif CJK sits
@@ -79,6 +88,88 @@ function expectLayoutSound(svg: string, at: string) {
         b.y1 <= dy - 4 || b.y0 >= dy + 4,
         `${at} "${b.s}" clears the head divider at y=${dy} (text y ${b.y0.toFixed(0)}-${b.y1.toFixed(0)})`,
       ).toBe(true);
+    }
+  }
+}
+
+// A severed tie is drawn as a double slash across its line, and the reader takes it to
+// cut whatever it lands on. In a genealogy the shared stretches are exactly the ones a
+// mark wants to sit on — siblings hang off one bar, every child's line starts at the
+// parents' midpoint — so the family read masako's marriage slash as cutting all four
+// children's lines, one sibling's slash as cutting the sibling beside it, and one slash
+// as striking a name out (observation 2026-08-04). None of that is visible to a type
+// check, and the placement is a search (figure.ts cutSpot) whose result changes whenever
+// figure data moves. Hold the invariant on the drawn output instead: a mark touches its
+// own tie and nothing else.
+interface Seg {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+}
+function distToSeg(s: Seg, x: number, y: number): number {
+  const dx = s.x2 - s.x1,
+    dy = s.y2 - s.y1;
+  const l2 = dx * dx + dy * dy;
+  const t = l2 ? Math.max(0, Math.min(1, ((x - s.x1) * dx + (y - s.y1) * dy) / l2)) : 0;
+  return Math.hypot(x - (s.x1 + t * dx), y - (s.y1 + t * dy));
+}
+function expectCutMarksUnambiguous(svg: string, at: string) {
+  // Content sits inside `<g transform="translate(0 headH)">`; textBoxes() already reports
+  // root coordinates, so lift the geometry into the same space.
+  const g = svg.match(/<g transform="translate\(0 ([\d.]+)\)">/);
+  const dy = g ? +g[1] : 0;
+  const lines = (body: string): Seg[] =>
+    [...body.matchAll(/<line x1="([-\d.]+)" y1="([-\d.]+)" x2="([-\d.]+)" y2="([-\d.]+)"/g)].map(
+      (m) => ({ x1: +m[1], y1: +m[2] + dy, x2: +m[3], y2: +m[4] + dy }),
+    );
+  const paths = (body: string): Seg[] => {
+    const out: Seg[] = [];
+    for (const m of body.matchAll(/<path d="M([^"]+)"/g)) {
+      const pts = m[1]
+        .split(/\s*L\s*/)
+        .map((p) => p.trim().split(/\s+/).map(Number))
+        .map(([x, y]) => [x, y + dy]);
+      for (let i = 1; i < pts.length; i++)
+        out.push({ x1: pts[i - 1][0], y1: pts[i - 1][1], x2: pts[i][0], y2: pts[i][1] });
+    }
+    return out;
+  };
+  const ties: Record<string, Seg[]> = {};
+  for (const m of svg.matchAll(/<g class="figedge" data-e="(\d+)">(.*?)<\/g>/g))
+    ties[m[1]] = [...lines(m[2]), ...paths(m[2])];
+  const names = textBoxes(svg);
+  for (const m of svg.matchAll(/<g class="figcut" data-e="(\d+)">(.*?)<\/g>/g)) {
+    const slashes = lines(m[2]);
+    expect(slashes.length, `${at} cut mark on tie ${m[1]} is a double slash`).toBe(2);
+    const x = slashes.reduce((a, s) => a + (s.x1 + s.x2) / 2, 0) / 2;
+    const y = slashes.reduce((a, s) => a + (s.y1 + s.y2) / 2, 0) / 2;
+    expect(ties[m[1]], `${at} cut mark ${m[1]} belongs to a drawn tie`).toBeTruthy();
+    for (const [id, segs] of Object.entries(ties)) {
+      if (id === m[1]) continue;
+      for (const s of segs) {
+        expect(
+          distToSeg(s, x, y),
+          `${at} cut mark on tie ${m[1]} (at ${x.toFixed(0)},${y.toFixed(0)}) clears tie ${id}`,
+        ).toBeGreaterThanOrEqual(CUT_MARK_R);
+      }
+    }
+    for (const b of names) {
+      expect(
+        x < b.x0 - CUT_MARK_R || x > b.x1 + CUT_MARK_R || y < b.y0 - CUT_MARK_R || y > b.y1 + CUT_MARK_R,
+        `${at} cut mark on tie ${m[1]} (at ${x.toFixed(0)},${y.toFixed(0)}) clears the name "${b.s}"`,
+      ).toBe(true);
+    }
+    // …and the faces themselves: a slash lying over a portrait reads as crossing the
+    // person out, which is a claim the figure is careful never to make (it keeps the
+    // dead in the picture and changes only the tie).
+    for (const c of svg.matchAll(
+      new RegExp(`<circle cx="([-\\d.]+)" cy="([-\\d.]+)" r="${NODE_R}"`, 'g'),
+    )) {
+      expect(
+        Math.hypot(x - +c[1], y - (+c[2] + dy)),
+        `${at} cut mark on tie ${m[1]} (at ${x.toFixed(0)},${y.toFixed(0)}) clears the circle at ${c[1]},${c[2]}`,
+      ).toBeGreaterThanOrEqual(NODE_R + CUT_MARK_R);
     }
   }
 }
@@ -308,6 +399,15 @@ for (const work of WORKS) {
       for (const key of Object.keys(figures)) {
         for (let ch = 1; ch <= work.totalChapters; ch++) {
           expectLayoutSound(buildFigure(work, key, ch), `${key}@${ch}`);
+        }
+      }
+    });
+
+    it('lineage: a severed-tie mark cuts one tie and no name', () => {
+      for (const [key, fig] of Object.entries<any>(figures)) {
+        if (fig.kind !== 'lineage') continue;
+        for (let ch = 1; ch <= work.totalChapters; ch++) {
+          expectCutMarksUnambiguous(buildFigure(work, key, ch), `${key}@${ch}`);
         }
       }
     });

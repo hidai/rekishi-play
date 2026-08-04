@@ -6,6 +6,7 @@ import type {
   Work,
   AssemblyFigure,
   LineageFigure,
+  LineageNode,
   BattlefieldFigure,
   BattleUnit,
   FigureFill,
@@ -336,6 +337,87 @@ function cutMark(x: number, y: number, vertical: boolean): string {
   return slash(-5) + slash(5);
 }
 
+interface Seg {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+}
+interface Box {
+  x0: number;
+  y0: number;
+  x1: number;
+  y1: number;
+}
+// The name printed under a lineage node — face nodes only, since a label-only node
+// carries its name inside the circle. One source of truth: the drawing and the cut-mark
+// placement have to agree on where that ink is.
+function nodeNameBelow(work: Work, n: LineageNode): string {
+  return n.pid && work.faces[n.pid] ? n.label || nameOf(work, n.pid.split('@')[0]) : '';
+}
+
+const segLen = (s: Seg) => Math.hypot(s.x2 - s.x1, s.y2 - s.y1);
+function distToSeg(s: Seg, x: number, y: number): number {
+  const dx = s.x2 - s.x1,
+    dy = s.y2 - s.y1;
+  const l2 = dx * dx + dy * dy;
+  const t = l2 ? Math.max(0, Math.min(1, ((x - s.x1) * dx + (y - s.y1) * dy) / l2)) : 0;
+  return Math.hypot(x - (s.x1 + t * dx), y - (s.y1 + t * dy));
+}
+
+// Where the double slash goes. The mark is ~13 units across, so anything else within
+// that reach reads as being cut too — and in a genealogy the shared stretches are
+// exactly the ones a mark wants to sit on: siblings hang off one bar, and every child's
+// line starts at the parents' midpoint. The family read the marriage slash as cutting
+// all four children's lines, one sibling's slash as cutting the sibling beside it, and
+// one slash as striking a name out (observation 2026-08-04). So the placement is a
+// search, not a formula: take the point on this tie's own polyline that is furthest
+// from every other tie and clear of the names. `tests/scene-figure.test.ts` holds the
+// invariant (the drawn mark touches no other tie's line and no name).
+export const CUT_MARK_R = 13; // half-extent of the slashes, in figure units
+const CUT_REACH = 26; // clearance past which more distance buys nothing
+function cutSpot(
+  spine: Seg[],
+  others: Seg[],
+  blocks: Box[],
+): { x: number; y: number; vertical: boolean } {
+  // spine always holds at least one run (callers pass the whole polyline), so a tie whose
+  // runs are all zero-length still gets a mark rather than none — a severed tie drawn
+  // without its mark reads as intact.
+  const runs = spine.filter((s) => segLen(s) > 0);
+  const longest = runs.reduce((a, b) => (segLen(b) > segLen(a) ? b : a), runs[0] ?? spine[0]);
+  let best = {
+    x: (longest.x1 + longest.x2) / 2,
+    y: (longest.y1 + longest.y2) / 2,
+    vertical: Math.abs(longest.y2 - longest.y1) >= Math.abs(longest.x2 - longest.x1),
+  };
+  let bestScore = -Infinity;
+  for (const s of runs) {
+    const len = segLen(s);
+    const steps = Math.max(2, Math.round(len / 6));
+    for (let i = 1; i < steps; i++) {
+      const t = i / steps;
+      const x = s.x1 + (s.x2 - s.x1) * t,
+        y = s.y1 + (s.y2 - s.y1) * t;
+      const corner = Math.min(t, 1 - t) * len; // clearance from this run's ends (the elbows)
+      const other = others.reduce((m, o) => Math.min(m, distToSeg(o, x, y)), Infinity);
+      const onInk = blocks.some(
+        (b) => x >= b.x0 - CUT_MARK_R && x <= b.x1 + CUT_MARK_R && y >= b.y0 - CUT_MARK_R && y <= b.y1 + CUT_MARK_R,
+      );
+      const score =
+        Math.min(other, CUT_REACH) * 3 +
+        Math.min(corner, 30) -
+        (onInk ? 400 : 0) -
+        (corner < CUT_MARK_R ? 200 : 0);
+      if (score > bestScore) {
+        bestScore = score;
+        best = { x, y, vertical: Math.abs(s.y2 - s.y1) >= Math.abs(s.x2 - s.x1) };
+      }
+    }
+  }
+  return best;
+}
+
 function buildLineage(work: Work, key: string, fig: LineageFigure, viewCh: number): string {
   const [VW, VH] = fig.vb ?? [1000, 470];
   const colorOf = (fk: string) => fig.factions.find((f) => f.key === fk)?.color || PAL.line;
@@ -344,7 +426,31 @@ function buildLineage(work: Work, key: string, fig: LineageFigure, viewCh: numbe
   fig.nodes.forEach((n) => (byId[n.id] = n));
   const vis = (n?: LineageFigure['nodes'][number]) => !!n && (n.fromCh ?? 1) <= viewCh;
   const defs: string[] = [];
-  const edges: string[] = [];
+  // The ink a cut mark has to stay off: every visible circle and the name under it.
+  const blocks: Box[] = [];
+  fig.nodes.forEach((n) => {
+    if (!vis(n)) return;
+    blocks.push({ x0: n.x - NODE_R, y0: n.y - NODE_R, x1: n.x + NODE_R, y1: n.y + NODE_R });
+    const nm = nodeNameBelow(work, n);
+    if (!nm) return;
+    const w = textW(nm, FIG_FS.nodeName),
+      base = n.y + NODE_R + 26;
+    blocks.push({
+      x0: n.x - w / 2,
+      y0: base - FIG_FS.nodeName,
+      x1: n.x + w / 2,
+      y1: base + FIG_FS.nodeName * 0.25,
+    });
+  });
+  // Geometry first, drawing second: a cut mark can only be placed once every other
+  // visible tie's line is known (see cutSpot).
+  interface EdgeGeo {
+    drawn: string;
+    segs: Seg[]; // as drawn (the marriage line is a pair)
+    spine: Seg[]; // the single line the mark may sit on
+    cut: boolean;
+  }
+  const geos: EdgeGeo[] = [];
   fig.edges.forEach((e) => {
     const a = byId[e.from],
       b = byId[e.to];
@@ -352,34 +458,55 @@ function buildLineage(work: Work, key: string, fig: LineageFigure, viewCh: numbe
     const cut = e.cutCh !== undefined && e.cutCh <= viewCh;
     const broken = cut ? ` stroke-dasharray="9 11" opacity="0.5"` : '';
     if (e.kind === 'marriage') {
-      const y = a.y;
-      edges.push(
-        `<line x1="${a.x + 34}" y1="${y - 5}" x2="${b.x - 34}" y2="${y - 5}" stroke="${PAL.gold}" stroke-width="4.2"${broken}/>` +
-          `<line x1="${a.x + 34}" y1="${y + 5}" x2="${b.x - 34}" y2="${y + 5}" stroke="${PAL.gold}" stroke-width="4.2"${broken}/>`,
-      );
-      if (cut) edges.push(cutMark((a.x + b.x) / 2, y, false));
+      const y = a.y,
+        x1 = a.x + NODE_R,
+        x2 = b.x - NODE_R;
+      const rail = (dy: number) =>
+        `<line x1="${x1}" y1="${y + dy}" x2="${x2}" y2="${y + dy}" stroke="${PAL.gold}" stroke-width="4.2"${broken}/>`;
+      geos.push({
+        drawn: rail(-5) + rail(5),
+        segs: [
+          { x1, y1: y - 5, x2, y2: y - 5 },
+          { x1, y1: y + 5, x2, y2: y + 5 },
+        ],
+        spine: [{ x1, y1: y, x2, y2: y }],
+        cut,
+      });
     } else {
       // Genealogy grammar: with both parents known (from2), the child's line drops
       // from the midpoint of the couple's marriage line, not from one parent's chin.
       const p2 = e.from2 ? byId[e.from2] : undefined;
       const useMid = !!p2 && vis(p2);
       const sx = useMid ? (a.x + p2.x) / 2 : a.x;
-      const sy = useMid ? a.y + 8 : a.y + 34;
+      const sy = useMid ? a.y + 8 : a.y + NODE_R;
       const my = (a.y + b.y) / 2;
-      edges.push(
-        `<path d="M${sx} ${sy} L${sx} ${my} L${b.x} ${my} L${b.x} ${b.y - 34}" fill="none" stroke="${PAL.line}" stroke-width="4.2"${broken}/>`,
-      );
-      // Mark the longest of the elbow's three straight runs, so the slashes never land
-      // on a corner (the horizontal run vanishes when the child sits under its parents).
-      if (cut) {
-        const runs: [number, () => string][] = [
-          [Math.abs(b.x - sx), () => cutMark((sx + b.x) / 2, my, false)],
-          [my - sy, () => cutMark(sx, (sy + my) / 2, true)],
-          [b.y - 34 - my, () => cutMark(b.x, (my + b.y - 34) / 2, true)],
-        ];
-        edges.push(runs.sort((p, q) => q[0] - p[0])[0][1]());
-      }
+      const pts: [number, number][] = [
+        [sx, sy],
+        [sx, my],
+        [b.x, my],
+        [b.x, b.y - NODE_R],
+      ];
+      // Every run of the elbow, zero-length ones included (a child sitting straight under
+      // its parents has no horizontal run) — cutSpot skips them but needs a non-empty
+      // polyline to fall back on, and a zero-length run is a point the others must clear.
+      const segs: Seg[] = [];
+      for (let i = 1; i < pts.length; i++)
+        segs.push({ x1: pts[i - 1][0], y1: pts[i - 1][1], x2: pts[i][0], y2: pts[i][1] });
+      geos.push({
+        drawn: `<path d="M${sx} ${sy} L${sx} ${my} L${b.x} ${my} L${b.x} ${b.y - NODE_R}" fill="none" stroke="${PAL.line}" stroke-width="4.2"${broken}/>`,
+        segs,
+        spine: segs,
+        cut,
+      });
     }
+  });
+  // Lines first, then every mark on top of them — a later tie must not draw over a mark.
+  const edges: string[] = geos.map((g, i) => `<g class="figedge" data-e="${i}">${g.drawn}</g>`);
+  geos.forEach((g, i) => {
+    if (!g.cut) return;
+    const others = geos.flatMap((o, j) => (j === i ? [] : o.segs));
+    const spot = cutSpot(g.spine, others, blocks);
+    edges.push(`<g class="figcut" data-e="${i}">${cutMark(spot.x, spot.y, spot.vertical)}</g>`);
   });
   const nodes: string[] = [];
   fig.nodes.forEach((n, i) => {
@@ -410,7 +537,7 @@ function buildLineage(work: Work, key: string, fig: LineageFigure, viewCh: numbe
     }
     // Face nodes get their name below; label-only nodes already carry it inside
     // the circle (a second copy below would read as another person).
-    const nm = hasFace ? n.label || nameOf(work, cardId!) : '';
+    const nm = nodeNameBelow(work, n);
     if (nm)
       g += `<text x="${n.x}" y="${n.y + r + 26}" text-anchor="middle" font-family="serif" font-size="${FIG_FS.nodeName}" font-weight="700" fill="${PAL.ink}">${esc(nm)}</text>`;
     nodes.push(
