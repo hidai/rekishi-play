@@ -163,14 +163,14 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     { at: 'song', off: 1, label: '宋', note: '海の むこう' },
   ] },
   // 6-c: the Genji rise everywhere (reveal scene). Yoritomo's red banner in Izu — the boy
-  // spared in 2-c — while the eastern provinces flood with the enemy fill and the capital
-  // retreats 福原 → 京 (the return itself is the text's job; the map shows the geography).
+  // spared in 2-c — while the eastern provinces flood with the enemy fill. The return to 京
+  // is 6-c2's decision, so this map must not show it yet (map rule 1: no unread endings).
   // `contested` here means "lands answering the call to arms", the same "not the
   // protagonist's ground" red as an invasion (scene-granular, ch-territory is empty).
   // No lpos:'above' on 京: raised text lands inside the locator box in this wide view.
   '6-c': { contested: [8, 9, 10, 11, 13, 14, 19, 20, 'shimosa', 'kazusa', 'awa', 'totomi', 'suruga', 'izu'], markers: [
     { at: 'izu', kind: 'flag', enemy: 1, label: '伊豆', note: '頼朝、兵を あげる', people: ['p-yoritomo'] },
-    { at: 'fukuhara', cur: 1, kind: 'flag', label: '福原', note: '半年で ついえた 都' },
+    { at: 'fukuhara', cur: 1, kind: 'flag', label: '福原', note: '造りかけの 都' },
     { at: 'heiankyo', kind: 'town', label: '京' },
   ] },
   // 6-d: chapter close — the sea capital lasted half a year; the court is back in 京.

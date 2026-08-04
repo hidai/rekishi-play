@@ -46,7 +46,7 @@ const LOAD_LEDGER: Record<string, number> = {
   //   呼び名を「院」に統一して 407 へ（2026-08-03。同じ回に ch2 も 466→450）。
   //   ch3 は 454→420 で削除（3-c2 を足すため章の説明を刈った・2026-08-04）。
   'kiyomori:1': 483, 'kiyomori:2': 450, 'kiyomori:4': 431,
-  'kiyomori:6': 444, 'kiyomori:7': 489,
+  'kiyomori:6': 426, 'kiyomori:7': 489,
   // ieyasu: 4章（最重 4-b 562）。ch1 は 528→364 で削除（1-c を分割・2026-08-02）。
   'ieyasu:3': 465, 'ieyasu:4': 562, 'ieyasu:5': 541, 'ieyasu:6': 510,
   // masako: 4章

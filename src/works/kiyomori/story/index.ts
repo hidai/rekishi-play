@@ -361,30 +361,31 @@ export const STORY: Story = {
       scenes: {
         '6-a': { place: '<ruby>福原<rt>ふくはら</rt></ruby>', figure: 'bloodline',
           monologue: '（<ruby>血<rt>ち</rt></ruby>は、力だ。……わが <ruby>孫<rt>まご</rt></ruby>が、<ruby>帝<rt>みかど</rt></ruby>と なった。もう、だれにも うばえぬ。）',
-          text: `<p><ruby>治承<rt>じしょう</rt></ruby>四年（1180年）、清盛の 夢が、ひとつ かなう。娘・<face pid="p-tokuko"><ruby>徳子<rt>とくこ</rt></ruby></face>が 生んだ <ruby>孫<rt>まご</rt></ruby>——わずか <ruby>三<rt>さん</rt></ruby><ruby>歳<rt>さい</rt></ruby>の <ruby>言仁<rt>ときひと</rt></ruby>親王が、<ruby>帝<rt>みかど</rt></ruby>の 位に つく。<em><face pid="p-antoku"><ruby>安徳<rt>あんとく</rt></ruby></face>天皇</em>だ。清盛は、天皇の <ruby>外祖父<rt>がいそふ</rt></ruby>（母がたの おじいさん）に なった。その 帝は、<ruby>玉座<rt>ぎょくざ</rt></ruby>の 重みも 知らず、ただ 大人に <ruby>抱<rt>だ</rt></ruby>かれて その 日を むかえた、幼い 子どもで しかない。</p>
+          text: `<p><ruby>治承<rt>じしょう</rt></ruby>四年（1180年）、清盛の 夢が、ひとつ かなう。娘・<face pid="p-tokuko"><ruby>徳子<rt>とくこ</rt></ruby></face>が 生んだ <ruby>孫<rt>まご</rt></ruby>——わずか <ruby>三<rt>さん</rt></ruby><ruby>歳<rt>さい</rt></ruby>の <ruby>言仁<rt>ときひと</rt></ruby>が、<ruby>帝<rt>みかど</rt></ruby>の 位に つく。<em><face pid="p-antoku"><ruby>安徳<rt>あんとく</rt></ruby></face>天皇</em>だ。清盛は、天皇の <ruby>外祖父<rt>がいそふ</rt></ruby>（母がたの おじいさん）に なった。その 帝は、大人に <ruby>抱<rt>だ</rt></ruby>かれて その 日を むかえた 幼い 子どもだ。</p>
             <p>その 年の 夏、清盛は <ruby>京<rt>きょう</rt></ruby>じゅうが 目を うたがう 一手を 打つ。<b>都を、京から <ruby>福原<rt>ふくはら</rt></ruby>（いまの <ruby>神戸<rt>こうべ</rt></ruby>）へ 移す</b>——<em><ruby>福原遷都<rt>ふくはらせんと</rt></ruby></em>だ。</p>
-            <p>四百年 ちかく 続いた 京の 都を すてて、なぜ わざわざ 海の そばへ？ 都の 人々は、あきれ、いきどおった。</p>`,
+            <p>四百年 ちかく 続いた 京の 都を すてて、なぜ わざわざ 海の そばへ？</p>`,
           spark: 'え！？ その <ruby>福原<rt>ふくはら</rt></ruby>、じつは きみが <ruby>自分<rt>じぶん</rt></ruby>の <ruby>財産<rt>ざいさん</rt></ruby>を つぎこんだ あの <ruby>港<rt>みなと</rt></ruby>の すぐ そば。のちの 世は これを「おごりが 生んだ ばかげた <ruby>失敗<rt>しっぱい</rt></ruby>」と 書いた。でも 近ごろ、「じつは <ruby>先<rt>さき</rt></ruby>を 見た 一手」と 見る <ruby>学者<rt>がくしゃ</rt></ruby>も——？',
           deep: { q: '<ruby>福原遷都<rt>ふくはらせんと</rt></ruby>は、ただの <ruby>無謀<rt>むぼう</rt></ruby>な <ruby>暴走<rt>ぼうそう</rt></ruby>だった？',
             body: `<ruby>遷都<rt>せんと</rt></ruby>の とき、都の <ruby>貴族<rt>きぞく</rt></ruby>の 日記（『<ruby>玉葉<rt>ぎょくよう</rt></ruby>』）は、これを「<ruby>天狗<rt>てんぐ</rt></ruby>の しわざ」とまで 書いた。新しい 都づくりは 進まず、<ruby>福原遷都<rt>ふくはらせんと</rt></ruby>は 長く「おごった 清盛の とんだ <ruby>失態<rt>しったい</rt></ruby>」と されて きた。<br>だが 近ごろの <ruby>研究<rt>けんきゅう</rt></ruby>（<ruby>高橋昌明<rt>たかはし まさあき</rt></ruby>ら）は、ちがう 光を あてる。福原は 海の 道の <ruby>拠点<rt>きょてん</rt></ruby>・<ruby>大輪田泊<rt>おおわだのとまり</rt></ruby>の そば。ここに 都を 置けば、<ruby>日宋貿易<rt>にっそうぼうえき</rt></ruby>の <ruby>富<rt>とみ</rt></ruby>を 直に つかめる。京の 古い <ruby>貴族<rt>きぞく</rt></ruby>や 大<ruby>寺社<rt>じしゃ</rt></ruby>の 力から 離れる ねらいも あったろう、と いう。<br>おろかな <ruby>失敗<rt>しっぱい</rt></ruby>か、早すぎた <ruby>挑戦<rt>ちょうせん</rt></ruby>か。いまも、決着は ついて いない。` },
           onEnter: { cards: ['p-antoku', 'w-fukuhara'] },
           next: '6-b' },
 
-        '6-b': { place: '<ruby>京<rt>きょう</rt></ruby>',
-          text: `<p>だが、<ruby>遷都<rt>せんと</rt></ruby>への <ruby>反対<rt>はんたい</rt></ruby>は、清盛が 思った 以上に 根づよかった。住みなれた 都を 離れたくない <ruby>貴族<rt>きぞく</rt></ruby>たち。大きな 力を もつ 京の <ruby>寺社<rt>じしゃ</rt></ruby>。生まれ 育った 土地を うばわれる、と おびえる 人々。「四百年の 都を、いまさら すてられるか」——その 声は、やまなかった。</p>
-            <p>新しい 都・福原の <ruby>造営<rt>ぞうえい</rt></ruby>は、はかどらない。<ruby>孫<rt>まご</rt></ruby>の <ruby>帝<rt>みかど</rt></ruby>・<ruby>安徳<rt>あんとく</rt></ruby>天皇も、その 父も、しぶしぶ 福原へ うつって きたが、みなの 心は、まだ 京に あった。</p>
-            <p>さあ。これほどの <ruby>反対<rt>はんたい</rt></ruby>を、きみ（清盛）なら どう する？</p>`,
+        '6-b': { place: '<ruby>福原<rt>ふくはら</rt></ruby> — 進まぬ 都づくり',
+          text: `<p>だが、<ruby>遷都<rt>せんと</rt></ruby>への <ruby>反対<rt>はんたい</rt></ruby>は、きみが 思った 以上に 根づよい。<ruby>貴族<rt>きぞく</rt></ruby>も、大きな 力を もつ 京の <ruby>寺社<rt>じしゃ</rt></ruby>も、京を はなれたがらない。都づくりで 土地を とられる 人々も、同じだ。</p>
+            <p class="speak">「四百年の 都を、いまさら すてられますか」——年老いた <ruby>貴族<rt>きぞく</rt></ruby>が、きみの 前で 頭を 下げたまま、そう 言い張った 気が した。</p>
+            <p>都づくりは、はかどらない。幼い <ruby>孫<rt>まご</rt></ruby>の <ruby>帝<rt>みかど</rt></ruby>も、とじこめた 院も、福原へ うつされた。だが みなの 心は、まだ 京に ある。</p>
+            <p>さあ。きみ（清盛）なら、どう する？</p>`,
           q: '海の そばの 新しい 都——おし通すか、あきらめるか。',
           choices: [
-            { label: '京の 都に とどまり、<ruby>遷都<rt>せんと</rt></ruby>を あきらめる', to: '6-c', effect: { miyako: 2 },
+            { label: '京へ 引き返し、<ruby>遷都<rt>せんと</rt></ruby>を あきらめる', to: '6-c', effect: { miyako: 2 },
               hist: { verdict: 'もしもルート', moshimo: true, match: '「都は、やはり 京」——そう 折れて いたら……',
-                body: `<p>もし 清盛が <ruby>貴族<rt>きぞく</rt></ruby>や <ruby>寺社<rt>じしゃ</rt></ruby>の <ruby>反対<rt>はんたい</rt></ruby>に 折れて いたら、「都を うばった <ruby>暴君<rt>ぼうくん</rt></ruby>」という 新しい 悪評は つかなかった だろう。この あと 全国に 広がる「<ruby>平家<rt>へいけ</rt></ruby>を <ruby>討<rt>う</rt></ruby>て」の 声も、少しは 弱まった かも しれない。</p><p>だが そのとき、<b>海の 道の 中心に 都を 置く</b>という、だれも 見た ことの ない 絵は、えがかれる ことなく 消えた。福原の 夢は、はじめから 無かった ことに なる。</p><p>——<ruby>史実<rt>じじつ</rt></ruby>の 清盛は、折れなかった。<ruby>反対<rt>はんたい</rt></ruby>の 声を おし切って、都を 海へ 動かす ほうを えらんだのだ。</p>` } },
-            { label: '<ruby>反対<rt>はんたい</rt></ruby>を おし切り、海に ひらく 新しい 都・福原へ 移す', to: '6-c', canon: true, effect: { umi: 2 },
+                body: `<p>もし ここで 造りかけの 都を たたんで いたら、「都を うばった <ruby>暴君<rt>ぼうくん</rt></ruby>」という 新しい 悪評は、これ 以上 育たなかった だろう。この あと 全国に 広がる「<ruby>平家<rt>へいけ</rt></ruby>を <ruby>討<rt>う</rt></ruby>て」の 声も、少しは 弱まった かも しれない。</p><p>だが そのとき、<b>海の 道の 中心に 都を 置く</b>という、だれも 見た ことの ない 絵は、半年も 待たずに 消えた。</p><p>——<ruby>史実<rt>じじつ</rt></ruby>の 清盛は、引き返さなかった。<ruby>反対<rt>はんたい</rt></ruby>の 声を おさえこみ、海の 都を つらぬく ほうを えらんだのだ。</p>` } },
+            { label: '<ruby>反対<rt>はんたい</rt></ruby>を おし切り、海に ひらく 新しい 都・福原を つらぬく', to: '6-c', canon: true, effect: { umi: 2 },
               hist: { verdict: '史実では', match: 'それが『<ruby>福原遷都<rt>ふくはらせんと</rt></ruby>』——四百年 続いた 都を、海へ',
-                body: `<p>清盛は、みなの <ruby>反対<rt>はんたい</rt></ruby>を 力で おし切った。<ruby>治承<rt>じしょう</rt></ruby>四年（1180年）六月、都は 京から 福原へ 移された。海の そばに、新しい 都を ひらく——<ruby>平安京<rt>へいあんきょう</rt></ruby>が できて から、はじめての ことだった。</p><p>だが、これほど 大きな ことを、たった 一人の 力で おし通す。それは、<ruby>平家<rt>へいけ</rt></ruby>の 力が <ruby>頂<rt>いただき</rt></ruby>を きわめた しるしで あると 同時に、あまりに 多くの 敵を つくる 一手でも あった。この とき すでに、遠い 国ぐにで、<b>ある <ruby>火種<rt>ひだね</rt></ruby></b>が くすぶり 始めて いた——。</p>` } },
+                body: `<p><ruby>治承<rt>じしょう</rt></ruby>四年（1180年）六月に 海へ 動かした 都を、清盛は 手ばなさなかった。みなの <ruby>反対<rt>はんたい</rt></ruby>を、力で おさえこむ。<ruby>平安京<rt>へいあんきょう</rt></ruby>が できて から、都が 動いたのは はじめての ことだった。</p><p>だが、これほど 大きな ことを、たった 一人の 力で おし通す。それは、<ruby>平家<rt>へいけ</rt></ruby>の 力が <ruby>頂<rt>いただき</rt></ruby>を きわめた しるしで あると 同時に、あまりに 多くの 敵を つくる 一手でも あった。この とき すでに、遠い 国ぐにで、<b>ある <ruby>火種<rt>ひだね</rt></ruby></b>が くすぶり 始めて いた——。</p>` } },
           ] },
 
-        '6-c': { place: '<ruby>福原<rt>ふくはら</rt></ruby> → <ruby>京<rt>きょう</rt></ruby>',
+        '6-c': { place: '<ruby>福原<rt>ふくはら</rt></ruby> — <ruby>急報<rt>きゅうほう</rt></ruby>',
           reveal: { face: 'p-yoritomo', tone: 'crisis',
             title: '<ruby>急報<rt>きゅうほう</rt></ruby>——<ruby>諸国<rt>しょこく</rt></ruby>の <ruby>源氏<rt>げんじ</rt></ruby>、いっせいに <ruby>挙兵<rt>きょへい</rt></ruby>',
             caption: '「<ruby>平家<rt>へいけ</rt></ruby>を <ruby>討<rt>う</rt></ruby>て」の 声が 全国を かけめぐる。<ruby>伊豆<rt>いず</rt></ruby>で 兵を あげたのは——かつて 清盛が <ruby>斬<rt>き</rt></ruby>らずに 生かした、あの 男。' },
@@ -392,12 +393,36 @@ export const STORY: Story = {
           text: `<p>都を 福原へ 移した、その 年の 秋。<ruby>平家<rt>へいけ</rt></ruby>を 根から ゆるがす 動きが 立ち上がった。きっかけは 春、<ruby>帝<rt>みかど</rt></ruby>に なれなかった <ruby>皇子<rt>おうじ</rt></ruby>・<face pid="p-mochihito"><ruby>以仁王<rt>もちひとおう</rt></ruby></face>が 放った、「<ruby>平家<rt>へいけ</rt></ruby>を <ruby>討<rt>う</rt></ruby>て」の 声だった。</p>
             <p class="speak">「<ruby>本来<rt>ほんらい</rt></ruby>、<ruby>帝<rt>みかど</rt></ruby>に なる はずだったのは、おれだ。<ruby>平家<rt>へいけ</rt></ruby>さえ、いなければ——」</p>
             <p><ruby>以仁王<rt>もちひとおう</rt></ruby> 自身は、まもなく 討たれた。だが 火は 消えず、秋、その 火を いちばん 大きく もやす 男が <ruby>伊豆<rt>いず</rt></ruby>で 立ち上がる。<ruby>源頼朝<rt>みなもとの よりとも</rt></ruby>だ。</p>
-            <p>きみは 覚えて いるだろうか。二十年 前、まだ <ruby>十三<rt>じゅうさん</rt></ruby><ruby>歳<rt>さい</rt></ruby>だった この 少年を、清盛は <ruby>斬<rt>き</rt></ruby>らずに 伊豆へ 流した（第二章）。あの ときの「情け」が、いま <ruby>牙<rt>きば</rt></ruby>を むく——<ruby>平家物語<rt>へいけものがたり</rt></ruby>は、のちに そう 語る。</p>
-            <p>清盛は 福原の 都を あきらめ、十一月、京へ もどした。海に ひらく 都は、わずか 半年で ついえた。</p>`,
+            <p>二十年 前、<ruby>十三<rt>じゅうさん</rt></ruby><ruby>歳<rt>さい</rt></ruby>だった この 少年を、清盛は <ruby>斬<rt>き</rt></ruby>らずに 伊豆へ 流した（第二章）。あの ときの「情け」が、いま <ruby>牙<rt>きば</rt></ruby>を むく——と、のちの <ruby>物語<rt>ものがたり</rt></ruby>は 語る。</p>`,
           deep: { q: '「情けが、<ruby>滅<rt>ほろ</rt></ruby>びを まねいた」——本当に そう？',
             body: `『<ruby>平家物語<rt>へいけものがたり</rt></ruby>』は、<ruby>頼朝<rt>よりとも</rt></ruby>を 生かした ことを「清盛 <ruby>最大<rt>さいだい</rt></ruby>の しくじり」と 語る。情けを かけた 相手に <ruby>滅<rt>ほろ</rt></ruby>ぼされる——物語として、よく できて いる。<br>でも、少し 立ち止まって みよう。「あの 情けが <ruby>滅<rt>ほろ</rt></ruby>びを まねいた」という 線は、<b><ruby>滅<rt>ほろ</rt></ruby>びた 後から ふりかえって、はじめて 引ける 線</b>だ。もし <ruby>頼朝<rt>よりとも</rt></ruby>を <ruby>斬<rt>き</rt></ruby>って いても、別の <ruby>源氏<rt>げんじ</rt></ruby>が 立ち上がった かも しれない。<br>ものごとの わけを、たった 一つの できごとに しぼると、話は すっきり する。でも 本当の <ruby>歴史<rt>れきし</rt></ruby>は、いつも それより こみ入って いる。` },
           onEnter: { card: 'p-mochihito' },
-          next: '6-d' },
+          next: '6-c2' },
+
+        '6-c2': { place: '<ruby>福原<rt>ふくはら</rt></ruby> — <ruby>院<rt>いん</rt></ruby>の もとへ',
+          monologue: '（……おれの 都を、おれの 手で たたむ。）',
+          closeup: { tone: 'tense', cast: [
+            { face: 'p-goshirakawa', name: '後白河院', expr: { brow: 'calm', eye: 'narrow', mouth: 'grin' } },
+            { face: 'p-kiyomori@elder', name: '清盛（きみ）' } ] },
+          text: `<p><ruby>十一月<rt>じゅういちがつ</rt></ruby>。東で 兵が あがった。造りかけの 都からでは、<ruby>戦<rt>いくさ</rt></ruby>に 手が とどかない。——きみは 都を 京へ もどすと 決めた。</p>
+            <p>その 知らせを、人には やらせなかった。みずから 院の もとへ 行き、力を うばった 相手の 前に すわる。</p>
+            <p class="speak">「一年、<ruby>鳥羽<rt>とば</rt></ruby>で 静かに して いた。……ほう。海の 都は、しまいか」——院は 声を 立てて 笑った 気が した。</p>
+            <p>ここで 頭を 下げれば、京の 人の 心は しずまる。だが 下げた ぶん、国を 動かす 力は 院に もどる。</p>
+            <p>きみ（清盛）なら、この 人に 何と 言う？</p>`,
+          deep: { q: '院に 頭を 下げると、何が 変わる？',
+            body: `<ruby>位<rt>くらい</rt></ruby>を おりた 人が、天皇の 後ろで 国を 動かす——この しくみが『<ruby>院政<rt>いんせい</rt></ruby>』だ（第一章）。<ruby>治承<rt>じしょう</rt></ruby>三年（1179年）、清盛は その <ruby>後白河<rt>ごしらかわ</rt></ruby>院から 力を とりあげ、<ruby>平家<rt>へいけ</rt></ruby>が 国を 動かす かたちを 作った。<br><b>都の 場所は、ゆずっても この かたちは くずれない。だが 院に 頭を 下げれば、かたちの ほうが くずれる。</b><br>——なお、<ruby>還都<rt>かんと</rt></ruby>を めぐって 子の <ruby>宗盛<rt>むねもり</rt></ruby>が 父に 食い下がった ことは <ruby>記録<rt>きろく</rt></ruby>に ある。だが 清盛が 何を 思って 折れたかは、どこにも 書かれて いない。`,
+            cite: '※ 十一月に 都が 京へ もどった ことは <ruby>記録<rt>きろく</rt></ruby>に ある。だが この日 きみと 院が 顔を 合わせたか、何を 言ったかを 書きとめた 紙は 無い。この 場面は <ruby>想像<rt>そうぞう</rt></ruby>だ。' },
+          choices: [
+            { label: '「わたしが まちがえた」と 頭を 下げ、これからは 院と ともに 国を 動かすと 約束する', to: '6-d', effect: { nasake: 2 },
+              hist: { verdict: 'もしもルート', moshimo: true, match: 'もし 頭を 下げて いたら……',
+                body: `<p>頭を 下げるのは、弱さでは ない。京の 人の 心は しずまり、「院を とじこめた <ruby>悪人<rt>あくにん</rt></ruby>」の 悪評も、うすらいだ かも しれない。</p><p>だが その 日から、国を 動かすのは 院に なる。海の 道も、造りかけの 港も、院の 心ひとつ。<ruby>平家<rt>へいけ</rt></ruby>が 積み上げた ものを、<ruby>一言<rt>ひとこと</rt></ruby>で 手ばなす ことでも あった。</p><p>——<ruby>史実<rt>じじつ</rt></ruby>の きみは、国を 動かす 力を はなさなかった。</p>` } },
+            { label: '「都は 京へ もどす」とだけ 告げ、頭は 下げない', to: '6-d', canon: true, effect: { miyako: 2 },
+              hist: { verdict: '史実では', match: '力は はなさなかった。だが 二か月後——',
+                body: `<p>きみは 都だけを 京へ もどし、国を 動かす 力は はなさなかった。</p><p>だが 二か月後、<face pid="p-takakura"><ruby>高倉<rt>たかくら</rt></ruby></face>——<ruby>孫<rt>まご</rt></ruby>の <ruby>帝<rt>みかど</rt></ruby>の 父が、<ruby>病<rt>やまい</rt></ruby>で 死ぬ。<ruby>平家<rt>へいけ</rt></ruby>は この 人を 帝の 後ろに 立てて、国を 動かして きた。その 人が いなく なり、清盛は とじこめた はずの 後白河院に、国の 仕事を まかせる ほか なく なった。</p><p>頭を 下げないまま、力だけが 手から こぼれて いく。</p>`,
+                source: { grade: 'contemporary',
+                  name: '『<ruby>玉葉<rt>ぎょくよう</rt></ruby>』',
+                  note: '<ruby>還都<rt>かんと</rt></ruby>も、<ruby>高倉<rt>たかくら</rt></ruby>の 死も、同じ ころを 生きた 人の 日記が 書きとめた 事実。ただし その 場の きみと 院の やりとりは、記録に ない。' } } },
+          ] },
 
         '6-d': { place: '第6章 むすび',
           onEnter: { clues: ['clue-6'] },
@@ -405,7 +430,7 @@ export const STORY: Story = {
             <p>でも——もし <ruby>諸国<rt>しょこく</rt></ruby>の <ruby>源氏<rt>げんじ</rt></ruby>の <ruby>挙兵<rt>きょへい</rt></ruby>が なければ。もし 都づくりに、あと 数年の 時が あれば。海の 道の 中心に 都を 置く この <ruby>前代未聞<rt>ぜんだいみもん</rt></ruby>の <ruby>試<rt>こころ</rt></ruby>みは、ちがう 実を 結んで いたかも しれない。</p>
             <p>では、この 半年の 都は、ただの "<ruby>失敗<rt>しっぱい</rt></ruby>"だったのか。——その 問いは、きみの 手帳に とっておこう。</p>`,
           creed: { line: '「"<ruby>天狗<rt>てんぐ</rt></ruby>の しわざ"と そしるが いい。海の そばに 都を——おれは、それが 見たかった。ただ、それだけの 男よ。」',
-            act: '——<ruby>反対<rt>はんたい</rt></ruby>を おし切り、海に 都を ひらいた 男。その <ruby>夢<rt>ゆめ</rt></ruby>が 半年で ついえても、清盛は うつむかなかった。——だが その からだに <ruby>熱<rt>ねつ</rt></ruby>が しのびよって いる ことを、この ときの 清盛は まだ 知らない。' },
+            act: '——<ruby>反対<rt>はんたい</rt></ruby>を おし切り、海に 都を ひらいた 男。その 都は 半年で たたまれ、力は 手から こぼれ はじめて いた。' },
           end: true },
       },
     },
