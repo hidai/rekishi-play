@@ -234,19 +234,27 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     { at: 'sf', cur: 1, kind: 'town', label: 'アメリカ', note: 'サンフランシスコ' },
   ] },
   // Chapter 四 (神戸操練所, 身分を こえた 船). One place (神戸/kobe, on-frame at true coords, mid-west
-  // Japan) across three scenes; 4-c is a closeup (no map). Katsu's ch4 device is "身分を越えて一つの
-  // 船に乗せる" = the operations ground (design §7-4); the crew/人の図 (lines crossing status) is an
+  // Japan) across three scenes; 4-a and 4-c are closeups (no map). Katsu's ch4 device is "身分を越えて
+  // 一つの 船に乗せる" = the operations ground (design §7-4); the crew/人の図 (lines crossing status) is an
   // engine 変種 deferred to 演出フェーズ, so these stay clean establishing shots (1 place + a note
-  // echoing the body, 4-a carrying 龍馬's face). Icon stays 'town' across all three (a steady training
+  // echoing the body, 4-a2 carrying 龍馬's face). Icon stays 'town' across all three (a steady training
   // place, like ch2's port — no crisis→salvation flip); the arc rides the notes: 場をひらく → 岐路 →
   // 芽が次の世へ. Notes stay ruby-free-readable (船/動/者/育/芽 are ≤小5 kanji; the body delivers
   // 操練所/幕臣/脱藩浪士 with ruby). No off-map arrow: ch4 is inland operations, not the outward-sea
   // grammar of ch2/ch3.
   //
-  // 4-a: opening — きみ (海舟) opens the naval school; a place to raise ship-handlers regardless of
-  // status. The 脱藩浪士 龍馬 has just arrived (the opening situation the scene poses, not an ending):
-  // 龍馬's face sits at 神戸 (parallels 5-a's 慶喜 in the opening situation). Note is body-verbatim.
+  // 4-a: the 1862 Edo meeting. A visual-read persona could not read the core off the two-bust
+  // closeup first drafted here ("人物紹介カットに見える" — the engine-wide "closeup が対面に読めない"
+  // limit), so the scene anchors on the map instead: place + time + who arrived, which the note can
+  // say outright. 龍馬's face at 江戸 = the opening situation, not the ending (the answer is 4-b's).
   '4-a': { markers: [
+    { at: 'edojo', cur: 1, kind: 'town', label: '江戸', note: '土佐を すてた 若者が、たずねて 来た', people: ['p-ryoma'] },
+  ] },
+  // 4-a2: きみ (海舟) opens the naval school; a place to raise ship-handlers regardless of status.
+  // 龍馬 and the rōnin who followed him have gathered here (the opening situation the scene poses,
+  // not an ending): 龍馬's face sits at 神戸 (parallels 5-a's 慶喜 in the opening situation). The
+  // westward 江戸→神戸 move across 4-a→4-a2 is the chapter's own establishing arc. Note is body-verbatim.
+  '4-a2': { markers: [
     { at: 'kobe', cur: 1, kind: 'town', label: '神戸', note: '船を 動かす 者を、ここで 育てる', people: ['p-ryoma'] },
   ] },
   // 4-b: the fork — take the outsider (龍馬) aboard or restrict to the 幕府. Choice scenes anchor to

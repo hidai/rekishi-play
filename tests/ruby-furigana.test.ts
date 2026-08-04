@@ -35,10 +35,10 @@ const BASELINE: Record<string, number> = {
   'kiyomori:ch1': 2, 'kiyomori:ch2': 3, 'kiyomori:ch3': 7, 'kiyomori:ch4': 1,
   'kiyomori:ch5': 5, 'kiyomori:ch6': 2, 'kiyomori:ch7': 8, 'kiyomori:card': 72,
   'kiyomori:clue': 2, 'kiyomori:hidden': 5, 'kiyomori:timeline': 29,
-  // katsu: 183 件
+  // katsu: 178 件
   // ch4 は制度語の棚卸し（型3）で lead の「幕臣・諸藩士・脱藩浪士」ごと消えて 0 になった
   'katsu:ch1': 10, 'katsu:ch3': 21, 'katsu:ch5': 3, 'katsu:ch6': 3,
-  'katsu:ch7': 2, 'katsu:card': 100, 'katsu:clue': 3, 'katsu:hidden': 3, 'katsu:timeline': 34,
+  'katsu:ch7': 2, 'katsu:card': 96, 'katsu:clue': 3, 'katsu:hidden': 3, 'katsu:timeline': 33,
   // ieyasu: 198 件
   'ieyasu:ch1': 8, 'ieyasu:ch2': 8, 'ieyasu:ch3': 8, 'ieyasu:ch4': 15, 'ieyasu:ch5': 5,
   'ieyasu:ch6': 10, 'ieyasu:ch7': 4, 'ieyasu:card': 92, 'ieyasu:clue': 1, 'ieyasu:timeline': 39,

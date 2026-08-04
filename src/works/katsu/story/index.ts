@@ -121,7 +121,7 @@ export const STORY: Story = {
       id: 3, num: '三', title: '咸臨丸、世界の 海へ', years: '1860',
       lead: '日本の 船で 太平洋を わたり、サンフランシスコへ。',
       start: '3-a',
-      teaser: 'つぎは <ruby>神戸<rt>こうべ</rt></ruby>。<ruby>幕臣<rt>ばくしん</rt></ruby>（幕府に 仕える 身）なのに、幕府の 敵に なりうる 者まで 一つの 船に 乗せる——なぜ？',
+      teaser: 'つぎは、<ruby>土佐<rt>とさ</rt></ruby>を すてて 来た 若者が、きみの 家を たずねて 来る。<ruby>幕府<rt>ばくふ</rt></ruby>の 敵に なりうる その 者を、<ruby>幕臣<rt>ばくしん</rt></ruby>（幕府に 仕える 身）の きみは どう する？',
       scenes: {
         '3-a': { place: '<ruby>品川<rt>しながわ</rt></ruby>、世界へ',
           monologue: '（<ruby>黒船<rt>くろふね</rt></ruby>に 国じゅうが おどろいた 日は、まだ 昨日の ことのようだ。……その 海の むこうへ、こんどは おれたちが、自分の 船で 行く。）',
@@ -182,20 +182,36 @@ export const STORY: Story = {
     },
     {
       id: 4, num: '四', title: '神戸、身分を こえた 船', years: '1862〜1865',
-      lead: '幕府の 家来も、よその 家を ぬけ出した 者も、同じ 船に 乗せる。',
+      lead: '船を 動かす 者を、ここで 育てる。——だれを、その 船に 乗せる？',
       start: '4-a',
       teaser: 'つぎは <ruby>江戸<rt>えど</rt></ruby>。戦えば 灰、明けわたせば「裏切り者」——町ぜんぶを かけた 分かれ道が やって くる。',
       scenes: {
-        '4-a': { place: '<ruby>神戸<rt>こうべ</rt></ruby>・<ruby>海軍操練所<rt>かいぐんそうれんじょ</rt></ruby>',
-          monologue: '（<ruby>身分<rt>みぶん</rt></ruby>の <ruby>低<rt>ひく</rt></ruby>い おれは、<ruby>腕<rt>うで</rt></ruby>ひとつで ここまで <ruby>来<rt>き</rt></ruby>た。……ならば こんどは、<ruby>身分<rt>みぶん</rt></ruby>など 問わぬ <ruby>場<rt>ば</rt></ruby>を、おれが つくって みせる。）',
-          text: `<p>1864<ruby>年<rt>ねん</rt></ruby>、きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）は <ruby>神戸<rt>こうべ</rt></ruby>に <ruby>海軍操練所<rt>かいぐんそうれんじょ</rt></ruby>を ひらいた。<ruby>船<rt>ふね</rt></ruby>を <ruby>動<rt>うご</rt></ruby>かす <ruby>者<rt>もの</rt></ruby>を、ここで <ruby>育<rt>そだ</rt></ruby>てる。</p>
-            <p>そこへ、<ruby>土佐<rt>とさ</rt></ruby>を ぬけ<ruby>出<rt>だ</rt></ruby>した <ruby>若者<rt>わかもの</rt></ruby>・<face pid="p-ryoma"><ruby>坂本龍馬<rt>さかもと りょうま</rt></ruby></face>が たずねて <ruby>来<rt>き</rt></ruby>た。<ruby>藩<rt>はん</rt></ruby>（その 土地を おさめる 家）を ぬけた <ruby>脱藩浪士<rt>だっぱんろうし</rt></ruby>——<ruby>幕府<rt>ばくふ</rt></ruby>から <ruby>見<rt>み</rt></ruby>れば、いつ <ruby>敵<rt>てき</rt></ruby>に まわるか わからぬ <ruby>者<rt>もの</rt></ruby>だ。<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>家来<rt>けらい</rt></ruby>である きみが、その <ruby>者<rt>もの</rt></ruby>まで、この <ruby>船<rt>ふね</rt></ruby>に <ruby>乗<rt>の</rt></ruby>せるのか——。</p>`,
-          onEnter: { cards: ['w-soren', 'w-datsuhan'] },
+        // 型9（相手のいる行為）で 0/4 の空白章だった。旧 4-a は「操練所をひらいた／龍馬が来た」の
+        // 2話題を1枚に畳んでいて、1862年の出会いが1864年の操練所のあとに来る時間の乱れもあった。
+        // 割って先頭に対面を置く（4-a＝1862 江戸の出会い／4-a2＝1864 神戸の開設）。読者は自分が
+        // 遊んだ出会いを持ってから 4-c の本人談に会う＝WRITING 11「裏返す前に、着せる」。
+        '4-a': { place: '<ruby>江戸<rt>えど</rt></ruby>、たずねて <ruby>来<rt>き</rt></ruby>た <ruby>若者<rt>わかもの</rt></ruby>',
+          text: `<p>1862<ruby>年<rt>ねん</rt></ruby>の <ruby>冬<rt>ふゆ</rt></ruby>。<ruby>太平洋<rt>たいへいよう</rt></ruby>から <ruby>帰<rt>かえ</rt></ruby>った きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）は、<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>軍艦<rt>ぐんかん</rt></ruby>を あずかる <ruby>役<rt>やく</rt></ruby>に <ruby>就<rt>つ</rt></ruby>いて いた。その きみの <ruby>家<rt>いえ</rt></ruby>に、<ruby>紹介状<rt>しょうかいじょう</rt></ruby>を <ruby>持<rt>も</rt></ruby>った <ruby>若者<rt>わかもの</rt></ruby>が <ruby>来<rt>き</rt></ruby>た。<ruby>土佐<rt>とさ</rt></ruby>を ぬけ<ruby>出<rt>だ</rt></ruby>した <face pid="p-ryoma"><ruby>坂本龍馬<rt>さかもと りょうま</rt></ruby></face>——<ruby>藩<rt>はん</rt></ruby>（その <ruby>土地<rt>とち</rt></ruby>を おさめる <ruby>家<rt>いえ</rt></ruby>）を すてた <ruby>脱藩浪士<rt>だっぱんろうし</rt></ruby>だ。</p>
+            <p class="speak">「<ruby>外国<rt>がいこく</rt></ruby>の <ruby>船<rt>ふね</rt></ruby>を、この <ruby>国<rt>くに</rt></ruby>から <ruby>追<rt>お</rt></ruby>い<ruby>払<rt>はら</rt></ruby>う。その ために <ruby>来<rt>き</rt></ruby>ました」</p>
+            <p><ruby>幕府<rt>ばくふ</rt></ruby>から <ruby>見<rt>み</rt></ruby>れば、いつ <ruby>敵<rt>てき</rt></ruby>に まわるか わからぬ <ruby>者<rt>もの</rt></ruby>。それでも きみは <ruby>追<rt>お</rt></ruby>い<ruby>返<rt>かえ</rt></ruby>さず、<ruby>海<rt>うみ</rt></ruby>の <ruby>絵図<rt>えず</rt></ruby>を ひろげて <ruby>見<rt>み</rt></ruby>せた。<ruby>追<rt>お</rt></ruby>い<ruby>払<rt>はら</rt></ruby>う <ruby>力<rt>ちから</rt></ruby>は、いまの <ruby>日本<rt>にほん</rt></ruby>に ない。ならば <ruby>船<rt>ふね</rt></ruby>を <ruby>動<rt>うご</rt></ruby>かせる <ruby>者<rt>もの</rt></ruby>を、<ruby>身分<rt>みぶん</rt></ruby>に かまわず <ruby>集<rt>あつ</rt></ruby>めて <ruby>育<rt>そだ</rt></ruby>てる——。</p>
+            <p class="speak">「……その <ruby>船<rt>ふね</rt></ruby>に、おれも <ruby>乗<rt>の</rt></ruby>せて ください」</p>
+            <p><ruby>龍馬<rt>りょうま</rt></ruby>は <ruby>刀<rt>かたな</rt></ruby>を わきに <ruby>置<rt>お</rt></ruby>き、そう <ruby>言<rt>い</rt></ruby>った——気が した。</p>`,
+          deep: { q: 'この <ruby>日<rt>ひ</rt></ruby>、<ruby>二人<rt>ふたり</rt></ruby>は <ruby>何<rt>なに</rt></ruby>を <ruby>話<rt>はな</rt></ruby>した？',
+            body: `<ruby>龍馬<rt>りょうま</rt></ruby>が この <ruby>冬<rt>ふゆ</rt></ruby>に <ruby>紹介状<rt>しょうかいじょう</rt></ruby>を <ruby>持<rt>も</rt></ruby>って <ruby>海舟<rt>かいしゅう</rt></ruby>を たずね、その <ruby>弟子<rt>でし</rt></ruby>に なった ことは、いくつもの <ruby>記録<rt>きろく</rt></ruby>が <ruby>伝<rt>つた</rt></ruby>える。だが、その <ruby>場<rt>ば</rt></ruby>で かわした ことばは 一つも 残って いない。この <ruby>画面<rt>がめん</rt></ruby>の やりとりは、のこった <ruby>記録<rt>きろく</rt></ruby>に のせた <b>想像</b>だ。だから △。<br>たしかなのは、この 日から <ruby>龍馬<rt>りょうま</rt></ruby>が、<ruby>海舟<rt>かいしゅう</rt></ruby>の そばで <ruby>船<rt>ふね</rt></ruby>を <ruby>学<rt>まな</rt></ruby>びはじめた ことだ。`,
+            confidence: '△' },
+          onEnter: { cards: ['w-datsuhan', 'p-ryoma'] },
+          next: '4-a2' },
+
+        '4-a2': { place: '<ruby>神戸<rt>こうべ</rt></ruby>・<ruby>海軍操練所<rt>かいぐんそうれんじょ</rt></ruby>',
+          monologue: '（あいつらを <ruby>見<rt>み</rt></ruby>る <ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>目<rt>め</rt></ruby>は、日ごとに つめたく なる。……いつまで、かばい きれるか。）',
+          text: `<p>あの <ruby>若者<rt>わかもの</rt></ruby>は、きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）の <ruby>弟子<rt>でし</rt></ruby>に なった。1864<ruby>年<rt>ねん</rt></ruby>、きみは <ruby>幕府<rt>ばくふ</rt></ruby>に かけあって、<ruby>神戸<rt>こうべ</rt></ruby>に <ruby>海軍操練所<rt>かいぐんそうれんじょ</rt></ruby>を ひらいた。<ruby>船<rt>ふね</rt></ruby>を <ruby>動<rt>うご</rt></ruby>かす <ruby>者<rt>もの</rt></ruby>を、ここで <ruby>育<rt>そだ</rt></ruby>てる。</p>
+            <p><ruby>集<rt>あつ</rt></ruby>まって <ruby>来<rt>き</rt></ruby>たのは、<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>家来<rt>けらい</rt></ruby>だけでは なかった。<ruby>龍馬<rt>りょうま</rt></ruby>を たよって、<ruby>藩<rt>はん</rt></ruby>を ぬけ<ruby>出<rt>だ</rt></ruby>した <ruby>者<rt>もの</rt></ruby>たちまで、この <ruby>港<rt>みなと</rt></ruby>に <ruby>来<rt>く</rt></ruby>る。<ruby>幕府<rt>ばくふ</rt></ruby>が ゆるした <ruby>場<rt>ば</rt></ruby>に、<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>敵<rt>てき</rt></ruby>に なりうる <ruby>者<rt>もの</rt></ruby>を <ruby>置<rt>お</rt></ruby>く——。</p>`,
+          onEnter: { cards: ['w-soren'] },
           next: '4-b' },
 
         '4-b': { place: '<ruby>垣根<rt>かきね</rt></ruby>の <ruby>外<rt>そと</rt></ruby>の <ruby>者<rt>もの</rt></ruby>まで、<ruby>育<rt>そだ</rt></ruby>てるか',
-          text: `<p class="speak">「なぜ <ruby>幕臣<rt>ばくしん</rt></ruby>の おまえが、あんな <ruby>者<rt>もの</rt></ruby>まで かかえる」——まわりは あやしんだ。</p>
-            <p><ruby>脱藩浪士<rt>だっぱんろうし</rt></ruby>を <ruby>船<rt>ふね</rt></ruby>に <ruby>乗<rt>の</rt></ruby>せれば、きみ <ruby>自身<rt>じしん</rt></ruby>が <ruby>幕府<rt>ばくふ</rt></ruby>に にらまれる。<ruby>職<rt>しょく</rt></ruby>を <ruby>失<rt>うしな</rt></ruby>うかも しれない。それでも——<ruby>海<rt>うみ</rt></ruby>の <ruby>上<rt>うえ</rt></ruby>で <ruby>使<rt>つか</rt></ruby>える <ruby>者<rt>もの</rt></ruby>は、<ruby>身分<rt>みぶん</rt></ruby>で 決まる ものでは ない。</p>`,
+          text: `<p class="speak">「あの <ruby>者<rt>もの</rt></ruby>たちは、いつ <ruby>幕府<rt>ばくふ</rt></ruby>に <ruby>刀<rt>かたな</rt></ruby>を <ruby>向<rt>む</rt></ruby>けるか わからぬ。なぜ <ruby>幕臣<rt>ばくしん</rt></ruby>の おまえが、そんな <ruby>者<rt>もの</rt></ruby>まで かかえる」——まわりは あやしんだ。</p>
+            <p><ruby>自分<rt>じぶん</rt></ruby>の <ruby>弟子<rt>でし</rt></ruby>に する のと、<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>船<rt>ふね</rt></ruby>に <ruby>乗<rt>の</rt></ruby>せる のは、まるで ちがう。<ruby>脱藩浪士<rt>だっぱんろうし</rt></ruby>を <ruby>船<rt>ふね</rt></ruby>に <ruby>乗<rt>の</rt></ruby>せれば、きみ <ruby>自身<rt>じしん</rt></ruby>が <ruby>幕府<rt>ばくふ</rt></ruby>に にらまれる。<ruby>職<rt>しょく</rt></ruby>を <ruby>失<rt>うしな</rt></ruby>うかも しれない。——<ruby>海<rt>うみ</rt></ruby>の <ruby>上<rt>うえ</rt></ruby>で <ruby>使<rt>つか</rt></ruby>えるか どうかは、<ruby>身分<rt>みぶん</rt></ruby>で 決まる ものか。</p>`,
           q: '<ruby>藩<rt>はん</rt></ruby>を ぬけた <ruby>者<rt>もの</rt></ruby>まで、<ruby>一<rt>ひと</rt></ruby>つの <ruby>船<rt>ふね</rt></ruby>に <ruby>乗<rt>の</rt></ruby>せるか？',
           choices: [
             { label: '<ruby>幕府<rt>ばくふ</rt></ruby>の ためだけの <ruby>海軍<rt>かいぐん</rt></ruby>に、しぼる', to: '4-c', effect: { suji: 1 },
@@ -207,24 +223,30 @@ export const STORY: Story = {
           ] },
 
         '4-c': { place: '<ruby>斬<rt>き</rt></ruby>りに <ruby>来<rt>き</rt></ruby>た <ruby>男<rt>おとこ</rt></ruby>',
-          closeup: { tone: 'warm', cast: [ { face: 'p-katsu@prime', name: '海舟（きみ）' }, { face: 'p-ryoma', name: '坂本龍馬' } ] },
-          text: `<p><ruby>操練所<rt>そうれんじょ</rt></ruby>に <ruby>集<rt>あつ</rt></ruby>まる <ruby>者<rt>もの</rt></ruby>の <ruby>中<rt>なか</rt></ruby>でも、<ruby>龍馬<rt>りょうま</rt></ruby>は とびきり 型やぶりだった。きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）は、ずっと あとに なって、こう <ruby>語<rt>かた</rt></ruby>って いる——。</p>
+          // ⚠️ この画面は「年をとった海舟が、この出会いを語っている」場＝1862年の対面そのものではない。
+          // 二人を並べると engine は必ず「いま向きあっている」に読まれる（closeup が回想を描けない＝
+          // 既知の engine の型）。prime の二人組は「出会いの記録カット」、@old＋若い龍馬は「老海舟が
+          // 若い龍馬と いま会っている」と読まれて、どちらも本文が裏返そうとする像を絵が補強した
+          // （R2・R3 のビジュアル読解が major）。**語り手ひとり**にすれば対面の読みは立たない。
+          closeup: { tone: 'warm', cast: [
+            { face: 'p-katsu@old', name: '年を とった 海舟', expr: { brow: 'soft', eye: 'narrow', mouth: 'grin' } } ] },
+          text: `<p><ruby>操練所<rt>そうれんじょ</rt></ruby>に <ruby>集<rt>あつ</rt></ruby>まる <ruby>者<rt>もの</rt></ruby>の <ruby>中<rt>なか</rt></ruby>でも、<ruby>龍馬<rt>りょうま</rt></ruby>は とびきり 型やぶりだった。年を とった のちの <ruby>海舟<rt>かいしゅう</rt></ruby>は、この <ruby>出会<rt>であ</rt></ruby>いを こう <ruby>語<rt>かた</rt></ruby>って いる——。</p>
             <p class="speak">「あいつは、おれを <ruby>斬<rt>き</rt></ruby>りに <ruby>来<rt>き</rt></ruby>た。だが <ruby>話<rt>はな</rt></ruby>して いる うちに、その<ruby>場<rt>ば</rt></ruby>で おれの <ruby>弟子<rt>でし</rt></ruby>に なって しまった」</p>
-            <p><ruby>刀<rt>かたな</rt></ruby>を さげて あらわれた <ruby>男<rt>おとこ</rt></ruby>が、ひと<ruby>晩<rt>ばん</rt></ruby>で <ruby>心<rt>こころ</rt></ruby>を あずける。いかにも <ruby>龍馬<rt>りょうま</rt></ruby>らしい、<ruby>劇的<rt>げきてき</rt></ruby>な <ruby>出会<rt>であ</rt></ruby>い<ruby>話<rt>ばなし</rt></ruby>だ。</p>`,
-          spark: 'え！？ じっさいは、<ruby>人<rt>ひと</rt></ruby>の <ruby>紹介<rt>しょうかい</rt></ruby>で きちんと たずねて <ruby>来<rt>き</rt></ruby>たらしい。——「<ruby>斬<rt>き</rt></ruby>りに <ruby>来<rt>き</rt></ruby>た」と <ruby>書<rt>か</rt></ruby>き<ruby>残<rt>のこ</rt></ruby>して いるのは、<ruby>海舟<rt>かいしゅう</rt></ruby> <ruby>一人<rt>ひとり</rt></ruby>きり だ。',
+            <p>——だが、きみが <ruby>会<rt>あ</rt></ruby>ったのは、<ruby>紹介状<rt>しょうかいじょう</rt></ruby>を <ruby>持<rt>も</rt></ruby>って たずねて <ruby>来<rt>き</rt></ruby>た <ruby>男<rt>おとこ</rt></ruby>だった。</p>`,
+          spark: 'え！？ きみが <ruby>会<rt>あ</rt></ruby>った <ruby>日<rt>ひ</rt></ruby>と、<ruby>年<rt>とし</rt></ruby>を とった きみが <ruby>語<rt>かた</rt></ruby>る <ruby>出会<rt>であ</rt></ruby>いが ちがう。——「<ruby>斬<rt>き</rt></ruby>りに <ruby>来<rt>き</rt></ruby>た」と <ruby>語<rt>かた</rt></ruby>り<ruby>残<rt>のこ</rt></ruby>して いるのは、<ruby>海舟<rt>かいしゅう</rt></ruby> <ruby>一人<rt>ひとり</rt></ruby>きり だ。',
           deep: { q: '<ruby>龍馬<rt>りょうま</rt></ruby>は ほんとうに、<ruby>斬<rt>き</rt></ruby>りに <ruby>来<rt>き</rt></ruby>た？',
-            body: `<ruby>海舟<rt>かいしゅう</rt></ruby>は <ruby>晩年<rt>ばんねん</rt></ruby>の <ruby>談話<rt>だんわ</rt></ruby>で、「<ruby>龍馬<rt>りょうま</rt></ruby>が <ruby>斬<rt>き</rt></ruby>りに <ruby>来<rt>き</rt></ruby>て、その<ruby>場<rt>ば</rt></ruby>で <ruby>弟子<rt>でし</rt></ruby>に なった」と くり<ruby>返<rt>かえ</rt></ruby>し <ruby>語<rt>かた</rt></ruby>った。だが じっさいは、<ruby>人<rt>ひと</rt></ruby>の <ruby>紹介<rt>しょうかい</rt></ruby>で、きちんと たずねて <ruby>来<rt>き</rt></ruby>たらしい。<ruby>劇的<rt>げきてき</rt></ruby>な <ruby>話<rt>はなし</rt></ruby>ほど、あとで きれいな <ruby>形<rt>かたち</rt></ruby>に ととのえられて いく。だから この <ruby>出会<rt>であ</rt></ruby>い<ruby>話<rt>ばなし</rt></ruby>の たしかさマークは ☆（<ruby>本人<rt>ほんにん</rt></ruby><ruby>談<rt>だん</rt></ruby>だけ）。`,
-            cite: '※ でも、<ruby>龍馬<rt>りょうま</rt></ruby>が <ruby>海舟<rt>かいしゅう</rt></ruby>を「<ruby>日本<rt>にほん</rt></ruby><ruby>第一<rt>だいいち</rt></ruby>の <ruby>人物<rt>じんぶつ</rt></ruby>」と <ruby>心<rt>こころ</rt></ruby>から <ruby>慕<rt>した</rt></ruby>った ことは——<ruby>龍馬<rt>りょうま</rt></ruby> <ruby>自身<rt>じしん</rt></ruby>が <ruby>姉<rt>あね</rt></ruby>に あてて <ruby>書<rt>か</rt></ruby>いた <ruby>手紙<rt>てがみ</rt></ruby>が <ruby>証<rt>あか</rt></ruby>している（◎）。<ruby>本人<rt>ほんにん</rt></ruby>の <ruby>自慢話<rt>じまんばなし</rt></ruby>は あてに ならなくても、<ruby>他人<rt>たにん</rt></ruby>が <ruby>残<rt>のこ</rt></ruby>した <ruby>手紙<rt>てがみ</rt></ruby>は、ほんとうを <ruby>教<rt>おし</rt></ruby>えて くれる。',
+            body: `<ruby>海舟<rt>かいしゅう</rt></ruby>は <ruby>晩年<rt>ばんねん</rt></ruby>の <ruby>談話<rt>だんわ</rt></ruby>で、「<ruby>龍馬<rt>りょうま</rt></ruby>が <ruby>斬<rt>き</rt></ruby>りに <ruby>来<rt>き</rt></ruby>て、その<ruby>場<rt>ば</rt></ruby>で <ruby>弟子<rt>でし</rt></ruby>に なった」と くり<ruby>返<rt>かえ</rt></ruby>し <ruby>語<rt>かた</rt></ruby>った。だが じっさいは、<ruby>人<rt>ひと</rt></ruby>の <ruby>紹介<rt>しょうかい</rt></ruby>で、きちんと たずねて <ruby>来<rt>き</rt></ruby>たらしい。しかも この <ruby>談話<rt>だんわ</rt></ruby>は、<ruby>聞<rt>き</rt></ruby>いた <ruby>人<rt>ひと</rt></ruby>が <ruby>書<rt>か</rt></ruby>きとめ、<ruby>本<rt>ほん</rt></ruby>に する ときに <ruby>手<rt>て</rt></ruby>を <ruby>入<rt>い</rt></ruby>れた ものだ。<ruby>劇的<rt>げきてき</rt></ruby>な <ruby>話<rt>はなし</rt></ruby>ほど、<ruby>語<rt>かた</rt></ruby>る うちにも、<ruby>書<rt>か</rt></ruby>く うちにも、きれいな <ruby>形<rt>かたち</rt></ruby>に ととのえられて いく。だから この <ruby>出会<rt>であ</rt></ruby>い<ruby>話<rt>ばなし</rt></ruby>の たしかさマークは ☆（<ruby>本人<rt>ほんにん</rt></ruby><ruby>談<rt>だん</rt></ruby>だけ）。<br>きみが <ruby>年<rt>とし</rt></ruby>を とったら、あの <ruby>冬<rt>ふゆ</rt></ruby>の <ruby>日<rt>ひ</rt></ruby>を どう <ruby>話<rt>はな</rt></ruby>す？`,
+            cite: '※ でも、<ruby>龍馬<rt>りょうま</rt></ruby>が <ruby>海舟<rt>かいしゅう</rt></ruby>を「<ruby>日本<rt>にほん</rt></ruby><ruby>第一<rt>だいいち</rt></ruby>の <ruby>人物<rt>じんぶつ</rt></ruby>」と <ruby>心<rt>こころ</rt></ruby>から <ruby>慕<rt>した</rt></ruby>った ことは——<ruby>龍馬<rt>りょうま</rt></ruby> <ruby>自身<rt>じしん</rt></ruby>が <ruby>姉<rt>あね</rt></ruby>に あてて <ruby>書<rt>か</rt></ruby>いた <ruby>手紙<rt>てがみ</rt></ruby>が <ruby>証<rt>あか</rt></ruby>している（◎）。<ruby>本人<rt>ほんにん</rt></ruby>の <ruby>自慢話<rt>じまんばなし</rt></ruby>が あてに ならなくても、ほかの <ruby>人<rt>ひと</rt></ruby>が <ruby>残<rt>のこ</rt></ruby>した <ruby>手紙<rt>てがみ</rt></ruby>は、べつの <ruby>角度<rt>かくど</rt></ruby>から <ruby>見<rt>み</rt></ruby>せて くれる。',
             confidence: '☆' },
-          onEnter: { card: 'p-ryoma' },
           next: '4-d' },
 
         '4-d': { place: '<ruby>第<rt>だい</rt></ruby>4<ruby>章<rt>しょう</rt></ruby> むすび',
           onEnter: { clues: ['clue-4'] },
-          text: `<p>やがて、この <ruby>賭<rt>か</rt></ruby>けには <ruby>高<rt>たか</rt></ruby>い <ruby>代償<rt>だいしょう</rt></ruby>が ついた。<ruby>京<rt>きょう</rt></ruby>で <ruby>戦<rt>いくさ</rt></ruby>が おこると、<ruby>脱藩浪士<rt>だっぱんろうし</rt></ruby>を かかえる <ruby>操練所<rt>そうれんじょ</rt></ruby>は あやしまれ、きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）は <ruby>軍艦奉行<rt>ぐんかんぶぎょう</rt></ruby>（<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>海軍<rt>かいぐん</rt></ruby>の かしら）の <ruby>職<rt>しょく</rt></ruby>を <ruby>解<rt>と</rt></ruby>かれ、二<ruby>年<rt>ねん</rt></ruby>ちかく <ruby>家<rt>いえ</rt></ruby>に とじこめられた。</p>
-            <p>それでも——ここで <ruby>育<rt>そだ</rt></ruby>った <ruby>者<rt>もの</rt></ruby>たちは、のちの <ruby>日本<rt>にほん</rt></ruby>の <ruby>海軍<rt>かいぐん</rt></ruby>の <ruby>芽<rt>め</rt></ruby>に なって いく。<ruby>龍馬<rt>りょうま</rt></ruby>も、その <ruby>一人<rt>ひとり</rt></ruby>だった。<ruby>手<rt>て</rt></ruby>がかりを ひとつ <ruby>手<rt>て</rt></ruby>に <ruby>入<rt>い</rt></ruby>れた。<ruby>手帳<rt>てちょう</rt></ruby>を のぞいて みよう。</p>`,
+          text: `<p>やがて、この <ruby>賭<rt>か</rt></ruby>けには <ruby>高<rt>たか</rt></ruby>い <ruby>代償<rt>だいしょう</rt></ruby>が ついた。ここで <ruby>育<rt>そだ</rt></ruby>てた <ruby>若者<rt>わかもの</rt></ruby>の <ruby>何人<rt>なんにん</rt></ruby>かが、<ruby>京<rt>きょう</rt></ruby>で <ruby>幕府<rt>ばくふ</rt></ruby>がわの <ruby>者<rt>もの</rt></ruby>と <ruby>斬<rt>き</rt></ruby>りあい、<ruby>死<rt>し</rt></ruby>んだ。<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>学<rt>まな</rt></ruby>び<ruby>舎<rt>や</rt></ruby>が、<ruby>幕府<rt>ばくふ</rt></ruby>に <ruby>刀<rt>かたな</rt></ruby>を <ruby>向<rt>む</rt></ruby>ける <ruby>者<rt>もの</rt></ruby>を <ruby>育<rt>そだ</rt></ruby>てて いた——きみ（<ruby>海舟<rt>かいしゅう</rt></ruby>）は <ruby>江戸<rt>えど</rt></ruby>へ <ruby>呼<rt>よ</rt></ruby>びもどされる。</p>
+            <p><ruby>発<rt>た</rt></ruby>つ <ruby>前<rt>まえ</rt></ruby>に、きみは <ruby>龍馬<rt>りょうま</rt></ruby>たちを <ruby>薩摩<rt>さつま</rt></ruby>（いまの <ruby>鹿児島<rt>かごしま</rt></ruby>）に たのみ、あずけた。ここが とじられれば、あの <ruby>者<rt>もの</rt></ruby>たちに <ruby>行<rt>ゆ</rt></ruby>き<ruby>場<rt>ば</rt></ruby>は ない。<ruby>幕臣<rt>ばくしん</rt></ruby>の きみが、<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>外<rt>そと</rt></ruby>へ <ruby>弟子<rt>でし</rt></ruby>を にがした ことに なる。</p>
+            <p>まもなく きみは <ruby>職<rt>しょく</rt></ruby>を <ruby>解<rt>と</rt></ruby>かれ、二<ruby>年<rt>ねん</rt></ruby>ちかく <ruby>家<rt>いえ</rt></ruby>に とじこめられた。<ruby>操練所<rt>そうれんじょ</rt></ruby>も とじられた。それでも——ここで <ruby>育<rt>そだ</rt></ruby>った <ruby>者<rt>もの</rt></ruby>たちは、のちの <ruby>日本<rt>にほん</rt></ruby>の <ruby>海軍<rt>かいぐん</rt></ruby>の <ruby>芽<rt>め</rt></ruby>に なって いく。<ruby>手<rt>て</rt></ruby>がかりを ひとつ <ruby>手<rt>て</rt></ruby>に <ruby>入<rt>い</rt></ruby>れた。<ruby>手帳<rt>てちょう</rt></ruby>を のぞいて みよう。</p>`,
           creed: { line: '「<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>船<rt>ふね</rt></ruby>でも、<ruby>藩<rt>はん</rt></ruby>の <ruby>船<rt>ふね</rt></ruby>でも ない。——<ruby>日本<rt>にほん</rt></ruby>の <ruby>海軍<rt>かいぐん</rt></ruby>を つくる。<ruby>垣根<rt>かきね</rt></ruby>の <ruby>外<rt>そと</rt></ruby>の <ruby>者<rt>もの</rt></ruby>こそ、いる。」',
-            act: '——<ruby>幕臣<rt>ばくしん</rt></ruby>で ありながら、<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>敵<rt>てき</rt></ruby>に なりうる <ruby>者<rt>もの</rt></ruby>まで <ruby>育<rt>そだ</rt></ruby>てた。その <ruby>賭<rt>か</rt></ruby>けは <ruby>職<rt>しょく</rt></ruby>を <ruby>失<rt>うしな</rt></ruby>う <ruby>代償<rt>だいしょう</rt></ruby>を まねいたが、<ruby>身分<rt>みぶん</rt></ruby>を こえて <ruby>育<rt>そだ</rt></ruby>った <ruby>芽<rt>め</rt></ruby>が、<ruby>次<rt>つぎ</rt></ruby>の <ruby>世<rt>よ</rt></ruby>を <ruby>動<rt>うご</rt></ruby>かして いく。' },
+            act: '——<ruby>幕臣<rt>ばくしん</rt></ruby>で ありながら、<ruby>幕府<rt>ばくふ</rt></ruby>の <ruby>敵<rt>てき</rt></ruby>に なりうる <ruby>者<rt>もの</rt></ruby>まで <ruby>育<rt>そだ</rt></ruby>てた。その <ruby>賭<rt>か</rt></ruby>けは、<ruby>職<rt>しょく</rt></ruby>と、<ruby>教<rt>おし</rt></ruby>え<ruby>子<rt>ご</rt></ruby>の <ruby>命<rt>いのち</rt></ruby>を <ruby>代償<rt>だいしょう</rt></ruby>に した。それでも <ruby>身分<rt>みぶん</rt></ruby>を こえて <ruby>育<rt>そだ</rt></ruby>った <ruby>芽<rt>め</rt></ruby>が、<ruby>次<rt>つぎ</rt></ruby>の <ruby>世<rt>よ</rt></ruby>を <ruby>動<rt>うご</rt></ruby>かして いく。' },
           end: true },
       },
     },
