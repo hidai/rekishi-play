@@ -352,38 +352,72 @@ export const STORY: Story = {
       scenes: {
         '4-a': { place: '<ruby>尾張<rt>おわり</rt></ruby>・<ruby>長久手<rt>ながくて</rt></ruby>',
           monologue: '（<ruby>田<rt>た</rt></ruby>を たがやす 家の 子と いう あの 男が……いま、天下の 顔を して いる。）',
-          text: `<p>あれから 二年。<ruby>光秀<rt>みつひで</rt></ruby>を 討った <face pid="p-hideyoshi"><ruby>羽柴秀吉<rt>はしば ひでよし</rt></ruby></face>が、<ruby>信長<rt>のぶなが</rt></ruby>の 城も 家来も、つぎつぎ 自分の ものに して いた。</p>
-            <p>信長の 子・<ruby>信雄<rt>のぶかつ</rt></ruby>が、助けを 求めて きた。父の 家来だった 男が、<ruby>織田<rt>おだ</rt></ruby>の 家を のっとろうと して いる、と。きみは 兵を 出した。</p>
-            <p><ruby>長久手<rt>ながくて</rt></ruby>の 野で、きみは 秀吉方の 軍を 破る。名だたる 大将が <ruby>討<rt>う</rt></ruby>ち死にし、徳川の 名は 天下に ひびいた。</p>
-            <p>ところが——当の 信雄が、きみに 何も 言わず 秀吉と <ruby>講和<rt>こうわ</rt></ruby>して しまう。戦う 理由だけが、ふいに 消えた。</p>`,
+          text: `<p>あれから 二年。<ruby>光秀<rt>みつひで</rt></ruby>を 討った <face pid="p-hideyoshi"><ruby>羽柴秀吉<rt>はしば ひでよし</rt></ruby></face>が、<ruby>信長<rt>のぶなが</rt></ruby>の 城も 家来も、つぎつぎ 自分の ものに した。</p>
+            <p>信長の 子・<ruby>信雄<rt>のぶかつ</rt></ruby>が、助けを 求めて きた。父の 家来だった 秀吉に、<ruby>織田<rt>おだ</rt></ruby>の 家を のっとられる、と。きみは 兵を 出した。</p>
+            <p><ruby>長久手<rt>ながくて</rt></ruby>の 野で、きみは 秀吉方の 軍を 破った。名の ある 大将が 何人も <ruby>討<rt>う</rt></ruby>ち死にした。</p>
+            <p>ところが——その 信雄が、きみに 何も 言わず 秀吉と <ruby>講和<rt>こうわ</rt></ruby>する。<ruby>戦<rt>いくさ</rt></ruby>を やめる 約束だ。戦う 理由だけが、ふいに 消えた。</p>`,
           onEnter: { cards: ['w-komaki', 'p-hideyoshi'] },
           next: '4-b' },
 
+        // Split from one 562-load screen (LOAD_LEDGER, 2026-08-05): the ledger's heaviest scene
+        // carried the whole 包囲 ledger AND the fork, so the もしも hist (244) landed on top of a
+        // 271-char body. The cut follows the escalation's own joint — what LEFT きみ (son, 家老)
+        // here, what was SENT IN (sister, mother) on 4-b2, where the fork is. 数正's motive is 諸説
+        // (the 4-b map note says the same), so the new voice states only what his going cost: the
+        // retainers' own knowledge that the man knew the army's insides. The narrator's summary
+        // 「あの手この手が 伸びて くる」 and 「家来は、まっぷたつに 割れた」 are gone — both said in
+        // advance what the next lines show (書法2).
         '4-b': { place: '<ruby>遠江<rt>とおとうみ</rt></ruby>・<ruby>浜松城<rt>はままつじょう</rt></ruby>',
-          monologue: '（……勝った はずだ。なのに なぜ、こちらが <ruby>削<rt>けず</rt></ruby>られて いく。）',
-          text: `<p><ruby>秀吉<rt>ひでよし</rt></ruby>は、力ずくで つぶしに こなかった。かわりに、あの手この手が 伸びて くる。</p>
-            <p><ruby>講和<rt>こうわ</rt></ruby>の しるしに、きみは 次男を 秀吉の <ruby>養子<rt>ようし</rt></ruby>に 出した。かつての きみと 同じ、しるしの 子だ。</p>
-            <p>次の 年の 暮れ、<ruby>家老<rt>かろう</rt></ruby>の <ruby>石川数正<rt>いしかわ かずまさ</rt></ruby>が 消えた。<ruby>人質<rt>ひとじち</rt></ruby>の ころから きみの そばに いた 男が、軍の 中身ごと、秀吉の もとへ 走ったのだ。</p>
-            <p>それでも きみが 動かないと、四十四に なる 妹・<ruby>朝日姫<rt>あさひひめ</rt></ruby>を 妻に よこし、母までを <ruby>岡崎<rt>おかざき</rt></ruby>へ 送って きた。家来は、まっぷたつに 割れた。</p>
-            <p class="speak">「母ぎみまで 出された 上は、行かねば こちらが <ruby>義<rt>ぎ</rt></ruby>を 欠きまする」</p>
+          monologue: '（<ruby>数正<rt>かずまさ</rt></ruby>……なぜだ。だれに 聞いても、分からぬ。——勝った はずだ。なのに なぜ、こちらが <ruby>削<rt>けず</rt></ruby>られて いく。）',
+          text: `<p><ruby>秀吉<rt>ひでよし</rt></ruby>は、すぐには 力ずくで つぶしに こなかった。</p>
+            <p>きみも 兵を 引いた。その しるしに、次男を 秀吉の <ruby>養子<rt>ようし</rt></ruby>に 出した。かつての きみと 同じ、しるしの 子だ。</p>
+            <p>次の 年の 暮れ、<ruby>家老<rt>かろう</rt></ruby>の <ruby>石川数正<rt>いしかわ かずまさ</rt></ruby>が 消えた。<ruby>人質<rt>ひとじち</rt></ruby>の ころから きみの そばに いた 男が、大坂へ 走ったのだ。</p>
+            <p class="speak">「あの 数正どのが……。徳川の <ruby>戦<rt>いくさ</rt></ruby>の 中身を、すべて 知って おられる 方が」</p>`,
+          // The readthrough persona, both reader personas and the VISION audit independently stopped
+          // here: the main line lets a man of thirty years leave with no why, and the new voice states
+          // only what he cost. The why is 諸説 — so it cannot go in the main line as fact (書法4) and
+          // cannot go in a map note. It goes where the work puts unsettled things: きみ's own
+          // unanswered question in the monologue, and a ☆ deep. Nothing here is asserted as motive.
+          deep: { q: '<ruby>数正<rt>かずまさ</rt></ruby>は、なぜ 走った？',
+            body: `数正は、<ruby>秀吉<rt>ひでよし</rt></ruby>との あいだを 行き来する 役目を 引きうけて いた。その うちに 家中では「秀吉に 近すぎる」と 見られた らしい。だが、なぜ 出て 行ったのかは いまも 分かって いない。「わざと 出て、徳川の <ruby>戦<rt>いくさ</rt></ruby>の やり方を すてさせたのだ——あれは 主人の ための ことだった」と 書く <ruby>江戸時代<rt>えどじだい</rt></ruby>の 本さえ ある。数正が 去った あと、徳川は いくさの 決まりを 作り直した——と 言われて いる。`,
+            cite: '※ 本人の ことばは、ひとつも 残って いない。',
+            confidence: '☆' },
+          next: '4-b2' },
+
+        '4-b2': { place: '<ruby>遠江<rt>とおとうみ</rt></ruby>・<ruby>浜松城<rt>はままつじょう</rt></ruby>——次の 年',
+          // Two eval findings paid here. The retainer used to say 「義を 欠きまする」 — three axes
+          // could not read it (ruby cannot gloss 義), and the 小5 pressed the choice button without
+          // knowing which side the line was on; it now names the pressure plainly. The 内語 answers
+          // the VISION audit's S-B4=3: 朝日姫's 四十四 passed as a pressure token with no cost of her
+          // own. Her divorce lore is △〜☆ (research), so the 内語 states only the undisputed — her
+          // age, and that she did not choose this either.
+          monologue: '（秀吉の 妹は 四十四。見も 知らぬ 東へ、この 人も えらばずに 来る。）',
+          text: `<p>それでも きみが 動かないと、<ruby>秀吉<rt>ひでよし</rt></ruby>は 四十四に なる 妹・<ruby>朝日姫<rt>あさひひめ</rt></ruby>を 妻に よこし、母までを <ruby>岡崎<rt>おかざき</rt></ruby>へ 送って きた。</p>
+            <p class="speak">「向こうは 母ぎみまで 出したのです。断れば、わるいのは こちらだと 言われまする」</p>
             <p class="speak">「<ruby>長久手<rt>ながくて</rt></ruby>で 勝ったのは <ruby>殿<rt>との</rt></ruby>にて ござる！ なぜ 勝った 側が 下げるのです。大坂で 何か あれば、助けは 間に合いませぬ」</p>`,
           q: '<ruby>勝<rt>か</rt></ruby>った 相手に、きみは 頭を 下げられるか？',
           choices: [
             { label: '大坂へ 行き、頭を 下げる', to: '4-c', canon: true, effect: { matsu: 2 },
               hist: { verdict: '史実では', match: '行った。頭を 下げ、そして 生きて 帰った',
-                body: `<p>きみは 大坂へ 向かった。この 旅が どんな <ruby>芝居<rt>しばい</rt></ruby>に なったかは、つぎの 場面で 見る ことに なる。</p><p>ひとつだけ 先に 言って おこう——きみは ぶじに 帰り、<ruby>母君<rt>ははぎみ</rt></ruby>も ぶじに 帰った。戦は 消えた。その かわり きみは、これから 頭を 下げた 相手の 天下で 生きて いく。</p>` } },
+                body: `<p>きみは 大坂へ 向かった。</p><p>ひとつだけ 先に 言って おこう——きみは ぶじに 帰り、<ruby>秀吉<rt>ひでよし</rt></ruby>の <ruby>母君<rt>ははぎみ</rt></ruby>も 大坂へ ぶじに 帰った。戦は 消えた。その かわり きみは、これから 頭を 下げた 相手の 天下で 生きて いく。</p>` } },
             { label: '行かず、<ruby>戦<rt>いくさ</rt></ruby>の <ruby>支度<rt>したく</rt></ruby>を つづける', to: '4-c', effect: { yuzuranu: 1 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし 戦って いたら……',
-                body: `<p>この 年の はじめの 夜ふけ、<ruby>浜松<rt>はままつ</rt></ruby>の きみも、揺れで 目を さました はずだ。<ruby>大地震<rt>おおじしん</rt></ruby>だ。やがて 西から しらせが とどく——秀吉の 国々では <ruby>石垣<rt>いしがき</rt></ruby>が くずれ、まる焼けに なった 城さえ ある、と。「家康攻めの <ruby>支度<rt>したく</rt></ruby>は これで 止まった」と 見る 研究者も いる。戦うなら、いまが その ときだった かもしれない。</p><p>だが、くずれた 城は 建て直せる。銭も 米も 兵も、時が たつほど 向こうに 積み上がる。——<ruby>史実<rt>しじつ</rt></ruby>の きみは、行く ほうを えらんだ。ちなみに この 夜の 揺れを、きみの 家来・<ruby>松平家忠<rt>まつだいら いえただ</rt></ruby>が 日記に つけて いた。この 日記、すぐ また 出て くる。</p>` } },
+                body: `<p>この 年の はじめの 夜ふけ、<ruby>浜松<rt>はままつ</rt></ruby>の きみも、揺れで 目を さました はずだ。<ruby>大地震<rt>おおじしん</rt></ruby>だ。やがて 西から しらせが とどく——秀吉の 国々では <ruby>石垣<rt>いしがき</rt></ruby>が くずれ、まる焼けに なった 城さえ ある、と。「家康攻めの <ruby>支度<rt>したく</rt></ruby>は これで 止まった」と 見る 研究者も いる。——妹を、母を、と 送って きたのは その あとだ。戦うなら、あの 冬が その ときだった かもしれない。</p><p>だが、くずれた 城は 建て直せる。銭も 米も 兵も、時が たつほど 向こうに 積み上がる。——<ruby>史実<rt>しじつ</rt></ruby>の きみは、行く ほうを えらんだ。</p>` } },
           ] },
 
         '4-c': { place: '大坂・<ruby>秀長<rt>ひでなが</rt></ruby>の 屋敷',
           text: `<p>1586年10月、きみは 大坂に 入った。宿は、秀吉の 弟・<face pid="p-hidenaga"><ruby>秀長<rt>ひでなが</rt></ruby></face>の 屋敷だ。</p>
-            <p>その 夜の ことを、<ruby>供<rt>とも</rt></ruby>の <ruby>松平家忠<rt>まつだいら いえただ</rt></ruby>が 日記に 残した。——秀吉は 待ちかねた ように みずから 現れ、きみの 手を 取って 奥の 間へ。酒に なり、うちとけた、と。</p>
+            <p>その 夜の ことを、<ruby>三河<rt>みかわ</rt></ruby>の 家来・<ruby>松平家忠<rt>まつだいら いえただ</rt></ruby>が、人づてに 聞いて 日記に 書いた。——秀吉は 待ちかねた ように みずから 現れ、きみの 手を 取って 奥の 間へ。酒に なり、うちとけた、と。</p>
             <p>頭を 下げさせる 側が、前の 夜に 自分から 来る。奥の 間で 何が 語られたのか、日記は そこまで 書いて いない。</p>`,
-          spark: 'え！？ その 奥の 間で、天下を とった 男の ほうが 頭を 下げた——「明日は みなの 前で、わしに 頭を 下げて みせて くれ」と <ruby>頼<rt>たの</rt></ruby>んだ、という 話が ある。書き残したのは、だれ？',
+          // The 供の/その場に供をした framing was wrong and it was the ground the chapter's ○-vs-☆
+          // lesson stood on: 家忠 saw きみ off at 宇頭 and wrote the 大坂 night four days later as a
+          // report (『家忠日記』10/20・10/30条; opus 反証 採用 major, 2026-08-05). The diary is still
+          // contemporary — that is the whole point — so the fix names WHERE he was, not a weaker source.
+          // The spark likewise no longer welds the 御実紀 anecdote onto the 秀長邸 room: that version
+          // puts きみ at 茶屋四郎次郎's house, and saying so teaches the lesson instead of hiding it.
+          spark: 'え！？ べつの 本には、その 夜、天下を とった 男の ほうが 頭を 下げた、と ある——「明日は みなの 前で、わしに 頭を 下げて みせて くれ」と <ruby>頼<rt>たの</rt></ruby>んだ、と。しかも その 本は、宿を べつの 家だと 書いて いる。書き残したのは、だれ？',
           deep: { q: 'あの「前の 夜」の 話、ほんとう？',
-            body: `秀吉が 来て、手を 取り、酒に なった。ここまでは たしかだ。その 場に <ruby>供<rt>とも</rt></ruby>を した <ruby>武士<rt>ぶし</rt></ruby>の 日記『<ruby>家忠日記<rt>いえただにっき</rt></ruby>』に あるからだ。だが「頭を 下げて くれ」と <ruby>頼<rt>たの</rt></ruby>んだ 話は、この 日記には 無い。出て くるのは、200年 以上 のち。<ruby>徳川<rt>とくがわ</rt></ruby>の <ruby>幕府<rt>ばくふ</rt></ruby> 自身が 編んだ 家康の 一代記、『<ruby>東照宮御実紀<rt>とうしょうぐう ごじっき</rt></ruby>』の おまけの 巻だ。題は ずばり「秀吉の はかりごと」。天下を とった 人さえ 家康には ひそかに 頭を 下げた——そう 語る、家康を 上げる 側の 本だ。たしかさマークは ☆（たしかめられない）。`,
+            body: `秀吉が 来て、手を 取り、酒に なった。ここまでは たしかだ。同じ ころを 生きた 家来の 日記『<ruby>家忠日記<rt>いえただにっき</rt></ruby>』に あるからだ。だが「頭を 下げて くれ」と <ruby>頼<rt>たの</rt></ruby>んだ 話は、この 日記には 無い。出どころは、150年 ほど のちに <ruby>幕府<rt>ばくふ</rt></ruby>の 役人が まとめた 話の 本。それを 200年 以上 のち、幕府 自身が 編んだ 一代記『<ruby>東照宮御実紀<rt>とうしょうぐう ごじっき</rt></ruby>』の おまけの 巻が 拾った。題は ずばり「秀吉の はかりごと」。——家康を 上げる 側が つないで きた 話だ。たしかさマークは ☆（たしかめられない）。`,
             cite: '※ この 話で 得を するのは、だれだろう。——書いた 側を 見ると、話の 向きが 見えて くる。',
             confidence: '☆' },
           onEnter: { cards: ['p-hidenaga'] },
@@ -398,10 +432,10 @@ export const STORY: Story = {
           next: '4-d' },
 
         '4-d': { place: '第4章 むすび',
-          text: `<p>それから 四年。1590年、<ruby>小田原<rt>おだわら</rt></ruby>の <ruby>北条<rt>ほうじょう</rt></ruby>を たおした <ruby>秀吉<rt>ひでよし</rt></ruby>から、<ruby>陣中<rt>じんちゅう</rt></ruby>の きみに 命が 下る。——先祖 代々の <ruby>三河<rt>みかわ</rt></ruby>も <ruby>駿河<rt>するが</rt></ruby>も <ruby>返上<rt>へんじょう</rt></ruby>して、<ruby>関東<rt>かんとう</rt></ruby>へ 移れ、と。</p>
-            <p>きみは、うけた。</p>
-            <p>これを「体の いい 追い出し」と 書く 本が ある。「東国 まるごとの 大ばってき」と 書く 本も ある。——おなじ 出来事が、だ。</p>
-            <p>のちの 世は、この きみを「たえしのぶ <ruby>律儀者<rt>りちぎもの</rt></ruby>」と 呼ぶ。だが ならべて みよ。<ruby>長久手<rt>ながくて</rt></ruby>で 勝ち、二年 ねばり、相手に 妹と 母まで 出させて から、下げた。<b>下げたのは 頭で、まもったのは 家だ</b>——そう 見るか、たえしのんだと 見るか。決めるのは きみだ。四つめの <ruby>手<rt>て</rt></ruby>がかりが、<ruby>手帳<rt>てちょう</rt></ruby>に 入った。</p>`,
+          text: `<p>それから 四年。きみは <ruby>秀吉<rt>ひでよし</rt></ruby>の 下で 戦う 身に なって いた。1590年、東の 大名・<ruby>北条<rt>ほうじょう</rt></ruby>を せめる <ruby>陣<rt>じん</rt></ruby>で、命が 下る。——先祖 代々の <ruby>三河<rt>みかわ</rt></ruby>を 返して、<ruby>関東<rt>かんとう</rt></ruby>へ 移れ、と。</p>
+            <p>きみは、うけた。——目の 前に、<ruby>断<rt>ことわ</rt></ruby>った 家の 城が あった。</p>
+            <p>「追い出し」と 書く 本も、「大出世」と 書く 本も ある。——おなじ 出来事が、だ。</p>
+            <p>のちの 世は、きみを「たえしのぶ <ruby>律儀者<rt>りちぎもの</rt></ruby>」と 呼ぶ。ならべて みよ。<ruby>長久手<rt>ながくて</rt></ruby>で 勝ち、二年 ねばり、相手に 妹と 母まで 出させて から、下げた。<b>下げたのは 頭で、まもったのは 家だ</b>——そう 見るか、たえしのんだと 見るか。決めるのは きみだ。</p>`,
           deep: { q: '<ruby>江戸<rt>えど</rt></ruby>行きは、<ruby>罰<rt>ばつ</rt></ruby>だったの？',
             body: `<ruby>石高<rt>こくだか</rt></ruby>で 見れば、150万石から 240万石への 大きな <ruby>加増<rt>かぞう</rt></ruby>だ。ただし 都からは 遠く、<ruby>京<rt>きょう</rt></ruby>・大坂の <ruby>政治<rt>せいじ</rt></ruby>の 輪からは 外れる。長く「秀吉の 体の いい 追い出し」と 語られて きたが、近ごろは「東国 ぜんぶの おさえを、信用できる 家康に まかせた——ふたりとも 得を した 取引」と 見る 研究が 有力だ。「<ruby>江戸<rt>えど</rt></ruby>は 何も ない 村だった」と いう 話も 見直されて いる——海と 川の 交わる <ruby>湊<rt>みなと</rt></ruby>の 町で、じつは 関東の 要所だった、と。たしかさマークは ○（だいたい たしか）。`,
             cite: '※ <ruby>左遷<rt>させん</rt></ruby>か、<ruby>栄転<rt>えいてん</rt></ruby>か。——「どの 立場から 見た 話か」を たしかめると、両方が 見えて くる。',

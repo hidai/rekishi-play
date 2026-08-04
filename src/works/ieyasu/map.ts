@@ -498,22 +498,33 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     { at: 'hamamatsu', kind: 'castle', label: '遠江・浜松城', note: '出て きた 城' },
     { at: 'osaka', enemy: 1, kind: 'flag', label: '羽柴', note: '信長の 城も 家来も、自分の ものに', people: ['p-hideyoshi'] },
   ] },
-  // 4-b: the 包囲 drawn as a ledger — what left きみ and what was sent in, each fact anchored where
-  // the body puts it: the son and the 家老 at the 羽柴 flag (走った = the body's own verb; WHY 数正
-  // ran is 諸説, so the note states the departure, never a motive — a map cannot hedge), the
-  // sister-wife at 浜松, the mother at 岡崎. The two 来た notes are the body's own escalation
-  // ladder (妹が 来た → 母まで 来た), and both name 秀吉 as the possessor: the image-only 小5 read
-  // 「四十四の 妹」 as possibly きみの妹 (the 2-b lesson one step out — under きみ's face even a
-  // named subject attaches to きみ unless its owner is said), so the map carries WHOSE family is
-  // arriving and leaves the age — the sting — to the body's 「四十四に なる 妹・朝日姫」. Notes
-  // name their subjects (2-b law). 岡崎's note is capped at 8 glyphs + 2 spaces (68.9u): its lane
-  // ends 4.4u short of 家康's face disc (x 845.9 vs 850.3 at sc .3925) — the same lane 2-b's
-  // 「ここも きみの 国」 lived in. 秀吉's face is not repeated after 4-a (2-a→2-b precedent), and
-  // the fork's two speak-voices are anonymous retainers with no cards — the split is the body's job.
+  // 4-b / 4-b2: the 包囲 drawn as a ledger, split with the body (story 4-b comment) so that neither
+  // map shows what its own screen has not said yet. 4-b holds what LEFT きみ — the son and the 家老,
+  // both at the 羽柴 flag (走った = the body's own verb; WHY 数正 ran is 諸説, so the note states the
+  // departure, never a motive — a map cannot hedge) — with 浜松 as the ring きみ came back to after
+  // 長久手 (its 4-a note 「出て きた 城」 must not simply repeat: verbatim repetition across scenes is
+  // the 通し離脱テスト's dullest thing).
   '4-b': { markers: [
+    { at: 'hamamatsu', cur: 1, kind: 'castle', label: '遠江・浜松城', note: '長久手から、もどった 城' },
+    // The note stops at what the reader already knows on entering: naming the 家老's flight here
+    // would spoil the screen's own reveal (the map renders above the body).
+    { at: 'osaka', enemy: 1, kind: 'flag', label: '羽柴', note: '次男を さし出した 先' },
+  ] },
+  // 4-b2 holds what was SENT IN: the sister-wife at 浜松, the mother at 岡崎. The two 来た notes are
+  // the body's own escalation ladder (妹が 来た → 母まで 来た), and both name 秀吉 as the possessor:
+  // the image-only 小5 read 「四十四の 妹」 as possibly きみの妹 (the 2-b lesson one step out — under
+  // きみ's face even a named subject attaches to きみ unless its owner is said), so the map carries
+  // WHOSE family is arriving and leaves the age — the sting — to the body's 「四十四に なる 妹・
+  // 朝日姫」. Notes name their subjects (2-b law). 岡崎's note is capped at 8 glyphs + 2 spaces
+  // (68.9u): its lane ends 4.4u short of 家康's face disc (x 845.9 vs 850.3 at sc .3925) — the same
+  // lane 2-b's 「ここも きみの 国」 lived in. The 羽柴 flag stays as the source of both arrivals but
+  // says nothing here — its ledger note was spent on 4-b, and 秀吉's face is not repeated after 4-a
+  // (2-a→2-b precedent). The fork's two speak-voices are anonymous retainers with no cards — the
+  // split of the house is the body's job.
+  '4-b2': { markers: [
     { at: 'hamamatsu', cur: 1, kind: 'castle', label: '遠江・浜松城', note: '秀吉の 妹が、妻に 来た' },
     { at: 'okazaki', kind: 'castle', label: '三河・岡崎', note: '秀吉の 母まで 来た' },
-    { at: 'osaka', enemy: 1, kind: 'flag', label: '羽柴', note: '次男を あずけ、家老は 走った' },
+    { at: 'osaka', enemy: 1, kind: 'flag', label: '羽柴' },
   ] },
   // 4-c: きみ alone in the other house's capital, the night before the 大広間. Two markers, like
   // 3-a. The ring's note is the lodging (para 1 = the opening); the night visit is the scene's
@@ -539,8 +550,8 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // 終章 as the place he comes back to die (gaz header / design §6).
   '4-d': { markers: [
     { at: 'edo', cur: 1, kind: 'town', label: '江戸', note: '言われた とおり、移った' },
-    { at: 'sunpu', kind: 'town', label: '駿河・駿府', note: '十一年 いた 町も、返上' },
-    { at: 'okazaki', kind: 'castle', label: '三河・岡崎', note: '先祖 代々の 国を、返上' },
+    { at: 'sunpu', kind: 'town', label: '駿河・駿府', note: '十一年 いた 町も、返した' },
+    { at: 'okazaki', kind: 'castle', label: '三河・岡崎', note: '先祖 代々の 国を、返した' },
   ] },
 
   // Chapter 五 (天下 分け目). The chapter's device is the 布陣 board on 5-c — this work's first

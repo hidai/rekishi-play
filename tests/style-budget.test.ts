@@ -47,8 +47,9 @@ const LOAD_LEDGER: Record<string, number> = {
   //   ch3 は 454→420 で削除（3-c2 を足すため章の説明を刈った・2026-08-04）。
   'kiyomori:1': 483, 'kiyomori:2': 450, 'kiyomori:4': 431,
   'kiyomori:6': 426, 'kiyomori:7': 489,
-  // ieyasu: 4章（最重 4-b 562）。ch1 は 528→364 で削除（1-c を分割・2026-08-02）。
-  'ieyasu:3': 465, 'ieyasu:4': 562, 'ieyasu:5': 541, 'ieyasu:6': 510,
+  // ieyasu: 3章（最重 5-b 541）。ch1 は 528→364 で削除（1-c を分割・2026-08-02）。
+  //   ch4 は 562→407 で削除（4-b を分割し、露出した 4-d も刈った・2026-08-05）。
+  'ieyasu:3': 465, 'ieyasu:5': 541, 'ieyasu:6': 510,
   // masako: 4章
   'masako:3': 468, 'masako:4': 426, 'masako:5': 481, 'masako:6': 472,
   // shibusawa: 3章（ch2 は 439→411 で削除＝2-b の答えの先出しを刈り、因果を平岡の声へ移した）。
