@@ -9,7 +9,7 @@ export const TIMELINE: TimelineEntry[] = [
   { y:'1561?', ch:1,            t:'兄に <ruby>誘<rt>さそ</rt></ruby>われ <ruby>侍<rt>さむらい</rt></ruby>に', d:'<ruby>百姓<rt>ひゃくしょう</rt></ruby>から 侍へ。<ruby>木下小一郎<rt>きのしたこいちろう</rt></ruby>と 名のる。' },
   { y:'1566?', ch:2,            t:'<ruby>墨俣<rt>すのまた</rt></ruby> の 伝説', d:'<ruby>一夜城<rt>いちやじょう</rt></ruby>の <ruby>逸話<rt>いつわ</rt></ruby>。史実性は あやしいが、<ruby>裏方<rt>うらかた</rt></ruby>の 力の <ruby>象徴<rt>しょうちょう</rt></ruby>。' },
   { y:'1577', ch:3, key:true,  t:'<ruby>但馬<rt>たじま</rt></ruby>へ <ruby>侵攻<rt>しんこう</rt></ruby>', d:'<ruby>竹田城<rt>たけだじょう</rt></ruby>を おさえ、<ruby>城代<rt>じょうだい</rt></ruby>に。<ruby>生野銀山<rt>いくのぎんざん</rt></ruby>を まもる。' },
-  { y:'1580', ch:3,            t:'<ruby>但馬<rt>たじま</rt></ruby> <ruby>平定<rt>へいてい</rt></ruby>', d:'<ruby>出石<rt>いずし</rt></ruby>（<ruby>有子山城<rt>ありこやまじょう</rt></ruby>）が 開城。はじめて まとまった 土地を 治める。' },
+  { y:'1580', ch:3,            t:'<ruby>但馬<rt>たじま</rt></ruby> <ruby>平定<rt>へいてい</rt></ruby>', d:'<ruby>出石<rt>いずし</rt></ruby>（<ruby>有子山城<rt>ありこやまじょう</rt></ruby>）の 門が ひらく。はじめて まとまった 土地を 治める。' },
   { y:'1582', ch:4, key:true,  t:'<ruby>本能寺<rt>ほんのうじ</rt></ruby>の変／中国大<ruby>返<rt>がえ</rt></ruby>し', d:'兄を 支え、<ruby>驚異<rt>きょうい</rt></ruby>の 大移動で <ruby>山崎<rt>やまざき</rt></ruby>へ。' },
   { y:'1583', ch:4,            t:'<ruby>賤ヶ岳<rt>しずがたけ</rt></ruby>の戦い', d:'<ruby>柴田勝家<rt>しばたかついえ</rt></ruby>を 破る。<ruby>秀吉<rt>ひでよし</rt></ruby>の <ruby>天下<rt>てんか</rt></ruby>取りが 加速。' },
   { y:'1584', ch:4,            t:'「<ruby>長秀<rt>ながひで</rt></ruby>」→「<ruby>秀長<rt>ひでなが</rt></ruby>」に <ruby>改名<rt>かいめい</rt></ruby>', d:'名の 上下を 入れかえた。' },

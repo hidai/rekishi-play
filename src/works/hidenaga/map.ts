@@ -92,6 +92,9 @@ export const SCENE_MAPS: Record<string, SceneMapDef>={
   '3-a':{markers:[
     {at:'takeda',cur:1,kind:'castle',label:'竹田城',note:'天空の城・城代に'},
     {at:'ikuno',kind:'mine',label:'生野銀山',note:'銀＝力の もと'}]},
+  '3-a2':{markers:[
+    {at:'takeda',cur:1,kind:'castle',label:'竹田城',note:'土の かべを なおす'},
+    {at:'ikuno',kind:'mine',label:'生野銀山'}]},
   '3-b':{markers:[
     {at:'takeda',cur:1,kind:'castle',label:'竹田城'},
     {at:'himeji',kind:'village',label:'播磨',note:'民・商人を 治める'}]},
