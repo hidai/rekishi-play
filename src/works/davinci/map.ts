@@ -82,7 +82,7 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // arc: 5-a = HIS place (the fear) → 5-c = きみ's place (the one thing he finished). castle (non-enemy:
   // patron, not target — same as ch3's milano). imola is a 係争に触れない都市中心 (地図書法6).
   '5-a': { markers: [
-    { at: 'imola', kind: 'castle', label: 'イモラ', note: '暴君ボルジアの 陣', people: ['p-cesare'] },
+    { at: 'imola', kind: 'castle', label: 'イモラ', note: 'おそれられた 大将の 陣', people: ['p-cesare'] },
   ] },
   // 5-c 山場: the SAME イモラ, now re-framed as きみ's OWN work — the precise top-down town plan he
   // rarely-for-him finished (design §5-4「地図が主人公の作品になる」). No face here: this beat is きみ's

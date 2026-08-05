@@ -227,7 +227,7 @@ export const STORY: Story = {
       id: 4, num: '四', title: '最後の 晩餐', years: '1495〜1499',
       lead: 'じっくり 直しながら 描きたくて、きみは 新しい 技法を ためす。その ために、絵は すぐに 傷みはじめる。',
       start: '4-a',
-      teaser: 'ミラノが 落ちる。きみは 旅に 出る。次に つかえる 相手は——<ruby>暴君<rt>ぼうくん</rt></ruby>チェーザレ・ボルジア。',
+      teaser: 'ミラノが 落ちる。きみは 旅に 出る。次に つかえる 相手は——イタリアで もっとも <ruby>恐<rt>おそ</rt></ruby>れられた 男、チェーザレ・ボルジア。',
       scenes: {
         '4-a': { place: 'ミラノ・<ruby>修道院<rt>しゅうどういん</rt></ruby>の <ruby>食堂<rt>しょくどう</rt></ruby>',
           monologue: '（人の 心の うごきは、顔だけでは 出ない。手が、背中が、しゃべる。）',
@@ -301,13 +301,18 @@ export const STORY: Story = {
       // fork's own `q` — so it paid for Cesare's demand, addressed to きみ, that lands on the fork.
       // The demand is the 1502 patent's job (inspect the fortresses he ALREADY holds), not「次に落とす街」
       // — Imola was taken before Leonardo arrived.
+      //   ★評価語 (engagement.md §20-6, WRITING 4): 「暴君」was the narrator's verdict in all 15 reader
+      // surfaces — 3 axes independently named the fork's `q` and label (中1「選ぶ前に採点表を渡された」).
+      // The word now belongs to people inside the work (5-a: 呼ぶ人 / 言う人), and the fork asks what
+      // きみ does with their own eye instead. The two voices also give Cesare his second face: Machiavelli
+      // (Il Principe 7) praises the order he brought to a Romagna「full of robberies」— the same man.
       //   R2 (eval): the demand must come BEFORE the temptation, and the monologue must not pre-announce
       // the verdict — 中1 said「心の声が先に結論を言うので、台詞を読むころには答えが決まっていた」. So the
       // monologue now carries what きみ WANTS (which also lands the reward — 小5 could not see why
       // 「歩いて測れる街」was a prize) and the cost sits after the demand.「後ろだて」→「主」= the word
       // 5-a already spent (きみは 主を なくした); both personas stumbled on 後ろだて.
       id: 5, num: '五', title: 'ボルジアの 軍事技師', years: '1502〜1503',
-      lead: '平和を 願いながら、暴君の ために 戦の 道具を 作る。その 手で、真上から 見た イモラの 地図を 描く。',
+      lead: '平和を 願いながら、もっとも <ruby>恐<rt>おそ</rt></ruby>れられた 男の ために 戦の 道具を 作る。その 手で、真上から 見た イモラの 地図を 描く。',
       start: '5-a',
       teaser: 'フィレンツェへ 戻り、ひとりの 女性の <ruby>肖像<rt>しょうぞう</rt></ruby>を 描きはじめる。その 名は、モナ・リザ。',
       scenes: {
@@ -315,7 +320,9 @@ export const STORY: Story = {
           monologue: '（ミラノは 落ちた。ミラノ<ruby>公<rt>こう</rt></ruby>は とらわれ、おれには もう、絵を たのむ <ruby>主<rt>あるじ</rt></ruby>が いない。）',
           text: `<p>ミラノが フランス<ruby>軍<rt>ぐん</rt></ruby>に 落ちて、きみは <ruby>主<rt>あるじ</rt></ruby>を なくした。<ruby>戦乱<rt>せんらん</rt></ruby>の イタリアを、あても なく さまよう。</p>
             <p>そんな きみに、声が かかった。——イタリアで もっとも <ruby>恐<rt>おそ</rt></ruby>れられた 男、<face pid="p-cesare">チェーザレ・ボルジア</face>。<ruby>教皇<rt>きょうこう</rt></ruby>（キリスト<ruby>教<rt>きょう</rt></ruby>の いちばん えらい 人）の 子で、軍を ひきいて 次々と 街を したがえる、若い <ruby>大将<rt>たいしょう</rt></ruby>だ。ほしいのは 絵ではない。城を <ruby>攻<rt>せ</rt></ruby>め、守る ための「<ruby>軍事技師<rt>ぐんじぎし</rt></ruby>」。</p>
+            <p>この 男を「<ruby>暴君<rt>ぼうくん</rt></ruby>」と 呼ぶ 声を、きみは 行く 先々で 聞いた。</p>
             <p>きみは、その <ruby>陣<rt>じん</rt></ruby>を たずねた。冷たい 目が、まっすぐ きみを 見た。</p>
+            <p class="speak">「この 土地は <ruby>盗賊<rt>とうぞく</rt></ruby>だらけで、夜に 道を 歩ける 者は いなかった。——いまは 歩ける。おれが しずめた」</p>
             <p class="speak">「<ruby>天使<rt>てんし</rt></ruby>は いらぬ。おれに 要るのは、この 土地の すみずみを 知る 目だ」</p>`,
           onEnter: { card: 'p-cesare' },
           next: '5-b' },
@@ -324,14 +331,14 @@ export const STORY: Story = {
           monologue: '（街ぜんたいを、この 足で 歩いて 測って みたい。そんな <ruby>機会<rt>きかい</rt></ruby>は、二度と 来ない かも しれない。）',
           text: `<p>ボルジアは 大きな 紙を <ruby>机<rt>つくえ</rt></ruby>に ひろげ、指で <ruby>城<rt>しろ</rt></ruby>の しるしを 一つずつ たたいた。</p>
             <p class="speak">「レオナルド。おれの 城を、ひとつ のこらず 見て 回れ。どこが やぶれるか、おまえの 目で 見つけて 図に しろ」</p>
-            <p>引き受ければ、また <ruby>主<rt>あるじ</rt></ruby>が でき、この 街を 思う ぞんぶん 歩いて 測れる。だが <ruby>平和<rt>へいわ</rt></ruby>を 願って きた きみの 目と 手は、戦の ために つかわれる。</p>
+            <p>引き受ければ、また <ruby>主<rt>あるじ</rt></ruby>が でき、この 街を 思う ぞんぶん 歩いて 測れる。その かわり、きみの 目と 手は、戦の 道具に なる。</p>
             <p>冷たい 目が、きみの 返事を 待って いる。</p>`,
-          q: 'きみは、この <ruby>暴君<rt>ぼうくん</rt></ruby>に 力を 貸す？',
+          q: 'きみの その 目と 手を、どう つかう？',
           choices: [
-            { label: '「<ruby>暴君<rt>ぼうくん</rt></ruby>の 手つだいは しない」——<ruby>背<rt>せ</rt></ruby>を 向けて 立ち去る', to: '5-c', effect: { miru: 1 },
-              hist: { verdict: 'もしもルート', moshimo: true, match: 'もし 暴君に 手を 貸さず、自由な まま 歩いて いたら……',
+            { label: '「わたしの 目は、戦の ためには つかいません」——<ruby>背<rt>せ</rt></ruby>を 向けて 立ち去る', to: '5-c', effect: { miru: 1 },
+              hist: { verdict: 'もしもルート', moshimo: true, match: 'もし この 男に 手を 貸さず、自由な まま 歩いて いたら……',
                 body: `<p>きみの 目と 手は、だれの 戦の ためでもなく、きみ だけの もの。いちばん 恐ろしい 男の そばに 身を 置かずに すむ。何を 見るかを、きみ 自身が 決める。</p><p>ただ、<ruby>戦乱<rt>せんらん</rt></ruby>の イタリアで、<ruby>主<rt>あるじ</rt></ruby>を もたぬ まま。街ぜんたいを 歩いて 測る——あの、めずらしく 仕上がる 大仕事の <ruby>機会<rt>きかい</rt></ruby>も、来なかった かもしれない。手を よごさず に いれば、手に しない ものも ある。</p>` } },
-            { label: '「その 力、お<ruby>貸<rt>か</rt></ruby>し しましょう」——最も 恐ろしい 男の <ruby>軍事技師<rt>ぐんじぎし</rt></ruby>に なる', to: '5-c', canon: true, effect: { tamesu: 2 },
+            { label: '「その 力、お<ruby>貸<rt>か</rt></ruby>し しましょう」——もっとも 恐れられた 男の <ruby>軍事技師<rt>ぐんじぎし</rt></ruby>に なる', to: '5-c', canon: true, effect: { tamesu: 2 },
               hist: { verdict: '史実では', match: '<ruby>暴君<rt>ぼうくん</rt></ruby>の 軍事技師に なり、街の 地図を 描いた',
                 body: `<p><ruby>史実<rt>じじつ</rt></ruby>の きみは 引き受けた。各地を 回り、イモラの 街を 自分の 足で 歩いて 測り、真上から 見た 正確な <ruby>地図<rt>ちず</rt></ruby>を 作りあげる——きみが、めずらしく きちんと 仕上げた 仕事だ。</p><p>だが その 目と 手は、いちばん 恐れられた 男の ものに なった。街を こわす その 力に、きみの するどい 目を 貸した。——この ことは、もう、なかった ことには できない。</p>` } },
           ] },
@@ -339,7 +346,7 @@ export const STORY: Story = {
         '5-c': { place: 'ロマーニャ・イモラ',
           text: `<p>きみは ボルジアに <ruby>従<rt>したが</rt></ruby>い、ロマーニャの 各地を 回った。中でも イモラの 街で、きみは めずらしい ことを した。</p>
             <p>街路を 自分の 足で 歩いて 長さを 測り、<ruby>広場<rt>ひろば</rt></ruby>の <ruby>塔<rt>とう</rt></ruby>に のぼって <ruby>方位<rt>ほうい</rt></ruby>を 取る。そうして、まるで 空の 上から 見おろした ように、街ぜんたいを 正確な 円の 中に 描いた。</p>`,
-          spark: 'え！？ <ruby>暴君<rt>ぼうくん</rt></ruby>の ための この 地図が、じつは「<ruby>地図<rt>ちず</rt></ruby>の 描き方」そのものを 変えた 一枚だった？',
+          spark: 'え！？ それまでの 地図は、ななめから 見た 絵のようだった。<ruby>暴君<rt>ぼうくん</rt></ruby>の ための この 一枚が、「<ruby>地図<rt>ちず</rt></ruby>の 描き方」そのものを 変えた？',
           deep: { q: '真上から 見た 地図の、何が すごいの?',
             body: `それまでの 地図は、ななめから 見た 絵のようで、正確さより 見た目を 大事に して いた。きみの イモラ図は、歩いて 測った 長さと <ruby>方位<rt>ほうい</rt></ruby>だけで 街を <ruby>割<rt>わ</rt></ruby>り出した「真上からの 正確な <ruby>平面図<rt>へいめんず</rt></ruby>」。いまの 地図に つながる 描き方の、大きな <ruby>転換点<rt>てんかんてん</rt></ruby>の 一つと される。<ruby>皮肉<rt>ひにく</rt></ruby>にも それは、街を 攻め 守る ための 図だった。`,
             cite: '※ きみが 歩いて 測り、真上から 描いたのは たしか（◎）。「地図の <ruby>転換点<rt>てんかんてん</rt></ruby>」は、そう <ruby>評価<rt>ひょうか</rt></ruby>する <ruby>研究<rt>けんきゅう</rt></ruby>に よる（○）。',

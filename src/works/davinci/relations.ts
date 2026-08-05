@@ -18,7 +18,7 @@ export const RELATIONS: WorkRelations = {
   edges: [
     { pid: 'p-verrocchio', rel: '目を 育てた 師', cat: 'shi' },
     { pid: 'p-ludovico', rel: '17年 仕えた 庇護者', cat: 'patron' },
-    { pid: 'p-cesare', rel: '仕えた 暴君', cat: 'patron' },
+    { pid: 'p-cesare', rel: '仕えた「暴君」', cat: 'patron' },
     { pid: 'p-giuliano', rel: 'ローマの 庇護者', cat: 'patron' },
     { pid: 'p-francois', rel: '最期を 敬った 王', cat: 'patron' },
     { pid: 'p-michelangelo', rel: '壁を 競った 好敵手', cat: 'raival' },
