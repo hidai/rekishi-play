@@ -243,9 +243,9 @@ export const STORY: Story = {
         '3-a': { place: '<ruby>和泉<rt>いずみ</rt></ruby>・<ruby>堺<rt>さかい</rt></ruby>',
           monologue: '（<ruby>物見<rt>ものみ</rt></ruby>の 旅の つもりだった。……よろいも、<ruby>兵<rt>へい</rt></ruby>も、ここには 無い。）',
           text: `<p>1582年6月、<ruby>堺<rt>さかい</rt></ruby>。日本 いちの <ruby>商<rt>あきな</rt></ruby>いの 町だ。</p>
-            <p>二十年 手を 組んで きた <face pid="p-nobunaga"><ruby>織田信長<rt>おだ のぶなが</rt></ruby></face>に まねかれ、<ruby>京<rt>きょう</rt></ruby>と 堺を 見て まわる 旅の とちゅうだった。<ruby>供<rt>とも</rt></ruby>は 数十人。<ruby>戦<rt>いくさ</rt></ruby>の したくなど、だれも して いない。</p>
-            <p>朝、馬が 一頭 かけこんで きた。乗って いた 男は、ころげ落ちる ように 言った。</p>
-            <p class="speak">「<ruby>本能寺<rt>ほんのうじ</rt></ruby>が 燃えて ございます。<ruby>上様<rt>うえさま</rt></ruby>は——ご<ruby>家来<rt>けらい</rt></ruby>の <ruby>明智光秀<rt>あけち みつひで</rt></ruby>に、討たれました」</p>
+            <p>二十年 手を 組んで きた <face pid="p-nobunaga"><ruby>織田信長<rt>おだ のぶなが</rt></ruby></face>に まねかれ、<ruby>京<rt>きょう</rt></ruby>と 堺を 見て まわる 旅の とちゅうだった。<ruby>供<rt>とも</rt></ruby>は 数十人。</p>
+            <p>朝、馬が 一頭 かけこんで きた。乗って いた 男は、きみの 前で ころげ落ちる ように 言った。</p>
+            <p class="speak">「<ruby>本能寺<rt>ほんのうじ</rt></ruby>が 燃えて ございます。<ruby>上様<rt>うえさま</rt></ruby>は——ご<ruby>家来<rt>けらい</rt></ruby>の <ruby>明智光秀<rt>あけち みつひで</rt></ruby>に、討たれました。……この 町から お<ruby>逃<rt>に</rt></ruby>げ ください」</p>
             <p><ruby>供<rt>とも</rt></ruby>の ひとりが、笑った。うそだろう、と 言いたかったのだ。だれも 続かなかった。だれかの 手から、<ruby>扇<rt>おうぎ</rt></ruby>が 落ちた。</p>
             <p>いつも そこに あった 大きな ものが、一夜で 消えた。その 信長と いちばん 長く 手を 組んで きた 男が、いま <ruby>京<rt>きょう</rt></ruby>の すぐ そばに いる。刀を さした 数十人 だけを つれて。</p>`,
           reveal: { face: 'p-nobunaga@fall', tone: 'crisis',
@@ -256,11 +256,11 @@ export const STORY: Story = {
 
         '3-b': { place: '<ruby>三河<rt>みかわ</rt></ruby>へ 帰る 道',
           text: `<p>三河までは、山ばかりの 道が 二百キロ あまり。<ruby>京<rt>きょう</rt></ruby>は もう <ruby>光秀<rt>みつひで</rt></ruby>の 手の 内だ。山には、<ruby>主<rt>あるじ</rt></ruby>を 失った <ruby>武士<rt>ぶし</rt></ruby>（いくさを 仕事に する 者）を おそって、刀や <ruby>銭<rt>ぜに</rt></ruby>を うばう 者が 出る。</p>
-            <p>だれも「ここに いよう」とは 言わなかった。言い合ったのは、どの 山を こえるか だ。</p>
+            <p>だれも「ここに いよう」とは 言わなかった。</p>
             <p><face pid="p-hanzo"><ruby>服部半蔵<rt>はっとり はんぞう</rt></ruby></face>が、地面に 線を 引いた。</p>
             <p class="speak">「まっすぐ 東——<ruby>伊賀<rt>いが</rt></ruby>の 山を こえれば、<ruby>伊勢<rt>いせ</rt></ruby>の 海に 出ます。船に 乗れば 三河は すぐ。いちばん 近い」</p>
-            <p><ruby>年<rt>とし</rt></ruby>かさの <ruby>家来<rt>けらい</rt></ruby>が、その 線を 手で 消した。</p>
-            <p class="speak">「伊賀は なりませぬ。<ruby>去年<rt>きょねん</rt></ruby>、<ruby>信長<rt>のぶなが</rt></ruby>どのが あの 国を 焼きはらった。——その 信長どのと 二十年 手を 組んで きたのが、<ruby>殿<rt>との</rt></ruby>です」</p>
+            <p><ruby>年<rt>とし</rt></ruby>かさの <ruby>家来<rt>けらい</rt></ruby>が、きみの 前で その 線を 消した。</p>
+            <p class="speak">「伊賀は なりませぬ。<ruby>去年<rt>きょねん</rt></ruby>、<ruby>信長<rt>のぶなが</rt></ruby>どのが あの 国を 焼きはらった。——その 信長どのと 二十年 手を 組んで きたのが、<ruby>殿<rt>との</rt></ruby>です。それでも、伊賀を 通りますか」</p>
             <p class="speak">「北へ まわり、<ruby>甲賀<rt>こうが</rt></ruby>を 通りましょう。遠い。ですが、伊賀ほど うらまれて いない」</p>`,
           q: '<ruby>三河<rt>みかわ</rt></ruby>へ 帰る 道を、きみは どちらに とる？',
           choices: [
