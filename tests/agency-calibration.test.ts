@@ -7,13 +7,15 @@
 // テストに固定する＝次のサイクルが語を足したり判定を変えたときに、較正が静かに崩れない。
 import { describe, it, expect } from 'vitest';
 import { hidenaga } from '../src/works/hidenaga/index';
+import { ieyasu } from '../src/works/ieyasu/index';
+import { kiyomori } from '../src/works/kiyomori/index';
 import { shibusawa } from '../src/works/shibusawa/index';
-import { auditWork, sceneAgency } from '../scripts/lib/agency-audit';
+import { auditWork, callNames, sceneAgency } from '../scripts/lib/agency-audit';
 import type { Work } from '../src/engine/types';
 
 function scene(work: Work, chapterId: number, id: string) {
   const ch = work.story.chapters.find((c) => c.id === chapterId)!;
-  return sceneAgency(id, ch.scenes[id]);
+  return sceneAgency(id, ch.scenes[id], callNames(work));
 }
 
 describe('型9 の計器: 読み通しで観察された画面に合っている', () => {
@@ -51,5 +53,71 @@ describe('型9 の計器: 読み通しで観察された画面に合っている
     expect(sceneAgency('t', { text: '<p>きみは 答えない。</p>' } as never).acts).toEqual([]);
     // 素の形は拾う（除外が広すぎないことの裏）。
     expect(sceneAgency('t', { text: '<p>きみは この 人を 役所に 入れた。</p>' } as never).acts).toEqual(['入れ']);
+  });
+});
+
+describe('型10 の計器: その声は「きみ」に宛てられているか', () => {
+  /** きみを名ざす地の文（錨）のすぐ下に置いた1つの声。 */
+  const anchored = (speech: string, names: string[] = []) =>
+    sceneAgency(
+      't',
+      { text: `<p>その 者が、きみの 顔を 見た。</p><p class="speak">「${speech}」</p>` } as never,
+      names,
+    ).addressed;
+
+  it('2ラウンド続けて両ペルソナが選んだ画面が最上位（hidenaga 3-a2）', () => {
+    // 年よりが顔を見て問い、返事を待つ＝声2つとも宛先つき。ここが型10 の較正点。
+    expect(scene(hidenaga, 3, '3-a2').addressed).toBe(2);
+  });
+
+  it('前サイクルの直しを見分ける（ieyasu 6-b の「殿、おきめ ください」）', () => {
+    // 同じ画面の他の2声は ます形の議論＝宛先なし。1/3 で入るのが型10 の解像度。
+    expect(scene(ieyasu, 6, '6-b').addressed).toBe(1);
+    // 6-b2 は遠くの声（牢人・淀殿）。きみは聞いているだけ＝0。
+    expect(scene(ieyasu, 6, '6-b2').addressed).toBe(0);
+  });
+
+  it('★丁寧語は宛先ではない（対者敬語で ○ を取らせない）', () => {
+    // 観察の起点そのもの——ieyasu 6-b の初版は ます形の声が2つあって「だれも きみに
+    // 話しかけてこない」と読まれた。要求（おきめ ください）だけが宛先になる。
+    expect(anchored('時を おけば、牢人は なお ふえまするぞ')).toBe(0);
+    expect(anchored('殿、おきめ ください')).toBe(1);
+    expect(anchored('大事ないか')).toBe(1);
+  });
+
+  it('★形だけ・錨だけでは数えない（AND）', () => {
+    // 形はあるが、隣の地の文が きみを名ざしていない＝遠くの誰かへの声。
+    expect(
+      sceneAgency('t', {
+        text: '<p>遠い 声が、聞こえた 気が した。</p><p class="speak">「だれに 頭を 下げよと 言うのです」</p>',
+      } as never).addressed,
+    ).toBe(0);
+    // 錨はあるが、要求も呼びかけも問いも無い声＝きみの前で交わされた会話。
+    expect(anchored('あの 者たちは、いくさの 話ばかり して おる')).toBe(0);
+  });
+
+  it('★`class="speak"` は「他人の声」とは限らない（きみ自身の台詞を数えない）', () => {
+    // 渋沢 6-b＝きみが慶喜に頼む台詞（「殿の 一生を、書き残させて ください」）。直前の地の文が
+    // きみを主語に置き、他者への帰属がどこにも無い＝きみの声。自己レビュー 2026-08-05 が摘出。
+    expect(scene(shibusawa, 6, '6-b').addressed).toBe(0);
+  });
+
+  it('★独語の「か」と名詞化の「もの」は問いでない（自己レビューの誤検出2件）', () => {
+    // 秀長 2-c＝信長のひとりごと（「猿の 弟、か。……ふん」＝**読点の直後の か**）。
+    expect(scene(hidenaga, 2, '2-c').addressed).toBe(0);
+    expect(anchored('高く 昇った 者は、いつか 落ちる もの')).toBe(0);
+  });
+
+  it('呼びかけは声の頭とは限らない（清盛 3-c「よくぞ ここまで 昇った、清盛。」）', () => {
+    // 第一文のどの句でも名を呼べる。名で呼ばれた声は**きみ自身の声ではありえない**ので、
+    // 話者の印（帰属）を待たずに数える。
+    expect(scene(kiyomori, 3, '3-c').addressed).toBe(1);
+  });
+
+  it('名で呼ぶ声は作品の名の表から引く（型4 の RENAMED_NAMES を共用）', () => {
+    expect(callNames(hidenaga)).toContain('小竹');
+    expect(anchored('小竹。……そばに いて おくれ', callNames(hidenaga))).toBe(1);
+    // 名を三人称で語る声は宛先でない（頭の一句でだけ当てる）。
+    expect(anchored('小竹は、物の 順番が 見える 目を して おる', callNames(hidenaga))).toBe(0);
   });
 });

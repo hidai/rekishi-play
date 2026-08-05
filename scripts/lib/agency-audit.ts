@@ -18,6 +18,12 @@
 //   engaged = score >= 2
 // これで較正点が両側そろう（1-c2＝声2・7-b＝行為3・秀長 1-d＝行為1＋声1／渋沢 6-a＝1 で非）。
 //
+// ★型10（2026-08-05 追加）＝**その声は「きみ」に宛てられているか**。型9 は声の数と向きのある行為を
+// 数えるが、**声の宛先を見ていない**——「家中が割れた」画面は声2で ○ を取る。小5・中1が2ラウンド
+// 続けて対照 hidenaga 3-a2 を選び、理由まで一致した（「だれも『きみ』に直接話しかけてこない」＝
+// 3-a2 は年よりが顔を見て問い、**返事を待つ**）。判定は `addressedToYou`＝形と錨の AND。
+// 型9 の score には足さない（別の軸＝混ぜると両方の解像度が消える）。
+//
 // 見ているのは主線の本文だけ（deep・カード・手帳は読者が開かない面＝型3 と同じ線引き）。
 // hist を入れないのは、選択の後に開く面＝「この画面をやめるか」の判断がもう済んでいるから。
 // **岐路そのものは数えない**——ほぼ全画面が岐路を持つ作品があり、足すと解像度が消える
@@ -29,6 +35,7 @@
 // 長さを作品どうしで比べること**。
 import type { Scene, Work } from '../../src/engine/types';
 import { plainText } from './content-stats';
+import { RENAMED_NAMES } from './name-audit';
 
 /**
  * 人に向かう／人から向かう動きの語（人が育てるリスト＝INSTITUTION_TERMS・PREMISE_MARKERS と
@@ -72,10 +79,142 @@ export const NOT_ACTS: string[] = ['手に入れ', '手を入れ', '入れかえ
 /** 行為の語の直後に来る打ち消し（「入れなかった」「答えない」を「した」と数えないため）。 */
 const NEGATION = /^(?:ない|なかっ|なく|ぬ|ず)/;
 
+/**
+ * ★型10 の印①＝声の中の二人称（きみを名ざす声）。
+ * 作品によって呼び方が違う（きみ／そなた／おぬし）ので人が育てるリストで持つ。
+ */
+export const ADDRESS_WORDS: string[] = [
+  'きみ', 'そなた', 'そち', 'おぬし', 'おまえ', 'お前', 'なんじ', '汝', 'あなた', 'おぬしら',
+];
+
+/**
+ * ★型10 の印②＝**聞き手がいないと成り立たない文末**（依頼・命令・勧誘）。
+ * ⚠️ substring では拾わない——「〜して くれた」「〜と 申せば」は聞き手への要求ではない。
+ * 文の末尾（句点・閉じかぎを落とした位置）でだけ当てる。
+ */
+const ASK_ENDS: string[] = [
+  'ください', 'くださらぬ', 'くだされ', 'くだされい', 'おくれ', 'くれ', 'くれぬ', 'たまえ',
+  'なさい', 'なされ', 'なされい', 'せよ', 'しろ', 'せい', 'たのむ', 'たのみます', '願います',
+  'ましょう', 'ませぬか', 'ませんか', 'ないか', 'ぬか',
+  // 命令形（活用の網羅でなく、コーパスに出た形＝人が育てるリスト）
+  '見ろ', 'やめろ', '逃げろ', '出せ', '来い', 'こい', '行け', 'ゆけ', '帰れ', '待て', '聞け',
+  '言え', 'やれ', '見よ',
+];
+
+/**
+ * ★型10 の印③＝問い（聞き手に返事を要求する）。
+ * ⚠️ 裸の「か」は詠嘆・独語にもなる（「猿の 弟、か。……ふん」＝信長のひとりごと）＝**読点の直後の
+ * 「か」は問いにしない**。「の」は名詞化の「もの」「〜のだ」を拾うので**印から外した**
+ * （自己レビュー 2026-08-05。この2つが実データで誤検出していた）。
+ */
+const QUESTION_END = /(?<![、,])か$/;
+
+/**
+ * ★型10 の印④＝**呼びかけ**（声の頭で名を呼ぶ）。「小竹や。」「父上。」「渋沢さん。」＝
+ * いちばん強い宛先の印。名は作品ごとに違うので `RENAMED_NAMES`（型4 の表）と shortNames から
+ * 引く＝ここに作品固有の名を二重に持たない。続柄・敬称は手で育てるリスト。
+ * ⚠️ 「殿は、その"あと"が できる お方だ」（きみを三人称で語る声）と分けるため、**頭の一句**
+ * （最初の読点・句点まで）でだけ当て、短い呼びかけに限る。
+ * ⚠️ 敬称（さん・さま・どの）は**きみ以外への呼びかけ**も拾いうる。抑えているのは錨のほうで、
+ * 「その画面にきみがいる」以上の保証は無い（診断であってゲートでない理由の1つ）。
+ */
+export const VOCATIVE_TITLES: string[] = [
+  '殿', '父上', '母上', '母うえ', '父うえ', '兄上', '姉上', '兄ぎみ', '姉ぎみ', '若', '若君',
+  '先生', 'おじいさま', 'おばあさま', 'おやかたさま', 'さん', 'さま', 'どの',
+];
+/**
+ * 声の**第一文**を読点で割った句（かぎ・ためらい・「なあ」等は落とす）。
+ * 呼びかけは頭とは限らない——「よくぞ ここまで 昇った、清盛。」（自己レビュー 2026-08-05）。
+ */
+function vocativeChunks(speech: string): string[] {
+  return speech
+    .replace(/^[「『…—]+/, '')
+    .replace(/^(?:なあ|のう|おい|やい)/, '')
+    .split(/[。！？]/)[0]
+    .split('、')
+    .map((s) => s.replace(/[やよ]$/, ''))
+    .filter((s) => s.length > 0 && s.length <= 8);
+}
+
+/** その句は きみへの呼びかけか（名は完全一致・敬称は語尾一致）。 */
+function isVocative(chunk: string, names: string[]): boolean {
+  return names.includes(chunk) || VOCATIVE_TITLES.some((t) => chunk.endsWith(t));
+}
+
+/**
+ * ⚠️ `class="speak"` は「他人の声」とは限らない——**きみ自身が頼む台詞**も同じ枠で書かれている
+ * （渋沢 6-b「きみは 静岡へ 行き、その 前に すわった」→「殿の 一生を、書き残させて ください」。
+ * 自己レビュー 2026-08-05 が実データで摘出）。話者の印は日本語では声の**外**にあり、しかも
+ * 前にも後ろにも置かれる（「——年老いた 貴族が…言い張った」「そう 聞かれた」）＝
+ * **他者への帰属がどこにも無く、直前がきみを主語に置いている声は、きみ自身の声として落とす**。
+ * ⚠️ 錨を「きみを・きみに」（目的格）へ絞る手も試したが、実データの半分（「母うえ。」等の
+ * 正しい呼びかけ）を落とした＝**主語省略のある言語では、格で話者は決まらない**。
+ */
+const ATTRIBUTION = /そう(?:言|聞|たずね|つぶや|ささや)|言った|言い張っ|聞かれた|たずねた|の声|答えた|つぶやい|ささやい/;
+const YOU_AS_SUBJECT = /きみ(?:は|も)/;
+
+interface Para {
+  speak: boolean;
+  text: string;
+}
+
+/** 主線の段落列（`plainText` 済み）。声とその隣の地の文の距離を見るために順序を保つ。 */
+function paragraphs(raw: string): Para[] {
+  return [...raw.matchAll(/<p([^>]*)>([\s\S]*?)<\/p>/g)].map((m) => ({
+    speak: /class="speak"/.test(m[1]),
+    text: plainText(m[2]),
+  }));
+}
+
+/**
+ * その声は「きみに宛てられている」か。**形と錨の AND** で見る:
+ *   ①形＝二人称・依頼命令の文末・問い のどれかを含む（聞き手を要求する声）
+ *   ②錨＝すぐ隣（直前か直後）の地の文が「きみ」を名ざす（その聞き手がきみだと画面が言っている）
+ * 片方だけでは足りない——①だけでは遠くの誰かへの命令（淀殿の「だれに 頭を 下げよ」）を拾い、
+ * ②だけでは「きみの前で交わされた会話」（家中が割れる画面）を拾う。それこそ型10 が
+ * 分けたかった側だ（engagement.md §19）。
+ */
+function addressedToYou(paras: Para[], i: number, names: string[]): boolean {
+  const speech = paras[i].text;
+  // ①きみを名ざす形（二人称・呼びかけ）＝**話者がきみ自身ではありえない**声。
+  const aimed =
+    ADDRESS_WORDS.some((w) => speech.includes(w)) ||
+    vocativeChunks(speech).some((c) => isVocative(c, names));
+  // ②要求・問いの形。宛先は形では決まらない（下の錨と話者の印で決める）。
+  const asks = speech
+    .split(/(?<=[。！？…])/)
+    .some(
+      (s) =>
+        s.includes('？') ||
+        ((t) => ASK_ENDS.some((e) => t.endsWith(e)) || QUESTION_END.test(t))(
+          s.replace(/[。！？…、「」『』]+$/g, ''),
+        ),
+    );
+  if (!aimed && !asks) return false;
+  const prev = paras[i - 1]?.speak ? undefined : paras[i - 1];
+  const next = paras[i + 1]?.speak ? undefined : paras[i + 1];
+  if (![prev, next].some((p) => p?.text.includes('きみ'))) return false;
+  if (aimed) return true;
+  const attributed = ATTRIBUTION.test(speech) || ATTRIBUTION.test(next?.text ?? '');
+  return attributed || !YOU_AS_SUBJECT.test(prev?.text ?? '');
+}
+
+/**
+ * その作品で**きみが呼ばれる名**（型4 の `RENAMED_NAMES` の鎖＋ shortNames）。
+ * 改名しない主人公は1つ。作品固有の名をこの計器に書き足さないための引き方。
+ */
+export function callNames(work: Work): string[] {
+  const short = work.shortNames[work.protagonistId] ?? '';
+  const chains = (RENAMED_NAMES[work.id] ?? []).filter((c) => c.includes(short));
+  return [...new Set([short, ...chains.flat()])].filter(Boolean);
+}
+
 export interface SceneAgency {
   id: string;
   /** Other people's voices in the main line (`class="speak"` paragraphs). */
   voices: number;
+  /** ★型10: voices that are addressed to きみ（形＋錨。`addressedToYou`）. */
+  addressed: number;
   /** ACT_VERBS matched in sentences that name きみ (either direction). */
   acts: string[];
   /** acts + voices. */
@@ -98,6 +237,11 @@ export interface ChapterAgency {
   longestGap: number;
   /** Non-engaged scenes at the head of the chapter (where the reader decides to quit). */
   headGap: number;
+  /** ★型10: voices in the chapter, and how many of them are addressed to きみ. */
+  voices: number;
+  addressed: number;
+  /** Scenes before the chapter's first voice addressed to きみ（無ければ章の画面数）. */
+  addressedHeadGap: number;
 }
 
 /** Sentences that name the protagonist — any particle, so both directions are seen. */
@@ -115,9 +259,11 @@ function actAt(text: string, i: number, verb: string): boolean {
   return !NEGATION.test(text.slice(i + verb.length));
 }
 
-export function sceneAgency(id: string, sc: Scene): SceneAgency {
+export function sceneAgency(id: string, sc: Scene, names: string[] = []): SceneAgency {
   const raw = sc.text ?? '';
   const voices = (raw.match(/class="speak"/g) ?? []).length;
+  const paras = paragraphs(raw);
+  const addressed = paras.filter((p, i) => p.speak && addressedToYou(paras, i, names)).length;
   const acts: string[] = [];
   for (const s of youSentences(raw))
     for (const v of ACT_VERBS) {
@@ -129,12 +275,21 @@ export function sceneAgency(id: string, sc: Scene): SceneAgency {
         }
     }
   const score = acts.length + voices;
-  return { id, voices, acts, score, engaged: score >= 2, hands: !!(sc.minigame || sc.observe) };
+  return {
+    id,
+    voices,
+    addressed,
+    acts,
+    score,
+    engaged: score >= 2,
+    hands: !!(sc.minigame || sc.observe),
+  };
 }
 
 export function auditWork(work: Work): ChapterAgency[] {
+  const names = callNames(work);
   return work.story.chapters.map((ch) => {
-    const scenes = Object.entries(ch.scenes).map(([id, sc]) => sceneAgency(id, sc));
+    const scenes = Object.entries(ch.scenes).map(([id, sc]) => sceneAgency(id, sc, names));
     let longestGap = 0,
       run = 0,
       headGap = -1;
@@ -147,6 +302,7 @@ export function auditWork(work: Work): ChapterAgency[] {
         longestGap = Math.max(longestGap, run);
       }
     }
+    const firstAddressed = scenes.findIndex((s) => s.addressed > 0);
     return {
       chapterId: ch.id,
       title: plainText(ch.title),
@@ -155,6 +311,9 @@ export function auditWork(work: Work): ChapterAgency[] {
       longestGap,
       // A chapter with no engaged scene at all: the whole chapter is the head gap.
       headGap: headGap < 0 ? scenes.length : headGap,
+      voices: scenes.reduce((n, s) => n + s.voices, 0),
+      addressed: scenes.reduce((n, s) => n + s.addressed, 0),
+      addressedHeadGap: firstAddressed < 0 ? scenes.length : firstAddressed,
     };
   });
 }
