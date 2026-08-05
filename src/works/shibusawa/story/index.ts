@@ -207,9 +207,9 @@ export const STORY: Story = {
         '3-a': { place: '<ruby>横浜<rt>よこはま</rt></ruby>の <ruby>沖<rt>おき</rt></ruby>——フランスの 船',
           monologue: '（……四年前、この <ruby>港<rt>みなと</rt></ruby>を <ruby>焼<rt>や</rt></ruby>く つもりで いた。）',
           closeup: { tone: 'warm', cast: [{ face: 'p-akitake', name: '徳川昭武' }, { face: 'p-eiichi@young', name: '栄一（きみ）' }] },
-          text: `<p>1867年。<ruby>将軍<rt>しょうぐん</rt></ruby>の 弟・<ruby>徳川昭武<rt>とくがわあきたけ</rt></ruby>が、将軍の かわりに パリの <ruby>万国博覧会<rt>ばんこくはくらんかい</rt></ruby>へ 行く。きみより 十三も 年下の、まだ 少年の <ruby>殿<rt>との</rt></ruby>だ。その お<ruby>供<rt>とも</rt></ruby>の 一人に、きみが えらばれた。</p>
+          text: `<p>1867年。<ruby>将軍<rt>しょうぐん</rt></ruby>に なった <ruby>慶喜<rt>よしのぶ</rt></ruby>の 弟、<ruby>徳川昭武<rt>とくがわあきたけ</rt></ruby>が、兄の かわりに パリの <ruby>万国博覧会<rt>ばんこくはくらんかい</rt></ruby>へ 行く。きみより 十三も 年下の、まだ 少年の <ruby>殿<rt>との</rt></ruby>だ。その お<ruby>供<rt>とも</rt></ruby>の 一人に、きみが えらばれた。</p>
             <p>役目は <ruby>刀<rt>かたな</rt></ruby>では ない。<ruby>一行<rt>いっこう</rt></ruby>の お金の 出し入れ——<ruby>勘定<rt>かんじょう</rt></ruby>だ。</p>
-            <p><ruby>上海<rt>シャンハイ</rt></ruby>。<ruby>香港<rt>ホンコン</rt></ruby>。サイゴン。船は 西へ 進み、エジプトで 一行は いったん 陸に 上がった。<ruby>砂<rt>すな</rt></ruby>の 中を、二本の <ruby>鉄<rt>てつ</rt></ruby>が まっすぐに のびて いる。</p>
+            <p>船は 西へ 西へと 進み、エジプトで 陸に 上がった。<ruby>砂<rt>すな</rt></ruby>の 中を、二本の <ruby>鉄<rt>てつ</rt></ruby>が まっすぐに のびて いる。</p>
             <p>きみが 生まれて 初めて 見た、<ruby>鉄道<rt>てつどう</rt></ruby>だった。</p>`,
           onEnter: { card: 'p-akitake' },
           next: '3-b' },
@@ -217,18 +217,20 @@ export const STORY: Story = {
         '3-b': { place: 'パリ——<ruby>万国博覧会<rt>ばんこくはくらんかい</rt></ruby>の <ruby>会場<rt>かいじょう</rt></ruby>',
           text: `<p>春。パリ。石の 家が どこまでも ならび、大通りは 夜に なっても ガスの 火で 明るい。会場には 世界じゅうの <ruby>品<rt>しな</rt></ruby>と 人が あつまって いた。</p>
             <p>その 中に、日本の 店が あった。——二つ。</p>
-            <p>一つは <ruby>幕府<rt>ばくふ</rt></ruby>の 店。もう 一つは <ruby>薩摩<rt>さつま</rt></ruby>の 店だ。<ruby>九州<rt>きゅうしゅう</rt></ruby>の 南に あって、幕府に したがわない 大きな 家。ことわりも なく、べつの 国の 名を かかげて いた。フランスの 人の 目には、日本に <ruby>王<rt>おう</rt></ruby>が 二人 いるように 見えて いる——そんな 気が した。</p>`,
+            <p>一つは <ruby>幕府<rt>ばくふ</rt></ruby>の 店。もう 一つは <ruby>薩摩<rt>さつま</rt></ruby>の 店だ。<ruby>九州<rt>きゅうしゅう</rt></ruby>の 南に あって、幕府に したがわない 大きな 家。ことわりも なく、べつの 国の 名を かかげて いた。外国の 人の 目には、日本に <ruby>王<rt>おう</rt></ruby>が 二人 いるように 見える——そんな 気が した。</p>`,
           deep: { q: 'なぜ 日本の 店が 二つ？', confidence: '◎',
             body: `<ruby>薩摩<rt>さつま</rt></ruby>は <ruby>幕府<rt>ばくふ</rt></ruby>とは べつに <ruby>品<rt>しな</rt></ruby>を 出し、「日本 薩摩 <ruby>琉球国<rt>りゅうきゅうこく</rt></ruby> <ruby>太守政府<rt>たいしゅせいふ</rt></ruby>」と 名のった。幕府の <ruby>使<rt>つか</rt></ruby>いは 強く <ruby>抗議<rt>こうぎ</rt></ruby>したが、<ruby>会場<rt>かいじょう</rt></ruby>には 二つの「日本」が ならんだ ままだった。<br>——外国から 見れば、どちらが 日本の <ruby>代表<rt>だいひょう</rt></ruby>かは わからない。きみが 海の むこうで 見たのは、しくみだけでは なかった。<b>自分の 国が くずれかけて いる ところ</b>を、外から 見て いたのだ。` },
           next: '3-c' },
 
         '3-c': { place: 'パリ・<ruby>一行<rt>いっこう</rt></ruby>の <ruby>宿<rt>やど</rt></ruby>',
           closeup: { tone: 'warm', cast: [{ face: 'p-banker', name: '銀行の 人' }, { face: 'p-officer', name: '軍の 人' }] },
-          text: `<p><ruby>一行<rt>いっこう</rt></ruby>の 世話を する <ruby>銀行<rt>ぎんこう</rt></ruby>の 人と、つきそいの <ruby>軍<rt>ぐん</rt></ruby>の 人。二人は 同じ <ruby>机<rt>つくえ</rt></ruby>に つき、同じ 高さで 言い合い、そして 笑った。日本なら、<ruby>侍<rt>さむらい</rt></ruby>と <ruby>商人<rt>あきんど</rt></ruby>だ。</p>
-            <p class="speak">「——あの お二人は、どちらが 上なのですか。」</p>
-            <p>銀行の 人は、問いの 意味が わからない という 顔を した。そして 言った。「<ruby>殿<rt>との</rt></ruby>の 学びは 長く なる。<ruby>箱<rt>はこ</rt></ruby>の 中の 金は、使えば 減る だけだ。うちに あずけては どうか。」</p>
+          text: `<p><ruby>一行<rt>いっこう</rt></ruby>の 世話を する <ruby>銀行<rt>ぎんこう</rt></ruby>の 人と、つきそいの <ruby>軍<rt>ぐん</rt></ruby>の 人。二人は 同じ <ruby>机<rt>つくえ</rt></ruby>に つき、同じ 高さで 言い合い、笑った。日本なら、<ruby>侍<rt>さむらい</rt></ruby>と <ruby>商人<rt>あきんど</rt></ruby>だ。</p>
+            <p class="speak">「——どちらが、上なのですか。」</p>
+            <p>銀行の 人は、問いの 意味が わからない という 顔を した。</p>
+            <p class="speak">「<ruby>殿<rt>との</rt></ruby>の 学びは 長く なる。<ruby>箱<rt>はこ</rt></ruby>の 中の 金は、使えば 減る だけだ。うちに あずけては どうか。」</p>
+            <p>きみは、すぐには 答えなかった。</p>
             <p class="speak">「——もし へったら、だれが つぐなうのですか。」</p>
-            <p>「へった ことは ありません。」——笑って、そう 答えた。</p>
+            <p>「へった ことは ありません。」——<ruby>銀行<rt>ぎんこう</rt></ruby>の 人は 笑った。</p>
             <p>あずかって いるのは、きみの 金では ない。</p>`,
           deep: { q: 'なぜ 二人が 同じ 高さだと おどろくの？', confidence: '○',
             body: `日本では 生まれた 家で <ruby>身分<rt>みぶん</rt></ruby>が 決まり、<ruby>侍<rt>さむらい</rt></ruby>と <ruby>商人<rt>あきんど</rt></ruby>は 同じ <ruby>机<rt>つくえ</rt></ruby>に つかない。きみ 自身、<ruby>百姓<rt>ひゃくしょう</rt></ruby>の 子だと いう だけで <ruby>代官所<rt>だいかんしょ</rt></ruby>に 笑われて いる（第1章）。<br>その きみが、お金を 動かす 人と <ruby>戦<rt>いくさ</rt></ruby>の 人が <ruby>対等<rt>たいとう</rt></ruby>に しゃべる 国を 見た。<b>のちの きみの やり方は、ここで 見た ものに よく 似て いる</b>。`,
@@ -240,7 +242,7 @@ export const STORY: Story = {
                 body: `<p>あずけなければ、金は だれの 手にも わたらない。減る ときも 自分の 目の 前で 減る。<ruby>預<rt>あず</rt></ruby>かり物の 守り方として、これ以上 正しい やり方は ない。</p><p>だが 日本からの <ruby>送金<rt>そうきん</rt></ruby>は、この 先 ぱたりと 止まる。<ruby>幕府<rt>ばくふ</rt></ruby>そのものが 消えるからだ。<ruby>箱<rt>はこ</rt></ruby>の 底が 見えた とき、<ruby>一行<rt>いっこう</rt></ruby>に できるのは 帰りの <ruby>船賃<rt>ふなちん</rt></ruby>を どこかに 借りる ことだけ。パリの しくみは、ながめただけの <ruby>見世物<rt>みせもの</rt></ruby>で 終わる。</p><p>この 道を、パリの きみは えらばなかった。</p>` } },
             { label: 'あずける。<ruby>紙<rt>かみ</rt></ruby>に <ruby>換<rt>か</rt></ruby>えて、しくみの 中に 入って みる', to: '3-d', canon: true, effect: { soroban: 2, gappon: 1 },
               hist: { verdict: '史実では', match: '<ruby>栄一<rt>えいいち</rt></ruby>は 金を あずけ、<ruby>紙<rt>かみ</rt></ruby>に <ruby>換<rt>か</rt></ruby>えた',
-                body: `<p>きみは <ruby>一行<rt>いっこう</rt></ruby>の 金を <ruby>銀行<rt>ぎんこう</rt></ruby>に あずけ、その 多くを <ruby>二種類<rt>にしゅるい</rt></ruby>の 紙に <ruby>換<rt>か</rt></ruby>えた。国が お金を 借りた しるしの 紙と、<ruby>鉄道<rt>てつどう</rt></ruby>の 会社が 借りた しるしの 紙。ねむって いた 金に、<ruby>利<rt>り</rt></ruby>が つきはじめる。</p><p>同じ ころ、きみは <ruby>髷<rt>まげ</rt></ruby>を 切り、<ruby>洋服<rt>ようふく</rt></ruby>を 着た。四年前に <ruby>焼<rt>や</rt></ruby>こうと して いた 国の <ruby>服<rt>ふく</rt></ruby>だ。</p>`,
+                body: `<p>きみは <ruby>一行<rt>いっこう</rt></ruby>の 金を <ruby>銀行<rt>ぎんこう</rt></ruby>に あずけ、その 多くを <ruby>二種類<rt>にしゅるい</rt></ruby>の 紙に <ruby>換<rt>か</rt></ruby>えた。フランスの 国が お金を 借りた しるしの 紙と、フランスの <ruby>鉄道<rt>てつどう</rt></ruby>の 会社が 借りた しるしの 紙。ねむって いた 金に、<ruby>利<rt>り</rt></ruby>が つきはじめる。</p><p>同じ ころ、きみは <ruby>髷<rt>まげ</rt></ruby>を 切り、<ruby>洋服<rt>ようふく</rt></ruby>を 着た。四年前に <ruby>焼<rt>や</rt></ruby>こうと して いた 国の <ruby>服<rt>ふく</rt></ruby>だ。</p>`,
                 source: { grade: 'contemporary', name: 'パリで つけて いた <ruby>日記<rt>にっき</rt></ruby>（『<ruby>巴里御在館日記<rt>パリございかんにっき</rt></ruby>』）',
                   note: 'パリに いた あいだ、きみが 日ごとに つけて いた 役目の 日記。この 作品で 初めて 出て くる「その とき 書かれた 紙」だ。——本に なった『<ruby>航西日記<rt>こうせいにっき</rt></ruby>』は べつの <ruby>冊<rt>さつ</rt></ruby>で、行きの 船から <ruby>万国博覧会<rt>ばんこくはくらんかい</rt></ruby>までの 1867年の ぶん。しかも きみ 一人の 日記では なく、同じ 旅の <ruby>杉浦愛蔵<rt>すぎうらあいぞう</rt></ruby>の 日記と 合わせて <ruby>編<rt>あ</rt></ruby>まれたと 言われる。' } } },
           ] },
@@ -250,9 +252,10 @@ export const STORY: Story = {
           closeup: { tone: 'grief', cast: [{ face: 'p-eiichi@prime', name: '栄一（きみ）' }, { face: 'p-akitake@paris', name: '徳川昭武' }] },
           text: `<p>日本からの <ruby>便<rt>たよ</rt></ruby>りは、来るたびに わるく なった。<ruby>将軍<rt>しょうぐん</rt></ruby>は、国を おさめる 力を、<ruby>京<rt>きょう</rt></ruby>に いる <ruby>天皇<rt>てんのう</rt></ruby>——代々の 将軍を 将軍に して きた 人に 返した。<ruby>鳥羽<rt>とば</rt></ruby>・<ruby>伏見<rt>ふしみ</rt></ruby>で <ruby>幕府<rt>ばくふ</rt></ruby>がわが 負けた。</p>
             <p>そして 新しい <ruby>政府<rt>せいふ</rt></ruby>から <ruby>命令<rt>めいれい</rt></ruby>が 来る。——帰れ。</p>
-            <p><ruby>殿<rt>との</rt></ruby>が、小さな 声で 言った。</p>
-            <p class="speak">「——まだ、なにも 学んで いない。」</p>
-            <p>学びは 半ばで 終わった。<ruby>送金<rt>そうきん</rt></ruby>は とうに 止まって いる。それでも <ruby>一行<rt>いっこう</rt></ruby>は 船に 乗れた。あずけた 金が、ねむらずに 働いて いた。</p>`,
+            <p><ruby>殿<rt>との</rt></ruby>は きみを 見て、小さな 声で 言った。</p>
+            <p class="speak">「——まだ、なにも 学んで いない。……<ruby>渋沢<rt>しぶさわ</rt></ruby>、帰る 金は あるか。」</p>
+            <p><ruby>送金<rt>そうきん</rt></ruby>は とうに 止まって いる。きみは <ruby>帳<rt>ちょう</rt></ruby>を ひらいた。</p>
+            <p class="speak">「——帰れます。あの 紙は、フランスの 国と 会社に <ruby>貸<rt>か</rt></ruby>した しるし。借りた 側は、少し 多く して 返します。」</p>`,
           spark: 'え！？ 国が 消えても、あずけた お金は <b>減らずに ふえて いた</b>。きみが 日本へ 持ち帰った いちばん 大きな <ruby>品<rt>しな</rt></ruby>は、<ruby>品物<rt>しなもの</rt></ruby>では なく しくみだった。',
           deep: { q: 'あずけると、なぜ ふえるの？', confidence: '◎',
             body: `<ruby>銀行<rt>ぎんこう</rt></ruby>は、あずかった お金を <ruby>眠<rt>ねむ</rt></ruby>らせない。それを 必要な 人へ 貸し、<ruby>利<rt>り</rt></ruby>を つけて 返して もらう。国も 会社も、その 紙を 出して お金を 借りる——「かならず 返します」と 書いた 紙だ。買った 人には 利が つき、借りた 国や 会社は <ruby>鉄道<rt>てつどう</rt></ruby>を <ruby>敷<rt>し</rt></ruby>ける。<br>お金は <ruby>箱<rt>はこ</rt></ruby>の 中では 何も しないが、人の あいだを 回ると 仕事を する。<b>きみは 自分の 手で それを ためした 数少ない 日本人</b>に なった。`,
@@ -263,9 +266,9 @@ export const STORY: Story = {
         '3-e': { place: '第3章 むすび——<ruby>静岡<rt>しずおか</rt></ruby>',
           monologue: '（……あの 人は、もう <ruby>殿<rt>との</rt></ruby>では ない。）',
           closeup: { tone: 'solemn', cast: [{ face: 'p-yoshinobu', name: '徳川慶喜' }, { face: 'p-eiichi@prime', name: '栄一（きみ）' }] },
-          text: `<p>1868年の <ruby>暮<rt>く</rt></ruby>れ、<ruby>横浜<rt>よこはま</rt></ruby>に 着いた。二年ぶりの 国は、みやこの 名も、上に 立つ 人も 変わって いた。<ruby>江戸<rt>えど</rt></ruby>は <ruby>東京<rt>とうきょう</rt></ruby>に なって いた。</p>
+          text: `<p>1868年の <ruby>暮<rt>く</rt></ruby>れ、<ruby>横浜<rt>よこはま</rt></ruby>に 着いた。二年ぶりの <ruby>江戸<rt>えど</rt></ruby>は、<ruby>東京<rt>とうきょう</rt></ruby>に なって いた。</p>
             <p><ruby>慶喜<rt>よしのぶ</rt></ruby>は <ruby>静岡<rt>しずおか</rt></ruby>の 寺に いた。<ruby>将軍<rt>しょうぐん</rt></ruby>でも なく、<ruby>天皇<rt>てんのう</rt></ruby>の 敵——<ruby>朝敵<rt>ちょうてき</rt></ruby>と <ruby>呼<rt>よ</rt></ruby>ばれ、人に 会わずに <ruby>暮<rt>く</rt></ruby>らして いる。きみは <ruby>洋服<rt>ようふく</rt></ruby>の まま その 前に すわり、あずかった 金の <ruby>帳<rt>ちょう</rt></ruby>を 出して、二年ぶんの <ruby>報告<rt>ほうこく</rt></ruby>を した。</p>
-            <p>その 冬、きみは 静岡に <ruby>残<rt>のこ</rt></ruby>る。<ruby>徳川<rt>とくがわ</rt></ruby>の 家が 新しい 政府から 借りた お金と、土地の <ruby>商人<rt>しょうにん</rt></ruby>たちの お金を 出し合わせて、米や お茶を 動かし、<ruby>貸<rt>か</rt></ruby>し付けも する ——<ruby>商法会所<rt>しょうほうかいしょ</rt></ruby>。パリで 見た あの しくみの、いちばん 小さな ものだ。</p>`,
+            <p><ruby>徳川<rt>とくがわ</rt></ruby>の 家は、この 土地へ うつされて いた。その 家来だった きみも、ここに <ruby>残<rt>のこ</rt></ruby>る。家の 金と、土地の <ruby>商人<rt>しょうにん</rt></ruby>たちの 金を 合わせ、米や お茶を 動かし、<ruby>貸<rt>か</rt></ruby>し付けも する——<ruby>商法会所<rt>しょうほうかいしょ</rt></ruby>。パリで 見た しくみの、いちばん 小さな ものだ。</p>`,
           creed: { line: '「<ruby>焼<rt>や</rt></ruby>こうと した 国に、答えが あった。——見て しまった からには、<ruby>持<rt>も</rt></ruby>ち帰る。」',
             act: '——<ruby>髷<rt>まげ</rt></ruby>を 落とし、人から あずかった 金を 見たばかりの <ruby>紙<rt>かみ</rt></ruby>に <ruby>換<rt>か</rt></ruby>えた。<ruby>刀<rt>かたな</rt></ruby>を 買う ために 集めた 金で 始まった 道が、いまは 紙を 買う 手で 続いて いる。' },
           onEnter: { clue: 'clue-3' },

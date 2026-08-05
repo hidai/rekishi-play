@@ -195,7 +195,10 @@ function addressedToYou(paras: Para[], i: number, names: string[]): boolean {
   const next = paras[i + 1]?.speak ? undefined : paras[i + 1];
   if (![prev, next].some((p) => p?.text.includes('きみ'))) return false;
   if (aimed) return true;
-  const attributed = ATTRIBUTION.test(speech) || ATTRIBUTION.test(next?.text ?? '');
+  // ⚠️ 地の文が自前の引用を抱えているとき、その帰属（「——笑って、そう 答えた。」）は**その引用**の
+  // ものであって、直前の声のものではない（渋沢 3-c で実データが誤検出。2026-08-05）。
+  const nextAttributes = next && !/[「『]/.test(next.text) && ATTRIBUTION.test(next.text);
+  const attributed = ATTRIBUTION.test(speech) || !!nextAttributes;
   return attributed || !YOU_AS_SUBJECT.test(prev?.text ?? '');
 }
 
