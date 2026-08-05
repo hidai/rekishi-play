@@ -354,7 +354,7 @@ export const STORY: Story = {
           monologue: '（<ruby>田<rt>た</rt></ruby>を たがやす 家の 子と いう あの 男が……いま、天下の 顔を して いる。）',
           text: `<p>あれから 二年。<ruby>光秀<rt>みつひで</rt></ruby>を 討った <face pid="p-hideyoshi"><ruby>羽柴秀吉<rt>はしば ひでよし</rt></ruby></face>が、<ruby>信長<rt>のぶなが</rt></ruby>の 城も 家来も、つぎつぎ 自分の ものに した。</p>
             <p>信長の 子・<ruby>信雄<rt>のぶかつ</rt></ruby>が、助けを 求めて きた。父の 家来だった 秀吉に、<ruby>織田<rt>おだ</rt></ruby>の 家を のっとられる、と。きみは 兵を 出した。</p>
-            <p><ruby>長久手<rt>ながくて</rt></ruby>の 野で、きみは 秀吉方の 軍を 破った。名の ある 大将が 何人も <ruby>討<rt>う</rt></ruby>ち死にした。</p>
+            <p><ruby>長久手<rt>ながくて</rt></ruby>の 野で、きみは 秀吉方の 軍を 破った。</p>
             <p>ところが——その 信雄が、きみに 何も 言わず 秀吉と <ruby>講和<rt>こうわ</rt></ruby>する。<ruby>戦<rt>いくさ</rt></ruby>を やめる 約束だ。戦う 理由だけが、ふいに 消えた。</p>`,
           onEnter: { cards: ['w-komaki', 'p-hideyoshi'] },
           next: '4-b' },
@@ -363,23 +363,46 @@ export const STORY: Story = {
         // carried the whole 包囲 ledger AND the fork, so the もしも hist (244) landed on top of a
         // 271-char body. The cut follows the escalation's own joint — what LEFT きみ (son, 家老)
         // here, what was SENT IN (sister, mother) on 4-b2, where the fork is. 数正's motive is 諸説
-        // (the 4-b map note says the same), so the new voice states only what his going cost: the
+        // (the 4-b map note says the same), so the voice states only what his going cost: the
         // retainers' own knowledge that the man knew the army's insides. The narrator's summary
         // 「あの手この手が 伸びて くる」 and 「家来は、まっぷたつに 割れた」 are gone — both said in
         // advance what the next lines show (書法2).
+        // ★型10 (2026-08-05): the voice now turns to きみ and ASKS for something — 「殿。…いまの
+        // うちに、やり方を 変えて くだされ」. A retainer bringing the cost of the defection and no
+        // demand left きみ a listener in his own castle; what he asks for is not the deep's ☆ claim
+        // (that the rules WERE remade) but the plea itself.
+        // ★The 使い paragraph is what the readthrough failed without: cutting the old opening
+        // 「秀吉は、すぐには 力ずくで つぶしに こなかった」 took the LAST trace of what 秀吉 wanted
+        // out of the main line, and 4-b2's 「それでも きみが 動かないと」「断れば」 and its choice
+        // 「大坂へ 行き」 then referred to a demand no screen had made (書法14 — the missing 一文 was
+        // 秀吉's own ask, not a narrator's summary). 「のこった 家来が、きみの 前で 言った」 also
+        // gives the voice a speaker, which is how the other chapters mark invented retainer lines
+        // (G7: named figures get 「——気が した」, anonymous retainers get a 地の文).
+        // ★The demand names BOTH asks because the year matters: what 秀吉 asked for in 1585 was more
+        // hostages (家康 refused on 10/28, which is the documented thing that emptied 数正's position
+        // two weeks before he ran), and the 上洛 demand carried by envoys belongs to 1586 — 4-b2's
+        // 局面. Writing only the second one put 1586's ask in 1585 and hid the defection's trigger
+        // (fact-check round 2).
         '4-b': { place: '<ruby>遠江<rt>とおとうみ</rt></ruby>・<ruby>浜松城<rt>はままつじょう</rt></ruby>',
           monologue: '（<ruby>数正<rt>かずまさ</rt></ruby>……なぜだ。だれに 聞いても、分からぬ。——勝った はずだ。なのに なぜ、こちらが <ruby>削<rt>けず</rt></ruby>られて いく。）',
-          text: `<p><ruby>秀吉<rt>ひでよし</rt></ruby>は、すぐには 力ずくで つぶしに こなかった。</p>
-            <p>きみも 兵を 引いた。その しるしに、次男を 秀吉の <ruby>養子<rt>ようし</rt></ruby>に 出した。かつての きみと 同じ、しるしの 子だ。</p>
-            <p>次の 年の 暮れ、<ruby>家老<rt>かろう</rt></ruby>の <ruby>石川数正<rt>いしかわ かずまさ</rt></ruby>が 消えた。<ruby>人質<rt>ひとじち</rt></ruby>の ころから きみの そばに いた 男が、大坂へ 走ったのだ。</p>
-            <p class="speak">「あの 数正どのが……。徳川の <ruby>戦<rt>いくさ</rt></ruby>の 中身を、すべて 知って おられる 方が」</p>`,
+          text: `<p>きみは 兵を 引いた。その しるしに、次男を <ruby>秀吉<rt>ひでよし</rt></ruby>の <ruby>養子<rt>ようし</rt></ruby>に 出した。かつての きみと 同じだ。</p>
+            <p>秀吉の 使いは、たびたび 来た。——<ruby>人質<rt>ひとじち</rt></ruby>を もっと 出せ。大坂へ 来て 頭を 下げよ、と。</p>
+            <p>次の 年の 暮れ、<ruby>家老<rt>かろう</rt></ruby>の <ruby>石川数正<rt>いしかわ かずまさ</rt></ruby>が 消えた。<ruby>人質<rt>ひとじち</rt></ruby>の ころから きみの そばに いた 男が、大坂へ 走ったのだ。のこった 家来が、きみの 前で 言った。</p>
+            <p class="speak">「<ruby>殿<rt>との</rt></ruby>。あの 数正どのは、徳川の <ruby>戦<rt>いくさ</rt></ruby>の 中身を すべて 知って おられる。……いまの うちに、やり方を 変えて くだされ」</p>`,
           // The readthrough persona, both reader personas and the VISION audit independently stopped
           // here: the main line lets a man of thirty years leave with no why, and the new voice states
           // only what he cost. The why is 諸説 — so it cannot go in the main line as fact (書法4) and
           // cannot go in a map note. It goes where the work puts unsettled things: きみ's own
           // unanswered question in the monologue, and a ☆ deep. Nothing here is asserted as motive.
+          // ★The quoted 苦肉の策 reading used to be credited to 「江戸時代の 本」 and to have the aim
+          // 「戦の やり方を すてさせた」. Both were wrong by a century and by content: 江戸期 sources
+          // (『当代記』『駿河土産』) call the going unexplained and put the 武田流 rewrite AFTER it as a
+          // result, while the self-sacrifice reading comes from modern novels (山岡荘八 et al.), which
+          // frame the aim as avoiding war — not as discarding the army's methods. In a chapter whose
+          // whole lesson is 「だれが いつ 書いたか」, moving a modern novel into the Edo period is the
+          // same error the chapter teaches readers to catch (fact-check rounds 1 and 2).
           deep: { q: '<ruby>数正<rt>かずまさ</rt></ruby>は、なぜ 走った？',
-            body: `数正は、<ruby>秀吉<rt>ひでよし</rt></ruby>との あいだを 行き来する 役目を 引きうけて いた。その うちに 家中では「秀吉に 近すぎる」と 見られた らしい。だが、なぜ 出て 行ったのかは いまも 分かって いない。「わざと 出て、徳川の <ruby>戦<rt>いくさ</rt></ruby>の やり方を すてさせたのだ——あれは 主人の ための ことだった」と 書く <ruby>江戸時代<rt>えどじだい</rt></ruby>の 本さえ ある。数正が 去った あと、徳川は いくさの 決まりを 作り直した——と 言われて いる。`,
+            body: `数正は、<ruby>秀吉<rt>ひでよし</rt></ruby>との あいだを 行き来する 役目を 引きうけて いた。その うちに 家中では「秀吉に 近すぎる」と 見られた らしい。だが、なぜ 出て 行ったのかは いまも 分かって いない。「わざと 敵に 走って、<ruby>戦<rt>いくさ</rt></ruby>を さけたのだ——あれは 主人の ための ことだった」と 書く、ずっと のちの 世の <ruby>小説<rt>しょうせつ</rt></ruby>さえ ある。数正が 去った あと、徳川は いくさの 決まりを 作り直した——と 言われて いる。`,
             cite: '※ 本人の ことばは、ひとつも 残って いない。',
             confidence: '☆' },
           next: '4-b2' },
@@ -390,10 +413,16 @@ export const STORY: Story = {
           // knowing which side the line was on; it now names the pressure plainly. The 内語 answers
           // the VISION audit's S-B4=3: 朝日姫's 四十四 passed as a pressure token with no cost of her
           // own. Her divorce lore is △〜☆ (research), so the 内語 states only the undisputed — her
-          // age, and that she did not choose this either.
-          monologue: '（秀吉の 妹は 四十四。見も 知らぬ 東へ、この 人も えらばずに 来る。）',
-          text: `<p>それでも きみが 動かないと、<ruby>秀吉<rt>ひでよし</rt></ruby>は 四十四に なる 妹・<ruby>朝日姫<rt>あさひひめ</rt></ruby>を 妻に よこし、母までを <ruby>岡崎<rt>おかざき</rt></ruby>へ 送って きた。</p>
-            <p class="speak">「向こうは 母ぎみまで 出したのです。断れば、わるいのは こちらだと 言われまする」</p>
+          // age, and that she did not choose this either. ⚠️ The 内語 renders ABOVE the body, so it
+          // must carry its own antecedent: a version that dropped 「秀吉の 妹は 四十四。」 left
+          // 「この 人」 pointing at nobody, and 「見も 知らぬ 東へ」 was read as きみ's own move to
+          // 関東 (the chapter lead says 「見も 知らぬ 関東へ 移れ」). The age now appears only here.
+          // ★型10: the first retainer now names きみ and asks for the bow, so the two voices push
+          // きみ from opposite sides instead of debating in front of him. The second voice cannot be
+          // anchored (no 地の文 next to it) and is left as the refusal.
+          monologue: '（秀吉の 妹は 四十四。この 人も、えらばずに 来る。）',
+          text: `<p>それでも きみが 動かないと、<ruby>秀吉<rt>ひでよし</rt></ruby>は 妹・<ruby>朝日姫<rt>あさひひめ</rt></ruby>を 妻に よこし、母までを <ruby>岡崎<rt>おかざき</rt></ruby>へ 送って きた。</p>
+            <p class="speak">「<ruby>殿<rt>との</rt></ruby>。向こうは 母ぎみまで 出したのです。断れば、わるいのは こちらだと 言われまする。……ここは、頭を お下げ くだされ」</p>
             <p class="speak">「<ruby>長久手<rt>ながくて</rt></ruby>で 勝ったのは <ruby>殿<rt>との</rt></ruby>にて ござる！ なぜ 勝った 側が 下げるのです。大坂で 何か あれば、助けは 間に合いませぬ」</p>`,
           q: '<ruby>勝<rt>か</rt></ruby>った 相手に、きみは 頭を 下げられるか？',
           choices: [
@@ -408,7 +437,7 @@ export const STORY: Story = {
         '4-c': { place: '大坂・<ruby>秀長<rt>ひでなが</rt></ruby>の 屋敷',
           text: `<p>1586年10月、きみは 大坂に 入った。宿は、秀吉の 弟・<face pid="p-hidenaga"><ruby>秀長<rt>ひでなが</rt></ruby></face>の 屋敷だ。</p>
             <p>その 夜の ことを、<ruby>三河<rt>みかわ</rt></ruby>の 家来・<ruby>松平家忠<rt>まつだいら いえただ</rt></ruby>が、人づてに 聞いて 日記に 書いた。——秀吉は 待ちかねた ように みずから 現れ、きみの 手を 取って 奥の 間へ。酒に なり、うちとけた、と。</p>
-            <p>頭を 下げさせる 側が、前の 夜に 自分から 来る。奥の 間で 何が 語られたのか、日記は そこまで 書いて いない。</p>`,
+            <p>奥の 間で 何が 語られたのか、日記は そこまで 書いて いない。</p>`,
           // The 供の/その場に供をした framing was wrong and it was the ground the chapter's ○-vs-☆
           // lesson stood on: 家忠 saw きみ off at 宇頭 and wrote the 大坂 night four days later as a
           // report (『家忠日記』10/20・10/30条; opus 反証 採用 major, 2026-08-05). The diary is still
@@ -426,7 +455,7 @@ export const STORY: Story = {
         '4-c2': { place: '大坂城・<ruby>大広間<rt>おおひろま</rt></ruby>',
           closeup: { tone: 'tense', cast: [ { face: 'p-ieyasu@lord', name: '家康（きみ）' }, { face: 'p-hideyoshi', name: '豊臣秀吉' } ] },
           monologue: '（<ruby>両手<rt>りょうて</rt></ruby>の 下で、<ruby>床<rt>ゆか</rt></ruby>が 冷たい。……これは 負けか。それとも、勝ちの つづきか。）',
-          text: `<p>あくる 日、<ruby>大広間<rt>おおひろま</rt></ruby>。居ならぶ 大名たちの まん中を 進み、きみは 両手を ついて、深く 頭を 下げた。——<ruby>長久手<rt>ながくて</rt></ruby>で <ruby>秀吉<rt>ひでよし</rt></ruby>の 軍を 破った、その 男が。</p>
+          text: `<p>あくる 日、<ruby>大広間<rt>おおひろま</rt></ruby>。居ならぶ 大名たちの まん中を 進み、きみは 両手を ついて、深く 頭を 下げた。</p>
             <p>静まりかえった 広間に、<ruby>秀吉<rt>ひでよし</rt></ruby>の 声が ひびいた——気が した。</p>
             <p class="speak">「徳川どのは わしの <ruby>妹<rt>いもうと</rt></ruby>むこ、もう 身内じゃ。のう みなの 衆、これで 東は かたづいたわい！」</p>`,
           next: '4-d' },
