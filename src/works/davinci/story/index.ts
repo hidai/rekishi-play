@@ -296,7 +296,17 @@ export const STORY: Story = {
       // Cesare gets a 声 (research §4-6 / ch3 park の是正 = 敵役にも声を, WRITING 原則4). 恐怖・残酷は
       // 見世物化しない (VISION アンチゴール): 暴君性は「力で街を従える最も恐れられた男」水準に留め、処刑等の
       // 描写はしない.
-      id: 5, num: '五', title: 'ボルジアの 軍師', years: '1502〜1503',
+      //   ★型11 (engagement.md §20-3, queue #2): the chapter asked きみ nothing. 5-b's closing 地の文
+      // 「…目と 手を 貸すのか。」was the narrator tapping the reader (WRITING 12) AND a duplicate of the
+      // fork's own `q` — so it paid for Cesare's demand, addressed to きみ, that lands on the fork.
+      // The demand is the 1502 patent's job (inspect the fortresses he ALREADY holds), not「次に落とす街」
+      // — Imola was taken before Leonardo arrived.
+      //   R2 (eval): the demand must come BEFORE the temptation, and the monologue must not pre-announce
+      // the verdict — 中1 said「心の声が先に結論を言うので、台詞を読むころには答えが決まっていた」. So the
+      // monologue now carries what きみ WANTS (which also lands the reward — 小5 could not see why
+      // 「歩いて測れる街」was a prize) and the cost sits after the demand.「後ろだて」→「主」= the word
+      // 5-a already spent (きみは 主を なくした); both personas stumbled on 後ろだて.
+      id: 5, num: '五', title: 'ボルジアの 軍事技師', years: '1502〜1503',
       lead: '平和を 願いながら、暴君の ために 戦の 道具を 作る。その 手で、真上から 見た イモラの 地図を 描く。',
       start: '5-a',
       teaser: 'フィレンツェへ 戻り、ひとりの 女性の <ruby>肖像<rt>しょうぞう</rt></ruby>を 描きはじめる。その 名は、モナ・リザ。',
@@ -311,16 +321,18 @@ export const STORY: Story = {
           next: '5-b' },
 
         '5-b': { place: 'ロマーニャ・イモラ',
-          monologue: '（この 男は、力で 人を したがえる。手を 貸せば、おれの 目と 手は、戦の ために つかわれる。）',
-          text: `<p>ボルジアが 求めるのは、城を 攻め 落とす ための <ruby>図面<rt>ずめん</rt></ruby>と、土地の 正確な <ruby>地図<rt>ちず</rt></ruby>。引き受ければ、<ruby>宮廷<rt>きゅうてい</rt></ruby>のような 後ろだてと、思う ぞんぶん 歩いて 測れる 街が 手に 入る。</p>
-            <p>だが 相手は、イタリアで いちばん 恐れられた 男。<ruby>平和<rt>へいわ</rt></ruby>を 願う はずの きみが、その 力に、目と 手を 貸すのか。</p>`,
+          monologue: '（街ぜんたいを、この 足で 歩いて 測って みたい。そんな <ruby>機会<rt>きかい</rt></ruby>は、二度と 来ない かも しれない。）',
+          text: `<p>ボルジアは 大きな 紙を <ruby>机<rt>つくえ</rt></ruby>に ひろげ、指で <ruby>城<rt>しろ</rt></ruby>の しるしを 一つずつ たたいた。</p>
+            <p class="speak">「レオナルド。おれの 城を、ひとつ のこらず 見て 回れ。どこが やぶれるか、おまえの 目で 見つけて 図に しろ」</p>
+            <p>引き受ければ、また <ruby>主<rt>あるじ</rt></ruby>が でき、この 街を 思う ぞんぶん 歩いて 測れる。だが <ruby>平和<rt>へいわ</rt></ruby>を 願って きた きみの 目と 手は、戦の ために つかわれる。</p>
+            <p>冷たい 目が、きみの 返事を 待って いる。</p>`,
           q: 'きみは、この <ruby>暴君<rt>ぼうくん</rt></ruby>に 力を 貸す？',
           choices: [
             { label: '「<ruby>暴君<rt>ぼうくん</rt></ruby>の 手つだいは しない」——<ruby>背<rt>せ</rt></ruby>を 向けて 立ち去る', to: '5-c', effect: { miru: 1 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし 暴君に 手を 貸さず、自由な まま 歩いて いたら……',
                 body: `<p>きみの 目と 手は、だれの 戦の ためでもなく、きみ だけの もの。いちばん 恐ろしい 男の そばに 身を 置かずに すむ。何を 見るかを、きみ 自身が 決める。</p><p>ただ、<ruby>戦乱<rt>せんらん</rt></ruby>の イタリアで、<ruby>主<rt>あるじ</rt></ruby>を もたぬ まま。街ぜんたいを 歩いて 測る——あの、めずらしく 仕上がる 大仕事の <ruby>機会<rt>きかい</rt></ruby>も、来なかった かもしれない。手を よごさず に いれば、手に しない ものも ある。</p>` } },
-            { label: '「その 力、お<ruby>貸<rt>か</rt></ruby>し しましょう」——最も 恐ろしい 男の <ruby>軍師<rt>ぐんし</rt></ruby>に なる', to: '5-c', canon: true, effect: { tamesu: 2 },
-              hist: { verdict: '史実では', match: '<ruby>暴君<rt>ぼうくん</rt></ruby>の 軍師に なり、街の 地図を 描いた',
+            { label: '「その 力、お<ruby>貸<rt>か</rt></ruby>し しましょう」——最も 恐ろしい 男の <ruby>軍事技師<rt>ぐんじぎし</rt></ruby>に なる', to: '5-c', canon: true, effect: { tamesu: 2 },
+              hist: { verdict: '史実では', match: '<ruby>暴君<rt>ぼうくん</rt></ruby>の 軍事技師に なり、街の 地図を 描いた',
                 body: `<p><ruby>史実<rt>じじつ</rt></ruby>の きみは 引き受けた。各地を 回り、イモラの 街を 自分の 足で 歩いて 測り、真上から 見た 正確な <ruby>地図<rt>ちず</rt></ruby>を 作りあげる——きみが、めずらしく きちんと 仕上げた 仕事だ。</p><p>だが その 目と 手は、いちばん 恐れられた 男の ものに なった。街を こわす その 力に、きみの するどい 目を 貸した。——この ことは、もう、なかった ことには できない。</p>` } },
           ] },
 

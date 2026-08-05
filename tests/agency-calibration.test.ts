@@ -54,6 +54,15 @@ describe('型9 の計器: 読み通しで観察された画面に合っている
     // 素の形は拾う（除外が広すぎないことの裏）。
     expect(sceneAgency('t', { text: '<p>きみは この 人を 役所に 入れた。</p>' } as never).acts).toEqual(['入れ']);
   });
+
+  it('仮定の言い方を、済んだ行為と数えない', () => {
+    // 岐路の代償を並べた一文（shibusawa 5-b「受ければ、きみは たぶん 日本一の 金持ちに なる」）。
+    // きみはまだ何もしていない＝行為ではない。実データで engaged 判定が覆っていた型。
+    expect(sceneAgency('t', { text: '<p>受ければ、きみは 金持ちに なる。</p>' } as never).acts).toEqual([]);
+    expect(sceneAgency('t', { text: '<p>きみが 断っても、道は のこる。</p>' } as never).acts).toEqual([]);
+    // 済んだ形は拾う（除外が広すぎないことの裏）。
+    expect(sceneAgency('t', { text: '<p>きみは その 話を 受けた。</p>' } as never).acts).toEqual(['受け']);
+  });
 });
 
 describe('型10 の計器: その声は「きみ」に宛てられているか', () => {
@@ -174,6 +183,11 @@ describe('型11 の計器: きみへの問いは、どこで答えられるか',
       } as never);
     expect(held('年よりは、きみの 返事を 待って いる。').open).toBe(1);
     expect(held('きみは、すぐには 答えなかった。').open).toBe(1);
+    // 岐路の代償を並べた仮定の一文も、答えではない（davinci 5-b「引き受ければ、また 主が でき…」）。
+    // これを見落とすと choice が closed に化ける＝型11 の分類そのものが反転する。
+    expect(held('引き受ければ、また 主が でき、この 街を 歩いて 測れる。').open).toBe(1);
+    // 打ち消し＋仮定の複合形（どちらの表とも噛み合わない形）。
+    expect(held('きみが 答えなければ、この 話は 消える。').open).toBe(1);
     // 対照＝地の文が返事を報告したら閉じる（除外が広すぎないことの裏）。
     expect(held('きみは 小さく うなずいた。').open).toBe(0);
   });

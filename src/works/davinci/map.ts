@@ -70,7 +70,7 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     { at: 'milano', kind: 'castle', label: 'ミラノ', note: 'スフォルツァの 宮廷', people: ['p-ludovico'] },
   ] },
 
-  // ch5「ボルジアの 軍師」— the map device re-frames the SAME geo point イモラ across the chapter (design
+  // ch5「ボルジアの 軍事技師」— the map device re-frames the SAME geo point イモラ across the chapter (design
   // §7). Both are SINGLE-anchor shots: firenze→imola is only ~80km (well under the 392-unit min frame,
   // WRITING 地図書法4) so a two-pole firenze→imola pair would collide きみ's cur ring with the far
   // marker's face+note stack. So each scene centers on イモラ alone — no second pole, no collision.

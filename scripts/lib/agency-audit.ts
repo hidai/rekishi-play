@@ -92,8 +92,12 @@ export const ACT_VERBS: string[] = [
  */
 export const NOT_ACTS: string[] = ['手に入れ', '手を入れ', '入れかえ', '荷に入れ'];
 
-/** 行為の語の直後に来る打ち消し（「入れなかった」「答えない」を「した」と数えないため）。 */
-const NEGATION = /^(?:ない|なかっ|なく|ぬ|ず)/;
+/**
+ * 行為の語の直後に来る打ち消し（「入れなかった」「答えない」を「した」と数えないため）。
+ * ⚠️ 打ち消し＋仮定の複合形「〜なければ」は `NEGATION` の どの語頭とも `CONDITIONAL` とも噛み合わない
+ * ——`なけれ` を持たないと「答えなければ」が「答えた」に化ける（自己レビューの指摘。実データは未発火）。
+ */
+const NEGATION = /^(?:ない|なかっ|なく|なけれ|ぬ|ず)/;
 
 /**
  * ★型10 の印①＝声の中の二人称（きみを名ざす声）。
@@ -252,6 +256,13 @@ function isYourVoice(paras: Para[], i: number, names: string[]): boolean {
  */
 const REPLY_MARKS = ['答え', 'うなずい', '首を ふ', 'ことわっ', '断っ', '承知', '引き受け'];
 
+/**
+ * ⚠️ 同じ語が**仮定**にも立つ——「引き受ければ、また 主が でき…」は岐路の代償を並べた一文で、
+ * きみはまだ答えていない（davinci 5-b。実データで摘出）。打ち消しと同じく、報告として数えない。
+ * 仮定は問いを**開いたまま**にする形なので、見落とすと choice が closed に化ける。
+ */
+const CONDITIONAL = /^(?:れば|たら|ても|でも|るなら|なら|得れば)/;
+
 /** その問いのあと、同じ画面の中できみが答えているか（きみの台詞／地の文の報告）。 */
 function answeredAfter(paras: Para[], i: number, names: string[]): boolean {
   for (let j = i + 1; j < paras.length; j++) {
@@ -262,8 +273,10 @@ function answeredAfter(paras: Para[], i: number, names: string[]): boolean {
     const t = paras[j].text;
     if (!t.includes('きみ')) continue;
     for (const m of REPLY_MARKS)
-      for (let k = t.indexOf(m); k >= 0; k = t.indexOf(m, k + m.length))
-        if (!NEGATION.test(t.slice(k + m.length))) return true;
+      for (let k = t.indexOf(m); k >= 0; k = t.indexOf(m, k + m.length)) {
+        const tail = t.slice(k + m.length);
+        if (!NEGATION.test(tail) && !CONDITIONAL.test(tail)) return true;
+      }
   }
   return false;
 }
@@ -335,12 +348,18 @@ function youSentences(body: string): string[] {
     .filter((s) => s.includes('きみ'));
 }
 
-/** その位置の一致が行為か＝より長い NOT_ACTS がその位置を覆っていない、かつ直後が打ち消しでない。 */
+/**
+ * その位置の一致が行為か＝より長い NOT_ACTS がその位置を覆っていない、かつ直後が打ち消しでも仮定でもない。
+ * ⚠️ **仮定は行為ではない**——「受ければ、きみは たぶん 日本一の 金持ちに なる。断れば…」（shibusawa 5-b）は
+ * 岐路の代償を並べた一文で、きみはまだ何もしていない。`answeredAfter` と同じ型の穴で、自己レビューが
+ * 実データで摘出した（この1件だけで score が 2 に達し `engaged` が覆っていた）。
+ */
 function actAt(text: string, i: number, verb: string): boolean {
   for (const n of NOT_ACTS)
     for (let k = text.indexOf(n); k >= 0; k = text.indexOf(n, k + 1))
       if (k <= i && i < k + n.length) return false;
-  return !NEGATION.test(text.slice(i + verb.length));
+  const tail = text.slice(i + verb.length);
+  return !NEGATION.test(tail) && !CONDITIONAL.test(tail);
 }
 
 export function sceneAgency(id: string, sc: Scene, names: string[] = []): SceneAgency {
