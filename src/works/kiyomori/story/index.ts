@@ -77,19 +77,20 @@ export const STORY: Story = {
           next: '2-b' },
 
         '2-b': { place: '<ruby>熊野<rt>くまの</rt></ruby>への 道',
-          text: `<p>それから 三年（<ruby>平治<rt>へいじ</rt></ruby>の 乱・1159年）。あの <ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>天皇<rt>てんのう</rt></ruby>は、すでに <ruby>位<rt>くらい</rt></ruby>を 子の <ruby>二条<rt>にじょう</rt></ruby>天皇に ゆずり、いまは <face pid="p-goshirakawa"><ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>院<rt>いん</rt></ruby></face>——天皇の 後ろで 国を 動かす 側だ。</p>
-            <p>勝ち組の 中で、味方どうしの <ruby>不満<rt>ふまん</rt></ruby>が くすぶる。手がらの わりに <ruby>恩賞<rt>おんしょう</rt></ruby>が 少ないと いきどおる <ruby>源義朝<rt>みなもとの よしとも</rt></ruby>。思うように <ruby>出世<rt>しゅっせ</rt></ruby>できぬ、<ruby>後白河<rt>ごしらかわ</rt></ruby>方の <ruby>藤原信頼<rt>ふじわらの のぶより</rt></ruby>。</p>
+          text: `<p>それから 三年（<ruby>平治<rt>へいじ</rt></ruby>の 乱・1159年）。あの <ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>天皇<rt>てんのう</rt></ruby>は <ruby>位<rt>くらい</rt></ruby>を 子の <ruby>二条<rt>にじょう</rt></ruby>天皇に ゆずり、いまは <face pid="p-goshirakawa"><ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>院<rt>いん</rt></ruby></face>——天皇の 後ろで 国を 動かす 側だ。</p>
+            <p>手がらの わりに <ruby>恩賞<rt>おんしょう</rt></ruby>が 少ないと いきどおる <ruby>源義朝<rt>みなもとの よしとも</rt></ruby>。思うように <ruby>出世<rt>しゅっせ</rt></ruby>できぬ、<ruby>後白河<rt>ごしらかわ</rt></ruby>方の <ruby>藤原信頼<rt>ふじわらの のぶより</rt></ruby>。勝った 側で、<ruby>不満<rt>ふまん</rt></ruby>が くすぶって いた。</p>
             <p>二人は 手を 組み、<ruby>兵<rt>へい</rt></ruby>を あげた。<ruby>院<rt>いん</rt></ruby>の <ruby>御所<rt>ごしょ</rt></ruby>を 焼き、その 親子を 手の内に——<ruby>都<rt>みやこ</rt></ruby>を のっとる <ruby>反乱<rt>はんらん</rt></ruby>だ。</p>
-            <p>その とき きみは、<ruby>熊野<rt>くまの</rt></ruby>もうでの <ruby>途中<rt>とちゅう</rt></ruby>。連れは わずかな お供だけ。いくさの <ruby>支度<rt>したく</rt></ruby>も ない。都から <ruby>早馬<rt>はやうま</rt></ruby>が「すぐ お<ruby>戻<rt>もど</rt></ruby>りを！」と 次々に 走る。</p>
-            <p>だが、引き返すのも <ruby>命<rt>いのち</rt></ruby>がけだ。この <ruby>手勢<rt>てぜい</rt></ruby>で 動けば、<ruby>討<rt>う</rt></ruby>たれかねない。さあ、きみなら どうする？</p>`,
+            <p>その とき きみは、<ruby>熊野<rt>くまの</rt></ruby>もうでの <ruby>途中<rt>とちゅう</rt></ruby>。連れは わずかな お供だけ。いくさの <ruby>支度<rt>したく</rt></ruby>も ない。そこへ、都からの <ruby>早馬<rt>はやうま</rt></ruby>が とび<ruby>込<rt>こ</rt></ruby>んで きた。</p>
+            <p class="speak">「<ruby>殿<rt>との</rt></ruby>、すぐ 都へ お<ruby>戻<rt>もど</rt></ruby>り ください！ <ruby>院<rt>いん</rt></ruby>の <ruby>御所<rt>ごしょ</rt></ruby>が 焼かれました。」</p>
+            <p>だが、この <ruby>手勢<rt>てぜい</rt></ruby>で 引き返せば、きみも <ruby>討<rt>う</rt></ruby>たれかねない。</p>`,
           onEnter: { card: 'p-yoshitomo' },
           choices: [
             { label: 'すぐ <ruby>都<rt>みやこ</rt></ruby>へ 引き返し、<ruby>信頼<rt>のぶより</rt></ruby>・<ruby>義朝<rt>よしとも</rt></ruby>を <ruby>討<rt>う</rt></ruby>つ', to: '2-c', canon: true, effect: { miyako: 2 },
-              hist: { verdict: '史実では', match: 'あぶない 橋を、思いきって わたった',
-                body: `<p>清盛は まよわず 都へ 引き返し、<ruby>本拠<rt>ほんきょ</rt></ruby>・<ruby>六波羅<rt>ろくはら</rt></ruby>に かまえて <ruby>態勢<rt>たいせい</rt></ruby>を 立て直した。そして <ruby>計略<rt>けいりゃく</rt></ruby>で <ruby>二条<rt>にじょう</rt></ruby>天皇を 味方の <ruby>陣<rt>じん</rt></ruby>へ <ruby>迎<rt>むか</rt></ruby>え、「都を のっとった <ruby>賊<rt>ぞく</rt></ruby>」と なった <ruby>信頼<rt>のぶより</rt></ruby>・<ruby>義朝<rt>よしとも</rt></ruby>を <ruby>破<rt>やぶ</rt></ruby>った。義朝は <ruby>東国<rt>とうごく</rt></ruby>へ 落ちのびる <ruby>途中<rt>とちゅう</rt></ruby>で <ruby>討<rt>う</rt></ruby>たれる。</p><p>あぶない 橋を わたっても、機を のがさず さっと 動く——その 思いきりの よさが、平氏を <ruby>武門<rt>ぶもん</rt></ruby>の <ruby>第一人者<rt>だいいちにんしゃ</rt></ruby>に <ruby>押<rt>お</rt></ruby>し上げた。</p>`,
+              hist: { verdict: '史実では', match: 'まよった すえ、あぶない 橋を わたった',
+                body: `<p>清盛は まよった。<ruby>四国<rt>しこく</rt></ruby>へ わたって 兵を 集めるか、都へ 帰るか。それでも 都を えらび、<ruby>本拠<rt>ほんきょ</rt></ruby>・<ruby>六波羅<rt>ろくはら</rt></ruby>に かまえて <ruby>態勢<rt>たいせい</rt></ruby>を 立て直した。そして <ruby>計略<rt>けいりゃく</rt></ruby>で <ruby>二条<rt>にじょう</rt></ruby>天皇を 味方の <ruby>陣<rt>じん</rt></ruby>へ <ruby>迎<rt>むか</rt></ruby>え、「都を のっとった <ruby>賊<rt>ぞく</rt></ruby>」と なった <ruby>信頼<rt>のぶより</rt></ruby>・<ruby>義朝<rt>よしとも</rt></ruby>を <ruby>破<rt>やぶ</rt></ruby>った。</p><p>まよっても、決めたら さっと 動く——その 思いきりの よさが、平氏を <ruby>武門<rt>ぶもん</rt></ruby>の <ruby>第一人者<rt>だいいちにんしゃ</rt></ruby>に <ruby>押<rt>お</rt></ruby>し上げた。</p>`,
                 source: { grade: 'later',
                   name: '『<ruby>平治物語<rt>へいじものがたり</rt></ruby>』',
-                  note: '平治の 乱を 伝える <ruby>軍記<rt>ぐんき</rt></ruby>。合戦の こまかな 場面には 後の 世の <ruby>脚色<rt>きゃくしょく</rt></ruby>も まじるが、清盛の 勝利と 義朝の 敗死は 当時の 記録とも 合う。' } } },
+                  note: '平治の 乱を 伝える <ruby>軍記<rt>ぐんき</rt></ruby>。旅先で 清盛が まよったと 書くのも この 本で、合戦の こまかな 場面には 後の 世の <ruby>脚色<rt>きゃくしょく</rt></ruby>も まじる。清盛の 勝利と 義朝の 敗死は 当時の 記録とも 合う。' } } },
             { label: '<ruby>態勢<rt>たいせい</rt></ruby>を 立て直すまで、わずかな お供を <ruby>危<rt>あぶ</rt></ruby>ない 目に あわせない', to: '2-c', effect: { nasake: 1 },
               hist: { verdict: 'もしもルート', moshimo: true, match: 'もし 動かずに いたら……',
                 body: `<p>わずかな <ruby>手勢<rt>てぜい</rt></ruby>で とび込めば、みな <ruby>討<rt>う</rt></ruby>ち死にしかねない——お供を 案じる 気もちは、よく わかる。だが もし ぐずぐずして いたら、<ruby>義朝<rt>よしとも</rt></ruby>が <ruby>後白河<rt>ごしらかわ</rt></ruby>院と <ruby>二条<rt>にじょう</rt></ruby>天皇を にぎった まま 都を 固め、平氏は「<ruby>賊<rt>ぞく</rt></ruby>を <ruby>討<rt>う</rt></ruby>つ」という <ruby>大義名分<rt>たいぎめいぶん</rt></ruby>（<ruby>堂々<rt>どうどう</rt></ruby>と 名のれる 理由）を 失って いたかも しれない。</p><p>——<ruby>史実<rt>じじつ</rt></ruby>の 清盛は、あやうい 旅先から すばやく 動き、この 機を のがさなかった。</p>` } },
@@ -97,11 +98,12 @@ export const STORY: Story = {
 
         '2-c': { place: '<ruby>六波羅<rt>ろくはら</rt></ruby>',
           monologue: '（<ruby>敵<rt>てき</rt></ruby>の 子は、生かせば いつか <ruby>牙<rt>きば</rt></ruby>を むく。……それが、この 世の ならわし。だが——。）',
-          text: `<p><ruby>平治<rt>へいじ</rt></ruby>の 乱に 勝ち、きみ（清盛）は <ruby>武士<rt>ぶし</rt></ruby>の <ruby>頂<rt>いただき</rt></ruby>に 立った。<ruby>敵<rt>てき</rt></ruby>の <ruby>大将<rt>たいしょう</rt></ruby>・<ruby>源義朝<rt>みなもとの よしとも</rt></ruby>は、<ruby>東国<rt>とうごく</rt></ruby>へ 落ちのびる 道で <ruby>討<rt>う</rt></ruby>たれた。</p>
+          text: `<p><ruby>平治<rt>へいじ</rt></ruby>の 乱は、きみの 勝ちで 終わった。<ruby>敵<rt>てき</rt></ruby>の <ruby>大将<rt>たいしょう</rt></ruby>・<ruby>源義朝<rt>みなもとの よしとも</rt></ruby>は、<ruby>東国<rt>とうごく</rt></ruby>へ 落ちのびる 道で <ruby>討<rt>う</rt></ruby>たれた。</p>
             <p>その 義朝の 子——まだ <ruby>十三<rt>じゅうさん</rt></ruby>の 少年、<ruby>源頼朝<rt>みなもとの よりとも</rt></ruby>が、とらえられて きみの 前に 引き出された。</p>
-            <p>負けた <ruby>大将<rt>たいしょう</rt></ruby>の 子は、<ruby>斬<rt>き</rt></ruby>る。それが この 世の <ruby>用心<rt>ようじん</rt></ruby>だ。げんに きみ 自身、<ruby>保元<rt>ほうげん</rt></ruby>の 乱では <ruby>叔父<rt>おじ</rt></ruby>を <ruby>討<rt>う</rt></ruby>った。</p>
-            <p>ところが、きみの <ruby>継母<rt>ままはは</rt></ruby>・<ruby>池禅尼<rt>いけの ぜんに</rt></ruby>が、<ruby>涙<rt>なみだ</rt></ruby>ながらに すがりついた。「<ruby>亡<rt>な</rt></ruby>くした わが子に、<ruby>顔<rt>かお</rt></ruby>だちが よく 似て おります……どうか、<ruby>命<rt>いのち</rt></ruby>だけは。」</p>
-            <p>さあ。きみなら、この 少年を どうする？</p>`,
+            <p>ならわしに したがうなら、この 子も <ruby>斬<rt>き</rt></ruby>る。きみ 自身、<ruby>保元<rt>ほうげん</rt></ruby>の 乱では <ruby>叔父<rt>おじ</rt></ruby>を <ruby>討<rt>う</rt></ruby>った。</p>
+            <p>ところが、きみの <ruby>継母<rt>ままはは</rt></ruby>・<ruby>池禅尼<rt>いけの ぜんに</rt></ruby>が、<ruby>涙<rt>なみだ</rt></ruby>ながらに すがりついた。</p>
+            <p class="speak">「清盛どの。<ruby>亡<rt>な</rt></ruby>くした わが子に、<ruby>顔<rt>かお</rt></ruby>だちが よく 似て おります……どうか、<ruby>命<rt>いのち</rt></ruby>ばかりは お助け ください。」</p>
+            <p>禅尼は、きみの <ruby>袖<rt>そで</rt></ruby>を はなさない。</p>`,
           deep: { q: 'なぜ、<ruby>敵<rt>てき</rt></ruby>の 子を 生かさないの？',
             body: `この 時代、<ruby>戦<rt>いくさ</rt></ruby>に 負けた <ruby>大将<rt>たいしょう</rt></ruby>の 一族は、<ruby>根絶<rt>ねだ</rt></ruby>やしに される ことが 多かった。生きのこった 子が 大きく なり、<ruby>兵<rt>へい</rt></ruby>を 集めて <ruby>復讐<rt>ふくしゅう</rt></ruby>（仕返し）に 来る——それを 何より おそれたからだ。だから「<ruby>敵<rt>てき</rt></ruby>の 子を <ruby>斬<rt>き</rt></ruby>る」のは、むごい ようでいて、その 世では「あたりまえの <ruby>用心<rt>ようじん</rt></ruby>」だった。<br>その ならわしを、清盛は <ruby>継母<rt>ままはは</rt></ruby>の 願いに 折れて <ruby>破<rt>やぶ</rt></ruby>った。それが <ruby>吉<rt>きち</rt></ruby>と 出るか <ruby>凶<rt>きょう</rt></ruby>と 出るか——この ときは まだ、<ruby>誰<rt>だれ</rt></ruby>にも わからない。`,
             cite: '※ ここで 見せた <ruby>情<rt>なさ</rt></ruby>けが、のちの 平家に どう はねかえって くるか——それは、まだ <ruby>誰<rt>だれ</rt></ruby>にも 見えて いない。' },
