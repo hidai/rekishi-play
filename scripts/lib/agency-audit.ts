@@ -24,6 +24,22 @@
 // 3-a2 は年よりが顔を見て問い、**返事を待つ**）。判定は `addressedToYou`＝形と錨の AND。
 // 型9 の score には足さない（別の軸＝混ぜると両方の解像度が消える）。
 //
+// ★型11（2026-08-05 追加）＝**その問いは、だれが答えたか**。型10 で宛先が付いた渋沢 3-d を、中1が
+// R2 で「①（答える場面が無い）は解消。だが**問いも答えも その場で完結する**」と切った——同じ画面の
+// 中で地の文かきみの台詞が即答すると、読者の手には何も渡らない。対照 3-a2 は問いに答えさせず
+// 「年よりは、きみの 返事を 待って いる。」で画面を切り、答えを**次画面の選択**として渡す。
+// ゆえに宛先つきの声のうち**返事を要求する形**（問い・依頼命令）だけを取り出し、行き先で4つに分ける:
+//   closed ＝同じ画面できみ／地の文が答えた（読者は見ているだけ）
+//   choice ＝答えないまま、その画面の岐路が答えになる
+//   carried＝答えないまま画面が切れ、**次の画面の岐路**が答えになる（3-a2 の形＝天井）
+//   dropped＝答えないまま、どこにも岐路が無い（問いが消える）
+// ⚠️ closed は欠陥の印ではない（診断であってゲートではない）。較正元の秀長にも dropped は2つある
+//（母の「そばに いてやって おくれ」＝答えを求めない要求）。見るのは**作品ぜんぶで持ち越しが何回あるか**。
+// ⚠️ **限界＝見ているのは「だれが問いのあとに口をきくか」で、意味の充足ではない**。地の文が問いの
+// 中身に答えてしまう形（渋沢 3-d の初版「送金は とうに 止まって いる。それでも 一行は 船に 乗れた。…」）は
+// きみを主語に置かないので closed に数えられない＝**closed は過少報告**。そのぶんを補うのが
+// `tailAfterAsk`（問いのあとまだ何段落しゃべるか）＝0〜1 なら問いのまま画面が切れている。
+//
 // 見ているのは主線の本文だけ（deep・カード・手帳は読者が開かない面＝型3 と同じ線引き）。
 // hist を入れないのは、選択の後に開く面＝「この画面をやめるか」の判断がもう済んでいるから。
 // **岐路そのものは数えない**——ほぼ全画面が岐路を持つ作品があり、足すと解像度が消える
@@ -174,22 +190,35 @@ function paragraphs(raw: string): Para[] {
  * ②だけでは「きみの前で交わされた会話」（家中が割れる画面）を拾う。それこそ型10 が
  * 分けたかった側だ（engagement.md §19）。
  */
+/**
+ * 声の**形**だけを見る（宛先はここでは決まらない）:
+ *   aimed ＝きみを名ざす（二人称・呼びかけ）＝**話者がきみ自身ではありえない**声
+ *   asks  ＝返事を要求する（依頼命令の文末・問い）
+ */
+function speechForm(raw: string, names: string[]): { aimed: boolean; asks: boolean } {
+  // ⚠️ 手帳の「？？？」（未発見の枠を指す UI の記号）を本文が引用している＝問いではない。
+  // 終章のむすびが3作とも同じ一文を持ち、較正元 hidenaga の 7-d はこれで「きみへの問い」に
+  // 数えられていた（自己レビュー 2026-08-05・型10 の時から入っていた誤検出）。
+  const speech = raw.replace(/？{2,}/g, '');
+  return {
+    aimed:
+      ADDRESS_WORDS.some((w) => speech.includes(w)) ||
+      vocativeChunks(speech).some((c) => isVocative(c, names)),
+    asks: speech
+      .split(/(?<=[。！？…])/)
+      .some(
+        (s) =>
+          s.includes('？') ||
+          ((t) => ASK_ENDS.some((e) => t.endsWith(e)) || QUESTION_END.test(t))(
+            s.replace(/[。！？…、「」『』]+$/g, ''),
+          ),
+      ),
+  };
+}
+
 function addressedToYou(paras: Para[], i: number, names: string[]): boolean {
   const speech = paras[i].text;
-  // ①きみを名ざす形（二人称・呼びかけ）＝**話者がきみ自身ではありえない**声。
-  const aimed =
-    ADDRESS_WORDS.some((w) => speech.includes(w)) ||
-    vocativeChunks(speech).some((c) => isVocative(c, names));
-  // ②要求・問いの形。宛先は形では決まらない（下の錨と話者の印で決める）。
-  const asks = speech
-    .split(/(?<=[。！？…])/)
-    .some(
-      (s) =>
-        s.includes('？') ||
-        ((t) => ASK_ENDS.some((e) => t.endsWith(e)) || QUESTION_END.test(t))(
-          s.replace(/[。！？…、「」『』]+$/g, ''),
-        ),
-    );
+  const { aimed, asks } = speechForm(speech, names);
   if (!aimed && !asks) return false;
   const prev = paras[i - 1]?.speak ? undefined : paras[i - 1];
   const next = paras[i + 1]?.speak ? undefined : paras[i + 1];
@@ -203,6 +232,43 @@ function addressedToYou(paras: Para[], i: number, names: string[]): boolean {
 }
 
 /**
+ * ★型11 — その声は**きみ自身の声**か。`addressedToYou` の裏側で、判定の材料は同じ3つ:
+ * 名で呼ぶ・二人称の声はきみ自身ではありえない／他者への帰属があれば他人の声／
+ * 直前の地の文がきみを主語に置いていれば きみの声。
+ */
+function isYourVoice(paras: Para[], i: number, names: string[]): boolean {
+  if (!paras[i].speak || speechForm(paras[i].text, names).aimed) return false;
+  const prev = paras[i - 1]?.speak ? undefined : paras[i - 1];
+  const next = paras[i + 1]?.speak ? undefined : paras[i + 1];
+  if (!prev || !YOU_AS_SUBJECT.test(prev.text)) return false;
+  const nextAttributes = next && !/[「『]/.test(next.text) && ATTRIBUTION.test(next.text);
+  return !(ATTRIBUTION.test(paras[i].text) || nextAttributes);
+}
+
+/**
+ * ★型11 の印＝**地の文が返事を報告する語**。⚠️「返事」は入れない——「きみの 返事を 待って いる」
+ * （3-a2 の持ち越しの一句）が答えとして数えられてしまう。打ち消しは `NEGATION` で落とす
+ * （「きみは、すぐには 答えなかった。」＝答えていない＝開いたまま）。
+ */
+const REPLY_MARKS = ['答え', 'うなずい', '首を ふ', 'ことわっ', '断っ', '承知', '引き受け'];
+
+/** その問いのあと、同じ画面の中できみが答えているか（きみの台詞／地の文の報告）。 */
+function answeredAfter(paras: Para[], i: number, names: string[]): boolean {
+  for (let j = i + 1; j < paras.length; j++) {
+    if (paras[j].speak) {
+      if (isYourVoice(paras, j, names)) return true;
+      continue;
+    }
+    const t = paras[j].text;
+    if (!t.includes('きみ')) continue;
+    for (const m of REPLY_MARKS)
+      for (let k = t.indexOf(m); k >= 0; k = t.indexOf(m, k + m.length))
+        if (!NEGATION.test(t.slice(k + m.length))) return true;
+  }
+  return false;
+}
+
+/**
  * その作品で**きみが呼ばれる名**（型4 の `RENAMED_NAMES` の鎖＋ shortNames）。
  * 改名しない主人公は1つ。作品固有の名をこの計器に書き足さないための引き方。
  */
@@ -212,12 +278,25 @@ export function callNames(work: Work): string[] {
   return [...new Set([short, ...chains.flat()])].filter(Boolean);
 }
 
+/** ★型11: 問いの行き先（ヘッダの4分類）。 */
+export type AskVerdict = 'closed' | 'choice' | 'carried' | 'dropped';
+
 export interface SceneAgency {
   id: string;
   /** Other people's voices in the main line (`class="speak"` paragraphs). */
   voices: number;
   /** ★型10: voices that are addressed to きみ（形＋錨。`addressedToYou`）. */
   addressed: number;
+  /** ★型11: addressed voices that demand a reply (問い・依頼命令). */
+  demands: number;
+  /** ★型11: of those, the ones still unanswered when the scene ends. */
+  open: number;
+  /** ★型11: the reader answers here（この画面に岐路がある）. */
+  hasChoices: boolean;
+  /** ★型11: where the demand lands（次の画面が要るので `auditWork` が付ける）. */
+  askVerdict?: AskVerdict;
+  /** ★型11: paragraphs still running after the last demand（0〜1＝問いのまま画面が切れる）. */
+  tailAfterAsk: number;
   /** ACT_VERBS matched in sentences that name きみ (either direction). */
   acts: string[];
   /** acts + voices. */
@@ -245,6 +324,8 @@ export interface ChapterAgency {
   addressed: number;
   /** Scenes before the chapter's first voice addressed to きみ（無ければ章の画面数）. */
   addressedHeadGap: number;
+  /** ★型11: demands in the chapter, counted by where the answer lands. */
+  asks: Record<AskVerdict, number>;
 }
 
 /** Sentences that name the protagonist — any particle, so both directions are seen. */
@@ -266,7 +347,12 @@ export function sceneAgency(id: string, sc: Scene, names: string[] = []): SceneA
   const raw = sc.text ?? '';
   const voices = (raw.match(/class="speak"/g) ?? []).length;
   const paras = paragraphs(raw);
-  const addressed = paras.filter((p, i) => p.speak && addressedToYou(paras, i, names)).length;
+  const aimedAt = paras.map((p, i) => p.speak && addressedToYou(paras, i, names));
+  const addressed = aimedAt.filter(Boolean).length;
+  const demanding = paras
+    .map((p, i) => i)
+    .filter((i) => aimedAt[i] && speechForm(paras[i].text, names).asks);
+  const open = demanding.filter((i) => !answeredAfter(paras, i, names)).length;
   const acts: string[] = [];
   for (const s of youSentences(raw))
     for (const v of ACT_VERBS) {
@@ -282,6 +368,10 @@ export function sceneAgency(id: string, sc: Scene, names: string[] = []): SceneA
     id,
     voices,
     addressed,
+    demands: demanding.length,
+    open,
+    hasChoices: !!sc.choices?.length,
+    tailAfterAsk: demanding.length ? paras.length - 1 - demanding[demanding.length - 1] : 0,
     acts,
     score,
     engaged: score >= 2,
@@ -293,6 +383,23 @@ export function auditWork(work: Work): ChapterAgency[] {
   const names = callNames(work);
   return work.story.chapters.map((ch) => {
     const scenes = Object.entries(ch.scenes).map(([id, sc]) => sceneAgency(id, sc, names));
+    // ★型11: 問いの行き先は次の画面まで見ないと決まらない（岐路は隣に置かれる）。
+    const asks: Record<AskVerdict, number> = { closed: 0, choice: 0, carried: 0, dropped: 0 };
+    for (const s of scenes) {
+      if (!s.demands) continue;
+      const to = ch.scenes[s.id].next;
+      // 1画面に複数の問いがあり、片方だけ答えられていることがある（閉じたぶんは別に数える）。
+      asks.closed += s.demands - s.open;
+      const v: AskVerdict = !s.open
+        ? 'closed'
+        : s.hasChoices
+          ? 'choice'
+          : to && ch.scenes[to]?.choices?.length
+            ? 'carried'
+            : 'dropped';
+      s.askVerdict = v;
+      if (s.open) asks[v] += s.open;
+    }
     let longestGap = 0,
       run = 0,
       headGap = -1;
@@ -317,6 +424,7 @@ export function auditWork(work: Work): ChapterAgency[] {
       voices: scenes.reduce((n, s) => n + s.voices, 0),
       addressed: scenes.reduce((n, s) => n + s.addressed, 0),
       addressedHeadGap: firstAddressed < 0 ? scenes.length : firstAddressed,
+      asks,
     };
   });
 }

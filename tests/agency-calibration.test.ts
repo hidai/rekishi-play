@@ -143,3 +143,58 @@ describe('型10 の計器: その声は「きみ」に宛てられているか',
     expect(anchored('小竹は、物の 順番が 見える 目を して おる', callNames(hidenaga))).toBe(0);
   });
 });
+
+describe('型11 の計器: きみへの問いは、どこで答えられるか', () => {
+  /** 章の中のその画面の判定（行き先は次の画面まで見ないと決まらない）。 */
+  const verdict = (work: Work, chapterId: number, id: string) =>
+    auditWork(work)
+      .find((c) => c.chapterId === chapterId)!
+      .scenes.find((s) => s.id === id)!.askVerdict;
+
+  it('★天井の較正点＝hidenaga 3-a2（問いに答えさせず、次の画面の岐路へ渡す）', () => {
+    // 「運ばせる お方が 変わっただけで ございますか」→ 答えないまま「きみの 返事を 待って いる。」で
+    // 画面が切れ、3-b の岐路が答えになる。中1が2ラウンドとも対照に選んだ形（engagement.md §19-4）。
+    expect(verdict(hidenaga, 3, '3-a2')).toBe('carried');
+  });
+
+  it('★同じ画面で答えると closed（渋沢 3-d＝中1が「その場で完結する」と切った形）', () => {
+    // 殿の「帰る 金は あるか。」に、きみ自身の台詞が同じ画面で答える。
+    expect(verdict(shibusawa, 3, '3-d')).toBe('closed');
+  });
+
+  it('「返事を待って いる」も「答えなかった」も、答えではない', () => {
+    // ⚠️ どちらも実データの持ち越しの一句。REPLY_MARKS に「返事」を入れる／打ち消しを見落とすと、
+    // 3-a2 と渋沢 3-c の錨が「答えた」に化ける＝この計器がいちばん壊れやすい2点。
+    const held = (after: string) =>
+      sceneAgency('t', {
+        text:
+          '<p>年よりが、きみの 顔を まっすぐ 見た。</p>' +
+          '<p class="speak">「運ばせる お方が 変わっただけで ございますか」</p>' +
+          `<p>${after}</p>`,
+      } as never);
+    expect(held('年よりは、きみの 返事を 待って いる。').open).toBe(1);
+    expect(held('きみは、すぐには 答えなかった。').open).toBe(1);
+    // 対照＝地の文が返事を報告したら閉じる（除外が広すぎないことの裏）。
+    expect(held('きみは 小さく うなずいた。').open).toBe(0);
+  });
+
+  it('★手帳の「？？？」は問いではない（較正元の dropped 2件のうち1件は誤検出だった）', () => {
+    // 終章のむすびが3作とも持つ一文。型10 の時から「きみへの問い」に数えられていて、
+    // ヘッダが「較正元にも dropped は2つある」と書いた根拠の半分がこの誤検出だった
+    //（自己レビュー 2026-08-05）。この計器の欠陥は3回とも実データを見て初めて見えている。
+    expect(scene(hidenaga, 7, '7-d').addressed).toBe(0);
+    expect(verdict(hidenaga, 7, '7-d')).toBeUndefined();
+    // 素の「？」は問いのまま（除外が広すぎないことの裏）。
+    expect(
+      sceneAgency('t', {
+        text: '<p>その 人は、きみを 見た。</p><p class="speak">「ほんとうに 行くのか？」</p>',
+      } as never).addressed,
+    ).toBe(1);
+  });
+
+  it('返事を求めない声は問いに数えない（母の「そばに いてやって おくれ」は数える）', () => {
+    // 依頼命令も返事を要求する＝数える。数えないのは形だけの声（宛先そのものが付かない）。
+    expect(scene(hidenaga, 1, '1-d').demands).toBe(1);
+    expect(scene(ieyasu, 6, '6-b2').demands).toBe(0);
+  });
+});

@@ -7,7 +7,14 @@
 // 「この章はもういいか」を決める位置）。
 import { WORKS } from '../src/works/index';
 import { resolveWork } from './lib/works';
-import { auditWork } from './lib/agency-audit';
+import { auditWork, type AskVerdict } from './lib/agency-audit';
+
+const ASK_LABEL: Record<AskVerdict, string> = {
+  closed: '同じ画面で答えた',
+  choice: 'この画面の岐路',
+  carried: '★次の画面の岐路へ持ち越し',
+  dropped: '答えなし・岐路なし',
+};
 
 const only = process.argv[2];
 const works = only ? [resolveWork(only)] : WORKS;
@@ -17,6 +24,7 @@ console.log('   ○＝向きのある行為＋声が合わせて2つ以上／・
 
 const worst: { at: string; head: number; gap: number; n: number }[] = [];
 const spoken: { at: string; voices: number; addressed: number; n: number }[] = [];
+const asked: { at: string; title: string; asks: Record<AskVerdict, number> }[] = [];
 for (const w of works) {
   console.log(`【${w.id}】`);
   for (const ch of auditWork(w)) {
@@ -38,9 +46,17 @@ for (const w of works) {
             (s.hands ? '　✋手が動く' : ''),
         );
     for (const s of ch.scenes)
-      if (s.addressed > 0) console.log(`        ◎${s.id}  きみに宛てた声 ${s.addressed}/${s.voices}`);
+      if (s.addressed > 0)
+        console.log(
+          `        ◎${s.id}  きみに宛てた声 ${s.addressed}/${s.voices}` +
+            // ★型11＝その中で返事を要求する声が、どこで答えられるか。
+            (s.askVerdict
+              ? `　問い${s.demands}→${ASK_LABEL[s.askVerdict]}（問いのあと${s.tailAfterAsk}段落）`
+              : ''),
+        );
     worst.push({ at: `${w.id}:${ch.chapterId}`, head: ch.headGap, gap: ch.longestGap, n: ch.scenes.length });
     spoken.push({ at: `${w.id}:${ch.chapterId}`, voices: ch.voices, addressed: ch.addressed, n: ch.scenes.length });
+    asked.push({ at: `${w.id}:${ch.chapterId}`, title: ch.title, asks: ch.asks });
   }
   console.log('');
 }
@@ -63,4 +79,26 @@ if (works.length > 1) {
         `宛先ゼロの章 ${zero.length}/${rows.length} [${zero.join(' ')}]`,
     );
   }
+
+  console.log('\n■ ★型11 きみへの問いは、どこで答えられるか（作品ごと）');
+  for (const w of works) {
+    const rows = asked.filter((r) => r.at.startsWith(`${w.id}:`));
+    const sum = (k: AskVerdict) => rows.reduce((n, r) => n + r.asks[k], 0);
+    const carried = rows.filter((r) => r.asks.carried > 0).map((r) => r.at.split(':')[1]);
+    const all = sum('closed') + sum('choice') + sum('carried') + sum('dropped');
+    // ★いちばん大きい穴は「問いの行き先」より前にある＝きみが一度も問われない章。
+    const mute = rows.filter((r) => Object.values(r.asks).every((n) => n === 0));
+    console.log(
+      `  ${w.id.padEnd(10)} 問い ${String(all).padStart(2)}　同画面で答え ${sum('closed')}` +
+        `　この画面の岐路 ${sum('choice')}　★持ち越し ${sum('carried')}　流れた ${sum('dropped')}` +
+        `　問いゼロの章 ${mute.length}/${rows.length} [${mute.map((r) => r.at.split(':')[1]).join(' ')}]`,
+    );
+  }
+
+  console.log('\n■ ★型11 きみへの問いがあるのに、一つも読者の手に渡らない章');
+  for (const r of asked)
+    if (r.asks.closed + r.asks.dropped > 0 && r.asks.carried + r.asks.choice === 0)
+      console.log(
+        `  ${r.at.padEnd(12)} 同画面で答え ${r.asks.closed}　流れた ${r.asks.dropped}　${r.title}`,
+      );
 }
