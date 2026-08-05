@@ -54,6 +54,12 @@ export const FACE_SPEC: Record<string, FaceSpec> = {
   // browY 1 = the last admiral's pressed brows (slice 3; was distance 2 from ieyasu/p-hanzo
   // and hidenaga/p-takatora).
   'p-tomomori': { tone:'ai', head:'kabuto', hair:'dark', shape:'square', brow:'stern', eye:'calm', mouth:'flat', beard:'beard', nose:'thin', morph:{browY:1} },
+  // Kiyomori's uncle at 保元 (2-a2), the half of the Heike that went to the losing brother.
+  // Card-less on purpose: the scene calls him 「叔父」 only, so the closeup name-override
+  // carries the label and the work stays under the 16-card budget. Grey + gaunt + eboshi =
+  // the older generation of the same house; `eye:'calm'` (not sharp) is the resignation he
+  // meets the blade with, and keeps him off Kiyomori@young in the same frame.
+  'p-tadamasa': { tone:'ai', head:'eboshi', hair:'grey', shape:'gaunt', brow:'angry', eye:'calm', mouth:'frown', beard:'full', skin:'#e6c49b', nose:'wide' },
 
   // Cloister / emperors (gold).
   // mouth 'soft' (slice 9): under the angry brow and narrow eyes a faint pleasant mouth reads as

@@ -64,26 +64,42 @@ export const STORY: Story = {
       teaser: '<ruby>武門<rt>ぶもん</rt></ruby>の <ruby>頂<rt>いただき</rt></ruby>に 立った 清盛。だが つぎは 刀では なく、<ruby>位<rt>くらい</rt></ruby>と <ruby>縁<rt>えん</rt></ruby>で <ruby>貴族<rt>きぞく</rt></ruby>の <ruby>頂<rt>いただき</rt></ruby>へ——なぜ、そんな ことが できたのか？',
       scenes: {
         '2-a': { place: '京',
-          text: `<p>あれから 十年。きみは <ruby>平氏<rt>へいし</rt></ruby>の かしらと なって いた。</p>
-            <p><em>1156年</em>、<ruby>鳥羽<rt>とば</rt></ruby><ruby>院<rt>いん</rt></ruby>（天皇の 位を おりた 人）が 亡くなると、とめる 人を なくし、みやこは まっぷたつに <ruby>割<rt>わ</rt></ruby>れた。その 子で、<ruby>位<rt>くらい</rt></ruby>を おろされて うらむ <face pid="p-sutoku"><ruby>崇徳<rt>すとく</rt></ruby></face><ruby>院<rt>いん</rt></ruby>と、弟の <face pid="p-goshirakawa"><ruby>後白河<rt>ごしらかわ</rt></ruby></face><ruby>天皇<rt>てんのう</rt></ruby>が、にらみ合う（<ruby>保元<rt>ほうげん</rt></ruby>の 乱）。</p>
-            <p>きみは 後白河の 側に つき、<ruby>源氏<rt>げんじ</rt></ruby>の <face pid="p-yoshitomo"><ruby>源義朝<rt>みなもとの よしとも</rt></ruby></face>と ならんで 戦う。<ruby>夜討<rt>ようち</rt></ruby>ちで、いくさは 一夜で 決した。</p>
-            <p>だが、勝った 側にも むごい しごとが。<ruby>崇徳<rt>すとく</rt></ruby>方に ついたのは、他人では ない。<ruby>義朝<rt>よしとも</rt></ruby>は <ruby>実<rt>じつ</rt></ruby>の 父を、きみは <ruby>叔父<rt>おじ</rt></ruby>を——その 手で <ruby>討<rt>う</rt></ruby>たねば ならなかった。</p>
-            <p>——<ruby>敗<rt>やぶ</rt></ruby>れた <ruby>崇徳<rt>すとく</rt></ruby>は <ruby>讃岐<rt>さぬき</rt></ruby>（今の <ruby>香川<rt>かがわ</rt></ruby>）へ 流され、二度と 都を 見なかった。</p>
-            <p class="speak">「わたしは ただ、<ruby>位<rt>くらい</rt></ruby>が ほしかった だけ。……なぜ、これほど 遠くへ。」——そう <ruby>嘆<rt>なげ</rt></ruby>いた かも しれない。</p>`,
+          text: `<p>あれから 十年。きみは <ruby>平氏<rt>へいし</rt></ruby>の かしらだ。</p>
+            <p><em>1156年</em>、<ruby>鳥羽<rt>とば</rt></ruby><ruby>院<rt>いん</rt></ruby>（天皇の 位を おりた 人）が 亡くなった。とめる 人を なくし、都は 二つに <ruby>割<rt>わ</rt></ruby>れる。<ruby>院<rt>いん</rt></ruby>の 子どうし、兄・<face pid="p-sutoku"><ruby>崇徳<rt>すとく</rt></ruby></face><ruby>院<rt>いん</rt></ruby>と 弟・<face pid="p-goshirakawa"><ruby>後白河<rt>ごしらかわ</rt></ruby></face><ruby>天皇<rt>てんのう</rt></ruby>が にらみ合った（<ruby>保元<rt>ほうげん</rt></ruby>の 乱）。</p>
+            <p>まもなく、きみの <ruby>叔父<rt>おじ</rt></ruby>が 来た。<ruby>崇徳<rt>すとく</rt></ruby>に つく、という。</p>
+            <p class="speak">「<ruby>清盛<rt>きよもり</rt></ruby>。<ruby>崇徳<rt>すとく</rt></ruby>さまは <ruby>位<rt>くらい</rt></ruby>を うばわれた のだ。おまえの <ruby>兵<rt>へい</rt></ruby>を こちらへ。<ruby>平氏<rt>へいし</rt></ruby>どうしで <ruby>斬<rt>き</rt></ruby>り合う 気か。」</p>`,
+          onEnter: { cards: ['p-goshirakawa', 'p-sutoku'] },
+          choices: [
+            { label: '兄・<ruby>崇徳<rt>すとく</rt></ruby><ruby>院<rt>いん</rt></ruby>の 側へ つく', to: '2-a2', effect: { nasake: 2 },
+              hist: { verdict: 'もしもルート', moshimo: true, match: 'もし <ruby>叔父<rt>おじ</rt></ruby>と ならんで いたら……',
+                body: `<p><ruby>平氏<rt>へいし</rt></ruby>が そろって 兄の 側へ 動いて いたら、いくさの ゆくえは 分からなく なって いた かも しれない。だが 弟の 側には <ruby>天皇<rt>てんのう</rt></ruby>が いる。勝っても 負けても、きみたちは「<ruby>天皇<rt>てんのう</rt></ruby>に 弓を 引いた 者」と 呼ばれた だろう。</p><p>——この <ruby>乱<rt>らん</rt></ruby>で ものを 言ったのは、<ruby>兵<rt>へい</rt></ruby>の 数より「どちらの 側に <ruby>天皇<rt>てんのう</rt></ruby>が いるか」。<ruby>史実<rt>じじつ</rt></ruby>の <ruby>清盛<rt>きよもり</rt></ruby>は 弟の 側を えらび、<ruby>叔父<rt>おじ</rt></ruby>だけが 兄の 側に 残った。<ruby>平氏<rt>へいし</rt></ruby>は 二つに <ruby>割<rt>わ</rt></ruby>れる。</p>` } },
+            { label: '弟・<ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>天皇<rt>てんのう</rt></ruby>の 側へ つく', to: '2-a2', canon: true, effect: { miyako: 2 },
+              hist: { verdict: '史実では', match: '一族を <ruby>割<rt>わ</rt></ruby>って、弟の 側へ',
+                body: `<p><ruby>清盛<rt>きよもり</rt></ruby>が えらんだのは、弟——<ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>天皇<rt>てんのう</rt></ruby>の 側だった。<ruby>平氏<rt>へいし</rt></ruby>は 長く <ruby>鳥羽<rt>とば</rt></ruby><ruby>院<rt>いん</rt></ruby>に 仕えて きた。その 院が <ruby>位<rt>くらい</rt></ruby>に つけた 弟に つく。<ruby>清盛<rt>きよもり</rt></ruby>は、そう 決めた。</p><p><ruby>叔父<rt>おじ</rt></ruby>は、兄の 側に 残った。<ruby>平氏<rt>へいし</rt></ruby>は 二つに <ruby>割<rt>わ</rt></ruby>れる。</p>`,
+                source: { grade: 'contemporary',
+                  name: '『<ruby>兵範記<rt>へいはんき</rt></ruby>』',
+                  note: '<ruby>乱<rt>らん</rt></ruby>の さなかに 都で 書かれた <ruby>日記<rt>にっき</rt></ruby>。どちらの <ruby>武士<rt>ぶし</rt></ruby>が どちらの 側に ならんだかは、この 日記が その 日の うちに 書きとめて いる。' } } },
+          ] },
+
+        '2-a2': { place: 'いくさの あと',
+          text: `<p>弟の 側に ついた きみに、<ruby>源氏<rt>げんじ</rt></ruby>の かしら・<face pid="p-yoshitomo"><ruby>源義朝<rt>みなもとの よしとも</rt></ruby></face>が 言った。「夜の うちに <ruby>討<rt>う</rt></ruby>ちましょう」。いくさは 一夜で 決まった。</p>
+            <p>勝った 側にも しごとが 残る。引き出されて きたのは、あの <ruby>叔父<rt>おじ</rt></ruby>。<ruby>斬<rt>き</rt></ruby>る 役は、きみに まわった。</p>
+            <p class="speak">「おまえの 父なら、こんな 役は <ruby>断<rt>ことわ</rt></ruby>った だろう。……よい。はやく <ruby>斬<rt>き</rt></ruby>れ。」</p>
+            <p><ruby>敗<rt>やぶ</rt></ruby>れた <ruby>崇徳<rt>すとく</rt></ruby>は <ruby>讃岐<rt>さぬき</rt></ruby>（今の <ruby>香川<rt>かがわ</rt></ruby>）へ 流され、二度と 都を 見なかった。</p>`,
           spark: 'え！？ この <ruby>崇徳<rt>すとく</rt></ruby>院、のちに「<ruby>日本一<rt>にほんいち</rt></ruby>の おそろしい <ruby>怨霊<rt>おんりょう</rt></ruby>（うらみを のこして 化けて 出る <ruby>霊<rt>れい</rt></ruby>）」に なった——と 語られる。でも、それって 本当？',
           deep: { q: '<ruby>崇徳<rt>すとく</rt></ruby>は、本当に <ruby>怨霊<rt>おんりょう</rt></ruby>に なったの？',
             body: `<ruby>讃岐<rt>さぬき</rt></ruby>で 亡くなった <ruby>崇徳<rt>すとく</rt></ruby>院は、のちに「<ruby>日本一<rt>にほんいち</rt></ruby>の <ruby>怨霊<rt>おんりょう</rt></ruby>」として おそれられた。だが、その 話には 二つの だんかいが ある。まず 崇徳の 死から しばらく して、勝った 側——<ruby>後白河<rt>ごしらかわ</rt></ruby>の <ruby>朝廷<rt>ちょうてい</rt></ruby>じしんが、あいつぐ <ruby>災<rt>わざわ</rt></ruby>いを「崇徳の たたりでは」と おそれ、その <ruby>霊<rt>れい</rt></ruby>を なぐさめようと した。そして ずっと あと、<ruby>江戸<rt>えど</rt></ruby>時代の <ruby>物語<rt>ものがたり</rt></ruby>が、その 話を さらに 大きく ふくらませた。崇徳が ほんとうに うらんで 死んだのか、たしかな <ruby>記録<rt>きろく</rt></ruby>には 書かれて いない。<br>——負けて、みじめに 死んだ 人 ほど、人は「きっと ひどく うらんだ だろう」と <ruby>想像<rt>そうぞう</rt></ruby>し、おそろしい 物語を つけ足して いく。` },
-          onEnter: { cards: ['p-goshirakawa', 'p-sutoku'] },
+          onEnter: { card: 'p-yoshitomo' },
+          closeup: { tone: 'grief', cast: [ { face: 'p-kiyomori@young', name: '清盛（きみ）' }, { face: 'p-tadamasa', name: 'おじ' } ] },
           next: '2-b' },
 
         '2-b': { place: '<ruby>熊野<rt>くまの</rt></ruby>への 道',
           text: `<p>それから 三年（<ruby>平治<rt>へいじ</rt></ruby>の 乱・1159年）。あの <ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>天皇<rt>てんのう</rt></ruby>は <ruby>位<rt>くらい</rt></ruby>を 子の <ruby>二条<rt>にじょう</rt></ruby>天皇に ゆずり、いまは <face pid="p-goshirakawa"><ruby>後白河<rt>ごしらかわ</rt></ruby><ruby>院<rt>いん</rt></ruby></face>——天皇の 後ろで 国を 動かす 側だ。</p>
-            <p>手がらの わりに <ruby>恩賞<rt>おんしょう</rt></ruby>が 少ないと いきどおる <ruby>源義朝<rt>みなもとの よしとも</rt></ruby>。思うように <ruby>出世<rt>しゅっせ</rt></ruby>できぬ、<ruby>後白河<rt>ごしらかわ</rt></ruby>方の <ruby>藤原信頼<rt>ふじわらの のぶより</rt></ruby>。勝った 側で、<ruby>不満<rt>ふまん</rt></ruby>が くすぶって いた。</p>
+            <p>手がらの わりに <ruby>恩賞<rt>おんしょう</rt></ruby>が 少ないと いきどおる <ruby>義朝<rt>よしとも</rt></ruby>。思うように <ruby>出世<rt>しゅっせ</rt></ruby>できぬ、<ruby>後白河<rt>ごしらかわ</rt></ruby>方の <ruby>藤原信頼<rt>ふじわらの のぶより</rt></ruby>。勝った 側で、<ruby>不満<rt>ふまん</rt></ruby>が くすぶって いた。</p>
             <p>二人は 手を 組み、<ruby>兵<rt>へい</rt></ruby>を あげた。<ruby>院<rt>いん</rt></ruby>の <ruby>御所<rt>ごしょ</rt></ruby>を 焼き、その 親子を 手の内に——<ruby>都<rt>みやこ</rt></ruby>を のっとる <ruby>反乱<rt>はんらん</rt></ruby>だ。</p>
             <p>その とき きみは、<ruby>熊野<rt>くまの</rt></ruby>もうでの <ruby>途中<rt>とちゅう</rt></ruby>。連れは わずかな お供だけ。いくさの <ruby>支度<rt>したく</rt></ruby>も ない。そこへ、都からの <ruby>早馬<rt>はやうま</rt></ruby>が とび<ruby>込<rt>こ</rt></ruby>んで きた。</p>
             <p class="speak">「<ruby>殿<rt>との</rt></ruby>、すぐ 都へ お<ruby>戻<rt>もど</rt></ruby>り ください！ <ruby>院<rt>いん</rt></ruby>の <ruby>御所<rt>ごしょ</rt></ruby>が 焼かれました。」</p>
             <p>だが、この <ruby>手勢<rt>てぜい</rt></ruby>で 引き返せば、きみも <ruby>討<rt>う</rt></ruby>たれかねない。</p>`,
-          onEnter: { card: 'p-yoshitomo' },
           choices: [
             { label: 'すぐ <ruby>都<rt>みやこ</rt></ruby>へ 引き返し、<ruby>信頼<rt>のぶより</rt></ruby>・<ruby>義朝<rt>よしとも</rt></ruby>を <ruby>討<rt>う</rt></ruby>つ', to: '2-c', canon: true, effect: { miyako: 2 },
               hist: { verdict: '史実では', match: 'まよった すえ、あぶない 橋を わたった',
