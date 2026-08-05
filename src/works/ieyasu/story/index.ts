@@ -152,11 +152,11 @@ export const STORY: Story = {
 
         '2-b': { place: '<ruby>城<rt>しろ</rt></ruby>の 前を、<ruby>素通<rt>すどお</rt></ruby>りして いく',
           text: `<p>ところが <ruby>信玄<rt>しんげん</rt></ruby>は、<ruby>浜松城<rt>はままつじょう</rt></ruby>を せめて こなかった。城の すぐ 北の 台地——<ruby>三方ヶ原<rt>みかたがはら</rt></ruby>を、西へ。きみの 城など 見えて いないかの ように、通りすぎて いく。</p>
-            <p>若い <ruby>家来<rt>けらい</rt></ruby>が、<ruby>床<rt>ゆか</rt></ruby>を たたいた。</p>
+            <p>若い <ruby>家来<rt>けらい</rt></ruby>が、きみの 前で <ruby>床<rt>ゆか</rt></ruby>を たたいた。</p>
             <p class="speak">「<ruby>殿<rt>との</rt></ruby>。台地を 下る ところを うしろから 突けば、<ruby>大軍<rt>たいぐん</rt></ruby>でも くずせます。——目の 前を ふみにじられて 出ぬ <ruby>主<rt>あるじ</rt></ruby>の ために、だれが 命を かけましょう」</p>
             <p>年かさの <ruby>家来<rt>けらい</rt></ruby>は、首を 横に ふった。</p>
-            <p class="speak">「なりませぬ。あの <ruby>信玄<rt>しんげん</rt></ruby>が、やすやすと <ruby>背中<rt>せなか</rt></ruby>を 見せる はずが ない。——<ruby>城<rt>しろ</rt></ruby>さえ 残れば、<ruby>国<rt>くに</rt></ruby>は 残ります」</p>
-            <p>どちらの 言い分も、正しい <ruby>気<rt>き</rt></ruby>が する。決めるのは、きみだ。</p>`,
+            <p class="speak">「なりませぬ。あの <ruby>信玄<rt>しんげん</rt></ruby>が、やすやすと <ruby>背中<rt>せなか</rt></ruby>を 見せる はずが ない。——<ruby>城<rt>しろ</rt></ruby>さえ 残れば、<ruby>国<rt>くに</rt></ruby>は 残ります。<ruby>殿<rt>との</rt></ruby>は、それでも 出られますか」</p>
+            <p>二人とも、きみの 返事を 待って いる。</p>`,
           q: '<ruby>目<rt>め</rt></ruby>の 前を 通りすぎる 大軍を、きみは どうする？',
           choices: [
             { label: '<ruby>城<rt>しろ</rt></ruby>を 出て、うしろから 討つ', to: '2-c', canon: true, effect: { yuzuranu: 2 },
