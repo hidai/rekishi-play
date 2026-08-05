@@ -652,18 +652,25 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     { at: 'houkouji', kind: 'town', label: '京・方広寺', note: '秀頼が 建て直した、大仏の 寺', lpos: 'above' },
     { at: 'osaka', kind: 'flag', label: '豊臣', note: '秀頼が いる、大坂の 城' },
   ] },
-  // 6-b: the break, drawn as the color flip. Same three-glyph flag label as 6-a, now enemy red —
-  // and now carrying the two faces: 淀殿 (the scene's voice; the speak is hers) and 秀頼 (the
-  // stake). Mother and son standing together on the red flag is the chapter's picture one scene
-  // early in the honest sense: at THIS scene's opening they are already in the castle the 牢人
-  // are filling, and 6-c's 「母子は、出なかった」 lands on an image the reader has already met.
-  // The note states what the castle is doing (subject = the flag's house; 牢人 needs ruby the
-  // map cannot give, so the note takes 侍 — the body's own gloss, katsu 旗本→侍 precedent).
-  // The fork itself (ほろぼすか 生かすか) is the body's job and stays off the map: no army
-  // marker, no march — nothing has moved yet at the scene's opening, the decision IS the scene.
+  // 6-b / 6-b2: the split's two halves (story 6-b comment), drawn as two frames of one break.
+  // 6-b is the break itself, as the color flip: same three-glyph flag label as 6-a, now enemy
+  // red, and the note states what the castle is DOING (subject = the flag's house; 牢人 needs
+  // ruby the map cannot give, so the note takes 侍 — the body's own gloss, katsu 旗本→侍
+  // precedent). Only 秀頼's face rides the flag here: 淀殿 is not named until 6-b2's body, and
+  // a map may not introduce a person the picture cannot explain (the 5-b 秀忠 law).
+  // 6-b2 is what the castle SAYS. 淀殿 joins the flag with the sentence that names her, so
+  // mother and son stand together on the red flag before 6-c's 「母子は、出なかった」 lands —
+  // and the note carries the refusal, which is the one thing two faces cannot say. The ring
+  // goes noteless there: the fork is the scene, and a cur note repeating it is the dullest
+  // thing a 読み通し finds. The fork itself stays off both maps — no army marker, no march;
+  // nothing has moved yet, the decision IS the scene.
   '6-b': { markers: [
     { at: 'sunpu', cur: 1, kind: 'castle', label: '駿河・駿府城', note: '話し合いは、こわれた' },
-    { at: 'osaka', enemy: 1, kind: 'flag', label: '豊臣', note: '米を 買いこみ、兵を 集めて いる', people: ['p-yodo', 'p-hideyori'] },
+    { at: 'osaka', enemy: 1, kind: 'flag', label: '豊臣', note: '米を 買いこみ、侍を 集めて いる', people: ['p-hideyori'] },
+  ] },
+  '6-b2': { markers: [
+    { at: 'sunpu', cur: 1, kind: 'castle', label: '駿河・駿府城' },
+    { at: 'osaka', enemy: 1, kind: 'flag', label: '豊臣', note: '秀吉の 城だ、と 言って いる', people: ['p-yodo', 'p-hideyori'] },
   ] },
   // 6-c has no map entry: its main visual is the closeup (老家康 × 淀殿, tense) — 2-c/4-c2/5-c
   // precedent. Its fallback pin is CHAPTER_POINTS[6] = osaka, exactly where the scene stands.

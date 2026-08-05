@@ -589,14 +589,32 @@ export const STORY: Story = {
           onEnter: { cards: ['p-hideyori', 'w-houkouji'] },
           next: '6-b' },
 
+        // ★Split 2026-08-05 (LOAD_LEDGER, the work's heaviest scene at 510): the undivided 6-b
+        // stacked 決裂・牢人・淀殿の声・家中の割れ・岐路 on one screen. The cut follows the two
+        // directions the scene already looked in — 6-b = INSIDE (きみの家が割れる), 6-b2 =
+        // OUTSIDE (大坂が何と言っているか) + the fork — and the monologue splits with them: the
+        // lifelong method here, its inversion there. 牢人 stay in 6-b because the retainer's
+        // argument (時を おけば 牢人は なお ふえまする) cannot land before they are introduced.
         '6-b': { place: '<ruby>駿河<rt>するが</rt></ruby>・<ruby>駿府城<rt>すんぷじょう</rt></ruby>',
-          monologue: '（わしは 生涯、「待つ」で 勝って きた。……その「待つ」が、はじめて わしの 敵に 回る。わしには もう、待つ ための 年月が ない。）',
-          text: `<p>話し合いは、こわれた。大坂城は 米を 買いこみ、<ruby>牢人<rt>ろうにん</rt></ruby>——<ruby>主<rt>あるじ</rt></ruby>を 失った <ruby>武士<rt>ぶし</rt></ruby>たちを、城に 入れはじめる。<ruby>関ヶ原<rt>せきがはら</rt></ruby>で 家を つぶされた 者たちだ。……つぶしたのは、きみだ。</p>
-            <p>城の 奥には、<ruby>秀頼<rt>ひでより</rt></ruby>の 母・<face pid="p-yodo"><ruby>淀殿<rt>よどどの</rt></ruby></face>が いる。遠い 大坂の 声が、聞こえた——<ruby>気<rt>き</rt></ruby>が した。</p>
-            <p class="speak">「この 城は、<ruby>秀吉<rt>ひでよし</rt></ruby>さまの のこされた 城。秀頼は、秀吉さまの 子。——だれに 頭を 下げよと 言うのです」</p>
-            <p><ruby>駿府<rt>すんぷ</rt></ruby>の 家来たちも、割れた。</p>
+          monologue: '（わしは <ruby>生涯<rt>しょうがい</rt></ruby>、「待つ」で 勝って きた。……こんども、待って いれば すむのか。）',
+          text: `<p><ruby>鐘<rt>かね</rt></ruby>の 文を めぐる 話し合いは、こわれた。大坂城は 米を 買いこみ、<ruby>牢人<rt>ろうにん</rt></ruby>——<ruby>主<rt>あるじ</rt></ruby>を 失った <ruby>武士<rt>ぶし</rt></ruby>たちを、城に 入れはじめる。<ruby>関ヶ原<rt>せきがはら</rt></ruby>で 家を つぶされた 者たちだ。……つぶしたのは、きみだ。</p>
+            <p><ruby>駿府<rt>すんぷ</rt></ruby>の 家来たちは、割れた。</p>
             <p class="speak">「いくさは 早い ほど 小さく すみます。時を おけば、<ruby>牢人<rt>ろうにん</rt></ruby>は なお ふえまするぞ」</p>
-            <p class="speak">「相手は <ruby>秀吉<rt>ひでよし</rt></ruby>さまの わすれがたみ。討てば——『<ruby>律儀者<rt>りちぎもの</rt></ruby>』の 名が、泣きまする」</p>`,
+            <p class="speak">「相手は <ruby>秀吉<rt>ひでよし</rt></ruby>さまの わすれがたみ。討てば——『<ruby>律儀者<rt>りちぎもの</rt></ruby>』の 名が、泣きまする」</p>
+            <p>先に 言った 者が、きみを 見た。</p>
+            <p class="speak">「われらでは、決められませぬ。……<ruby>殿<rt>との</rt></ruby>、おきめ ください」</p>`,
+          next: '6-b2' },
+
+        // 6-b2 = the outside voices, then the fork. Two voices from the SAME castle with
+        // DIFFERENT interests (§18-6: one voice closes a place into a single color) — the 牢人
+        // want their houses back, 淀殿 will not bow — so 大坂 is not one thing the reader can
+        // dismiss, and the last word before the fork is the refusal that makes peace impossible.
+        // Both are 気が した-marked like every invented line in this work.
+        '6-b2': { place: '<ruby>駿河<rt>するが</rt></ruby>・<ruby>駿府城<rt>すんぷじょう</rt></ruby>——その 夜',
+          monologue: '（その「待つ」が、はじめて わしの 敵に 回る。……わしには もう、待つ ための 年月が ない。）',
+          text: `<p>大坂城には、入った ばかりの <ruby>牢人<rt>ろうにん</rt></ruby>たち。その <ruby>奥<rt>おく</rt></ruby>に、<ruby>秀頼<rt>ひでより</rt></ruby>の 母・<face pid="p-yodo"><ruby>淀殿<rt>よどどの</rt></ruby></face>が いる。——遠い 声が、聞こえた <ruby>気<rt>き</rt></ruby>が した。</p>
+            <p class="speak">「わしらの 家は、<ruby>関ヶ原<rt>せきがはら</rt></ruby>で 消えた。もう一度 おこせる 場所は、この 城しか ない」</p>
+            <p class="speak">「この 城は、<ruby>秀吉<rt>ひでよし</rt></ruby>さまの のこされた 城。秀頼は、秀吉さまの 子。——だれに 頭を 下げよと 言うのです」</p>`,
           // 淀殿's card grants here — the scene her voice belongs to (and her map-face debut).
           // A 2026-07-18 audit found she was granted NOWHERE, which silently made card
           // completion unreachable (completion denominators count every card in work.cards).
@@ -636,7 +654,11 @@ export const STORY: Story = {
             cite: '※ 語りにくい 出来事ほど、記録は うすく なる。',
             confidence: '△' },
           creed: { line: '「名は、けがれて かまわぬ。——静かな 世が、あとに 残るなら。」',
-            act: '——<ruby>落城<rt>らくじょう</rt></ruby>から 二か月。きみは 大名たちの まもるべき おきてを 出させた。最後の <ruby>戦<rt>いくさ</rt></ruby>の あと、きみが 手に とったのは 刀では なく、また <ruby>筆<rt>ふで</rt></ruby>だった。——きみは その <ruby>翌年<rt>よくねん</rt></ruby>、七十五で 死ぬ。' },
+            // ★The closing clause 「きみは その 翌年、七十五で 死ぬ」 was cut when 6-b split
+            // (2026-08-05): the same fact is carried verbatim by this scene's own map note
+            // （次の 年、この 城で 死ぬ）and announced again by the chapter teaser, and the
+            // chapter needed 7 characters to bring its heaviest scene under 420.
+            act: '——<ruby>落城<rt>らくじょう</rt></ruby>から 二か月。きみは 大名たちの まもるべき おきてを 出させた。最後の <ruby>戦<rt>いくさ</rt></ruby>の あと、きみが 手に とったのは 刀では なく、また <ruby>筆<rt>ふで</rt></ruby>だった。' },
           onEnter: { cards: ['p-tsukiyama', 'p-nobuyasu'], clues: ['clue-6'] },
           end: true },
       },
