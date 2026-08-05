@@ -469,14 +469,41 @@ export const STORY: Story = {
           onEnter: { cards: ['p-mitsunari'] },
           next: '5-b' },
 
+        // Split from a single 541-load scene (WRITING 予算表 maxSceneLoad ≤ 420). The cut follows
+        // the map's own three markers, which already stood for three different things: 5-b is what
+        // lies BEHIND (伏見 fallen, 元忠 dead — the debt that makes losing unbearable), 5-b2 what
+        // lies AHEAD and what is MISSING (西軍 across the fields, the 本隊 still in the mountains)
+        // plus the fork. Same camp, arrival then dusk: 家康 reached 赤坂 on 9/14 and the army moved
+        // out that night, which is where the canon hist opens.
+        //
+        // The split left 5-b voiceless (agency-audit: 声0・行為0), and 元忠 was a name that dies —
+        // the one thing 書法5 forbids. So he speaks once, in a remembered parting, marked 気が した
+        // like every other invented line here. ★What he says took two eval rounds: the first draft
+        // (「留守の 者は、少ない ほうが よいのです」, smiling) drew two independent axes at once — 小5
+        // read it BACKWARDS (fewer men to hold a castle?) and the VISION audit called it the one
+        // 道徳の教材化 in the chapter, a retainer smiling as he hands over his own death while 三成
+        // and 秀秋 both get 留保. Both are the same defect: a line that is only devotion has no
+        // information in it. The fix is not to soften the sacrifice but to make him ASK for
+        // something — 「この 城は、もちませぬ」 supplies the missing arithmetic, and 「殿は、勝って
+        // くだされ」 puts a debt on きみ, which is what the monologue's 犬死に is answering.
+        // The chapter body budget was at 998/1000, so the
+        // voice was funded, not added: 5-c's closing lost a clause the chapter lead already says
+        // (「天下 分け目と 呼ばれた 戦いは、ふたを 開ければ…」) and 5-d dropped a sentence its own
+        // map note carries verbatim (「天下の 地図が、一日で 塗りかわった」) — i.e. the budget chose
+        // what to cut, and both cuts were repetitions.
         '5-b': { place: '<ruby>美濃<rt>みの</rt></ruby>・<ruby>赤坂<rt>あかさか</rt></ruby>の <ruby>陣<rt>じん</rt></ruby>',
           monologue: '（<ruby>元忠<rt>もとただ</rt></ruby>……。<ruby>伏見<rt>ふしみ</rt></ruby>を <ruby>捨<rt>す</rt></ruby>て<ruby>城<rt>じろ</rt></ruby>——落ちると わかって いて 残す 城に すると 決めたのは、この わしだ。この <ruby>戦<rt>いくさ</rt></ruby>に 負ければ、あれは <ruby>犬死<rt>いぬじ</rt></ruby>にに なる。）',
-          text: `<p>二年後の 秋。きみは <ruby>美濃<rt>みの</rt></ruby>・<ruby>赤坂<rt>あかさか</rt></ruby>の <ruby>陣<rt>じん</rt></ruby>に いた。<ruby>会津<rt>あいづ</rt></ruby>の <ruby>上杉<rt>うえすぎ</rt></ruby>を 討ちに 東へ 向かった すきに、<ruby>三成<rt>みつなり</rt></ruby>が 西で 兵を 挙げた。きみは 軍を 返して きたのだ。</p>
+          text: `<p>二年後の 秋。<ruby>会津<rt>あいづ</rt></ruby>の <ruby>上杉<rt>うえすぎ</rt></ruby>を 討ちに 東へ 向かった すきに、<ruby>三成<rt>みつなり</rt></ruby>が 西で 兵を 挙げた。きみは 軍の 向きを 変え、西へ もどって きた。</p>
             <p>るすを あずけた <ruby>伏見城<rt>ふしみじょう</rt></ruby>は、落ちた。守って 死んだのは <ruby>鳥居元忠<rt>とりい もとただ</rt></ruby>。<ruby>駿府<rt>すんぷ</rt></ruby>の <ruby>人質<rt>ひとじち</rt></ruby>の ころから、ずっと そばに いた 男だ。</p>
-            <p>目の 前、<ruby>大垣城<rt>おおがきじょう</rt></ruby>には 西軍。だが、あとつぎの <ruby>秀忠<rt>ひでただ</rt></ruby>が ひきいる 徳川の <ruby>本隊<rt>ほんたい</rt></ruby> 三万八千は、別の 道で おくれ、まだ 着かない。</p>
+            <p>東へ 発つ 朝、あの 男は 言った——気が した。</p>
+            <p class="speak">「この 城は、もちませぬ。<ruby>兵<rt>へい</rt></ruby>は 東へ。……<ruby>殿<rt>との</rt></ruby>は、勝って くだされ」</p>`,
+          next: '5-b2' },
+
+        '5-b2': { place: '<ruby>赤坂<rt>あかさか</rt></ruby>の <ruby>陣<rt>じん</rt></ruby>——日が くれる',
+          text: `<p>目の 前、<ruby>大垣城<rt>おおがきじょう</rt></ruby>には 西軍。だが、あとつぎの <ruby>秀忠<rt>ひでただ</rt></ruby>が ひきいる 徳川の <ruby>本隊<rt>ほんたい</rt></ruby> 三万八千は、別の 道で おくれ、まだ 着かない。</p>
             <p>家来たちは、また 割れた。</p>
             <p class="speak">「<ruby>本隊<rt>ほんたい</rt></ruby> ぬきの <ruby>決戦<rt>けっせん</rt></ruby>なぞ。負ければ、徳川は 終わりですぞ」</p>
-            <p class="speak">「日を おく ほうが こわい。<ruby>先手<rt>さきて</rt></ruby>の 大名がたは、みな 豊臣に <ruby>恩<rt>おん</rt></ruby>の ある 方々——心の 内までは、しばれませぬ」</p>`,
+            <p class="speak">「日を おく ほうが こわい。<ruby>先<rt>さき</rt></ruby>に 立つ 大名がたは、みな 豊臣に <ruby>恩<rt>おん</rt></ruby>の ある 方々——心の 内までは、しばれませぬ」</p>`,
           q: '<ruby>秀忠<rt>ひでただ</rt></ruby>の 三万八千 ぬきで——きみは、しかけられるか？',
           choices: [
             { label: '待たずに、しかける', to: '5-c', canon: true, effect: { hito: 2 },
@@ -496,7 +523,7 @@ export const STORY: Story = {
           text: `<p>9月15日、明け方。<ruby>関ヶ原<rt>せきがはら</rt></ruby>の <ruby>盆地<rt>ぼんち</rt></ruby>は、ふかい <ruby>霧<rt>きり</rt></ruby>の 底に あった。霧が 引くと、<ruby>鉄砲<rt>てっぽう</rt></ruby>の 音が 走った。</p>
             <p>西軍の <ruby>大黒柱<rt>だいこくばしら</rt></ruby>・<ruby>毛利勢<rt>もうりぜい</rt></ruby>は、南の 山から 動かなかった。——戦の 前に、「動かぬ」約束が できて いたのだ。そして、西軍の はずの <face pid="p-hideaki"><ruby>小早川秀秋<rt>こばやかわ ひであき</rt></ruby></face>、およそ 一万五千が <ruby>松尾山<rt>まつおやま</rt></ruby>を 下り、西軍の よこ<ruby>腹<rt>ばら</rt></ruby>に 攻めかかる。</p>
             <p>——十九の 若者が、その 山の 上で 何を 思って いたのか。心の 内を 書きのこした 紙は、見つかって いない。</p>
-            <p>昼すぎには、勝負は 見えて いた。天下 分け目と 呼ばれた 戦いは、ふたを 開ければ、あっけない ほど 早く——たった 一日で 終わった。</p>`,
+            <p>昼すぎには、勝負は 見えて いた。天下 分け目は、たった 一日で 終わった。</p>`,
           // ★A型 spark の仕分け: 旧文は「だれもが 語って きた この 場面」＝読者の既知に寄りかかった上、
           // 裏返す対象（昼まで まよい／問い鉄砲）を spark 自身が教えていた。本文がいま見せた場面を
           // そのまま指し、争点だけを問う B 型（＝わかっていない・原則6）へ寄せる。軍記が盛った
@@ -514,7 +541,7 @@ export const STORY: Story = {
 
         '5-d': { place: '第5章 むすび',
           monologue: '（<ruby>三成<rt>みつなり</rt></ruby>。おぬしは、わしを にくんで いたのか。それとも——まもりたい ものが、ちがって いた だけなのか。）',
-          text: `<p><ruby>三成<rt>みつなり</rt></ruby>は とらえられ、京で <ruby>処刑<rt>しょけい</rt></ruby>された。西軍に ついた 家々の <ruby>領地<rt>りょうち</rt></ruby>は 取り上げられ、勝った 側に 配られる。天下の 地図が、一日で 塗りかわった。</p>
+          text: `<p><ruby>三成<rt>みつなり</rt></ruby>は とらえられ、京で <ruby>処刑<rt>しょけい</rt></ruby>された。西軍に ついた 家々の <ruby>領地<rt>りょうち</rt></ruby>は 取り上げられ、勝った 側に 配られる。</p>
             <p>三年後、きみは <ruby>征夷大将軍<rt>せいい たいしょうぐん</rt></ruby>（日本を おさめる いちばん 上の 役）と なる。江戸に <ruby>幕府<rt>ばくふ</rt></ruby>——きみの 政府を ひらく。</p>
             <p>では、豊臣は？ ——ほろぼされて いない。<ruby>秀頼<rt>ひでより</rt></ruby>は 六十五<ruby>万石<rt>まんごく</rt></ruby>の 大名として 大坂城に 残り、きみは 約束どおり、孫むすめの <ruby>千姫<rt>せんひめ</rt></ruby>を 秀頼に とつがせた。</p>
             <p>「<ruby>律儀者<rt>りちぎもの</rt></ruby>」は、まだ <ruby>律儀<rt>りちぎ</rt></ruby>の 形の 中に いる。この 男が その 家に 手を かける 日まで、あと 十二年。——五つめの <ruby>手<rt>て</rt></ruby>がかり「まだ <ruby>決着<rt>けっちゃく</rt></ruby>して いない」が、<ruby>手帳<rt>てちょう</rt></ruby>に 入った。</p>`,

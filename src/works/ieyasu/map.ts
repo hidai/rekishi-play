@@ -572,7 +572,16 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
     { at: 'fushimi', cur: 1, kind: 'castle', label: '伏見城', note: '秀吉が 死んだ 城' },
     { at: 'edo', kind: 'town', label: '江戸', note: 'きみの 国' },
   ] },
-  // 5-b: the squeeze at 赤坂, drawn as three distances. Ahead: 大垣城 is 3.9 units away — UNDER
+  // 5-b / 5-b2: the split's two halves, drawn as two frames of one squeeze (story 5-b comment).
+  // 5-b looks BEHIND — きみ and the castle that fell, one note, nothing else: its ring is
+  // deliberately noteless because the ring's own facts (whose camp, which way he came) are the
+  // body's opening clause, and a cur note repeating it is the dullest thing a 読み通し finds.
+  // ★The 秀忠 flag is NOT on 5-b even though it was on the undivided scene: the split moved his
+  // introduction into 5-b2's body, and a map may establish a piece the body has not named yet
+  // only when the picture explains it — a bare personal name in the mountains does not. So the
+  // flag arrives with the sentence that says who he is, and the frame widens with it.
+  //
+  // Ahead: 大垣城 is 3.9 units away — UNDER
   // きみ's face — so the cur note carries it (an in-disc fact carried by the note is the 2-b
   // pattern; 目の 前 is the body's own word, and under きみ's face that perspective correctly
   // attaches to きみ). The note NAMES 大垣城: with the referent unnamed (「目の 前の 城」), the
@@ -586,8 +595,12 @@ export const SCENE_MAPS: Record<string, SceneMapDef> = {
   // pin resolves nothing finer than the record. 関ヶ原 itself is absent: the armies move there
   // in the night, which is the fork's resolution (hist body), not its opening.
   '5-b': { markers: [
-    { at: 'akasaka', cur: 1, label: '美濃・赤坂', note: '目の 前の 大垣城に、西軍' },
+    { at: 'akasaka', cur: 1, label: '美濃・赤坂' },
     { at: 'fushimi', enemy: 1, kind: 'castle', label: '伏見城', note: '守った 元忠は、死んだ' },
+  ] },
+  '5-b2': { markers: [
+    { at: 'akasaka', cur: 1, label: '美濃・赤坂', note: '目の 前の 大垣城に、西軍' },
+    { at: 'fushimi', enemy: 1, kind: 'castle', label: '伏見城' },
     { at: 'kiso', kind: 'flag', label: '秀忠', note: '三万八千は、まだ 山の 中' },
   ] },
   // 5-c has no map entry: its main visual is the 布陣 figure (story 5-c figure: 'sekigahara' →
